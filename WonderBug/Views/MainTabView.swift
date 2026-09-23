@@ -8,6 +8,10 @@
 import SwiftUI
 import SwiftData
 
+/// The app's main shell: owns the shared `HomeViewModel` (wired to the real Qwen service),
+/// swaps its content between Home / History / the current answer, and keeps the custom tab bar
+/// visible on all of them. Showing `AnswerView` as a content swap (driven by `answerData`)
+/// rather than a navigation push is what keeps the tab bar on screen while viewing an answer.
 struct MainTabView: View {
 
     enum Tab {
@@ -16,7 +20,10 @@ struct MainTabView: View {
     }
 
     @State private var selectedTab: Tab = .home
-    @StateObject private var homeViewModel = HomeViewModel(answerService: QwenAnswerService())
+    @StateObject private var homeViewModel = HomeViewModel(
+        answerService: QwenAnswerService(),
+        wikiSession: WikiSearchService.bundled().map(WikiSearchSession.init(service:))
+    )
     @State private var answerData: AnswerData?
     @Environment(\.modelContext) private var modelContext
 
@@ -53,6 +60,8 @@ struct MainTabView: View {
     }
 }
 
+/// Hand-rolled two-icon tab bar with rounded top corners; the selected icon gets a filled
+/// circular background. Replaces the native `TabView` so it can stay visible under `AnswerView`.
 private struct CustomTabBar: View {
 
     @Binding var selectedTab: MainTabView.Tab

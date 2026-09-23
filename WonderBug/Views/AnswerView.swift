@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Shows one question and its (possibly blocked) answer, with a text-to-speech "Read to me"
+/// button. Displayed by `MainTabView` in place of the tab content — not pushed onto a navigation
+/// stack — so the custom tab bar stays visible; "Ask another question" calls `onDismiss` to
+/// return to `HomeView` with the session's follow-up context intact.
 struct AnswerView: View {
     let question: String
     let answer: String
@@ -52,10 +56,6 @@ struct AnswerView: View {
 
                     AnswerText(text: answer)
                         .padding(.top, 12)
-
-                    if isBlocked {
-                        BlockedBadge()
-                    }
 
                     Button {
                         viewModel.clear()

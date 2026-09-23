@@ -1,0 +1,14 @@
+# Bundled model weights and the Wikipedia index: ~1.1 GB of build inputs, not source.
+# Both are added to the Xcode project as synchronized groups, so a fresh clone needs them
+# copied back in by hand before the app will build.
+Qwen3-1.7B-4bit/
+*.db
+
+# Xcode
+.DS_Store
+xcuserdata/
+DerivedData/
+build/
+
+# Compiled parity runner (build it with the swiftc line in parity/main.swift).
+Tools/WikiEval/parity/parity

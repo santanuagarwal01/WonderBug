@@ -1,5 +1,8 @@
 import SwiftUI
 
+/// The main "ask a question" screen: title, question text field, four tap-to-insert question
+/// starters, and the Ask button. Setting `answerData` (a binding owned by `MainTabView`) is what
+/// swaps the screen over to `AnswerView`.
 struct HomeView: View {
 
     @ObservedObject var viewModel: HomeViewModel
@@ -47,7 +50,7 @@ struct HomeView: View {
                 )
                 .lineLimit(7)
                 .padding(20)
-                .frame(minHeight: 260, alignment: .topLeading)
+                .frame(minHeight: isQuestionFocused ? 160 : 260, alignment: .topLeading)
                 .focused($isQuestionFocused)
             }
             .background(Color.white)
@@ -72,6 +75,7 @@ struct HomeView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 28))
             .padding(.top, 10)
+            .animation(.easeOut(duration: 0.25), value: isQuestionFocused)
 
             LazyVGrid(columns: chipColumns, spacing: 14) {
                 ForEach(suggestions, id: \.display) { suggestion in

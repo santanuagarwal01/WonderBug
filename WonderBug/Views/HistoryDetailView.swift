@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Read-only view of one stored history entry (question, answer, blocked badge if flagged),
+/// with the same "Read to me" playback as `AnswerView`. Reached by tapping a row in
+/// `HistoryView` via a real navigation push, hence the custom back button.
 struct HistoryDetailView: View {
 
     let item: HistoryItem

@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+/// App entry point: hosts the whole UI inside one NavigationStack and creates the SwiftData
+/// container for `HistoryItem`, which every view reaches through the SwiftUI environment.
 @main
 struct WonderBugApp: App {
     var body: some Scene {

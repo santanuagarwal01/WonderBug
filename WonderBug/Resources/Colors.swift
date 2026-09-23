@@ -5,10 +5,10 @@
 //  Created by Santanu Agarwal on 08/07/26.
 //
 
-import Foundation
-
 import SwiftUI
 
+/// WonderBug brand palette ("wb" prefix): cream background, dark gray-green text, sage accent
+/// used for borders/buttons/tab highlights, plus soft chip and beige fills.
 extension Color {
     
     static let wbBackground = Color(
@@ -29,22 +29,10 @@ extension Color {
         blue: 171/255
     )
     
-    static let wbMint = Color(
-        red: 37/255,
-        green: 221/255,
-        blue: 181/255
-    )
-    
     static let wbChip = Color(
         red: 231/255,
         green: 243/255,
         blue: 240/255
-    )
-    
-    static let wbBeige = Color(
-        red: 245/255,
-        green: 240/255,
-        blue: 229/255
     )
     
     static let wbButton = Color(

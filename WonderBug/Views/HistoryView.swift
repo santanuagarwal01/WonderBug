@@ -8,21 +8,23 @@
 import SwiftUI
 import SwiftData
 
+/// Parent-facing log of every question asked, grouped by day, with a toggle to show only
+/// safety-flagged (🚩) questions for a quick review and each row tagged with its Pattern
+/// Detection complexity level (L1-L4, spec §8). Rows navigate to `HistoryDetailView`.
 struct HistoryView: View {
 
     @Query(sort: \HistoryItem.createdAt, order: .reverse)
     private var historyItems: [HistoryItem]
 
-    @Environment(\.modelContext) private var modelContext
-
     @State private var showBlockedOnly = false
     @State private var selectedItem: HistoryItem?
-    @State private var showClearConfirmation = false
 
     private var filteredItems: [HistoryItem] {
         showBlockedOnly ? historyItems.filter(\.isBlocked) : historyItems
     }
 
+    /// Buckets the (already newest-first) items into day sections, preserving order — a simple
+    /// single pass that appends to the current section while the title matches.
     private var groupedItems: [(title: String, items: [HistoryItem])] {
         var result: [(title: String, items: [HistoryItem])] = []
         for item in filteredItems {
@@ -47,24 +49,11 @@ struct HistoryView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    HStack {
-                        Spacer()
-                        Text("Question History")
-                            .font(.system(size: 28, weight: .bold))
-                            .foregroundColor(Color.wbTitle)
-                        
-                        Spacer()
-                        
-                        Button {
-                            showClearConfirmation = true
-                        } label: {
-                            Image(systemName: "trash")
-                                .font(.title3)
-                                .foregroundColor(.gray)
-                        }
-                        .disabled(historyItems.isEmpty)
-                    }
-                    .padding(.top, 14)
+                    Text("Question History")
+                        .font(.system(size: 28, weight: .bold))
+                        .foregroundColor(Color.wbTitle)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 14)
                     
                     Button {
                         showBlockedOnly.toggle()
@@ -95,7 +84,7 @@ struct HistoryView: View {
                         )
                         .padding(.top, 40)
                     } else {
-                        VStack(alignment: .leading, spacing: 0) {
+                        LazyVStack(alignment: .leading, spacing: 0) {
                             ForEach(groupedItems, id: \.title) { group in
                                 Text(group.title)
                                     .font(.caption.weight(.semibold))
@@ -122,19 +111,9 @@ struct HistoryView: View {
         .navigationDestination(item: $selectedItem) { item in
             HistoryDetailView(item: item)
         }
-        .alert(
-            "Clear all history?",
-            isPresented: $showClearConfirmation
-        ) {
-            Button("Clear History", role: .destructive) {
-                clearHistory()
-            }
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This will permanently delete all questions and answers.")
-        }
     }
 
+    /// One tappable list row: the question text, prefixed with 🚩 when the item was blocked.
     @ViewBuilder
     private func historyRow(for item: HistoryItem) -> some View {
         Button {
@@ -151,16 +130,24 @@ struct HistoryView: View {
                     .foregroundColor(Color.wbTitle)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
+
+                Spacer(minLength: 8)
+
+                Text("L\(item.complexityLevel)")
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(Color.wbBorder)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.wbChip)
+                    .clipShape(Capsule())
             }
             .padding(.vertical, 10)
         }
         .buttonStyle(.plain)
     }
 
-    private func clearHistory() {
-        try? HistoryRepository(modelContext: modelContext).deleteAll()
-    }
-
+    /// Human-friendly section label: "TODAY", "YESTERDAY", "N DAYS AGO" within a week,
+    /// then an absolute date like "JUL 2, 2026".
     private static func sectionTitle(for date: Date) -> String {
         let calendar = Calendar.current
 

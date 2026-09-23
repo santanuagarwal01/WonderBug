@@ -19,6 +19,7 @@ struct QuestionText: View {
     }
 }
 
+/// Body typography for the answer text, shared by both answer-displaying screens.
 struct AnswerText: View {
     let text: String
 
@@ -31,6 +32,7 @@ struct AnswerText: View {
     }
 }
 
+/// Red flag label shown under answers whose question was refused by the safety gate.
 struct BlockedBadge: View {
     var body: some View {
         Text("🚩 This question was blocked")

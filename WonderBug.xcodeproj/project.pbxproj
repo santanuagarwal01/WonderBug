@@ -15,12 +15,13 @@
 
 /* Begin PBXFileReference section */
 		AFA370C92FDDDCAB007C7409 /* WonderBug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WonderBug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFC596CA300A13A70073E693 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		AF6A187630061624003D32B2 /* Qwen3-0.6B-4bit */ = {
+		AF6A187630061624003D32B2 /* Qwen3-1.7B-4bit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Qwen3-0.6B-4bit";
+			path = "Qwen3-1.7B-4bit";
 			sourceTree = "<group>";
 		};
 		AFA370CB2FDDDCAB007C7409 /* WonderBug */ = {
@@ -55,7 +56,8 @@
 		AFA370C02FDDDCAB007C7409 = {
 			isa = PBXGroup;
 			children = (
-				AF6A187630061624003D32B2 /* Qwen3-0.6B-4bit */,
+				AFC596CA300A13A70073E693 /* README.md */,
+				AF6A187630061624003D32B2 /* Qwen3-1.7B-4bit */,
 				AFA370CB2FDDDCAB007C7409 /* WonderBug */,
 				AF3BF0A830061EC20000656A /* Frameworks */,
 				AFA370CA2FDDDCAB007C7409 /* Products */,
@@ -86,7 +88,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				AF6A187630061624003D32B2 /* Qwen3-0.6B-4bit */,
+				AF6A187630061624003D32B2 /* Qwen3-1.7B-4bit */,
 				AFA370CB2FDDDCAB007C7409 /* WonderBug */,
 			);
 			name = WonderBug;
@@ -108,7 +110,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2650;
-				LastUpgradeCheck = 2650;
+				LastUpgradeCheck = 2660;
 				TargetAttributes = {
 					AFA370C82FDDDCAB007C7409 = {
 						CreatedOnToolsVersion = 26.5;
@@ -195,6 +197,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = CN2KJ33CJC;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -218,6 +221,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -258,6 +262,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = CN2KJ33CJC;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -274,6 +279,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -284,6 +290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CN2KJ33CJC;
@@ -303,15 +310,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santanu.WonderBug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.santanu.wonderbug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,6 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CN2KJ33CJC;
@@ -339,15 +351,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santanu.WonderBug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.santanu.wonderbug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -382,6 +398,8 @@
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.3.3;
 			};
+			traits = (
+			);
 		};
 		AF3BF0AC300623120000656A /* XCRemoteSwiftPackageReference "swift-jinja" */ = {
 			isa = XCRemoteSwiftPackageReference;

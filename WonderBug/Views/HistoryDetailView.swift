@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-/// Read-only view of one stored history entry (question, answer, blocked badge if flagged),
-/// with the same "Read to me" playback as `AnswerView`. Reached by tapping a row in
-/// `HistoryView` via a real navigation push, hence the custom back button.
+/// One stored history entry, with "Read to me" and the blocked badge. Pushed from `HistoryView`,
+/// hence the custom back button.
 struct HistoryDetailView: View {
 
     let item: HistoryItem
@@ -50,22 +49,7 @@ struct HistoryDetailView: View {
 
                     QuestionText(text: item.question)
 
-                    Button {
-                        speechService.toggle(item.answer)
-                    } label: {
-                        HStack(spacing: 10) {
-                            Image(systemName: speechService.isSpeaking ? "pause.fill" : "speaker.wave.2.fill")
-                                .font(.system(size: 15, weight: .medium))
-                                .foregroundColor(.white)
-                                .frame(width: 36, height: 36)
-                                .background(Color.wbBorder)
-                                .clipShape(Circle())
-
-                            Text(speechService.isSpeaking ? "Reading..." : "Read to me")
-                                .font(.subheadline.weight(.medium))
-                                .foregroundColor(Color.wbTitle)
-                        }
-                    }
+                    ReadAloudButton(speechService: speechService, text: item.answer)
 
                     AnswerText(text: item.answer)
                         .padding(.top, 12)

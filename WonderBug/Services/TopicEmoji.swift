@@ -5,16 +5,14 @@
 
 import Foundation
 
-/// Chooses the one emoji shown after an answer, from a fixed list. The model used to pick its own
-/// and was often wrong (a peacock for spiders, an elephant for a giraffe); a list is either right
-/// or shows nothing.
+/// The one emoji shown after an answer, from a fixed list: the model's own picks were often wrong
+/// (a peacock for spiders), and a list is either right or shows nothing.
 enum TopicEmoji {
 
-    /// Checks the Wikipedia article's title first, then the question, and returns the emoji for the
-    /// first listed word; nil when nothing matches. The title comes first so "Is a whale a fish?"
-    /// gets the whale, not the fish.
-    static func emoji(title: String?, question: String) -> String? {
-        for text in [title, question].compactMap({ $0 }) {
+    /// The emoji for the first listed word of the article's title, then of the question, so "Is a
+    /// whale a fish?" gets the whale.
+    static func emoji(title: String, question: String) -> String? {
+        for text in [title, question] {
             for word in WikiSearchService.words(in: text) {
                 if let emoji = byKeyword[word] ?? byKeyword[WikiSearchService.stem(word)] {
                     return emoji

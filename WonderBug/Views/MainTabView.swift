@@ -8,10 +8,9 @@
 import SwiftUI
 import SwiftData
 
-/// The app's main shell: owns the shared `HomeViewModel` (wired to the real Qwen service),
-/// swaps its content between Home / History / the current answer, and keeps the custom tab bar
-/// visible on all of them. Showing `AnswerView` as a content swap (driven by `answerData`)
-/// rather than a navigation push is what keeps the tab bar on screen while viewing an answer.
+/// The app's shell: owns the shared `HomeViewModel` and swaps between Home, History and the current
+/// answer under a custom tab bar. `AnswerView` is a content swap rather than a push so the tab bar
+/// stays on screen.
 struct MainTabView: View {
 
     enum Tab {
@@ -34,9 +33,8 @@ struct MainTabView: View {
                     AnswerView(
                         question: answerData.question,
                         answer: answerData.answer,
-                        isBlocked: answerData.isBlocked,
                         viewModel: homeViewModel,
-                        onDismiss: { self.answerData = nil }
+                        onAnswer: { self.answerData = $0 }
                     )
                 } else {
                     switch selectedTab {
@@ -49,7 +47,11 @@ struct MainTabView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            CustomTabBar(selectedTab: $selectedTab)
+            CustomTabBar(selectedTab: $selectedTab, onReselectHome: {
+                // The way back from an answer to the starters and a fresh question.
+                homeViewModel.clear()
+                answerData = nil
+            })
         }
         .onAppear {
             homeViewModel.configure(historyRepository: HistoryRepository(modelContext: modelContext))
@@ -60,11 +62,11 @@ struct MainTabView: View {
     }
 }
 
-/// Hand-rolled two-icon tab bar with rounded top corners; the selected icon gets a filled
-/// circular background. Replaces the native `TabView` so it can stay visible under `AnswerView`.
+/// Two-icon tab bar, hand-rolled so it can stay visible under `AnswerView`.
 private struct CustomTabBar: View {
 
     @Binding var selectedTab: MainTabView.Tab
+    let onReselectHome: () -> Void
 
     var body: some View {
         HStack(spacing: 28) {
@@ -94,6 +96,9 @@ private struct CustomTabBar: View {
         let isSelected = selectedTab == tab
 
         Button {
+            if tab == .home && isSelected {
+                onReselectHome()
+            }
             selectedTab = tab
         } label: {
             Image(systemName: systemImage)

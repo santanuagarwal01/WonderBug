@@ -9,9 +9,8 @@ import Foundation
 import SwiftUI
 import Combine
 
-/// Drives the ask-a-question flow: runs the safety gate, calls the answer service, tracks
-/// follow-up context across turns, and persists every Q&A to history. Shared by `HomeView`
-/// (input) and `AnswerView` (display), owned by `MainTabView`.
+/// Drives the ask-a-question flow: safety gate, Wikipedia search, answer generation, follow-up
+/// context and history. Shared by `HomeView` and `AnswerView`, owned by `MainTabView`.
 @MainActor
 final class HomeViewModel: ObservableObject {
 
@@ -19,11 +18,9 @@ final class HomeViewModel: ObservableObject {
     @Published var answer: String = ""
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
-    @Published private(set) var isAnswerBlocked: Bool = false
 
     private let answerService: AnswerServicing
-    /// Nil when the app runs without the bundled Wikipedia index, in which case the model answers
-    /// from its own knowledge as it did before grounding.
+    /// Nil when the bundled Wikipedia index can't be opened; every question then gets "I don't know yet".
     private let wikiSession: WikiSearchSession?
     private let safetyService: SafetyServicing
     private let complexityService: QuestionComplexityAnalyzing
@@ -31,12 +28,8 @@ final class HomeViewModel: ObservableObject {
     private var conversationContext: [AnswerData] = []
     private var pendingBlockedQuestion: String?
 
-    /// Follow-up context kept in memory. Small on purpose: the on-device model's prompt should
-    /// stay short, and older turns stop being useful for resolving references like "they".
     private let maxContextTurns = 5
 
-    /// Shown when the search finds nothing safe to answer from. The model is not run at all in that
-    /// case, which is the only reliable way to stop it inventing an answer.
     static let unknownAnswer = "Great question! Smart thinking, I don't know yet."
 
     init(
@@ -51,15 +44,15 @@ final class HomeViewModel: ObservableObject {
         self.complexityService = complexityService
     }
 
-    /// Injects the history repository after init — it needs the SwiftUI environment's
-    /// `ModelContext`, which isn't available when the view model is first created.
+    /// Called once the SwiftUI environment's `ModelContext` is available.
     func configure(historyRepository: HistoryRepositoryProtocol) {
         self.historyRepository = historyRepository
     }
 
-    /// Handles one "Ask" tap end-to-end: trim → safety check (including blocked-topic follow-up
-    /// tracking) → Wikipedia passage lookup → generate an answer from that passage → safety check on
-    /// the answer → save to history. Each step is printed to the console by `DebugLog` in debug builds.
+    /// Question safety → Wikipedia passage → passage safety → model → answer safety → grounding →
+    /// history. Every answer comes from a passage: when there is none, or it is unsafe, the model is
+    /// never run and the child gets "I don't know yet", since answering from the model's own
+    /// knowledge was the largest source of invented answers.
     func submit() async {
 
         let trimmedQuestion = question.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -72,11 +65,7 @@ final class HomeViewModel: ObservableObject {
         errorMessage = nil
         DebugLog.question(trimmedQuestion)
 
-        // Pattern Detection (spec §8): classified once per question, regardless of safety verdict —
-        // the classification reflects the question's own phrasing, independent of whether it was
-        // safe to answer. "is_follow_up" additionally requires real prior context to exist (not
-        // just follow-up-shaped wording), so an isolated "why not" with an empty session doesn't
-        // count as a follow-up even though it reads like one.
+        // Recorded in history for the parent view; a follow-up needs an earlier turn to follow.
         let analysis = complexityService.analyze(trimmedQuestion)
         let isFollowUpQuestion = analysis.referencesEarlierContext && !conversationContext.isEmpty
 
@@ -96,70 +85,67 @@ final class HomeViewModel: ObservableObject {
         }
 
         pendingBlockedQuestion = nil
-        isAnswerBlocked = false
 
-        // Look up a Wikipedia passage first, and filter it for anything a child should not read.
-        //
-        // When there is no passage the model may still answer from its own knowledge, but only where
-        // it has something real to work from. A word no article contains ("a flurbin bird", a typo) and
-        // a "they/it" question with no topic are the two cases where it reliably invents an answer
-        // instead, so those still show "I don't know yet" without running it. A passage rejected as
-        // unsafe never falls through either: that topic was ruled out, not merely unfound.
-        var passage: String?
-        var passageTitle: String?
-        if let wikiSession {
-            let outcome = await wikiSession.lookUp(trimmedQuestion)
-            switch outcome.lookup {
-            case .found(let found):
-                passage = safetyService.safePassage(found.text)
-                passageTitle = found.title
-                let how = outcome.reusedTopic.map { "follow-up, reused \"\($0)\"" }
-                    ?? "coverage \(found.coverage.map { String(format: "%.2f", $0) } ?? "-")"
-                let runnersUp = found.runnersUp.map { "\($0.title) (\(String(format: "%.2f", $0.score)))" }
-                    .joined(separator: ", ")
-                DebugLog.section("SEARCH", "Found \"\(found.title)\" (\(how))\nRunners-up: \(runnersUp.isEmpty ? "none" : runnersUp)")
-                DebugLog.section("PASSAGE", found.text)
-                if passage == nil {
-                    DebugLog.section("SAFETY", "Passage rejected: it contains a blocked word or phrase")
-                    DebugLog.section("RESULT", "Showing \"don't know\" without running the model")
-                    showUnknownAnswer(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
-                    isLoading = false
-                    return
-                }
-            case .notFound(let miss):
-                DebugLog.section("SEARCH", "Nothing found: \(miss.reason)")
-                guard miss.allowsUnsourcedAnswer else {
-                    DebugLog.section("RESULT", "Showing \"don't know\" without running the model")
-                    showUnknownAnswer(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
-                    isLoading = false
-                    return
-                }
-                DebugLog.section("FALLBACK", "No passage — the model answers from its own knowledge")
-            }
+        func giveUp() {
+            DebugLog.section("RESULT", "Showing \"don't know\" without running the model")
+            showUnknownAnswer(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
+            isLoading = false
         }
+
+        guard let wikiSession else {
+            DebugLog.section("SEARCH", "No bundled index, so there is no passage to answer from")
+            giveUp()
+            return
+        }
+        let outcome = await wikiSession.lookUp(trimmedQuestion)
+        guard case .found(let found) = outcome.lookup else {
+            if case .notFound(let miss) = outcome.lookup {
+                DebugLog.section("SEARCH", "Nothing found: \(miss.reason)")
+            }
+            giveUp()
+            return
+        }
+        let how = outcome.reusedTopic.map { "follow-up, reused \"\($0)\"" }
+            ?? "coverage \(found.coverage.map { String(format: "%.2f", $0) } ?? "-")"
+        let runnersUp = found.runnersUp.map { "\($0.title) (\(String(format: "%.2f", $0.score)))" }
+            .joined(separator: ", ")
+        DebugLog.section("SEARCH", "Found \"\(found.title)\" (\(how))\nRunners-up: \(runnersUp.isEmpty ? "none" : runnersUp)")
+        DebugLog.section("PASSAGE", found.text)
+        guard let passage = safetyService.safePassage(found.text) else {
+            DebugLog.section("SAFETY", "Passage rejected: it contains a blocked word or phrase")
+            giveUp()
+            return
+        }
+
+        // Earlier turns go to the model only for a follow-up (the search reused the previous
+        // article), and only the turns about that article: anything else leaks into the answer, as
+        // when frogs were given Jupiter's "great red spot".
+        let promptContext = outcome.reusedTopic.map { topic in conversationContext.filter { $0.topic == topic } } ?? []
 
         do {
             let generatedAnswer = try await answerService.generateAnswer(
                 for: trimmedQuestion,
-                context: conversationContext,
+                context: promptContext,
                 passage: passage
             )
 
             if generatedAnswer.isEmpty {
                 DebugLog.section("RESULT", "Model returned nothing after cleanup; showing an error")
                 errorMessage = "Something went wrong. Please try again."
-            } else if safetyService.evaluate(generatedAnswer) == .blocked {
+            } else if safetyService.evaluateAnswer(generatedAnswer) == .blocked {
                 DebugLog.section("SAFETY", "Answer blocked by the word list")
-                // The model can bring up unsafe detail the question never asked for (e.g. inventing
-                // an arrest for a real person), so its answer passes the same gate the question did.
                 showBlockedResponse(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
+            } else if !WikiSearchService.isGrounded(answer: generatedAnswer, passage: passage) {
+                // When the passage doesn't answer the question the model invents rather than stopping.
+                DebugLog.section("GROUNDING", "Answer is not from the passage; showing \"don't know\"")
+                showUnknownAnswer(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
             } else {
-                let emoji = TopicEmoji.emoji(title: passageTitle, question: trimmedQuestion)
+                let emoji = TopicEmoji.emoji(title: found.title, question: trimmedQuestion)
                 answer = emoji.map { "\(generatedAnswer) \($0)" } ?? generatedAnswer
                 DebugLog.section("SHOWN", answer)
-                // The model's own earlier answers go back to it without the app's emoji, since its
-                // instructions say to write none.
-                conversationContext.append(AnswerData(question: trimmedQuestion, answer: generatedAnswer))
+                // Recorded without the emoji, since the model is told to write none.
+                conversationContext.append(AnswerData(question: trimmedQuestion, answer: generatedAnswer,
+                                                      topic: found.title))
                 conversationContext = Array(conversationContext.suffix(maxContextTurns))
                 saveToHistory(
                     question: trimmedQuestion,
@@ -177,28 +163,26 @@ final class HomeViewModel: ObservableObject {
         isLoading = false
     }
 
-    /// Clears the typed question and shown answer so the child can ask something new.
-    /// Deliberately does NOT clear `conversationContext` or `pendingBlockedQuestion`:
-    /// follow-up questions ("Why don't they?") need the prior turns to resolve references,
-    /// and a blocked topic must stay blocked across "Ask another question" taps. Both live
-    /// only in memory, so a fresh app launch is the natural session boundary that resets them.
+    /// The question and answer `submit()` just produced; nil when it ended in an error.
+    var shownAnswer: AnswerData? {
+        answer.isEmpty ? nil : AnswerData(question: question, answer: answer)
+    }
+
+    /// Clears the question and answer on screen. The conversation context and a pending blocked
+    /// topic are kept, so follow-ups still resolve; a fresh app launch resets them.
     func clear() {
         question = ""
         answer = ""
         errorMessage = nil
-        isAnswerBlocked = false
     }
 
-    /// Shows the "I don't know yet" line — when the search found nothing safe to answer from — and
-    /// saves it to history like any other answer.
     private func showUnknownAnswer(for question: String, analysis: QuestionComplexityAnalysis, isFollowUp: Bool) {
         answer = Self.unknownAnswer
         saveToHistory(question: question, answer: answer, isBlocked: false, analysis: analysis, isFollowUp: isFollowUp)
     }
 
-    /// Replaces the answer with the fixed refusal and treats the question as a blocked topic: it stays
-    /// out of the model's follow-up context, bare follow-ups to it stay blocked, and it is saved to
-    /// history flagged for the parent view.
+    /// Shows the fixed refusal and keeps the topic blocked for bare follow-ups. The question stays out
+    /// of the model's context and is flagged in history.
     private func showBlockedResponse(
         for question: String,
         analysis: QuestionComplexityAnalysis,
@@ -206,7 +190,6 @@ final class HomeViewModel: ObservableObject {
     ) {
         pendingBlockedQuestion = question
         answer = SafetyService.blockedResponse
-        isAnswerBlocked = true
         saveToHistory(
             question: question,
             answer: answer,
@@ -216,9 +199,7 @@ final class HomeViewModel: ObservableObject {
         )
     }
 
-    /// Best-effort persistence — a storage failure should never break the child's ask flow.
-    /// Errors are logged (not surfaced to the child) so a silent storage failure is at least
-    /// visible in the console during development.
+    /// Best effort: a storage failure must never break the ask flow.
     private func saveToHistory(
         question: String,
         answer: String,
@@ -232,7 +213,7 @@ final class HomeViewModel: ObservableObject {
         }
 
         do {
-            _ = try historyRepository.save(
+            try historyRepository.save(
                 question: question,
                 answer: answer,
                 isBlocked: isBlocked,

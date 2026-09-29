@@ -5,24 +5,18 @@
 
 import Foundation
 
-/// Rule-based classification of one question's phrasing — spec §8 "Pattern Detection": a parent
-/// feature to organically track shifts in a child's reasoning over time. This runs offline on
-/// actual words/phrases/word-combinations only; it never attempts real language understanding,
-/// so it's a best-effort approximation, not a precise classifier. The spec's own categories
-/// overlap in places — e.g. its own Level 2 example "Do many mammals live in groups?" contains
-/// "groups", an explicit Level 3B word, so by the spec's own priority order (L4 → L3 → L2 → L1,
-/// first match wins) this lands on Level 3 rather than the Level 2 its example intends. Rule order
-/// is trusted over cherry-picked examples in cases like this, exactly as the spec prescribes.
+/// Rule-based classification of a question's phrasing (spec §8 "Pattern Detection"), so parents can
+/// follow how a child's questions change over time. It matches words and phrases only, so it is an
+/// approximation. Where the spec's categories overlap, its rule order (L4 → L3 → L2 → L1, first
+/// match wins) is followed over its examples.
 struct QuestionComplexityAnalysis {
-    /// 1 (simple fact lookup) through 4 (reasoning / cause & effect / theory of mind), per spec §8.
+    /// 1 (simple fact lookup) through 4 (reasoning, cause and effect, theory of mind).
     let level: Int
-    /// Whether the question contains "and", "but", "if", "because", or "so" (spec §8).
+    /// Whether the question contains "and", "but", "if", "because" or "so".
     let hasConnector: Bool
-    /// Word count of the question.
     let wordCount: Int
-    /// Whether the phrasing reads like it depends on something said earlier ("Why don't they?",
-    /// "What about the Atlantic?") — a signal only, not a persisted fact by itself; combine with
-    /// whether follow-up context actually existed at ask time to get the real "is_follow_up" flag.
+    /// Whether the phrasing depends on something said earlier ("Why don't they?"). Only a real
+    /// follow-up when there was an earlier turn.
     let referencesEarlierContext: Bool
 }
 
@@ -32,8 +26,7 @@ protocol QuestionComplexityAnalyzing {
 
 struct QuestionComplexityService: QuestionComplexityAnalyzing {
 
-    // MARK: Connector words (spec §8, checked as whole tokens — same technique as SafetyService,
-    // so "so" never matches inside "some"/"soap" etc.)
+    // MARK: Connector words (whole words, so "so" never matches inside "some")
     private let connectorWords: Set<String> = ["and", "but", "if", "because", "so"]
 
     // MARK: Level 4A — Causal Reasoning
@@ -53,9 +46,8 @@ struct QuestionComplexityService: QuestionComplexityAnalyzing {
         "what making", "what is making", "whats making"
     ]
 
-    // MARK: Level 4B — Hypothetical / Prediction. "happen"/"happens"/"happened" co-occurring with
-    // "if" anywhere in the question (not necessarily adjacent) covers "would/could happen ... if"
-    // too, since those phrases already contain the word "happen".
+    // MARK: Level 4B — Hypothetical / Prediction. "happen" anywhere with "if" covers
+    // "would/could happen ... if".
     private let hypotheticalPhrases: [String] = [
         "what if", "might happen", "what might", "how would", "how might", "how could"
     ]
@@ -96,9 +88,8 @@ struct QuestionComplexityService: QuestionComplexityAnalyzing {
         "evolve", "evolves", "evolved", "evolution"
     ]
 
-    // MARK: Level 3D — Broad Claims / Evaluation. "all"/"every" only counts as a broad claim when
-    // paired with one of these auxiliary verbs (also reused by Level 2C below) — an unpaired "all"
-    // ("Tell me all about frogs") shouldn't read as a universal-claim question.
+    // MARK: Level 3D — Broad Claims / Evaluation. "all"/"every" counts only with an auxiliary verb,
+    // so "Tell me all about frogs" is not a broad claim.
     private let absoluteWords: Set<String> = ["always", "never"]
     private let universalWords: Set<String> = ["all", "every"]
     private let auxiliaryVerbs: Set<String> = ["are", "is", "do", "does", "can", "will"]
@@ -110,14 +101,12 @@ struct QuestionComplexityService: QuestionComplexityAnalyzing {
     ]
     private let diversityPhrases: [String] = ["different kinds", "groups of"]
 
-    // MARK: Level 2B — Example-Seeking
-    private let exampleWords: Set<String> = ["common", "commonly", "famous", "main", "example", "examples"]
+    // MARK: Level 2B — Example-Seeking ("example" is already caught by 2A)
+    private let exampleWords: Set<String> = ["common", "commonly", "famous", "main"]
     private let examplePhrases: [String] = ["most common"]
 
-    // MARK: Level 2C — General Patterns / Variation. Same co-occurrence shape as Level 3D:
-    // a quantity word only counts when paired with an auxiliary verb. "many" is excluded when it's
-    // part of "how many" — that phrase is an explicit Level 1 starter below (per spec's own
-    // "How many legs does a spider have?" example), so it must not get caught here first.
+    // MARK: Level 2C — General Patterns / Variation. A quantity word counts only with an auxiliary
+    // verb, and "many" not as part of "how many", which is a Level 1 starter.
     private let quantityWords: Set<String> = ["some", "most", "few"]
 
     // MARK: Level 2D — Understanding / Simple Processes (question starters — must lead the question)
@@ -126,8 +115,6 @@ struct QuestionComplexityService: QuestionComplexityAnalyzing {
     // MARK: Level 1 — Simple Fact Retrieval (question starters — must lead the question)
     private let level1Starters: [String] = ["what", "where", "when", "who", "which", "how many", "how much", "name"]
 
-    /// Classifies a question's complexity level, connector usage, word count, and whether its
-    /// phrasing reads like a follow-up.
     func analyze(_ question: String) -> QuestionComplexityAnalysis {
         let normalized = question
             .lowercased()
@@ -162,8 +149,7 @@ struct QuestionComplexityService: QuestionComplexityAnalyzing {
         )
     }
 
-    /// Evaluation order per spec §8: Level 4 sub-rules, then Level 3, then Level 2, then Level 1 —
-    /// first match wins. Falls back to Level 2 when nothing matches, per the spec's own default.
+    /// Level 4, then 3, then 2, then 1; first match wins, and Level 2 when nothing matches.
     private func level(
         hasAnyWord: (Set<String>) -> Bool,
         hasAnyPhrase: ([String]) -> Bool,
@@ -215,8 +201,6 @@ struct QuestionComplexityService: QuestionComplexityAnalyzing {
             return 1
         }
 
-        // Default Rule: a question that isn't clearly a fact lookup is most likely seeking
-        // understanding.
         return 2
     }
 

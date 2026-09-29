@@ -7,17 +7,18 @@
 
 import Foundation
 
-/// A question paired with its answer — used both as the currently-displayed answer state
-/// (Home/MainTabView/AnswerView) and as a prior turn offered as follow-up context to the
-/// answer service (see `AnswerServicing.generateAnswer(for:context:)`).
+/// A question paired with its answer: the answer on screen, or an earlier turn sent to the model as
+/// follow-up context.
 struct AnswerData {
     let question: String
     let answer: String
-    let isBlocked: Bool
+    /// The Wikipedia article the answer came from; a follow-up is sent only the turns about its own
+    /// article.
+    let topic: String?
 
-    init(question: String, answer: String, isBlocked: Bool = false) {
+    init(question: String, answer: String, topic: String? = nil) {
         self.question = question
         self.answer = answer
-        self.isBlocked = isBlocked
+        self.topic = topic
     }
 }

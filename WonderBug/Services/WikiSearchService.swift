@@ -6,8 +6,11 @@
 import Foundation
 import SQLite3
 
-/// One article's opening text, trimmed to the sentences that answer the question.
+/// The text a question is answered from: the article's opening trimmed to the sentences that
+/// answer it, or one body paragraph of the article when that answers it better.
 struct WikiPassage {
+    /// The article's row id, which a follow-up needs to read the rest of its paragraphs.
+    let id: Int64
     let title: String
     /// The article's whole stored opening — kept so a follow-up question can reuse this article.
     let lead: String
@@ -15,13 +18,13 @@ struct WikiPassage {
     let text: String
     /// Share of the question the article covers; nil when a follow-up reused the previous article.
     let coverage: Double?
+    /// The heading of the body section the passage came from; nil when it came from the opening.
+    let section: String?
     let runnersUp: [(title: String, score: Double)]
 }
 
-/// Why the search has no passage. The distinction matters because some misses let the model answer
-/// from its own knowledge and others must not: a word Wikipedia has never seen is how invented
-/// creatures ("a flurbin bird") reach the model, and it answers those with invented facts rather
-/// than saying it doesn't know.
+/// Why the search has no passage. The child always gets "I don't know yet"; the reason is for the
+/// debug log and the evaluation reports.
 enum WikiMiss {
     /// The question is nothing but stop words.
     case noContentWords
@@ -36,16 +39,6 @@ enum WikiMiss {
     /// "Can they fly?" as the first question of a conversation.
     case noTopicToReferTo
 
-    /// Whether the model may answer this question from its own knowledge instead. False for the two
-    /// cases where it has nothing to go on and would invent something.
-    var allowsUnsourcedAnswer: Bool {
-        switch self {
-        case .noMatchingArticle, .lowCoverage, .articleLacksWords: return true
-        case .noContentWords, .unknownWord, .noTopicToReferTo: return false
-        }
-    }
-
-    /// The console/report line, unchanged from when this was a plain string.
     var reason: String {
         switch self {
         case .noContentWords: return "no content words"
@@ -72,13 +65,10 @@ enum WikiSearchError: Error {
 
 /// Searches the bundled Simple English Wikipedia index for a passage that answers a question.
 ///
-/// This is a direct port of `Tools/WikiEval/eval_v2.py`, which is the reference implementation the
-/// question sets are scored against: same word lists, same scoring, same gates. Keep the two in
-/// step — `Tools/WikiEval/compare_picks.py` diffs a run of each over the same questions.
-///
-/// Uses SQLite directly rather than SwiftData, which cannot do full-text search. The index is built
-/// with FTS5 `detail='none'`, so only single-word MATCH queries work (no multi-word phrases).
-/// An actor so the SQLite work stays off the main thread; the view model awaits it.
+/// A direct port of `Tools/WikiEval/eval_v2.py`, the reference the question sets are scored against:
+/// keep the two in step (`Tools/WikiEval/compare_picks.py` diffs them). SQLite directly, since
+/// SwiftData cannot do full-text search; the FTS5 index is `detail='none'`, so only single-word
+/// MATCH queries work. An actor, so the SQLite work stays off the main thread.
 actor WikiSearchService {
 
     // MARK: - Tuning (mirrors eval_v2.py)
@@ -87,6 +77,9 @@ actor WikiSearchService {
     private static let prefixCharacters = 400
     private static let extraSentences = 2
     private static let candidateLimit = 30
+    private static let subjectMargin = 2.5
+    /// How much of the article's opening rides in front of a body paragraph (see `choosePassage`).
+    private static let openingCharacters = 300
 
     private static func wordSet(_ text: String) -> Set<String> {
         Set(text.split(whereSeparator: \.isWhitespace).map(String.init))
@@ -99,6 +92,7 @@ actor WikiSearchService {
     him his she her hers we us our you your i me my mine this that these those there here any all some
     many much one ones other others can cant could couldnt would wouldnt should will wont have has had
     not no yes like just very really also than then if as into up out tell show picture pictures few
+    more
     meant mean called kind type lot lots get got let lets please ever name
     dont doesnt isnt arent didnt wasnt werent hasnt havent hadnt shouldnt aint
     """)
@@ -106,7 +100,7 @@ actor WikiSearchService {
     /// Describing words (verbs, adjectives, and the measurement words of "how tall / long / far"
     /// questions): never the subject of a question, so never a one-word title match.
     static let titleStopWords = wordSet("""
-    make makes made eat eats live lives need needs jump jumps swim swims breathe biggest smallest big
+    make makes made eat eats live lives need needs jump jumps swim swims breathe find finds biggest smallest big
     small full good first daily color colour cold hot six eight both land orange blue fish
     tall taller tallest long longer longest far farther old older heavy heavier deep deeper wide wider
     high higher fast faster
@@ -116,6 +110,14 @@ actor WikiSearchService {
 
     /// Words that always point back at something already discussed.
     static let referringWords = wordSet("they them their theirs he him his she her hers")
+
+    /// An English question puts its subject straight after the auxiliary verb, which is how a
+    /// pronoun that points back ("how many teeth do THEY have") is told apart from one that points
+    /// at a noun in its own sentence ("why do ELEPHANTS use their trunks").
+    static let auxiliaries = wordSet("""
+    do does did dont doesnt didnt is are was were isnt arent wasnt werent
+    can cant could couldnt will wont would wouldnt should shouldnt has have had hasnt havent hadnt
+    """)
 
     /// Generic synonyms for the verbs and adjectives kids' questions are built around. Used for
     /// coverage and sentence picking only — never for the unknown-word check or title matching.
@@ -127,6 +129,8 @@ actor WikiSearchService {
         "small smaller smallest tiny little",
         "cold hot heat temperature warm freezing",
         "color colour colors colours colored coloured",
+        // "Why does the moon change shape?" — the article calls it a phase.
+        "shape shapes phase phases",
     ]
 
     private static let synonyms: [String: Set<String>] = {
@@ -148,6 +152,13 @@ actor WikiSearchService {
     /// it doesn't: the Whale article not saying "fish" is the answer to "is a whale a fish", not a
     /// reason to give up.
     static let predicateStems = Set(titleStopWords.map(stem)).subtracting(superlativeStems)
+
+    /// Describing words that are a property, which is what a false premise is built from ("is a whale
+    /// a fish"). A body paragraph may not win on one of these unless the question asks why: the word
+    /// turns up all over an article, and the opening is usually where the premise is settled.
+    static let premiseStems = Set(wordSet("""
+    full good first daily color colour cold hot six eight both land orange blue fish find finds
+    """).map(stem))
 
     // MARK: - Text handling
 
@@ -260,24 +271,33 @@ actor WikiSearchService {
         sqlite3_column_text(statement, column).map { String(cString: $0) } ?? ""
     }
 
-    private func article(id: Int64) -> Article? {
+    /// The first article row the query returns.
+    private func firstArticle(_ sql: String, _ bindings: [String] = []) -> Article? {
         var found: Article?
-        step("SELECT id, title, lead FROM articles WHERE id = \(id)") { statement in
-            found = Article(id: sqlite3_column_int64(statement, 0),
-                            title: WikiSearchService.text(statement, 1),
-                            lead: WikiSearchService.text(statement, 2))
-        }
-        return found
-    }
-
-    private func article(titled title: String) -> Article? {
-        var found: Article?
-        step("SELECT id, title, lead FROM articles WHERE title = ? COLLATE NOCASE", [title]) { statement in
+        step(sql, bindings) { statement in
             if found == nil {
                 found = Article(id: sqlite3_column_int64(statement, 0),
                                 title: WikiSearchService.text(statement, 1),
                                 lead: WikiSearchService.text(statement, 2))
             }
+        }
+        return found
+    }
+
+    private func article(id: Int64) -> Article? {
+        firstArticle("SELECT id, title, lead FROM articles WHERE id = \(id)")
+    }
+
+    private func article(titled title: String) -> Article? {
+        firstArticle("SELECT id, title, lead FROM articles WHERE title = ? COLLATE NOCASE", [title])
+    }
+
+    /// The article's body paragraphs in document order. Not in the full-text index: they are read
+    /// only once an article has been chosen.
+    private func paragraphs(of id: Int64) -> [(section: String, text: String)] {
+        var found: [(section: String, text: String)] = []
+        step("SELECT section, text FROM paragraphs WHERE article = \(id) ORDER BY ord") { statement in
+            found.append((WikiSearchService.text(statement, 0), WikiSearchService.text(statement, 1)))
         }
         return found
     }
@@ -296,15 +316,27 @@ actor WikiSearchService {
         log((articleCount + 1) / (Double(documentFrequency(term)) + 1))
     }
 
+    /// The word itself, then the singular forms to fall back on.
+    static func singulars(_ word: String) -> [String] {
+        var forms = [word]
+        if word.hasSuffix("ies") { forms.append(String(word.dropLast(3)) + "y") }
+        if word.hasSuffix("es") { forms.append(String(word.dropLast(2))) }
+        if word.hasSuffix("s") { forms.append(String(word.dropLast())) }
+        return forms
+    }
+
+    /// The form of a word the index holds. FTS5 does not fold "mantises" to "mantis", so without this
+    /// an ordinary plural looks like an invented word.
+    private func indexForm(_ word: String) -> String {
+        if documentFrequency(word) > 0 { return word }
+        return WikiSearchService.singulars(word).dropFirst().first { documentFrequency($0) > 0 } ?? word
+    }
+
     /// The article a phrase names directly, following plural forms and redirects ("pigeons" → Dove).
     private func articleNamed(_ phrase: String) -> Article? {
         var parts = phrase.split(separator: " ").map(String.init)
         guard let last = parts.popLast() else { return nil }
-        var endings = [last]
-        if last.hasSuffix("ies") { endings.append(String(last.dropLast(3)) + "y") }
-        if last.hasSuffix("es") { endings.append(String(last.dropLast(2))) }
-        if last.hasSuffix("s") { endings.append(String(last.dropLast())) }
-        for ending in endings {
+        for ending in WikiSearchService.singulars(last) {
             let candidate = (parts + [ending]).joined(separator: " ")
             if let article = article(titled: candidate) { return article }
             var target: String?
@@ -355,12 +387,140 @@ actor WikiSearchService {
         return chosen.sorted().map { sentences[$0] }.joined(separator: " ")
     }
 
+    private func matchedWeight(_ terms: [QueryTerm], _ documentStems: Set<String>) -> Double {
+        terms.reduce(0) { $0 + ($1.senses.isDisjoint(with: documentStems) ? 0 : $1.weight) }
+    }
+
+    /// How well the single best sentence of `text` answers the question. Scored per sentence, not
+    /// over the whole text, so a 1,000-character opening does not beat a short paragraph just by
+    /// being longer.
+    private func bestSentenceScore(_ text: String, _ terms: [QueryTerm], why: Bool) -> Double {
+        let sentences = WikiSearchService.sentences(in: text)
+        return (sentences.isEmpty ? [text] : sentences).reduce(0.0) { best, sentence in
+            let sentenceStems = WikiSearchService.stems(of: sentence)
+            var score = matchedWeight(terms, sentenceStems)
+            if score > 0, why, !WikiSearchService.causalStems.isDisjoint(with: sentenceStems) { score += 0.5 }
+            return max(best, score)
+        }
+    }
+
+    /// The passage to answer from: the article's opening, or the one body paragraph that answers the
+    /// question better ("What do they use their trunk for?" → the trunk paragraph). The opening wins
+    /// ties.
+    private func choosePassage(id: Int64, title: String, lead: String, terms: [QueryTerm],
+                               why: Bool, exclude: Set<String> = []) -> (section: String?, text: String) {
+        // Words that may move the answer off the opening: not the title or the subject, which every
+        // paragraph mentions, and not a premise word unless the question asks why (see premiseStems).
+        let titleStems = WikiSearchService.stems(of: title)
+        let ranking = terms.filter {
+            !exclude.contains($0.stem) && !titleStems.contains($0.stem)
+                && (why || !WikiSearchService.premiseStems.contains($0.stem))
+        }
+        var section: String?
+        var paragraph: String?
+        if !ranking.isEmpty {
+            // A heading match outranks any sentence match ("How many teeth?" → Shark's "Teeth" section,
+            // not "teeth-like scales" elsewhere), and within a matching section the first paragraph
+            // wins, since a section explains itself before it goes into detail.
+            var top = (headingMatch: false, score: bestSentenceScore(lead, ranking, why: why))
+            for candidate in paragraphs(of: id) {
+                let heading = matchedWeight(ranking, WikiSearchService.stems(of: candidate.section))
+                let score = heading > 0
+                    ? (headingMatch: true, score: heading)
+                    : (headingMatch: false, score: bestSentenceScore(candidate.text, ranking, why: why))
+                let better = score.headingMatch != top.headingMatch
+                    ? score.headingMatch
+                    : score.score > top.score
+                if better {
+                    top = score
+                    section = candidate.section
+                    paragraph = candidate.text
+                }
+            }
+        }
+        guard let paragraph else {
+            return (nil, buildPassage(lead: lead, terms: terms, why: why, exclude: exclude))
+        }
+        // The opening rides in front of the paragraph, since the answer is often there and the
+        // paragraph won on a coincidental word ("litter (family)" for "is it in the bear family?").
+        var opening = ""
+        for sentence in WikiSearchService.sentences(in: lead) {
+            if !opening.isEmpty,
+               opening.unicodeScalars.count + sentence.unicodeScalars.count > WikiSearchService.openingCharacters {
+                break
+            }
+            opening += opening.isEmpty ? sentence : " " + sentence
+        }
+        return (section, opening + " " + buildPassage(lead: paragraph, terms: terms, why: why, exclude: exclude))
+    }
+
+    // MARK: - Grounding
+
+    /// Words that carry no fact and so are not expected to appear in the passage.
+    private static let linkingWords = wordSet("""
+    because cause causes caused causing so then also very really just kind sort way ways
+    through make makes made different most known called yes no not
+    """)
+
+    /// Calibrated on real answers (Tools/WikiEval/grounding): every invention scored 0.25 or below
+    /// (George Washington "killed in a duel" 0.17) and every correct answer 0.31 or above ("No,
+    /// pigeons do not eat humans"). The gap is narrow, so re-check it whenever the prompt changes.
+    private static let minimumGrounding = 0.28
+
+    /// Whether the answer came from its passage. When the passage doesn't answer the question the
+    /// model invents instead, and the safety gate reads for danger, not truth.
+    static func isGrounded(answer: String, passage: String) -> Bool {
+        groundingScore(answer: answer, passage: passage) >= minimumGrounding
+    }
+
+    /// Share of the answer's own words that appear in the passage, with word forms matched loosely
+    /// because the model rephrases. The question is not counted, or an answer parroting a false
+    /// premise back would score on the child's own words.
+    static func groundingScore(answer: String, passage: String) -> Double {
+        let content = words(in: answer).filter {
+            !stopWords.contains($0) && !linkingWords.contains($0) && !$0.allSatisfy(\.isNumber)
+        }
+        guard !content.isEmpty else { return 1 }
+        let allowed = Set(words(in: passage).map(looseRoot))
+        return Double(content.filter { allowed.contains(looseRoot($0)) }.count) / Double(content.count)
+    }
+
+    /// A blunter stem than `stem`, for comparing an answer's wording against a passage's.
+    static func looseRoot(_ word: String) -> String {
+        var root = word
+        for suffix in ["ing", "ed", "es", "s", "e"] where root.count > 3 && root.hasSuffix(suffix) {
+            root = String(root.dropLast(suffix.count))
+            break
+        }
+        if root.count > 3, let last = root.last, root.dropLast().last == last, !"aeiou".contains(last) {
+            root = String(root.dropLast())
+        }
+        return root
+    }
+
+    /// Whether the question brings a subject of its own, so a pronoun in it refers to that subject
+    /// rather than to the last article ("Why do elephants use their trunks?" after the Titanic).
+    /// A pronoun in the subject slot does point back.
+    func namesOwnTopic(_ question: String) -> Bool {
+        let raw = WikiSearchService.words(in: question)
+        // "Can people climb it?" — the thing asked about is the trailing pronoun, not "people".
+        if let last = raw.last, WikiSearchService.pronouns.contains(last) { return false }
+        guard let index = raw.firstIndex(where: { WikiSearchService.auxiliaries.contains($0) }) else {
+            return false
+        }
+        if index + 1 < raw.count, WikiSearchService.pronouns.contains(raw[index + 1]) { return false }
+        return raw.contains {
+            !WikiSearchService.stopWords.contains($0) && !WikiSearchService.titleStopWords.contains($0)
+                && articleNamed($0) != nil
+        }
+    }
+
     // MARK: - Lookup
 
     /// Searches for a passage answering `question` on its own, with no conversation history.
     func lookUp(_ question: String) -> WikiLookup {
         let raw = WikiSearchService.words(in: question)
-        let content = raw.filter { !WikiSearchService.stopWords.contains($0) }
+        let content = raw.filter { !WikiSearchService.stopWords.contains($0) }.map { indexForm($0) }
         if content.isEmpty { return .notFound(.noContentWords) }
         for word in content where word.count >= 3 && !word.allSatisfy(\.isNumber) {
             if documentFrequency(word) == 0 { return .notFound(.unknownWord(word)) }
@@ -389,7 +549,22 @@ actor WikiSearchService {
                 }
             }
         }
-        let subject = matches.min { ($0.position, -$0.length) < ($1.position, -$1.length) }
+        // The subject is the first title match, unless a later one is far more specific ("prehistoric
+        // platypuses" → Platypus, not Prehistory). Pure rarity was much worse (Frog → Diet), so the
+        // later match must be rarer by `subjectMargin`: pairs that must not swap reach 2.28, ones
+        // that should reach 3.46.
+        func specificity(_ match: (position: Int, length: Int, article: Article)) -> Double {
+            content[match.position..<(match.position + match.length)]
+                .map(inverseDocumentFrequency).max() ?? 0
+        }
+        var subject = matches.min { ($0.position, -$0.length) < ($1.position, -$1.length) }
+        if let chosen = subject {
+            var rarest = chosen
+            for match in matches where specificity(match) > specificity(rarest) { rarest = match }
+            if specificity(rarest) - specificity(chosen) >= WikiSearchService.subjectMargin {
+                subject = rarest
+            }
+        }
 
         struct Candidate {
             let article: Article
@@ -456,22 +631,28 @@ actor WikiSearchService {
         if top.isSubject, let subject {
             exclude = Set(content[subject.position..<(subject.position + subject.length)].map(WikiSearchService.stem))
         }
+        let passage = choosePassage(id: top.article.id, title: top.article.title, lead: top.article.lead,
+                                    terms: terms, why: why, exclude: exclude)
         return .found(WikiPassage(
+            id: top.article.id,
             title: top.article.title,
             lead: top.article.lead,
-            text: buildPassage(lead: top.article.lead, terms: terms, why: why, exclude: exclude),
+            text: passage.text,
             coverage: top.coverage,
+            section: passage.section,
             runnersUp: ranked.dropFirst().prefix(2).map { (title: $0.article.title, score: $0.score) }))
     }
 
     /// Answers a follow-up from the article the previous question used, picking the sentences that
     /// match the new question ("What about the smallest?" → the Mercury sentence of Planet).
-    func reuse(_ question: String, title: String, lead: String) -> WikiLookup {
+    func reuse(_ question: String, id: Int64, title: String, lead: String) -> WikiLookup {
         let raw = WikiSearchService.words(in: question)
-        let content = raw.filter { !WikiSearchService.stopWords.contains($0) }
-        let leadStems = WikiSearchService.stems(of: title + " " + lead)
+        let content = raw.filter { !WikiSearchService.stopWords.contains($0) }.map { indexForm($0) }
+        // The whole article, since a follow-up may ask about something the opening never names.
+        let body = paragraphs(of: id).map { $0.section + " " + $0.text }.joined(separator: " ")
+        let articleStems = WikiSearchService.stems(of: title + " " + lead + " " + body)
         let required = content.filter { !WikiSearchService.predicateStems.contains(WikiSearchService.stem($0)) }
-        if !required.isEmpty, !required.contains(where: { leadStems.contains(WikiSearchService.stem($0)) }) {
+        if !required.isEmpty, !required.contains(where: { articleStems.contains(WikiSearchService.stem($0)) }) {
             return .notFound(.articleLacksWords(required, title: title))
         }
         var terms: [QueryTerm] = []
@@ -480,18 +661,21 @@ actor WikiSearchService {
             let stem = WikiSearchService.stem(word)
             let term = QueryTerm(stem: stem, weight: inverseDocumentFrequency(word),
                                  senses: WikiSearchService.synonyms[stem] ?? [stem])
-            // Matching the Python dict comprehension: a repeated stem keeps its place but takes the
-            // later word's weight.
+            // As in the Python dict comprehension, a repeated stem keeps its place but takes the later
+            // word's weight.
             if let index = termIndex[stem] { terms[index] = term } else {
                 termIndex[stem] = terms.count
                 terms.append(term)
             }
         }
+        let passage = choosePassage(id: id, title: title, lead: lead, terms: terms, why: raw.contains("why"))
         return .found(WikiPassage(
+            id: id,
             title: title,
             lead: lead,
-            text: buildPassage(lead: lead, terms: terms, why: raw.contains("why"), exclude: []),
+            text: passage.text,
             coverage: nil,
+            section: passage.section,
             runnersUp: []))
     }
 }
@@ -502,13 +686,13 @@ actor WikiSearchSession {
 
     struct Outcome {
         let lookup: WikiLookup
-        /// The article title a follow-up reused, for logging and tests; nil for a fresh search.
+        /// The article title a follow-up reused; nil for a fresh search.
         let reusedTopic: String?
     }
 
     private let service: WikiSearchService
     private var askedQuestions: [String] = []
-    private var topic: (title: String, lead: String)?
+    private var topic: (id: Int64, title: String, lead: String)?
 
     init(service: WikiSearchService) {
         self.service = service
@@ -530,7 +714,8 @@ actor WikiSearchSession {
         let hasNewTopicWord = content.contains {
             !recentStems.contains(WikiSearchService.stem($0)) && !WikiSearchService.titleStopWords.contains($0)
         }
-        let isFollowUp = topic != nil && (hasPronoun || !hasNewTopicWord)
+        let introducesTopic = await service.namesOwnTopic(question)
+        let isFollowUp = topic != nil && (hasPronoun || !hasNewTopicWord) && !introducesTopic
         let hasOwnSubject = content.contains { !WikiSearchService.predicateStems.contains(WikiSearchService.stem($0)) }
         // "they/he/she" always point back at something, as does a trailing "it" ("can people climb
         // it?"); a leading "it" is often just grammar ("why is it cold at night?") and can search.
@@ -541,8 +726,8 @@ actor WikiSearchSession {
         var reusedTopic: String?
         if isFollowUp, let topic {
             reusedTopic = topic.title
-            lookup = await service.reuse(question, title: topic.title, lead: topic.lead)
-        } else if pointsBack || (hasPronoun && !hasOwnSubject) {
+            lookup = await service.reuse(question, id: topic.id, title: topic.title, lead: topic.lead)
+        } else if !introducesTopic, pointsBack || (hasPronoun && !hasOwnSubject) {
             lookup = .notFound(.noTopicToReferTo)
         } else {
             lookup = await service.lookUp(question)
@@ -550,7 +735,7 @@ actor WikiSearchSession {
 
         switch lookup {
         case .found(let passage):
-            topic = (passage.title, passage.lead)
+            topic = (passage.id, passage.title, passage.lead)
         case .notFound:
             // A follow-up that finds nothing keeps the conversation's topic; a fresh question clears it.
             if !isFollowUp { topic = nil }

@@ -5,45 +5,36 @@
 
 import Foundation
 
-/// Outcome of the safety check: a blocked question never reaches the answer model, a blocked
-/// answer is never shown, and both are replaced by the fixed `SafetyService.blockedResponse` string.
-enum SafetyVerdict: Equatable {
+/// A blocked question never reaches the model and a blocked answer is never shown; both are
+/// replaced by `SafetyService.blockedResponse`.
+enum SafetyVerdict {
     case allowed
     case blocked
 }
 
-/// Contract the view model checks text against — each question before an answer is generated,
-/// and each generated answer before it is shown.
 protocol SafetyServicing {
     func evaluate(_ text: String) -> SafetyVerdict
+    func evaluateAnswer(_ answer: String) -> SafetyVerdict
     func isBareFollowUp(_ question: String) -> Bool
     func safePassage(_ passage: String) -> String?
 }
 
-/// Rule-based content gate, independent of whichever model answers the question.
-/// Every blocked question or answer gets the exact same response, with zero variation and no
-/// explanation — this list is deliberately conservative and should be extended, never loosened.
+/// Rule-based content gate, independent of the model. The lists are deliberately conservative and
+/// should be extended, never loosened.
 struct SafetyService: SafetyServicing {
 
     static let blockedResponse = "I'm not sure about that — let's ask your grown-up!"
 
-    /// Single words, matched against whole tokens only (never as a substring) so that e.g. "war"
-    /// doesn't trip on "warm"/"software"/"forward" and "kill" doesn't trip on "skill". Includes the
-    /// obvious inflected forms of each word so switching off substring matching doesn't quietly lose
-    /// coverage of plurals/tenses the old check used to catch incidentally.
-    ///
-    /// Deliberately excludes "poison" and "smoke" as bare words — both have overwhelmingly common,
-    /// benign meanings for this age group ("poison ivy", "poison dart frog", "why do volcanoes
-    /// smoke"; the product spec itself lists "poison ivy" as a required example question) — the
-    /// actually-dangerous intent behind those words is caught instead by the phrases below.
-    private let blockedWords: Set<String> = [
-        // violence, weapons, war
+    /// What a young child should not be read even in passing, so it is screened in questions,
+    /// retrieved passages and answers alike. Matched as whole words only ("kill" never trips on
+    /// "skill"), so inflected forms are listed.
+    private static let graphicWords: Set<String> = [
+        // violence, weapons
         "gun", "guns", "knife", "knives", "weapon", "weapons",
         "kill", "kills", "killing", "killed", "killer", "killers",
         "murder", "murders", "murdering", "murdered", "murderer", "murderers",
         "assault", "assaults", "assaulted",
-        "war", "wars", "warring",
-        "bomb", "bombs", "bombing",
+        "bomb", "bombs", "bombing", "explosive", "explosives",
         "shoot", "shooting", "shootings", "shooter", "shooters",
         "stab", "stabs", "stabbing", "stabbed",
         "torture", "tortures", "torturing", "tortured",
@@ -54,12 +45,6 @@ struct SafetyService: SafetyServicing {
         "kidnap", "kidnaps", "kidnapped", "kidnapping",
         "strangle", "strangled", "strangling",
         "execution", "executed", "lynch", "lynched", "lynching",
-        // crime / legal system — also closes off the follow-up chain when a factual answer about
-        // a person (real or model-hallucinated) veers into "what crime did they commit"
-        "arrest", "arrests", "arrested", "arresting",
-        "jail", "jailed", "prison", "imprisoned", "imprisonment",
-        "convict", "convicts", "convicted", "criminal", "criminals",
-        "felony", "felon", "felons", "sentenced", "sentencing",
         // sexual topics
         "sex", "porn", "pornography", "pornographic", "sexual", "naked", "nude", "nudity",
         "orgasm", "orgasms", "masturbate", "masturbation", "intercourse", "erotic", "fetish",
@@ -67,23 +52,36 @@ struct SafetyService: SafetyServicing {
         "rape", "raped", "molest", "molested", "molesting",
         // abuse
         "abuse", "abused", "abusing", "abuser",
-        // death / suffering detail
-        "died", "dies", "dying", "death", "deaths", "dead", "corpse", "corpses",
-        "cadaver", "cadavers", "suffer", "suffers", "suffering", "suffered",
+        // bodies
+        "corpse", "corpses", "cadaver", "cadavers",
         "decapitate", "decapitated", "decapitation",
         "mutilate", "mutilated", "mutilation",
         "gore", "gory", "autopsy", "autopsies",
-        // dangerous instructions
-        "explosive", "explosives",
-        // adult / teen substances
+        // adult substances
         "alcohol", "beer", "wine", "whiskey", "vodka", "rum", "tequila", "liquor",
         "drunk", "drunken", "intoxicated",
         "drug", "drugs", "marijuana", "cannabis", "cocaine", "heroin", "meth", "methamphetamine",
         "opioid", "opioids", "nicotine", "tobacco",
-        "cigarette", "cigarettes", "cigar", "cigars",
-        "vape", "vapes", "vaping",
-        "overdose", "overdosed", "addiction", "addicted", "addict", "addicts",
-        // medical / mental health / diagnostic language
+        "cigarette", "cigarettes", "cigar", "cigars", "vape", "vapes", "vaping",
+        "overdose", "overdosed", "addiction", "addicted", "addict", "addicts"
+    ]
+
+    /// Blocked in the child's question only. In encyclopedia text these words are ordinary history
+    /// and biology — "war" lost Harriet Tubman's answer, "disease" an accurate one about antibodies —
+    /// but in a question they signal what the child is reaching for. "poison" and "smoke" are left to
+    /// `blockedPhrases`, since "poison ivy" and "why do volcanoes smoke" are fine.
+    private static let questionOnlyWords: Set<String> = [
+        // war
+        "war", "wars", "warring",
+        // crime and the legal system
+        "arrest", "arrests", "arrested", "arresting",
+        "jail", "jailed", "prison", "imprisoned", "imprisonment",
+        "convict", "convicts", "convicted", "criminal", "criminals",
+        "felony", "felon", "felons", "sentenced", "sentencing",
+        // death and suffering
+        "died", "dies", "dying", "death", "deaths", "dead",
+        "suffer", "suffers", "suffering", "suffered",
+        // medical and mental health
         "diagnosis", "diagnoses", "diagnosed",
         "disorder", "disorders", "dwarfism",
         "depression", "depressed", "anxiety", "anxious",
@@ -96,90 +94,75 @@ struct SafetyService: SafetyServicing {
         "prescription", "prescriptions", "prescribed"
     ]
 
-    /// Multi-word phrases, matched at word boundaries (see `containsPhrase`). Plain substring
-    /// matching looked safe but wasn't: "am i" fired inside "team is", "dam in" and "program is"
-    /// (thousands of times across Wikipedia text), blocking questions like "Which team is the best?".
-    private let blockedPhrases: [String] = [
+    private static let blockedWords = graphicWords.union(questionOnlyWords)
+
+    /// Matched at word boundaries (see `containsPhrase`), in questions, passages and answers.
+    private static let blockedPhrases: [String] = [
         "self harm", "self-harm", "hurt myself", "hurt someone", "how to hurt",
-        // dangerous instructions involving otherwise-benign words (see blockedWords comment above)
+        // "die" alone is history ("how did George Washington die"); about the child it is not.
+        "i die", "want to die", "how to die",
         "make poison", "make a poison", "how to poison", "poison someone", "poison a person", "poison my",
-        // "poison my" no longer runs on into "myself" (its final word is short — see containsPhrase)
         "poison myself",
-        "make a bomb", "build a bomb", "make a weapon", "make a gun", "build a gun",
-        "smoking cigarettes", "smoke a cigarette", "smoking weed",
-        // named historical battles/wars — generic pattern rather than an unlistable set of
-        // specific battle names ("battle of shiloh", "battle of hastings", etc.)
+        "smoking weed",
+        // named battles, without listing every one
         "battle of",
-        // personal information requests
-        "your name", "what is your name", "what's your name",
-        "your address", "your home address", "where do you live",
-        "phone number", "your phone number",
-        "your email", "your email address",
-        "your school name", "what school do you go to",
+        // personal information
+        "your name", "your address", "your home address", "where do you live",
+        "phone number", "your email", "your school name", "what school do you go to",
         "your last name", "your social security", "credit card number", "your password",
-        // self-judgment, personal identity, parasocial framing
-        "am i", "do you think i am", "who am i", "why am i",
-        "am i pretty", "am i ugly", "am i fat", "am i stupid", "am i smart", "do i look",
-        "should i", "what should i do",
+        // self-judgment and parasocial framing
+        "am i", "do you think i am", "do i look", "should i",
         "can you keep a secret", "are you my friend", "will you be my friend",
         "do you love me", "can we be friends", "are you alive", "do you have feelings"
     ]
 
-    /// Short, reference-heavy openers that don't introduce a topic of their own — used to keep a
-    /// pending blocked topic blocked across an immediate follow-up ("Why isn't it for kids?"),
-    /// without ever re-blocking a later question just because *something* was blocked earlier.
-    private let followUpReferencePhrases: [String] = [
+    /// Openers that don't introduce a topic of their own, so a question starting with one right after
+    /// a blocked question stays blocked ("Why isn't it for kids?").
+    private static let followUpReferencePhrases: [String] = [
         "why not", "why isn't", "why aren't", "why doesn't", "why don't",
         "why can't", "why won't", "why wouldn't", "why shouldn't", "why would", "why should",
-        "what about", "so what about", "and what about",
+        "what about", "and what about",
         "so why", "so what", "so is it", "so does it", "so then",
         "does it", "do they", "why do they", "why does it", "why did", "why do we",
-        "is that why", "is it because", "does that mean", "does that", "is it",
+        "is that why", "does that", "is it",
         "and why", "but why", "then why", "then what", "how come", "how so",
         "why though", "what if", "and does it", "but does it", "why can they"
     ]
 
-    /// Checks text — a question, or a generated answer — against the phrase list (word-boundary
-    /// match) and word list (whole-token match), and returns whether it is safe for a child.
+    /// The gate on the child's question.
     func evaluate(_ text: String) -> SafetyVerdict {
-        let normalized = text.lowercased()
-
-        if blockedPhrases.contains(where: { containsPhrase($0, in: normalized) }) {
-            return .blocked
-        }
-
-        let words = normalized
-            .components(separatedBy: CharacterSet.alphanumerics.inverted)
-            .filter { !$0.isEmpty }
-
-        let isBlocked = words.contains { blockedWords.contains($0) }
-        return isBlocked ? .blocked : .allowed
+        contains(Self.blockedWords, in: text) ? .blocked : .allowed
     }
 
-    /// A Wikipedia passage to answer from, or nil when it is unsafe for a child — in which case the
-    /// app answers "I don't know yet" without running the model at all.
-    ///
-    /// The app ships all of Simple English Wikipedia, which is not written for 4-8 year olds: one in
-    /// five article openings contains a blocked word. The whole passage is rejected rather than the
-    /// offending sentences dropped, because the sentences left behind can still carry the same story
-    /// in words this list does not cover: trimming the James Earl Ray passage removes "convicted of
-    /// murdering" but keeps "he had shot King". Measured over the test questions, whole-passage
-    /// rejection costs 2 of 66 passages.
+    /// The gate on a generated answer: an answer is Wikipedia's material retold, so only
+    /// `graphicWords` apply. Inventions still tend to trip it ("killed in a duel with John Adams").
+    func evaluateAnswer(_ answer: String) -> SafetyVerdict {
+        contains(Self.graphicWords, in: answer) ? .blocked : .allowed
+    }
+
+    /// The passage, or nil when it is unsafe. The whole passage is rejected rather than the offending
+    /// sentences dropped, because what is left can still tell the same story in other words.
     func safePassage(_ passage: String) -> String? {
-        evaluate(passage) == .allowed ? passage : nil
+        contains(Self.graphicWords, in: passage) ? nil : passage
     }
 
-    /// True when the question opens with a reference phrase ("Why not", "What about"...) —
-    /// the view model uses this to keep a just-blocked topic blocked across such follow-ups.
     func isBareFollowUp(_ question: String) -> Bool {
         let normalized = question.lowercased()
-        return followUpReferencePhrases.contains { normalized.hasPrefix($0) }
+        return Self.followUpReferencePhrases.contains { normalized.hasPrefix($0) }
     }
 
-    /// Whether `phrase` occurs in `text` starting at a word boundary. Its final word may run on into
-    /// a longer word, so "self harm" still catches "self harming" and "make poison" catches "make
-    /// poisonous" — except when that final word is two letters or fewer, because short words run on
-    /// into unrelated ones ("am i" → "am interested", "battle of" → "battle often").
+    private func contains(_ words: Set<String>, in text: String) -> Bool {
+        let normalized = text.lowercased()
+        if Self.blockedPhrases.contains(where: { containsPhrase($0, in: normalized) }) { return true }
+        return normalized
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .contains { words.contains($0) }
+    }
+
+    /// Whether `phrase` occurs in `text` starting at a word boundary. Its final word may run on
+    /// ("self harm" catches "self harming") unless it is two letters or fewer, because short words
+    /// run on into unrelated ones ("am i" → "am interested"). Plain substring matching fired "am i"
+    /// inside "team is".
     private func containsPhrase(_ phrase: String, in text: String) -> Bool {
         let finalWordIsShort = (phrase.split(separator: " ").last?.count ?? 0) <= 2
         var searchStart = text.startIndex

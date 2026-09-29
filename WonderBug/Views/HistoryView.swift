@@ -8,9 +8,8 @@
 import SwiftUI
 import SwiftData
 
-/// Parent-facing log of every question asked, grouped by day, with a toggle to show only
-/// safety-flagged (🚩) questions for a quick review and each row tagged with its Pattern
-/// Detection complexity level (L1-L4, spec §8). Rows navigate to `HistoryDetailView`.
+/// Parent-facing log of every question, grouped by day, with a flagged-only (🚩) filter and each
+/// row tagged with its complexity level (L1-L4).
 struct HistoryView: View {
 
     @Query(sort: \HistoryItem.createdAt, order: .reverse)
@@ -23,8 +22,7 @@ struct HistoryView: View {
         showBlockedOnly ? historyItems.filter(\.isBlocked) : historyItems
     }
 
-    /// Buckets the (already newest-first) items into day sections, preserving order — a simple
-    /// single pass that appends to the current section while the title matches.
+    /// Day sections, in the items' newest-first order.
     private var groupedItems: [(title: String, items: [HistoryItem])] {
         var result: [(title: String, items: [HistoryItem])] = []
         for item in filteredItems {
@@ -113,8 +111,6 @@ struct HistoryView: View {
         }
     }
 
-    /// One tappable list row: the question text, prefixed with 🚩 when the item was blocked.
-    @ViewBuilder
     private func historyRow(for item: HistoryItem) -> some View {
         Button {
             selectedItem = item
@@ -146,8 +142,7 @@ struct HistoryView: View {
         .buttonStyle(.plain)
     }
 
-    /// Human-friendly section label: "TODAY", "YESTERDAY", "N DAYS AGO" within a week,
-    /// then an absolute date like "JUL 2, 2026".
+    /// "TODAY", "YESTERDAY", "N DAYS AGO" within a week, then a date like "JUL 2, 2026".
     private static func sectionTitle(for date: Date) -> String {
         let calendar = Calendar.current
 

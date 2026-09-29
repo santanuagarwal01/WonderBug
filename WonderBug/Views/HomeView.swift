@@ -1,20 +1,25 @@
 import SwiftUI
 
-/// The main "ask a question" screen: title, question text field, four tap-to-insert question
-/// starters, and the Ask button. Setting `answerData` (a binding owned by `MainTabView`) is what
-/// swaps the screen over to `AnswerView`.
+/// The "ask a question" screen: question field, four tap-to-insert starters (a long press edits
+/// one) and the Ask button. Setting `answerData` swaps the screen over to `AnswerView`.
 struct HomeView: View {
 
     @ObservedObject var viewModel: HomeViewModel
     @Binding var answerData: AnswerData?
     @FocusState private var isQuestionFocused: Bool
 
-    private let suggestions: [(display: String, insert: String)] = [
-        ("Why do...", "Why do"),
-        ("How can...", "How can"),
-        ("What do...", "What do"),
-        ("Who does...", "Who does")
-    ]
+    /// The starters, one per line, so a child's own edits (a long press on a chip) survive relaunches.
+    /// Each is inserted followed by a space and shown followed by "...".
+    @AppStorage("questionStarters") private var storedStarters = HomeView.defaultStarters.joined(separator: "\n")
+    @State private var editingStarter: Int?
+    @State private var starterDraft = ""
+
+    private static let defaultStarters = ["Why do", "How can", "What do", "Who does"]
+
+    private var starters: [String] {
+        let saved = storedStarters.components(separatedBy: "\n")
+        return saved.count == Self.defaultStarters.count ? saved : Self.defaultStarters
+    }
 
     private let chipColumns = [
         GridItem(.flexible(), spacing: 14),
@@ -78,19 +83,43 @@ struct HomeView: View {
             .animation(.easeOut(duration: 0.25), value: isQuestionFocused)
 
             LazyVGrid(columns: chipColumns, spacing: 14) {
-                ForEach(suggestions, id: \.display) { suggestion in
-                    Button {
-                        viewModel.question = suggestion.insert + " "
-                    } label: {
-                        Text(suggestion.display)
-                            .font(.headline)
-                            .foregroundColor(.black)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                            .background(Color.wbChip)
-                            .clipShape(Capsule())
-                    }
+                ForEach(starters.indices, id: \.self) { index in
+                    // Not a Button: a Button would also fire its tap when a long press ends.
+                    Text(starters[index] + "...")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                        .padding(.horizontal, 12)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color.wbChip)
+                        .clipShape(Capsule())
+                        .contentShape(Capsule())
+                        .onTapGesture {
+                            viewModel.question = starters[index] + " "
+                        }
+                        .onLongPressGesture {
+                            editStarter(index)
+                        }
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityAction(named: "Edit") {
+                            editStarter(index)
+                        }
                 }
+            }
+            .sensoryFeedback(.impact, trigger: editingStarter) { _, index in index != nil }
+            .alert("Change this starter", isPresented: isEditingStarter, presenting: editingStarter) { index in
+                TextField(Self.defaultStarters[index], text: $starterDraft)
+                Button("Save") {
+                    saveStarter(index, as: starterDraft)
+                }
+                Button("Reset") {
+                    saveStarter(index, as: Self.defaultStarters[index])
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { _ in
+                Text("Tapping it starts a question with these words.")
             }
 
             if let errorMessage = viewModel.errorMessage {
@@ -104,14 +133,7 @@ struct HomeView: View {
                 isQuestionFocused = false
                 Task {
                     await viewModel.submit()
-
-                    if !viewModel.answer.isEmpty {
-                        answerData = AnswerData(
-                            question: viewModel.question,
-                            answer: viewModel.answer,
-                            isBlocked: viewModel.isAnswerBlocked
-                        )
-                    }
+                    answerData = viewModel.shownAnswer ?? answerData
                 }
             } label: {
                 HStack(alignment: .center, spacing: 10) {
@@ -147,5 +169,24 @@ struct HomeView: View {
         .onTapGesture {
             isQuestionFocused = false
         }
+    }
+
+    private var isEditingStarter: Binding<Bool> {
+        Binding(get: { editingStarter != nil }, set: { if !$0 { editingStarter = nil } })
+    }
+
+    private func editStarter(_ index: Int) {
+        starterDraft = starters[index]
+        editingStarter = index
+    }
+
+    /// Saves the chip's new words, dropping any "..." the child typed since the chip adds its own.
+    /// Clearing the field puts the original starter back.
+    private func saveStarter(_ index: Int, as words: String) {
+        let cleaned = words.components(separatedBy: .newlines).joined(separator: " ")
+            .trimmingCharacters(in: CharacterSet.whitespaces.union(CharacterSet(charactersIn: ".…")))
+        var edited = starters
+        edited[index] = cleaned.isEmpty ? Self.defaultStarters[index] : cleaned
+        storedStarters = edited.joined(separator: "\n")
     }
 }

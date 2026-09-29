@@ -12,42 +12,25 @@ import Tokenizers
 
 final class QwenAnswerService: AnswerServicing {
 
-    /// Six grouped rules rather than the seventeen this started as. A 1.7B model tracks only a
-    /// handful of constraints before it begins dropping them at random, so redundant rules were
-    /// merged and each is phrased as an instruction to follow rather than a prohibition — small
-    /// models comply with "do X" far more reliably than with "do not do Y".
-    ///
-    /// Deliberately contains no quoted fallback sentence (such as a "find out with a grown-up" line).
-    /// Given one verbatim, the model appended it to nearly every answer, right or wrong, instead of
-    /// using it only when unsure — it cannot tell when it doesn't know something.
-    private static let systemPrompt = persona + "\n\n" + lengthRule + "\n" + sharedRules
-
-    /// Used whenever a Wikipedia passage is supplied. The extra sentences must be facts from the
-    /// passage rather than "a reason": asked for a reason the passage doesn't contain, the model made
-    /// one up out of the question ("Mercury is the smallest planet because it is the smallest in
-    /// size"). A "1 or 2 sentences, 24 words" limit was tried too, and gave bare one-line answers
-    /// ("Yes, frogs can jump."). Rule 7 confines it to the passage and, like `systemPrompt`, quotes no
-    /// "don't know" sentence — that case is decided in code, by not running the model at all.
-    private static let groundedSystemPrompt =
-        persona + "\n\n" + groundedLengthRule + "\n" + sharedRules + "\n" + groundedRule
+    /// A 1.7B model tracks only a handful of constraints, so the rules are few and phrased as "do X"
+    /// rather than "do not do Y", which small models follow far more reliably. There is no quoted
+    /// "don't know" sentence: given one, the model appended it to nearly every answer. That case is
+    /// decided in code, by not running the model at all.
+    private static let systemPrompt = persona + "\n\n" + lengthRule + "\n" + sharedRules + "\n" + groundedRule
 
     private static let persona = """
     You are WonderBug, a friendly encyclopedia for children ages 4-8 — a curious friend who loves \
     facts. Always speak as WonderBug, never as an AI, a model, or a computer program.
     """
 
+    /// Asks for a fact from the passage rather than "a reason": asked for a reason the passage lacks,
+    /// the model made one up out of the question.
     private static let lengthRule = """
-    1. Reply with exactly 2 short sentences, 12-24 words in total, using words a 4-8 year old \
-    knows. First answer the question directly, then give one simple reason or detail about that answer.
-    """
-
-    private static let groundedLengthRule = """
     1. Reply with 2 or 3 short sentences, using words a 4-8 year old knows. First answer the \
     question directly, then add one interesting fact from the passage about that answer.
     """
 
-    /// Rule 5 asks for plain words because the app adds its own emoji from a keyword list
-    /// (`TopicEmoji`); the model's own choices were often wrong.
+    /// Rule 5 asks for plain words because the app adds its own emoji (`TopicEmoji`).
     private static let sharedRules = """
     2. Answer exactly what the newest question asks, and state a fact only when you are certain of it.
     3. Check every claim inside the question. If it is false, say no and give the correct fact.
@@ -64,49 +47,29 @@ final class QwenAnswerService: AnswerServicing {
     anywhere else.
     """
 
-    /// Loaded lazily on first use and reused after that — loading the model is expensive
-    /// (reading ~940MB of weights), running it for every question would be far too slow.
+    /// Loaded on first use and kept: loading reads ~940MB of weights.
     private var cachedContainer: ModelContainer?
 
     init() {
-        // MLX recycles the temporary buffers each generate() call produces rather than freeing
-        // them immediately (for performance) — left unconstrained, this cache grows without bound
-        // across repeated questions until iOS's jetsam killer terminates the app for memory use.
-        // 20MB matches Apple's own documented example for LLM inference on memory-limited devices.
-        // See mlx-swift's "running-on-ios" guide.
+        // MLX keeps freed buffers for reuse; unbounded, that cache grows across questions until iOS
+        // kills the app for memory. 20MB is the value in mlx-swift's "running-on-ios" guide.
         MLX.Memory.cacheLimit = 20 * 1024 * 1024
     }
 
-    /// Builds a chat prompt (system rules + optional prior turns + the new question), runs the
-    /// model, and returns the cleaned answer text.
-    func generateAnswer(for question: String, context: [AnswerData], passage: String?) async throws -> String {
+    func generateAnswer(for question: String, context: [AnswerData], passage: String) async throws -> String {
         let container = try await loadedContainer()
 
         let messages = buildChat(question: question, context: context, passage: passage)
         DebugLog.section("PROMPT", messages.map { "[\($0.role.rawValue)]\n\($0.content)" }.joined(separator: "\n\n"))
-        // Qwen3 is a hybrid "thinking" model — without this flag its chat template lets it emit a
-        // <think>…</think> reasoning block before the answer. Tried enabling it (hoping reasoning
-        // would help the false-premise rules below), but its length scales with how much context is
-        // in the prompt rather than converging to something stable: at maxTokens 200 it failed by
-        // turn 2 (never closed the block), at 400 by turn 6 — doubling the budget only delayed the
-        // same failure, it didn't fix it. Reverted to disabled: this is the known-stable config.
+        // Thinking stays off: its length grows with the prompt, and at 200 or 400 tokens it still
+        // failed to close the <think> block within a few turns.
         let input = try await container.prepare(
             input: UserInput(chat: messages, additionalContext: ["enable_thinking": false])
         )
 
-        var result = ""
-        // temperature 0 selects `ArgMaxSampler`, making generation deterministic: a factual lookup
-        // has one best answer, and identical input now yields identical output, so a prompt change
-        // can actually be A/B tested instead of being judged against a moving baseline.
-        //
-        // repetitionPenalty is deliberately omitted. `RepetitionContext` seeds its window from the
-        // prompt, not just from generated tokens, keeping the last `repetitionContextSize` of it —
-        // so the previous 1.15/256 pairing was penalising the child's own question words (asked
-        // "why is the sky blue", the answer needed "sky" and "blue" most and they were the tokens
-        // suppressed) along with the prior turn's topic noun that a follow-up depends on.
-        //
-        // maxTokens 100 gives the 12-24 word rule room to finish its last sentence instead of being
-        // cut mid-word at the cap; anything still unterminated is trimmed after generation.
+        // Temperature 0 is greedy decoding, so identical input gives identical output and prompt
+        // changes can be compared. No repetition penalty: its window includes the prompt, so it
+        // suppressed the question's own words ("sky", "blue") that the answer needs most.
         let stream = try await container.generate(
             input: input,
             parameters: GenerateParameters(
@@ -115,14 +78,13 @@ final class QwenAnswerService: AnswerServicing {
             )
         )
 
+        var result = ""
         for await event in stream {
             if case .chunk(let text) = event {
                 result += text
             }
         }
 
-        // Proactively release recycled buffers now rather than waiting for the cache limit to be
-        // hit on some later allocation — keeps resident memory flat between questions.
         MLX.Memory.clearCache()
 
         let cleaned = AnswerCleanup.clean(result)
@@ -131,7 +93,6 @@ final class QwenAnswerService: AnswerServicing {
         return cleaned
     }
 
-    /// Returns the cached model, loading it from the app bundle on first call.
     private func loadedContainer() async throws -> ModelContainer {
         if let cachedContainer {
             return cachedContainer
@@ -145,30 +106,17 @@ final class QwenAnswerService: AnswerServicing {
         return container
     }
 
-    /// Assembles the chat-message array the model is prompted with: system rules, then up to 2
-    /// prior turns, then the new question.
-    ///
-    /// Prior turns are always included now rather than gated behind a heuristic guess at whether
-    /// the new question "looks like" a follow-up — that heuristic (matching a small fixed set of
-    /// pronouns like "they"/"it"/"there") had real false negatives (e.g. "Like which planets",
-    /// which depends entirely on the previous answer but contains none of those words) and false
-    /// positives (e.g. "Is there life on any other planet", where "there" is existential, not a
-    /// reference, and prior turns were needlessly injected). Relevance is instead handled by the
-    /// system prompt explicitly instructing the model when to use vs. ignore this context — turns
-    /// are capped at 2 rather than the previous 3 to bound the extra prompt length this costs.
-    private func buildChat(question: String, context: [AnswerData], passage: String?) -> [Chat.Message] {
-        var messages: [Chat.Message] = [.system(passage == nil ? Self.systemPrompt : Self.groundedSystemPrompt)]
+    /// System rules, the last two earlier turns the view model chose to send, then the passage and
+    /// the new question.
+    private func buildChat(question: String, context: [AnswerData], passage: String) -> [Chat.Message] {
+        var messages: [Chat.Message] = [.system(Self.systemPrompt)]
 
         for turn in context.suffix(2) {
             messages.append(.user(turn.question))
             messages.append(.assistant(turn.answer))
         }
 
-        if let passage {
-            messages.append(.user("Passage: \(passage)\n\nQuestion: \(question)"))
-        } else {
-            messages.append(.user(question))
-        }
+        messages.append(.user("Passage: \(passage)\n\nQuestion: \(question)"))
         return messages
     }
 }

@@ -5,9 +5,7 @@
 
 import SwiftUI
 
-/// Shared question/answer typography for AnswerView and HistoryDetailView, kept as small
-/// individual pieces (rather than one combined block) since AnswerView places its "Read to me"
-/// button between the question and the answer.
+/// Question and answer pieces shared by `AnswerView` and `HistoryDetailView`.
 struct QuestionText: View {
     let text: String
 
@@ -19,7 +17,6 @@ struct QuestionText: View {
     }
 }
 
-/// Body typography for the answer text, shared by both answer-displaying screens.
 struct AnswerText: View {
     let text: String
 
@@ -32,7 +29,32 @@ struct AnswerText: View {
     }
 }
 
-/// Red flag label shown under answers whose question was refused by the safety gate.
+/// "Read to me": starts reading the text aloud, or stops it.
+struct ReadAloudButton: View {
+    @ObservedObject var speechService: SpeechService
+    let text: String
+
+    var body: some View {
+        Button {
+            speechService.toggle(text)
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: speechService.isSpeaking ? "pause.fill" : "speaker.wave.2.fill")
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundColor(.white)
+                    .frame(width: 36, height: 36)
+                    .background(Color.wbBorder)
+                    .clipShape(Circle())
+
+                Text(speechService.isSpeaking ? "Reading..." : "Read to me")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundColor(Color.wbTitle)
+            }
+        }
+    }
+}
+
+/// Shown under answers whose question the safety gate refused.
 struct BlockedBadge: View {
     var body: some View {
         Text("🚩 This question was blocked")

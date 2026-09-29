@@ -5,8 +5,7 @@
 
 import SwiftUI
 
-/// Splash screen: brand background with the full logo+wordmark at 80% of screen width,
-/// so it scales consistently across device sizes.
+/// Splash screen: the logo and wordmark at 80% of the screen width.
 struct LaunchScreenView: View {
     var body: some View {
         ZStack {

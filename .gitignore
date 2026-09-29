@@ -10,11 +10,6 @@ xcuserdata/
 DerivedData/
 build/
 
-# Compiled parity and grounding runners (build them with the swiftc line in each main.swift).
-Tools/WikiEval/parity/parity
-Tools/WikiEval/grounding/grounding
-__pycache__/
-
-# Mac answer pipeline: compiled bridge, model-output cache, run reports (see Tools/WikiEval/llm/README.md)
-Tools/WikiEval/llm/.build/
-Tools/WikiEval/llm/reports/
+# The evaluation tools (Python search reference, Mac answer pipeline, question sets) are a
+# separate local-only repository.
+Tools/

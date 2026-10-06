@@ -12,7 +12,7 @@ import Foundation
 /// Uses `print` rather than `os.Logger` because the unified log truncates long messages, and the
 /// prompts here run to a couple of thousand characters. Compiled out of release builds, so a
 /// child's questions never reach the device log in the shipped app.
-enum DebugLog {
+nonisolated enum DebugLog {
 
     /// Marks the start of one question, so separate questions are easy to find in the console.
     static func question(_ text: String) {

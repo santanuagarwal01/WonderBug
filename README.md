@@ -1,5 +1,7 @@
 # WonderBug 🐞
 
+This branch includes an opt-in [Wikipedia passage reranking experiment](Experiments/WikiRetrieval/README.md). Choose the **WikiRetrievalExperiment** Xcode scheme to try it; the normal scheme keeps legacy retrieval.
+
 An offline "encyclopedia for kids" iOS app. A child (ages ~4–8) types a question — *Why do stars twinkle? What do armadillos eat?* — and gets a short, safe, simple answer generated **entirely on-device** by a small language model, answering only from a bundled offline copy of Simple English Wikipedia (252 MB, searched locally). No internet connection is ever needed (or used) to ask and answer questions.
 
 Key product rules (from the project spec):

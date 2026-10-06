@@ -1,0 +1,178 @@
+── RERANK ──
+20 passages, 2403 ms
+Lamarckism § lead: 7.53
+Charles Darwin § lead: 7.10
+Giraffe § Life: 6.44
+Charles Darwin § lead: 6.41
+Lamarckism § lead: 6.06
+
+QUESTION: Why do giraffes have long necks?
+LEGACY: MISS: low coverage 0.58 on "Giraffe"
+EXPERIMENT (2713 ms): Lamarckism § lead
+Lamarckism: Lamarckism (also called Lamarckian evolution) is a wrong hypothesis regarding evolution. Giraffes, which have long necks, must have evolved from ancestors with much shorter necks. His idea was that adults needed to stretch their neck to reach leaves from high branches. Therefore, he thought, the children inherited longer necks.
+── RERANK ──
+20 passages, 81 ms
+Nine-banded armadillo § lead: 4.67
+Nine-banded armadillo § lead: 4.32
+Nine-banded armadillo § lead: 4.25
+Nine-banded armadillo § Range: 3.54
+Nine-banded armadillo § Range: 2.85
+
+QUESTION: What do armadillos eat?
+LEGACY: Armadillo § lead
+An armadillo is in the Cingulata, an order of New World placental mammals. The living ones have a leathery armored shell. The word armadillo is Spanish for "little armored one". There are about 10 living genera and about 20 species of armadillo. Their average length is about 75 centimeters (30 in), including the tail. The giant armadillo grows up to 100 cm (39 in) and weigh 30 kg (66lbs).
+EXPERIMENT (752 ms): Nine-banded armadillo § lead
+Nine-banded armadillo: The nine-banded armadillo (Dasypus novemcinctus), or the nine-banded, long-nosed armadillo, is a species of armadillo. The nine-banded armadillo is an insectivorous animal. Ants, termites, and other small invertebrates make up most of its diet. The armadillo can jump 3 to 4 feet in the air when scared.
+── RERANK ──
+20 passages, 79 ms
+Goose bumps § lead: 1.97
+Goosebumps § lead: 1.97
+Goosebumps § lead: 1.96
+Goosebumps § lead: 1.65
+Goose bumps § lead: 1.51
+
+QUESTION: Why do we get goosebumps?
+LEGACY: Goosebumps § lead
+Goosebumps is a collection of children's horror fiction books written by R. L. Stine. The Goosebumps series sometimes contained too much violence, so some American libraries disagreed with having the books there; the novels were fifteenth on the American Library Association's list of most frequently challenged books from 1990 to 1999.
+EXPERIMENT (104 ms): MISS: low relevance 1.97 on "Goose bumps"
+── RERANK ──
+20 passages, 70 ms
+Twinkle, Twinkle, Little Star § lead: 4.16
+Twinkle, Twinkle, Little Star § lead: 4.16
+Counterpoint § lead: 0.27
+Counterpoint § lead: -0.18
+Counterpoint § lead: -1.06
+
+QUESTION: Why do stars twinkle?
+LEGACY: MISS: low coverage 0.24 on "Star"
+EXPERIMENT (317 ms): Twinkle, Twinkle, Little Star § lead
+Twinkle, Twinkle, Little Star: Twinkle, Twinkle, Little Star is a nursery rhyme for babies, toddlers and children. It is about how special a star is. The Wiggles covered it, and Greg Page did it in concert, besides Barney and the gang.
+── RERANK ──
+20 passages, 65 ms
+Purr by Katy Perry § lead: 3.24
+Purr by Katy Perry § lead: 3.24
+Gay Purr-ee § Plot: 1.60
+Purr by Katy Perry § lead: 1.50
+Purr by Katy Perry § lead: 1.48
+
+QUESTION: Why do cats purr?
+LEGACY: MISS: low coverage 0.35 on "Cat"
+EXPERIMENT (123 ms): MISS: low relevance 3.24 on "Purr by Katy Perry"
+── RERANK ──
+20 passages, 61 ms
+Koala § lead: 6.26
+Koala § lead: 6.25
+Koala § lead: 6.08
+Koala § Appearance: 5.90
+Koala § Appearance: 5.78
+
+QUESTION: What do koalas eat?
+LEGACY: Koala § lead
+Koala (Phascolarctos cinereus) is a plant-eating marsupial. They live in the eucalyptus forests of eastern Australia. They are the only living species in the family Phascolarctidae. They are related to the wombats. Koalas are often called koala bears, because a koala looks like a small bear or teddy bear. However, it is not a bear, it is quite a different type of animal. Koalas sleep 20 hours a day due to their low-energy diet, the toxic eucalyptus leaves.
+EXPERIMENT (620 ms): Koala § lead
+Koala: Koala (Phascolarctos cinereus) is a plant-eating marsupial. Koalas are often called koala bears, because a koala looks like a small bear or teddy bear. However, it is not a bear, it is quite a different type of animal. Koalas sleep 20 hours a day due to their low-energy diet, the toxic eucalyptus leaves.
+── RERANK ──
+20 passages, 63 ms
+Blind men and an elephant § lead: 1.17
+Blind men and an elephant § lead: 0.59
+Blind men and an elephant § lead: 0.03
+Communication § lead: -1.43
+Communication § lead: -1.85
+
+QUESTION: How do elephants communicate?
+LEGACY: Elephant § lead
+Elephants are the biggest living land mammals. They have long noses called trunks and large flapping ears. The largest elephant ever recorded was shot in Angola in 1974. It weighed 27060 pounds and stood 13 feet 8 inches tall. At birth, an elephant calf may be as big as 100 kg (225 pounds). The baby elephant develops for 20 to 22 months inside its mother.
+EXPERIMENT (351 ms): MISS: low relevance 1.17 on "Blind men and an elephant"
+── RERANK ──
+20 passages, 72 ms
+Lungfish § lead: 6.93
+Lungfish § lead: 6.36
+Lungfish § lead: 5.98
+Lungfish § lead: 3.01
+Teleostomi § lead: 1.58
+
+QUESTION: Do fish have lungs?
+LEGACY: Lung § lead
+The lung is an organ in many vertebrates (animals having a spine, or backbone). It takes blood oxygen from the air, and expels carbon dioxide. Most vertebrates with lungs have two of them. In animals, the lungs are the area where gas exchange takes place.
+EXPERIMENT (148 ms): Lungfish § lead
+Lungfish: Lungfish are members of the order Dipnoi. They are the only living fish that have both lungs and gills. They need this because they live in small lakes and rivers that sometimes dry up. When this happens, these fish don't die, but they can survive in the mud, for up to 4 years.
+── RERANK ──
+20 passages, 61 ms
+Whale § Diet: 6.16
+Whale § Diet: 5.48
+Whale § Diet: 5.34
+Whale § Diet: 5.32
+Whale § Diet: 4.88
+
+QUESTION: Is a whale a fish?
+LEGACY: Whale § lead
+Whales are a group of cetacean mammals that live in the ocean. Like other mammals, they breathe oxygen from the air, have a small amount of hair, and are warm blooded. There are two basic kinds of whales, and about 100 species. People use the word whale in different ways. Some use it for all Cetaceans including dolphins and porpoises.
+EXPERIMENT (177 ms): Whale § Diet
+Whale: Whales are a group of cetacean mammals that live in the ocean. Plankton are clouds of very small fish floating in the water. The whales' mouths are very large. They open their mouths very wide and hold a big mouthful of sea water.
+── RERANK ──
+20 passages, 66 ms
+Leaf § lead: 6.25
+Leaf § lead: 5.34
+Leaf § Mesophyll: 5.30
+Leaf § Mesophyll: 5.09
+Leaf § lead: 4.98
+
+QUESTION: Why do leaves change color?
+LEGACY: Leaf § lead
+A leaf is a green above-ground plant organ. Its main functions are photosynthesis and gas exchange. A leaf is flat so it absorbs the most light, and thin, so that the sunlight can get to the chloroplasts in the cells. Most leaves have stomata, which open and close. They regulate carbon dioxide, oxygen, and water vapour exchange with the atmosphere. Before this happens, the leaves change colour. Leaves are normally green in color, which comes from chlorophyll found in the chloroplasts.
+EXPERIMENT (329 ms): Leaf § lead
+Leaf: A leaf is a green above-ground plant organ. Before this happens, the leaves change colour. The leaves will grow back in spring. Leaves are normally green in color, which comes from chlorophyll found in the chloroplasts.
+── RERANK ──
+20 passages, 62 ms
+English Cocker Spaniel § lead: 5.02
+English Cocker Spaniel § lead: 4.67
+English Cocker Spaniel § lead: 2.42
+The Treachery of Images § lead: 2.20
+The Treachery of Images § lead: 0.60
+
+QUESTION: Why do dogs wag their tails?
+LEGACY: MISS: low coverage 0.25 on "Dog"
+EXPERIMENT (147 ms): English Cocker Spaniel § lead
+English Cocker Spaniel: The English Cocker Spaniel is a breed of dog. English Cocker Spaniels are happy and wag their tails a lot. Because of this, they have the nickname "merry cocker". They can also be dominant but loyal to their family.
+
+QUESTION: What do flibberwumps eat?
+LEGACY: MISS: unknown word "flibberwumps"
+EXPERIMENT (541 ms): MISS: unknown word "flibberwumps"
+── RERANK ──
+20 passages, 74 ms
+Ostrich § lead: 8.36
+Ostrich § lead: 7.89
+Ostrich § lead: 7.87
+Cassowary § lead: 3.24
+Cassowary § lead: 2.82
+
+QUESTION: Can ostriches fly?
+LEGACY: Ostrich § lead
+The ostrich (Struthio camelus) is a large flightless bird that lives in Africa. They are the largest living bird species, and have the biggest eggs of all living birds. Ostriches do not fly, but can run faster than any other bird. They are ratites, a useful grouping of medium to large flightless birds. Ostriches have the biggest eyes of all land animals.
+EXPERIMENT (132 ms): Ostrich § lead
+Ostrich: The ostrich (Struthio camelus) is a large flightless bird that lives in Africa. Ostriches do not fly, but can run faster than any other bird. They are ratites, a useful grouping of medium to large flightless birds. Ostriches have the biggest eyes of all land animals.
+── RERANK ──
+20 passages, 71 ms
+Volcano § lead: 9.57
+Volcano § lead: 9.55
+Volcano § lead: 9.45
+Volcano § lead: 9.37
+Volcano § lead: 9.11
+
+QUESTION: What is a volcano?
+LEGACY: Volcano § lead
+A volcano is a mountain that has lava (hot, liquid rock) coming out from a magma chamber under the ground, or did have in the past. Volcanoes are formed by the movement of tectonic plates. Volcanoes can also form where there is stretching and thinning of the crust's plates, e.g., in the East African Rift. Volcanoes are not typically found where two tectonic plates slide past one another.
+EXPERIMENT (117 ms): Volcano § lead
+Volcano: A volcano is a mountain that has lava (hot, liquid rock) coming out from a magma chamber under the ground, or did have in the past. Volcanoes are formed by the movement of tectonic plates. Volcanoes can also form where there is stretching and thinning of the crust's plates, e.g., in the East African Rift.
+── RERANK ──
+20 passages, 65 ms
+Spider § lead: 7.75
+Spider § lead: 7.69
+Spider § Size range: 7.16
+Spider § Size range: 6.97
+Spider § Size range: 6.47
+
+QUESTION: How many legs do spiders have?
+LEGACY: MISS: low coverage 0.47 on "Leg"
+EXPERIMENT (147 ms): Spider § lead
+Spider: Spiders (class Arachnida, order Araneae) are air-breathing arthropods. They have eight legs, and mouthparts (chelicerae) with fangs that inject venom. Most make silk.

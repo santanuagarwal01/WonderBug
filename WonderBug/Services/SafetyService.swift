@@ -7,12 +7,12 @@ import Foundation
 
 /// A blocked question never reaches the model and a blocked answer is never shown; both are
 /// replaced by `SafetyService.blockedResponse`.
-enum SafetyVerdict {
+nonisolated enum SafetyVerdict {
     case allowed
     case blocked
 }
 
-protocol SafetyServicing {
+nonisolated protocol SafetyServicing {
     func evaluate(_ text: String) -> SafetyVerdict
     func evaluateAnswer(_ answer: String) -> SafetyVerdict
     func isBareFollowUp(_ question: String) -> Bool
@@ -21,7 +21,7 @@ protocol SafetyServicing {
 
 /// Rule-based content gate, independent of the model. The lists are deliberately conservative and
 /// should be extended, never loosened.
-struct SafetyService: SafetyServicing {
+nonisolated struct SafetyService: SafetyServicing {
 
     static let blockedResponse = "I'm not sure about that — let's ask your grown-up!"
 

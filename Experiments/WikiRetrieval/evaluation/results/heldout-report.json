@@ -1,0 +1,152 @@
+{
+  "direct-passages": {
+    "cases": 64,
+    "decisions": {
+      "answered": 46,
+      "retrieval_rejected": 17,
+      "word_overlap_rejected": 1
+    },
+    "retrieval_ms": {
+      "median": 257.2,
+      "p95": 664.6
+    },
+    "gold_source_in_fts48": {
+      "hits": 44,
+      "eligible": 48,
+      "fraction": 0.9167
+    },
+    "gold_span_in_rerank20": {
+      "hits": 35,
+      "eligible": 48,
+      "fraction": 0.7292
+    },
+    "gold_span_in_selected": {
+      "hits": 21,
+      "eligible": 48,
+      "fraction": 0.4375
+    },
+    "supported_cases_without_displayed_answer": {
+      "count": 7,
+      "eligible": 48
+    },
+    "reviewed_answer_assessments": {
+      "correct": 34,
+      "partial": 2,
+      "unsupported": 3,
+      "incorrect": 6,
+      "nonanswer": 2
+    },
+    "reviewed_cases": 47,
+    "reviewed_displayed_assessments": {
+      "correct": 33,
+      "partial": 2,
+      "unsupported": 3,
+      "incorrect": 6,
+      "nonanswer": 2
+    },
+    "unreviewed_generated_answers": 0
+  },
+  "gold": {
+    "cases": 48,
+    "decisions": {
+      "answered": 47,
+      "word_overlap_rejected": 1
+    },
+    "supported_cases_without_displayed_answer": {
+      "count": 1,
+      "eligible": 48
+    },
+    "reviewed_answer_assessments": {
+      "correct": 43,
+      "incorrect": 3,
+      "partial": 1,
+      "unsupported": 1
+    },
+    "reviewed_cases": 48,
+    "reviewed_displayed_assessments": {
+      "correct": 43,
+      "incorrect": 2,
+      "partial": 1,
+      "unsupported": 1
+    },
+    "unreviewed_generated_answers": 0
+  },
+  "legacy": {
+    "cases": 64,
+    "decisions": {
+      "retrieval_rejected": 33,
+      "answered": 30,
+      "passage_blocked": 1
+    },
+    "retrieval_ms": {
+      "median": 71.6,
+      "p95": 284.5
+    },
+    "gold_span_in_selected": {
+      "hits": 16,
+      "eligible": 48,
+      "fraction": 0.3333
+    },
+    "supported_cases_without_displayed_answer": {
+      "count": 22,
+      "eligible": 48
+    },
+    "reviewed_answer_assessments": {
+      "correct": 24,
+      "incorrect": 3,
+      "partial": 1,
+      "unsupported": 1,
+      "nonanswer": 1
+    },
+    "reviewed_cases": 30,
+    "reviewed_displayed_assessments": {
+      "correct": 24,
+      "incorrect": 3,
+      "partial": 1,
+      "unsupported": 1,
+      "nonanswer": 1
+    },
+    "unreviewed_generated_answers": 0
+  },
+  "passages": {
+    "cases": 64,
+    "decisions": {
+      "answered": 51,
+      "retrieval_rejected": 13
+    },
+    "retrieval_ms": {
+      "median": 328.0,
+      "p95": 719.9
+    },
+    "gold_span_in_rerank20": {
+      "hits": 40,
+      "eligible": 48,
+      "fraction": 0.8333
+    },
+    "gold_span_in_selected": {
+      "hits": 25,
+      "eligible": 48,
+      "fraction": 0.5208
+    },
+    "supported_cases_without_displayed_answer": {
+      "count": 3,
+      "eligible": 48
+    },
+    "reviewed_answer_assessments": {
+      "correct": 41,
+      "incorrect": 4,
+      "partial": 3,
+      "unsupported": 2,
+      "nonanswer": 1
+    },
+    "reviewed_cases": 51,
+    "reviewed_displayed_assessments": {
+      "correct": 41,
+      "incorrect": 4,
+      "partial": 3,
+      "unsupported": 2,
+      "nonanswer": 1
+    },
+    "unreviewed_generated_answers": 0
+  }
+}

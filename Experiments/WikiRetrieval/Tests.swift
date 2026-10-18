@@ -40,6 +40,8 @@ final class RecordingReranker: WikiPassageReranking {
         INSERT INTO articles VALUES (4,'Goosebumps','Goosebumps is a book series.');
         INSERT INTO articles VALUES (5,'Goose bumps','Goose bumps happen when tiny muscles pull body hairs upright in cold weather.');
         INSERT INTO articles VALUES (6,'Isle of Man','The Isle of Man is an island in the Irish Sea.');
+        INSERT INTO articles VALUES (7,'Arachnid','Arachnids are eight-legged animals.');
+        INSERT INTO paragraphs VALUES (7,0,'Physiology','They live on land. They have internal respiratory surfaces. One kind is a book lung. It is used for gas exchange with air.');
         INSERT INTO paragraphs VALUES (1,0,'Appearance','Giraffes have long necks. Their coats have spots.');
         INSERT INTO paragraphs VALUES (1,1,'Feeding','Giraffes use their long necks to reach leaves in tall trees. They eat leaves.');
         INSERT INTO paragraphs VALUES (3,0,'Food','Koalas eat eucalyptus leaves.');
@@ -97,7 +99,42 @@ final class RecordingReranker: WikiPassageReranking {
             fatalError("missing model must be explicit")
         }
 
-        if CommandLine.arguments.count == 3 {
+        if CommandLine.arguments.count >= 4 {
+            let directURL = directory.appendingPathComponent("direct.db")
+            let builder = Process()
+            builder.executableURL = URL(fileURLWithPath: "/usr/bin/python3")
+            builder.arguments = [CommandLine.arguments[3], databaseURL.path, directURL.path]
+            try builder.run(); builder.waitUntilExit()
+            require(builder.terminationStatus == 0, "real index builder must succeed")
+            let direct = try WikiSearchService(databaseURL: directURL, retrievalMode: .directPassages, reranker: reranker)
+            reranker.score = { $0.contains("gas exchange") ? 8 : -10 }
+            let lungs = await direct.lookUp("What are book lungs?")
+            require(found(lungs, containing: "gas exchange"), "body-only term must retrieve an unnamed article and preserve the final explanation")
+            if case .found(let p) = lungs { require(p.sourceIDs == ["a:7:p:0"], "stable paragraph source ID") }
+            let trace = await direct.retrievalTrace()
+            require(trace?.retrievedSources.contains { $0.sourceID == "a:7:p:0" } == true, "capture initial FTS candidates")
+            require(trace?.candidates.count ?? 100 <= 20, "bounded direct inference")
+            reranker.score = { _ in -10 }
+            _ = await direct.lookUp("What are book lungs?")
+            let rejection = await direct.retrievalTrace()
+            require(rejection?.rejectionReason?.contains("low relevance") == true, "retain reason below cutoff")
+            require(rejection?.candidates.isEmpty == false, "retain evidence even when gate rejects it")
+            let missingIndex = try WikiSearchService(databaseURL: databaseURL, retrievalMode: .directPassages, reranker: reranker)
+            if case .notFound(.passageIndexUnavailable) = await missingIndex.lookUp("What are book lungs?") {} else {
+                fatalError("old database must fail explicitly in direct mode")
+            }
+            reranker.malformed = true
+            if case .notFound(.rerankerUnavailable) = await direct.lookUp("What are book lungs?") {} else {
+                fatalError("direct mode must reject invalid model output")
+            }
+            reranker.malformed = false
+            _ = await direct.lookUp("What is 'lung' OR DROP TABLE articles?")
+            reranker.score = { $0.contains("gas exchange") ? 8 : -10 }
+            require(found(await direct.lookUp("What are book lungs?"), containing: "gas exchange"), "query punctuation cannot mutate the database")
+            print("PASS: direct body FTS, complete context, stable provenance, diagnostics, missing index and bounded inference")
+        }
+
+        if CommandLine.arguments.count >= 3 {
             struct Fixture: Decodable {
                 let question: String
                 let passage: String

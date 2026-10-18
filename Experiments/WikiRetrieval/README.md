@@ -1,3 +1,56 @@
+# Direct passage search and evaluation (steps 1–2)
+
+The new opt-in scheme is **DirectPassageExperiment**, using
+`WONDERBUG_WIKI_RETRIEVAL=direct-passages`. The existing WikiRetrievalExperiment scheme and
+legacy behavior remain available. The app defaults to legacy unless a scheme opts in.
+
+Direct mode searches titles, section headings and paragraph bodies in a single FTS5 query,
+without the previous article shortlist, manual synonym expansion or lead-only unknown-word
+veto. It considers up to 48 paragraph hits, constructs contiguous context, screens passages
+with the existing safety policy, and reranks at most 20 windows with the existing MiniLM.
+Short paragraphs stay whole, including explanatory sentences after a definition. One bounded
+passage reaches the unchanged Qwen model, so this experiment isolates retrieval effects.
+
+The existing raw relevance cutoff of 4.0 remains fixed for A/B comparison. It is **not** an
+answerability probability. All pre-cutoff candidates and scores are recorded to expose false
+rejections. Follow-ups still use the existing article-based topic policy; entity resolution
+and model training are outside these two steps. No SQLite-vec or new inference model is added.
+
+## Build the database
+
+```sh
+python3 Experiments/WikiRetrieval/build_passage_index.py <original-simplewiki.db> <new-simplewiki.db>
+```
+
+The builder opens the source read-only, refuses existing output paths (including symlinks),
+and produces an independently validated SQLite copy and manifest. Stable source IDs identify
+article introductions (`a:<article>:lead`) and body paragraphs (`a:<article>:p:<ordinal>`).
+A mapping table and external-content view reuse existing text; FTS5 stores a `detail=none`
+index because queries need single-word matches, not phrase/NEAR positions. Titles use BM25
+weight 3; headings and bodies use weight 1. There is no per-topic special casing.
+
+On the pinned corpus, 529,379 passages (276,399 introductions plus 252,980 body paragraphs)
+produce a 332,623,872-byte database, up from 252,276,736 bytes: **76.6 MiB added**.
+The original FTS index remains in this one database so legacy and both experiments can use
+identical source content. Bundle this generated file as `WonderBug/Resources/simplewiki.db`
+inside the experimental checkout only. Do not bundle a second database or write through a
+symlink to the original checkout. Default legacy mode works with either database; direct mode
+returns an explicit error if the passage index is absent.
+
+## Evaluation
+
+See [the 300-case protocol](evaluation/README.md). `build_evaluator.py`, `evaluate.py` and
+`summarize_evaluation.py` run the actual Swift retrieval/answer checks and optional unchanged
+Qwen generation. The direct scheme records local debug session JSONL under
+`Documents/Evaluation` in exported containers. No traces are uploaded.
+
+Run `bash Experiments/WikiRetrieval/run_tests.sh` for retrieval, corpus construction,
+provenance, failure-path, tokenizer and evaluation-integrity checks.
+
+The earlier article-first experiment is documented below for comparison.
+
+---
+
 # Wikipedia passage reranking experiment
 
 Branch: `codex/wiki-passage-reranking`.

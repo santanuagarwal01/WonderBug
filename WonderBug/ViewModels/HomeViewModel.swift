@@ -61,6 +61,12 @@ final class HomeViewModel: ObservableObject {
             return
         }
 
+        let evaluationStart = Date()
+        var evaluation = EvaluationLog.Record(question: trimmedQuestion)
+        defer {
+            evaluation.elapsedMS = Date().timeIntervalSince(evaluationStart) * 1000
+            EvaluationLog.append(evaluation)
+        }
         isLoading = true
         errorMessage = nil
         DebugLog.question(trimmedQuestion)
@@ -79,6 +85,8 @@ final class HomeViewModel: ObservableObject {
             DebugLog.section("SAFETY", isContinuationOfBlockedTopic
                 ? "Question blocked: bare follow-up to an earlier blocked question"
                 : "Question blocked by the word list")
+            evaluation.decision = "question_blocked"
+            evaluation.displayedAnswer = SafetyService.blockedResponse
             showBlockedResponse(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
             isLoading = false
             return
@@ -86,7 +94,9 @@ final class HomeViewModel: ObservableObject {
 
         pendingBlockedQuestion = nil
 
-        func giveUp() {
+        func giveUp(_ reason: String) {
+            evaluation.decision = reason
+            evaluation.displayedAnswer = Self.unknownAnswer
             DebugLog.section("RESULT", "Showing \"don't know\" without running the model")
             showUnknownAnswer(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
             isLoading = false
@@ -94,15 +104,17 @@ final class HomeViewModel: ObservableObject {
 
         guard let wikiSession else {
             DebugLog.section("SEARCH", "No bundled index, so there is no passage to answer from")
-            giveUp()
+            giveUp("database_unavailable")
             return
         }
         let outcome = await wikiSession.lookUp(trimmedQuestion)
+        evaluation.trace = outcome.trace
+        evaluation.reusedTopic = outcome.reusedTopic
         guard case .found(let found) = outcome.lookup else {
             if case .notFound(let miss) = outcome.lookup {
                 DebugLog.section("SEARCH", "Nothing found: \(miss.reason)")
             }
-            giveUp()
+            giveUp("retrieval_rejected")
             return
         }
         let how = outcome.reusedTopic.map { "follow-up, reused \"\($0)\"" }
@@ -113,7 +125,7 @@ final class HomeViewModel: ObservableObject {
         DebugLog.section("PASSAGE", found.text)
         guard let passage = safetyService.safePassage(found.text) else {
             DebugLog.section("SAFETY", "Passage rejected: it contains a blocked word or phrase")
-            giveUp()
+            giveUp("passage_blocked")
             return
         }
 
@@ -129,19 +141,27 @@ final class HomeViewModel: ObservableObject {
                 passage: passage
             )
 
+            evaluation.generatedAnswer = generatedAnswer
             if generatedAnswer.isEmpty {
+                evaluation.decision = "empty_answer"
                 DebugLog.section("RESULT", "Model returned nothing after cleanup; showing an error")
                 errorMessage = "Something went wrong. Please try again."
             } else if safetyService.evaluateAnswer(generatedAnswer) == .blocked {
+                evaluation.decision = "answer_blocked"
+                evaluation.displayedAnswer = SafetyService.blockedResponse
                 DebugLog.section("SAFETY", "Answer blocked by the word list")
                 showBlockedResponse(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
             } else if !WikiSearchService.isGrounded(answer: generatedAnswer, passage: passage) {
+                evaluation.decision = "word_overlap_rejected"
+                evaluation.displayedAnswer = Self.unknownAnswer
                 // When the passage doesn't answer the question the model invents rather than stopping.
                 DebugLog.section("GROUNDING", "Answer is not from the passage; showing \"don't know\"")
                 showUnknownAnswer(for: trimmedQuestion, analysis: analysis, isFollowUp: isFollowUpQuestion)
             } else {
                 let emoji = TopicEmoji.emoji(title: found.title, question: trimmedQuestion)
                 answer = emoji.map { "\(generatedAnswer) \($0)" } ?? generatedAnswer
+                evaluation.decision = "answered"
+                evaluation.displayedAnswer = answer
                 DebugLog.section("SHOWN", answer)
                 // Recorded without the emoji, since the model is told to write none.
                 conversationContext.append(AnswerData(question: trimmedQuestion, answer: generatedAnswer,

@@ -22,12 +22,14 @@ struct WikiPassage {
     /// The heading of the body section the passage came from; nil when it came from the opening.
     let section: String?
     let runnersUp: [(title: String, score: Double)]
+    var sourceIDs: [String] = []
 }
 
 /// Why the search has no passage. The child always gets "I don't know yet"; the reason is for the
 /// debug log and the evaluation reports.
 enum WikiMiss {
     /// The experimental model could not be loaded or produced invalid scores.
+    case passageIndexUnavailable
     case rerankerUnavailable
     /// A raw model relevance score below the experiment cutoff.
     case lowRelevance(Double, title: String)
@@ -44,8 +46,9 @@ enum WikiMiss {
     /// "Can they fly?" as the first question of a conversation.
     case noTopicToReferTo
 
-    var reason: String {
+    nonisolated var reason: String {
         switch self {
+        case .passageIndexUnavailable: return "direct passage index unavailable or incompatible"
         case .rerankerUnavailable: return "reranker model unavailable"
         case .lowRelevance(let score, let title): return String(format: "low relevance %.2f on \"%@\"", score, title)
         case .noContentWords: return "no content words"
@@ -233,6 +236,10 @@ actor WikiSearchService {
     private let reranker: WikiPassageReranking?
     private let database: OpaquePointer
     private let articleCount: Double
+    private let hasPassageIndex: Bool
+    private var trace: WikiRetrievalTrace?
+
+    func retrievalTrace() -> WikiRetrievalTrace? { trace }
     private var documentFrequencies: [String: Int] = [:]
     private static let transientText = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
@@ -250,6 +257,11 @@ actor WikiSearchService {
             count = Double(sqlite3_column_int64(statement, 0))
         }
         articleCount = count
+        var indexVersion = ""
+        WikiSearchService.step(handle, "SELECT value FROM passage_index_metadata WHERE key='schema_version'", []) {
+            indexVersion = WikiSearchService.text($0, 0)
+        }
+        hasPassageIndex = indexVersion == "1"
     }
 
     deinit {
@@ -259,12 +271,11 @@ actor WikiSearchService {
     /// The index shipped inside the app. Xcode's synchronized groups flatten resource folders, so
     /// the file sits at the top level of the bundle rather than under Resources/.
     static func bundled() -> WikiSearchService? {
-        guard let url = Bundle.main.url(forResource: "simplewiki", withExtension: "db") else { return nil }
-        // Opt in through the Xcode scheme: WONDERBUG_WIKI_RETRIEVAL=passages.
-        // Keep legacy as the default until held-out answer-quality evaluation passes.
-        let legacy = ProcessInfo.processInfo.environment["WONDERBUG_WIKI_RETRIEVAL"] != "passages"
-        return try? WikiSearchService(databaseURL: url, retrievalMode: legacy ? .legacy : .passages,
-                                      reranker: legacy ? nil : WikiMiniLMReranker.bundled())
+        let mode = RetrievalMode(rawValue: ProcessInfo.processInfo.environment["WONDERBUG_WIKI_RETRIEVAL"] ?? "") ?? .legacy
+        let name = "simplewiki"
+        guard let url = Bundle.main.url(forResource: name, withExtension: "db") else { return nil }
+        return try? WikiSearchService(databaseURL: url, retrievalMode: mode,
+                                     reranker: mode == .legacy ? nil : WikiMiniLMReranker.bundled())
     }
 
     private static func step(_ database: OpaquePointer, _ sql: String, _ bindings: [String],
@@ -532,7 +543,7 @@ actor WikiSearchService {
 
     // MARK: - Passage retrieval experiment
 
-    enum RetrievalMode { case legacy, passages }
+    enum RetrievalMode: String, Codable { case legacy, passages, directPassages = "direct-passages" }
 
     private struct PassageCandidate {
         let article: Article
@@ -603,9 +614,26 @@ actor WikiSearchService {
     }
 
     func lookUp(_ question: String) -> WikiLookup {
+        trace = WikiRetrievalTrace(mode: retrievalMode.rawValue, question: question)
+        let start = Date()
+        let result: WikiLookup
         switch retrievalMode {
-        case .legacy: return legacyLookUp(question)
-        case .passages: return passageLookUp(question)
+        case .legacy: result = legacyLookUp(question)
+        case .passages: result = passageLookUp(question)
+        case .directPassages: result = directPassageLookUp(question)
+        }
+        finishTrace(result, start: start)
+        return result
+    }
+
+    private func finishTrace(_ result: WikiLookup, start: Date) {
+        trace?.elapsedMS = Date().timeIntervalSince(start) * 1000
+        switch result {
+        case .found(let passage):
+            trace?.selectedText = passage.text
+            trace?.selectedTitle = passage.title
+            trace?.selectedSourceIDs = passage.sourceIDs
+        case .notFound(let miss): trace?.rejectionReason = miss.reason
         }
     }
 
@@ -752,6 +780,10 @@ actor WikiSearchService {
             DebugLog.section("RERANK", "Model failed: \(error)")
             return .notFound(.rerankerUnavailable)
         }
+        trace?.candidates = shortlist.indices.map {
+            WikiEvidenceRecord(sourceID: nil, title: shortlist[$0].article.title,
+                section: shortlist[$0].section, text: shortlist[$0].text, relevance: scores[$0])
+        }
         let ranked = shortlist.indices.sorted { scores[$0] == scores[$1] ? $0 < $1 : scores[$0] > scores[$1] }
         let index = ranked[0], top = shortlist[index]
         DebugLog.section("RERANK", "\(shortlist.count) passages, \(Int(Date().timeIntervalSince(start) * 1000)) ms\n"
@@ -762,6 +794,106 @@ actor WikiSearchService {
         return .found(WikiPassage(id: top.article.id, title: top.article.title, lead: top.article.lead,
                                  text: top.text, coverage: top.coverage, section: top.section,
                                  runnersUp: ranked.dropFirst().prefix(2).map { (shortlist[$0].article.title, scores[$0]) }))
+    }
+
+    // MARK: - Direct paragraph FTS5 experiment
+
+    private func directPassageLookUp(_ query: String, rerankQuestion: String? = nil,
+                                     articleID: Int64? = nil) -> WikiLookup {
+        guard hasPassageIndex else { return .notFound(.passageIndexUnavailable) }
+        // FTS5's porter tokenizer handles morphology. No synonym tables or lead-only word veto.
+        let terms = Array(Set(Self.words(in: query).filter { !Self.stopWords.contains($0) }).sorted().prefix(32))
+        guard !terms.isEmpty else { return .notFound(.noContentWords) }
+        let match = terms.map { "\"\($0)\"" }.joined(separator: " OR ")
+        let scope = articleID.map { "AND d.article = \($0)" } ?? ""
+        var documents: [(id: String, article: Article, ordinal: Int, section: String, text: String)] = []
+        step("""
+            SELECT d.source_id, d.article, d.ordinal, d.title, a.lead, d.section, d.text
+            FROM passage_fts JOIN passage_documents d ON d.id=passage_fts.rowid
+            JOIN articles a ON a.id=d.article
+            WHERE passage_fts MATCH ? \(scope)
+            ORDER BY bm25(passage_fts, 3.0, 1.0, 1.0), passage_fts.rowid LIMIT 48
+            """, [match]) {
+            documents.append((Self.text($0, 0), Article(id: sqlite3_column_int64($0, 1),
+                title: Self.text($0, 3), lead: Self.text($0, 4)), Int(sqlite3_column_int64($0, 2)),
+                Self.text($0, 5), Self.text($0, 6)))
+        }
+        trace?.retrievedSources = documents.map {
+            WikiEvidenceRecord(sourceID: $0.id, title: $0.article.title, section: $0.section,
+                               text: $0.text, relevance: nil)
+        }
+        guard !documents.isEmpty else { return .notFound(.noMatchingArticle) }
+        let safety = SafetyService()
+        let queryStems = Set(terms.map(Self.stem))
+        var candidates: [(record: WikiEvidenceRecord, article: Article)] = []
+        var seen = Set<String>()
+        // One best contiguous window from each BM25 hit before spending spare slots on second
+        // windows. This bounds inference while keeping different sources in contention.
+        var windows: [[(record: WikiEvidenceRecord, article: Article)]] = []
+        for document in documents {
+            var source = document.text
+            // Carry the previous sentence only within this section; it can contain the referent
+            // or qualifier of a short paragraph. Never join across unrelated headings.
+            if document.ordinal > 0 {
+                step("SELECT text FROM paragraphs WHERE article=\(document.article.id) AND ord=\(document.ordinal-1) AND section=?", [document.section]) {
+                    if let previous = Self.sentences(in: Self.text($0, 0)).last,
+                       previous.split(whereSeparator: \.isWhitespace).count <= 35 {
+                        source = previous + " " + source
+                    }
+                }
+            }
+            // Keep a short paragraph whole, even when it has more than three sentences.
+            // Otherwise a definition can lose the sentence explaining its function.
+            var excerpts = source.split(whereSeparator: \.isWhitespace).count <= 90
+                ? [source] : Self.passageWindows(source)
+            // Do not silently discard a paragraph containing a single long sentence. The model
+            // tokenizer enforces its own input bound; truncation remains visible in evaluation.
+            if excerpts.isEmpty { excerpts = [source] }
+            let ranked = excerpts.enumerated().sorted {
+                let left = queryStems.intersection(Self.stems(of: $0.element)).count
+                let right = queryStems.intersection(Self.stems(of: $1.element)).count
+                return left == right ? $0.offset < $1.offset : left > right
+            }.map(\.element)
+            let identity = Self.sentences(in: document.article.lead).first.flatMap {
+                $0.split(whereSeparator: \.isWhitespace).count <= 35 ? $0 : nil
+            }
+            windows.append(ranked.prefix(2).compactMap { excerpt in
+                let prefix = document.ordinal >= 0 ? identity.map { excerpt.contains($0) ? "" : $0 + " " } ?? "" : ""
+                let text = document.article.title + ": " + prefix + excerpt
+                guard safety.safePassage(text) != nil else { return nil }
+                return (WikiEvidenceRecord(sourceID: document.id, title: document.article.title,
+                    section: document.section.isEmpty ? nil : document.section, text: text, relevance: nil), document.article)
+            })
+        }
+        for slot in 0..<2 {
+            for group in windows where group.count > slot {
+                let candidate = group[slot]
+                if seen.insert(candidate.record.text).inserted { candidates.append(candidate) }
+                if candidates.count == Self.passageLimit { break }
+            }
+            if candidates.count == Self.passageLimit { break }
+        }
+        guard !candidates.isEmpty else { return .notFound(.noMatchingArticle) }
+        trace?.candidates = candidates.map(\.record)
+        guard let reranker else { return .notFound(.rerankerUnavailable) }
+        let scores: [Double]
+        do {
+            scores = try reranker.scores(question: rerankQuestion ?? query, passages: candidates.map { $0.record.text })
+            guard scores.count == candidates.count, scores.allSatisfy(\.isFinite) else { throw WikiRerankerError.missingScore }
+        } catch { return .notFound(.rerankerUnavailable) }
+        for i in candidates.indices { candidates[i].record.relevance = scores[i] }
+        trace?.candidates = candidates.map(\.record)
+        let order = candidates.indices.sorted { scores[$0] == scores[$1] ? $0 < $1 : scores[$0] > scores[$1] }
+        let best = candidates[order[0]]
+        // Retained for controlled A/B comparison, NOT an answerability decision. Record below-
+        // cutoff candidates too, so evaluation can measure evidence lost through this gate.
+        guard scores[order[0]] >= Self.minimumRelevance else {
+            return .notFound(.lowRelevance(scores[order[0]], title: best.article.title))
+        }
+        return .found(WikiPassage(id: best.article.id, title: best.article.title, lead: best.article.lead,
+            text: best.record.text, coverage: nil, section: best.record.section,
+            runnersUp: order.dropFirst().prefix(2).map { (candidates[$0].article.title, scores[$0]) },
+            sourceIDs: best.record.sourceID.map { [$0] } ?? []))
     }
 
     // MARK: - Legacy lookup
@@ -895,6 +1027,20 @@ actor WikiSearchService {
     /// Answers a follow-up from the article the previous question used, picking the sentences that
     /// match the new question ("What about the smallest?" → the Mercury sentence of Planet).
     func reuse(_ question: String, id: Int64, title: String, lead: String, previousQuestion: String? = nil) -> WikiLookup {
+        trace = WikiRetrievalTrace(mode: retrievalMode.rawValue, question: question)
+        let started = Date()
+        let result = reuseLookup(question, id: id, title: title, lead: lead, previousQuestion: previousQuestion)
+        finishTrace(result, start: started)
+        return result
+    }
+
+    private func reuseLookup(_ question: String, id: Int64, title: String, lead: String, previousQuestion: String?) -> WikiLookup {
+        if retrievalMode == .directPassages {
+            // Preserve the existing topic policy for this retrieval-only experiment. Entity
+            // resolution from the previous answer is a separate, measured training task.
+            let resolved = "Current question: \(question). Topic: \(title). " + (previousQuestion.map { "Previous question: \($0)" } ?? "")
+            return directPassageLookUp(question + " " + title, rerankQuestion: resolved, articleID: id)
+        }
         if retrievalMode == .passages {
             let content = Self.words(in: question).filter { !Self.stopWords.contains($0) }.map { indexForm($0) }
             let resolved = "Current question: \(question). Topic: \(title). " + (previousQuestion.map { "Previous question: \($0)" } ?? "")
@@ -943,6 +1089,7 @@ actor WikiSearchSession {
         let lookup: WikiLookup
         /// The article title a follow-up reused; nil for a fresh search.
         let reusedTopic: String?
+        var trace: WikiRetrievalTrace? = nil
     }
 
     private let service: WikiSearchService
@@ -996,6 +1143,9 @@ actor WikiSearchSession {
             if !isFollowUp { topic = nil }
         }
         askedQuestions.append(question)
-        return Outcome(lookup: lookup, reusedTopic: reusedTopic)
+        let noLookup: Bool
+        if case .notFound(.noTopicToReferTo) = lookup { noLookup = true } else { noLookup = false }
+        return Outcome(lookup: lookup, reusedTopic: reusedTopic,
+                       trace: noLookup ? nil : await service.retrievalTrace())
     }
 }

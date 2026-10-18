@@ -1,0 +1,2602 @@
+[
+  {
+    "id": "qa-001",
+    "question": "What kind of object is the Sun?",
+    "topic": "Sun",
+    "anchor": "star",
+    "gold": {
+      "source_id": "a:44408:lead",
+      "title": "Sun",
+      "section": "",
+      "text": "The Sun, also known as Sol, is a star at the center of the solar system. It is a white star that gives off different types of energy such as infrared energy (heat), ultraviolet light, radio waves and light.",
+      "support_span": "The Sun, also known as Sol, is a star at the center of the solar system."
+    }
+  },
+  {
+    "id": "qa-002",
+    "question": "What gas makes up most of the Sun?",
+    "topic": "Sun",
+    "anchor": "huge ball of hot gases",
+    "gold": {
+      "source_id": "a:44408:lead",
+      "title": "Sun",
+      "section": "",
+      "text": "Without it, Earth would be a frozen, lifeless place. It is a huge ball of hot gases, mostly hydrogen and helium. The Sun is nearly a perfect sphere and has a diameter of about 1.39 million kilometers (or 864,000 miles), which is about 109 times wider than Earth.",
+      "support_span": "It is a huge ball of hot gases, mostly hydrogen and helium."
+    }
+  },
+  {
+    "id": "qa-003",
+    "question": "What holds the planets in orbit around the Sun?",
+    "topic": "Sun",
+    "anchor": "gravity",
+    "gold": {
+      "source_id": "a:44408:lead",
+      "title": "Sun",
+      "section": "",
+      "text": "Its mass is 333,000 times heavier than Earth, and it makes up over 99.8% of all the mass in the Solar System. That is why its gravity controls the movement of all the planets, moons, asteroids, and comets. The Sun’s energy comes from nuclear reactions deep inside it, where hydrogen is turned into helium.",
+      "support_span": "That is why its gravity controls the movement of all the planets, moons, asteroids, and comets."
+    }
+  },
+  {
+    "id": "qa-004",
+    "question": "How does the Sun produce its energy?",
+    "topic": "Sun",
+    "anchor": "fusion",
+    "gold": {
+      "source_id": "a:44408:p:1",
+      "title": "Sun",
+      "section": "Significance",
+      "text": "The Sun is the main source of energy for the Earth. This energy is made deep inside the Sun in a process called nuclear fusion. Four hydrogen atoms are fused together to make one helium atom.",
+      "support_span": "This energy is made deep inside the Sun in a process called nuclear fusion."
+    }
+  },
+  {
+    "id": "qa-005",
+    "question": "What does the Moon orbit?",
+    "topic": "Moon",
+    "anchor": "Earth",
+    "gold": {
+      "source_id": "a:107799:lead",
+      "title": "Moon",
+      "section": "",
+      "text": "The Moon, also known as Luna, is Earth's only natural satellite (the only object which orbits the Earth and is not man-made). It is usually visible in the night sky, but is sometimes seen during the day.",
+      "support_span": "The Moon, also known as Luna, is Earth's only natural satellite (the only object which orbits the Earth and is not man-made)."
+    }
+  },
+  {
+    "id": "qa-006",
+    "question": "Why does the sky look black from the Moon?",
+    "topic": "Moon",
+    "anchor": "there is no atmosphere for light",
+    "gold": {
+      "source_id": "a:107799:p:6",
+      "title": "Moon",
+      "section": "Light",
+      "text": "This makes it look like blue light is coming from the sky. On the Moon, there is no atmosphere for light to bounce off. This means the sky looks black, even in the daytime.",
+      "support_span": "On the Moon, there is no atmosphere for light to bounce off."
+    }
+  },
+  {
+    "id": "qa-007",
+    "question": "Does the Moon produce its own light?",
+    "topic": "Moon",
+    "anchor": "light",
+    "gold": {
+      "source_id": "a:107799:p:10",
+      "title": "Moon",
+      "section": "Phases",
+      "text": "This is because the Moon does not send out its own light. People only see the parts that are being lit the eclipse by the sunlight.",
+      "support_span": "This is because the Moon does not send out its own light."
+    }
+  },
+  {
+    "id": "qa-008",
+    "question": "What causes the Moon's phases?",
+    "topic": "Moon",
+    "anchor": "phase",
+    "gold": {
+      "source_id": "a:107799:p:10",
+      "title": "Moon",
+      "section": "Phases",
+      "text": "People only see the parts that are being lit the eclipse by the sunlight. These different stages are called Phases of the Moon.",
+      "support_span": "These different stages are called Phases of the Moon."
+    }
+  },
+  {
+    "id": "qa-009",
+    "question": "Which planet is closest to the Sun?",
+    "topic": "Mercury (planet)",
+    "anchor": "closest",
+    "gold": {
+      "source_id": "a:514:lead",
+      "title": "Mercury (planet)",
+      "section": "",
+      "text": "It is the second hottest planet, and the smallest in the Solar System. It is also the closest planet to the Sun. It makes one trip around the Sun once every 87.969 days.",
+      "support_span": "It is also the closest planet to the Sun."
+    }
+  },
+  {
+    "id": "qa-010",
+    "question": "Is Mercury smaller than Jupiter's moon Ganymede?",
+    "topic": "Mercury (planet)",
+    "anchor": "smaller than some",
+    "gold": {
+      "source_id": "a:514:p:0",
+      "title": "Mercury (planet)",
+      "section": "Inside Mercury",
+      "text": "It is the smallest planet in the Solar System, with a radius of 2439.7 kilometres. Mercury is even smaller than some of the largest moons in the solar system, such as Ganymede, the largest moon of Jupiter and Titan, the largest moon of Saturn. However, it has in 2.2 times greater mass than Ganymede and around 2 times heavier than Titan.",
+      "support_span": "Mercury is even smaller than some of the largest moons in the solar system, such as Ganymede, the largest moon of Jupiter and Titan, the largest moon of Saturn."
+    }
+  },
+  {
+    "id": "qa-011",
+    "question": "How long does Mercury take to orbit the Sun?",
+    "topic": "Mercury (planet)",
+    "anchor": "87.969",
+    "gold": {
+      "source_id": "a:514:lead",
+      "title": "Mercury (planet)",
+      "section": "",
+      "text": "It is also the closest planet to the Sun. It makes one trip around the Sun once every 87.969 days. Mercury is bright when we can see it from Earth.",
+      "support_span": "It makes one trip around the Sun once every 87.969 days."
+    }
+  },
+  {
+    "id": "qa-012",
+    "question": "Why does Mercury have so many craters?",
+    "topic": "Mercury (planet)",
+    "anchor": "too faint",
+    "gold": {
+      "source_id": "a:514:p:1",
+      "title": "Mercury (planet)",
+      "section": "Surface of Mercury",
+      "text": "Mercury was also hit during a period called the Late Heavy Bombardment. Mercury has many craters because its atmosphere is too faint to slow foreign objects down. Images from MESSENGER have shown that Mercury may have shield volcanoes.",
+      "support_span": "Mercury has many craters because its atmosphere is too faint to slow foreign objects down."
+    }
+  },
+  {
+    "id": "qa-013",
+    "question": "Which planet is second from the Sun?",
+    "topic": "Venus",
+    "anchor": "second",
+    "gold": {
+      "source_id": "a:896:lead",
+      "title": "Venus",
+      "section": "",
+      "text": "Venus is the second planet from the Sun. Venus is the only planet in the Solar System that has a day longer than a year.",
+      "support_span": "Venus is the second planet from the Sun."
+    }
+  },
+  {
+    "id": "qa-014",
+    "question": "Why is Venus so hot?",
+    "topic": "Venus",
+    "anchor": "greenhouse",
+    "gold": {
+      "source_id": "a:896:p:4",
+      "title": "Venus",
+      "section": "Physical properties",
+      "text": "All the carbon dioxide in the atmosphere acts like a blanket, trapping heat from the Sun. This effect is called the greenhouse effect and it is very strong on Venus. This makes the surface of Venus the hottest of any planet's surface in the Solar System with an estimated average temperature of 753.1 kelvin.",
+      "support_span": "This effect is called the greenhouse effect and it is very strong on Venus."
+    }
+  },
+  {
+    "id": "qa-015",
+    "question": "What gas makes up most of Venus's atmosphere?",
+    "topic": "Venus",
+    "anchor": "carbon dioxide",
+    "gold": {
+      "source_id": "a:896:p:8",
+      "title": "Venus",
+      "section": "Atmosphere",
+      "text": "Venus' atmosphere is mostly carbon dioxide and nitrogen gas with clouds of sulphuric acid. Because the atmosphere is so thick or dense the pressure is very high.",
+      "support_span": "Venus' atmosphere is mostly carbon dioxide and nitrogen gas with clouds of sulphuric acid."
+    }
+  },
+  {
+    "id": "qa-016",
+    "question": "Does Venus have moons?",
+    "topic": "Venus",
+    "anchor": "moon",
+    "gold": {
+      "source_id": "a:896:p:3",
+      "title": "Venus",
+      "section": "Composition",
+      "text": "The pressure on Venus' surface is 92 times that of Earth. Venus is one of only two planets in the Solar System (the other being Mercury) that has no moons. Venus spins very slowly on its axis and it spins in the opposite direction to the other planets.",
+      "support_span": "Venus is one of only two planets in the Solar System (the other being Mercury) that has no moons."
+    }
+  },
+  {
+    "id": "qa-017",
+    "question": "Why is Mars called the red planet?",
+    "topic": "Mars",
+    "anchor": "iron",
+    "gold": {
+      "source_id": "a:515:p:0",
+      "title": "Mars",
+      "section": "Appearance",
+      "text": "Mars is a terrestrial planet and made of rocks. The ground there is red because of iron oxide (rust) in the rocks and dust. The planet's atmosphere is very thin.",
+      "support_span": "The ground there is red because of iron oxide (rust) in the rocks and dust."
+    }
+  },
+  {
+    "id": "qa-018",
+    "question": "What gas makes up most of the atmosphere on Mars?",
+    "topic": "Mars",
+    "anchor": "mostly carbon dioxide",
+    "gold": {
+      "source_id": "a:515:p:0",
+      "title": "Mars",
+      "section": "Appearance",
+      "text": "The planet's atmosphere is very thin. It is mostly carbon dioxide with some argon and nitrogen and tiny amounts of other gases including oxygen. The temperatures on Mars are colder than on Earth, because it is farther away from the Sun and has less air to keep heat in.",
+      "support_span": "It is mostly carbon dioxide with some argon and nitrogen and tiny amounts of other gases including oxygen."
+    }
+  },
+  {
+    "id": "qa-019",
+    "question": "Which planet is fourth from the Sun?",
+    "topic": "Mars",
+    "anchor": "fourth",
+    "gold": {
+      "source_id": "a:515:lead",
+      "title": "Mars",
+      "section": "",
+      "text": "Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, nicknamed The Red Planet. Mars is a terrestrial planet with caps of water and carbon dioxide.",
+      "support_span": "Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, nicknamed The Red Planet."
+    }
+  },
+  {
+    "id": "qa-020",
+    "question": "Why is Mars colder than Earth?",
+    "topic": "Mars",
+    "anchor": "farther away",
+    "gold": {
+      "source_id": "a:515:p:0",
+      "title": "Mars",
+      "section": "Appearance",
+      "text": "It is mostly carbon dioxide with some argon and nitrogen and tiny amounts of other gases including oxygen. The temperatures on Mars are colder than on Earth, because it is farther away from the Sun and has less air to keep heat in. There is water ice and frozen carbon dioxide at the north and south poles.",
+      "support_span": "The temperatures on Mars are colder than on Earth, because it is farther away from the Sun and has less air to keep heat in."
+    }
+  },
+  {
+    "id": "qa-021",
+    "question": "Which planet is the largest in our solar system?",
+    "topic": "Jupiter",
+    "anchor": "largest",
+    "gold": {
+      "source_id": "a:408:lead",
+      "title": "Jupiter",
+      "section": "",
+      "text": "Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun.",
+      "support_span": "Jupiter is the largest planet in the Solar System."
+    }
+  },
+  {
+    "id": "qa-022",
+    "question": "What is Jupiter's Great Red Spot?",
+    "topic": "Jupiter",
+    "anchor": "storm",
+    "gold": {
+      "source_id": "a:408:p:9",
+      "title": "Jupiter",
+      "section": "Great Red Spot",
+      "text": "Images by the Hubble Space Telescope have shown as many as two smaller \"red spots\" next to the Great Red Spot. Storms can last for hours or as long as hundreds of years, as in the case of the Great Red Spot.",
+      "support_span": "Storms can last for hours or as long as hundreds of years, as in the case of the Great Red Spot."
+    }
+  },
+  {
+    "id": "qa-023",
+    "question": "What is Jupiter mostly made of?",
+    "topic": "Jupiter",
+    "anchor": "hydrogen",
+    "gold": {
+      "source_id": "a:408:p:6",
+      "title": "Jupiter",
+      "section": "Core",
+      "text": "Jupiter is mainly made of the same elements (hydrogen and helium) as the Sun, but it is not large enough to have the internal pressure and temperature necessary to cause hydrogen to fuse to helium, the energy source that powers the Sun and most other stars. If Jupiter had 75 times its mass, it could fuse hydrogen to helium.",
+      "support_span": "Jupiter is mainly made of the same elements (hydrogen and helium) as the Sun, but it is not large enough to have the internal pressure and temperature necessary to cause hydrogen to fuse to helium, the energy source that powers the Sun and most other stars."
+    }
+  },
+  {
+    "id": "qa-024",
+    "question": "Is Jupiter a rocky planet?",
+    "topic": "Jupiter",
+    "anchor": "gas",
+    "gold": {
+      "source_id": "a:408:lead",
+      "title": "Jupiter",
+      "section": "",
+      "text": "It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas. Gas giants are a subtype of giant planets.",
+      "support_span": "Jupiter is a gas giant because it is large and made mostly of gas."
+    }
+  },
+  {
+    "id": "qa-025",
+    "question": "What are Saturn's rings made of?",
+    "topic": "Saturn",
+    "anchor": "ice",
+    "gold": {
+      "source_id": "a:802:lead",
+      "title": "Saturn",
+      "section": "",
+      "text": "Inside Saturn are many layers: a core of iron, nickel, silicon and oxygen compounds, a deep layer of metallic hydrogen, a layer of liquid hydrogen and liquid helium, and a gaseous layer on the outside. There are many rings around Saturn, made of ice with some rocks and dust.",
+      "support_span": "There are many rings around Saturn, made of ice with some rocks and dust."
+    }
+  },
+  {
+    "id": "qa-026",
+    "question": "Which planet is sixth from the Sun?",
+    "topic": "Saturn",
+    "anchor": "sixth",
+    "gold": {
+      "source_id": "a:802:lead",
+      "title": "Saturn",
+      "section": "",
+      "text": "Saturn is the sixth planet from the Sun in our solar system. On average, Saturn is about 9.57 AU away from the Sun.",
+      "support_span": "Saturn is the sixth planet from the Sun in our solar system."
+    }
+  },
+  {
+    "id": "qa-027",
+    "question": "How long does Saturn take to orbit the Sun?",
+    "topic": "Saturn",
+    "anchor": "29.5",
+    "gold": {
+      "source_id": "a:802:lead",
+      "title": "Saturn",
+      "section": "",
+      "text": "On average, Saturn is about 9.57 AU away from the Sun. Saturn takes about 29.5 Earth years to complete one orbit around the Sun. A day on Saturn is much shorter than a day on Earth, lasting only about 10.7 hours.",
+      "support_span": "Saturn takes about 29.5 Earth years to complete one orbit around the Sun."
+    }
+  },
+  {
+    "id": "qa-028",
+    "question": "How long is a day on Saturn?",
+    "topic": "Saturn",
+    "anchor": "10.7",
+    "gold": {
+      "source_id": "a:802:lead",
+      "title": "Saturn",
+      "section": "",
+      "text": "Saturn takes about 29.5 Earth years to complete one orbit around the Sun. A day on Saturn is much shorter than a day on Earth, lasting only about 10.7 hours. This means that Saturn spins much faster than Earth, spinning more than twice in the same time it takes Earth to spin once.",
+      "support_span": "A day on Saturn is much shorter than a day on Earth, lasting only about 10.7 hours."
+    }
+  },
+  {
+    "id": "qa-029",
+    "question": "Which planet is seventh from the Sun?",
+    "topic": "Uranus",
+    "anchor": "seventh",
+    "gold": {
+      "source_id": "a:882:lead",
+      "title": "Uranus",
+      "section": "",
+      "text": "Uranus is the seventh planet from the Sun in our Solar System. Like Neptune, it is an ice giant.",
+      "support_span": "Uranus is the seventh planet from the Sun in our Solar System."
+    }
+  },
+  {
+    "id": "qa-030",
+    "question": "What gases are in the atmosphere of Uranus?",
+    "topic": "Uranus",
+    "anchor": "hydrogen, helium and methane",
+    "gold": {
+      "source_id": "a:882:lead",
+      "title": "Uranus",
+      "section": "",
+      "text": "The planet is made of ice, gases and liquid metal. Its atmosphere has hydrogen, helium and methane. The temperature on Uranus is −197 °C near the top of its atmosphere.",
+      "support_span": "Its atmosphere has hydrogen, helium and methane."
+    }
+  },
+  {
+    "id": "qa-031",
+    "question": "Does Uranus have rings?",
+    "topic": "Uranus",
+    "anchor": "ring",
+    "gold": {
+      "source_id": "a:882:p:7",
+      "title": "Uranus",
+      "section": "Rings",
+      "text": "The planet Uranus has a system made of 13 rings, which is far fewer than the rings of Saturn but more than those around Jupiter and Neptune. The rings of Uranus were discovered in 1977.",
+      "support_span": "The planet Uranus has a system made of 13 rings, which is far fewer than the rings of Saturn but more than those around Jupiter and Neptune."
+    }
+  },
+  {
+    "id": "qa-032",
+    "question": "Why is Uranus described as rotating on its side?",
+    "topic": "Uranus",
+    "anchor": "tilt",
+    "gold": {
+      "source_id": "a:882:lead",
+      "title": "Uranus",
+      "section": "",
+      "text": "Its small solid core (about 55% the mass of Earth) is probably about 5,000 kelvin. The planet is tilted on its axis so much that it is sideways. Nobody knows why exactly it is.",
+      "support_span": "The planet is tilted on its axis so much that it is sideways."
+    }
+  },
+  {
+    "id": "qa-033",
+    "question": "Which planet is eighth from the Sun?",
+    "topic": "Neptune",
+    "anchor": "eighth",
+    "gold": {
+      "source_id": "a:558:lead",
+      "title": "Neptune",
+      "section": "",
+      "text": "Neptune is the eighth and farthest planet from the Sun in the Solar System. It is an ice giant.",
+      "support_span": "Neptune is the eighth and farthest planet from the Sun in the Solar System."
+    }
+  },
+  {
+    "id": "qa-034",
+    "question": "What kind of giant planet is Neptune?",
+    "topic": "Neptune",
+    "anchor": "ice giant",
+    "gold": {
+      "source_id": "a:558:lead",
+      "title": "Neptune",
+      "section": "",
+      "text": "Neptune is the eighth and farthest planet from the Sun in the Solar System. It is an ice giant. It is the fourth-largest planet in the system.",
+      "support_span": "It is an ice giant."
+    }
+  },
+  {
+    "id": "qa-035",
+    "question": "Why does Neptune look blue?",
+    "topic": "Neptune",
+    "anchor": "methane",
+    "gold": {
+      "source_id": "a:558:lead",
+      "title": "Neptune",
+      "section": "",
+      "text": "Neptune's atmosphere is mostly hydrogen and helium. It also contains small amounts of methane which makes the planet appear blue. Neptune's blue color is similar, but slightly darker, than the color of Uranus.",
+      "support_span": "It also contains small amounts of methane which makes the planet appear blue."
+    }
+  },
+  {
+    "id": "qa-036",
+    "question": "How does Neptune's mass compare with Earth's?",
+    "topic": "Neptune",
+    "anchor": "17 times",
+    "gold": {
+      "source_id": "a:558:lead",
+      "title": "Neptune",
+      "section": "",
+      "text": "It is the fourth-largest planet in the system. Neptune's mass is 17 times Earth's mass and a little bit more than Uranus' mass. Neptune is denser and smaller than Uranus.",
+      "support_span": "Neptune's mass is 17 times Earth's mass and a little bit more than Uranus' mass."
+    }
+  },
+  {
+    "id": "qa-037",
+    "question": "Is Pluto classified as a dwarf planet?",
+    "topic": "Pluto",
+    "anchor": "dwarf",
+    "gold": {
+      "source_id": "a:241636:lead",
+      "title": "Pluto",
+      "section": "",
+      "text": "Pluto is a dwarf planet in the Solar System with the formal name of 134340 Pluto and a planetary symbol, or. Pluto is the ninth largest body that moves around the Sun and the largest body in the Kuiper belt.",
+      "support_span": "Pluto is a dwarf planet in the Solar System with the formal name of 134340 Pluto and a planetary symbol, or."
+    }
+  },
+  {
+    "id": "qa-038",
+    "question": "What is Pluto's largest moon called?",
+    "topic": "Pluto",
+    "anchor": "Charon",
+    "gold": {
+      "source_id": "a:241636:p:8",
+      "title": "Pluto",
+      "section": "Moons",
+      "text": "Pluto and its largest moon, Charon, are sometimes called a \"binary system\". This is because the barycentre of their orbits does not lie within them.",
+      "support_span": "Pluto and its largest moon, Charon, are sometimes called a \"binary system\"."
+    }
+  },
+  {
+    "id": "qa-039",
+    "question": "Who discovered Pluto?",
+    "topic": "Pluto",
+    "anchor": "Tombaugh",
+    "gold": {
+      "source_id": "a:241636:p:2",
+      "title": "Pluto",
+      "section": "Discovery",
+      "text": "This helped him to see whether any object had changed its position. On February 18, 1930, Tombaugh discovered an object which seemed to move from the photographic plates taken on January 23 and 29 of the year. Another picture taken on January 21 confirmed this.",
+      "support_span": "On February 18, 1930, Tombaugh discovered an object which seemed to move from the photographic plates taken on January 23 and 29 of the year."
+    }
+  },
+  {
+    "id": "qa-040",
+    "question": "In what year was Pluto discovered?",
+    "topic": "Pluto",
+    "anchor": "1930",
+    "gold": {
+      "source_id": "a:241636:lead",
+      "title": "Pluto",
+      "section": "",
+      "text": "This causes Pluto to sometimes go closer to the Sun than Neptune. Since it was discovered in 1930, Pluto was thought to be the Solar System's ninth planet.",
+      "support_span": "Since it was discovered in 1930, Pluto was thought to be the Solar System's ninth planet."
+    }
+  },
+  {
+    "id": "qa-041",
+    "question": "Which planet is third from the Sun?",
+    "topic": "Earth",
+    "anchor": "third",
+    "gold": {
+      "source_id": "a:219:lead",
+      "title": "Earth",
+      "section": "",
+      "text": "Earth is the third planet from the Sun and the only place known where life exists. One big reason life can exist here is that Earth has a lot of water on its surface, being the only planet in our Solar System with liquid water.",
+      "support_span": "Earth is the third planet from the Sun and the only place known where life exists."
+    }
+  },
+  {
+    "id": "qa-042",
+    "question": "What covers most of Earth's surface?",
+    "topic": "Earth",
+    "anchor": "water",
+    "gold": {
+      "source_id": "a:219:lead",
+      "title": "Earth",
+      "section": "",
+      "text": "One big reason life can exist here is that Earth has a lot of water on its surface, being the only planet in our Solar System with liquid water. Most of Earth’s water is in the oceans, which cover about 71% of the planet’s surface. The rest, about 29%, is land.",
+      "support_span": "Most of Earth’s water is in the oceans, which cover about 71% of the planet’s surface."
+    }
+  },
+  {
+    "id": "qa-043",
+    "question": "What was the name of the object thought to have collided with early Earth to form the Moon?",
+    "topic": "Earth",
+    "anchor": "Theia",
+    "gold": {
+      "source_id": "a:219:p:5",
+      "title": "Earth",
+      "section": "Formation",
+      "text": "The most accepted idea is called the Giant Impact Hypothesis. According to this idea, a planet-sized object called Theia, about one-tenth the size of Earth, collided with early Earth. The collision was not straight-on but more like a glancing blow.",
+      "support_span": "According to this idea, a planet-sized object called Theia, about one-tenth the size of Earth, collided with early Earth."
+    }
+  },
+  {
+    "id": "qa-044",
+    "question": "About what percentage of Earth's surface is land?",
+    "topic": "Earth",
+    "anchor": "29%",
+    "gold": {
+      "source_id": "a:219:lead",
+      "title": "Earth",
+      "section": "",
+      "text": "Most of Earth’s water is in the oceans, which cover about 71% of the planet’s surface. The rest, about 29%, is land. Most of this land is grouped into large continents, like North America, Africa, and Asia, which are mostly humid and covered with plants, while the icy parts at the North and South Poles hold more water in their ice sheets than all of the lakes, rivers, and underground water combined.",
+      "support_span": "The rest, about 29%, is land."
+    }
+  },
+  {
+    "id": "qa-045",
+    "question": "What is at the center of the Solar System?",
+    "topic": "Solar System",
+    "anchor": "Sun",
+    "gold": {
+      "source_id": "a:800:lead",
+      "title": "Solar System",
+      "section": "",
+      "text": "The Solar System is a group of space objects that are held together by gravity, with the Sun in the center. The Sun is a huge ball of hot glowing gas that gives off light and heat.",
+      "support_span": "The Solar System is a group of space objects that are held together by gravity, with the Sun in the center."
+    }
+  },
+  {
+    "id": "qa-046",
+    "question": "How many planets are in our solar system?",
+    "topic": "Solar System",
+    "anchor": "eight",
+    "gold": {
+      "source_id": "a:800:lead",
+      "title": "Solar System",
+      "section": "",
+      "text": "Most of the material went into forming the Sun, and the rest became planets and other objects. There are eight main planets, including Earth, and many moons that orbit them. There are also dwarf planets like Pluto, as well as asteroids, comets, meteoroids, and tiny particles called interplanetary dust.",
+      "support_span": "There are eight main planets, including Earth, and many moons that orbit them."
+    }
+  },
+  {
+    "id": "qa-047",
+    "question": "What keeps the Solar System together?",
+    "topic": "Solar System",
+    "anchor": "gravity",
+    "gold": {
+      "source_id": "a:800:lead",
+      "title": "Solar System",
+      "section": "",
+      "text": "The Solar System is a group of space objects that are held together by gravity, with the Sun in the center. The Sun is a huge ball of hot glowing gas that gives off light and heat.",
+      "support_span": "The Solar System is a group of space objects that are held together by gravity, with the Sun in the center."
+    }
+  },
+  {
+    "id": "qa-048",
+    "question": "What was the disk of gas and dust surrounding the young Sun called?",
+    "topic": "Solar System",
+    "anchor": "protoplanetary disk",
+    "gold": {
+      "source_id": "a:800:p:3",
+      "title": "Solar System",
+      "section": "Formation of the Sun and Protoplanetary Disk",
+      "text": "Surrounding the young Sun was a large, spinning disk of gas and dust called the protoplanetary disk. This material was left over from the cloud that formed the Sun.",
+      "support_span": "Surrounding the young Sun was a large, spinning disk of gas and dust called the protoplanetary disk."
+    }
+  },
+  {
+    "id": "qa-049",
+    "question": "What elements make up water?",
+    "topic": "Water",
+    "anchor": "hydrogen",
+    "gold": {
+      "source_id": "a:939:lead",
+      "title": "Water",
+      "section": "",
+      "text": "Water is a simple chemical compound made of two hydrogen atoms and one oxygen atom. It is clear, has no taste or smell, and is almost colorless.",
+      "support_span": "Water is a simple chemical compound made of two hydrogen atoms and one oxygen atom."
+    }
+  },
+  {
+    "id": "qa-050",
+    "question": "What is water in its gas form called?",
+    "topic": "Water",
+    "anchor": "gas (water vapor)",
+    "gold": {
+      "source_id": "a:939:lead",
+      "title": "Water",
+      "section": "",
+      "text": "For example, water has high surface tension, and can dissolve many substances. Water exists in three forms on Earth: solid (ice), liquid (water), and gas (water vapor). The word \"water\" comes from the Old English word wæter.",
+      "support_span": "Water exists in three forms on Earth: solid (ice), liquid (water), and gas (water vapor)."
+    }
+  },
+  {
+    "id": "qa-051",
+    "question": "What percentage of freshwater is stored underground in aquifers?",
+    "topic": "Water",
+    "anchor": "30%",
+    "gold": {
+      "source_id": "a:939:lead",
+      "title": "Water",
+      "section": "",
+      "text": "69% of all fresh water is frozen in glaciers and ice caps. 30% is stored underground in aquifers. Less than 1% is in lakes, rivers, and swamps.",
+      "support_span": "30% is stored underground in aquifers."
+    }
+  },
+  {
+    "id": "qa-052",
+    "question": "What is water in its solid form called?",
+    "topic": "Water",
+    "anchor": "ice",
+    "gold": {
+      "source_id": "a:939:lead",
+      "title": "Water",
+      "section": "",
+      "text": "For example, water has high surface tension, and can dissolve many substances. Water exists in three forms on Earth: solid (ice), liquid (water), and gas (water vapor). The word \"water\" comes from the Old English word wæter.",
+      "support_span": "Water exists in three forms on Earth: solid (ice), liquid (water), and gas (water vapor)."
+    }
+  },
+  {
+    "id": "qa-053",
+    "question": "What is ice made of?",
+    "topic": "Ice",
+    "anchor": "water",
+    "gold": {
+      "source_id": "a:3611:lead",
+      "title": "Ice",
+      "section": "",
+      "text": "Ice is the common name for frozen water. Other liquids, such as ammonia or methane or milk, are called 'milk ice', for instance, instead of just 'ice'.",
+      "support_span": "Ice is the common name for frozen water."
+    }
+  },
+  {
+    "id": "qa-054",
+    "question": "Why does ice float on water?",
+    "topic": "Ice",
+    "anchor": "dens",
+    "gold": {
+      "source_id": "a:3611:p:0",
+      "title": "Ice",
+      "section": "How ice is formed",
+      "text": "Unlike other liquids, water expands as it freezes to become ice. It floats on water because ice has less density than water. This is very unusual most other liquids become more dense as they cool.",
+      "support_span": "It floats on water because ice has less density than water."
+    }
+  },
+  {
+    "id": "qa-055",
+    "question": "What happens to liquid water when it becomes very cold?",
+    "topic": "Ice",
+    "anchor": "becomes solid ice",
+    "gold": {
+      "source_id": "a:3611:lead",
+      "title": "Ice",
+      "section": "",
+      "text": "Other liquids, such as ammonia or methane or milk, are called 'milk ice', for instance, instead of just 'ice'. Liquid water becomes solid ice when it is very cold. The freezing point is 0° Celsius (32° Fahrenheit or 273 kelvin).",
+      "support_span": "Liquid water becomes solid ice when it is very cold."
+    }
+  },
+  {
+    "id": "qa-056",
+    "question": "Is ice a solid?",
+    "topic": "Ice",
+    "anchor": "solid",
+    "gold": {
+      "source_id": "a:3611:lead",
+      "title": "Ice",
+      "section": "",
+      "text": "Other liquids, such as ammonia or methane or milk, are called 'milk ice', for instance, instead of just 'ice'. Liquid water becomes solid ice when it is very cold. The freezing point is 0° Celsius (32° Fahrenheit or 273 kelvin).",
+      "support_span": "Liquid water becomes solid ice when it is very cold."
+    }
+  },
+  {
+    "id": "qa-057",
+    "question": "What causes a rainbow?",
+    "topic": "Rainbow",
+    "anchor": "light",
+    "gold": {
+      "source_id": "a:7790:lead",
+      "title": "Rainbow",
+      "section": "",
+      "text": "Sometimes a second, larger, dimmer rainbow is seen. A rainbow is created when white light is bent (refracted) while entering a droplet of water, split into separate colours, and reflected back. A rainbow is actually round like a circle.",
+      "support_span": "A rainbow is created when white light is bent (refracted) while entering a droplet of water, split into separate colours, and reflected back."
+    }
+  },
+  {
+    "id": "qa-058",
+    "question": "Why do rainbows have different colors?",
+    "topic": "Rainbow",
+    "anchor": "refract",
+    "gold": {
+      "source_id": "a:7790:lead",
+      "title": "Rainbow",
+      "section": "",
+      "text": "Sometimes a second, larger, dimmer rainbow is seen. A rainbow is created when white light is bent (refracted) while entering a droplet of water, split into separate colours, and reflected back. A rainbow is actually round like a circle.",
+      "support_span": "A rainbow is created when white light is bent (refracted) while entering a droplet of water, split into separate colours, and reflected back."
+    }
+  },
+  {
+    "id": "qa-059",
+    "question": "Can a rainbow form in mist?",
+    "topic": "Rainbow",
+    "anchor": "water",
+    "gold": {
+      "source_id": "a:7790:p:0",
+      "title": "Rainbow",
+      "section": "Cause",
+      "text": "The rainbow effect can be seen when there are water drops in the air and the sun is giving light at the back of the observer at a low distance up or angle. Rainbows always appear opposite the Sun: they form circles around the shadow of your head (which is the point opposite the Sun).",
+      "support_span": "The rainbow effect can be seen when there are water drops in the air and the sun is giving light at the back of the observer at a low distance up or angle."
+    }
+  },
+  {
+    "id": "qa-060",
+    "question": "What shape is a complete rainbow?",
+    "topic": "Rainbow",
+    "anchor": "circle",
+    "gold": {
+      "source_id": "a:7790:lead",
+      "title": "Rainbow",
+      "section": "",
+      "text": "A rainbow is created when white light is bent (refracted) while entering a droplet of water, split into separate colours, and reflected back. A rainbow is actually round like a circle. On the ground, the bottom part is hidden, but in the sky, like from a flying airplane, it can be seen as a circle around the point opposite the Sun.",
+      "support_span": "A rainbow is actually round like a circle."
+    }
+  },
+  {
+    "id": "qa-061",
+    "question": "What comes out of a volcano during an eruption?",
+    "topic": "Volcano",
+    "anchor": "lava",
+    "gold": {
+      "source_id": "a:4483:lead",
+      "title": "Volcano",
+      "section": "",
+      "text": "A volcano is a mountain that has lava (hot, liquid rock) coming out from a magma chamber under the ground, or did have in the past. Volcanoes are formed by the movement of tectonic plates.",
+      "support_span": "A volcano is a mountain that has lava (hot, liquid rock) coming out from a magma chamber under the ground, or did have in the past."
+    }
+  },
+  {
+    "id": "qa-062",
+    "question": "What is magma called when it reaches the surface?",
+    "topic": "Volcano",
+    "anchor": "lava",
+    "gold": {
+      "source_id": "a:4483:lead",
+      "title": "Volcano",
+      "section": "",
+      "text": "A volcano is a mountain that has lava (hot, liquid rock) coming out from a magma chamber under the ground, or did have in the past. Volcanoes are formed by the movement of tectonic plates.",
+      "support_span": "A volcano is a mountain that has lava (hot, liquid rock) coming out from a magma chamber under the ground, or did have in the past."
+    }
+  },
+  {
+    "id": "qa-063",
+    "question": "What does it mean when a volcano is dormant?",
+    "topic": "Volcano",
+    "anchor": "dormant",
+    "gold": {
+      "source_id": "a:4483:p:11",
+      "title": "Volcano",
+      "section": "Dormant (inactive)",
+      "text": "A dormant volcano is \"sleeping,\" but it could awaken in the future. Mount Rainier in the United States is considered dormant.",
+      "support_span": "A dormant volcano is \"sleeping,\" but it could awaken in the future."
+    }
+  },
+  {
+    "id": "qa-064",
+    "question": "Can volcanoes form under the sea?",
+    "topic": "Volcano",
+    "anchor": "underwater",
+    "gold": {
+      "source_id": "a:4483:p:13",
+      "title": "Volcano",
+      "section": "Largest volcano on Earth",
+      "text": "The Earth's largest volcano has been discovered. It is 2 km below the sea on an underwater plateau known as the Shatsky Rise. This is about 1,600 km east of Japan.",
+      "support_span": "It is 2 km below the sea on an underwater plateau known as the Shatsky Rise."
+    }
+  },
+  {
+    "id": "qa-065",
+    "question": "What causes an earthquake?",
+    "topic": "Earthquake",
+    "anchor": "tectonic",
+    "gold": {
+      "source_id": "a:2081:lead",
+      "title": "Earthquake",
+      "section": "",
+      "text": "An earthquake is when Earth's tectonic plates shake and move Earth's surface. Strong earthquakes damage buildings.",
+      "support_span": "An earthquake is when Earth's tectonic plates shake and move Earth's surface."
+    }
+  },
+  {
+    "id": "qa-066",
+    "question": "What is the point at ground level directly above an earthquake's hypocenter called?",
+    "topic": "Earthquake",
+    "anchor": "directly above",
+    "gold": {
+      "source_id": "a:2081:lead",
+      "title": "Earthquake",
+      "section": "",
+      "text": "The first point of an earthquake's rupture is called its hypocenter or focus. The epicenter is the point at ground level directly above the hypocenter. People who study earthquakes are called seismologists.",
+      "support_span": "The epicenter is the point at ground level directly above the hypocenter."
+    }
+  },
+  {
+    "id": "qa-067",
+    "question": "What instrument records earthquakes?",
+    "topic": "Earthquake",
+    "anchor": "seismometer detects",
+    "gold": {
+      "source_id": "a:2081:lead",
+      "title": "Earthquake",
+      "section": "",
+      "text": "The effect of an earthquake can be measured with a seismometer. A seismometer detects the tremors of the earth and plots the tremors on a seismograph.",
+      "support_span": "A seismometer detects the tremors of the earth and plots the tremors on a seismograph."
+    }
+  },
+  {
+    "id": "qa-068",
+    "question": "Can earthquakes cause tsunamis?",
+    "topic": "Earthquake",
+    "anchor": "tsunami",
+    "gold": {
+      "source_id": "a:2081:p:14",
+      "title": "Earthquake",
+      "section": "Tsunami",
+      "text": "A tsunami is a chain of fast moving waves in the ocean caused by powerful earthquakes. They are very serious challenges for people's safety and for earthquake engineering.",
+      "support_span": "A tsunami is a chain of fast moving waves in the ocean caused by powerful earthquakes."
+    }
+  },
+  {
+    "id": "qa-069",
+    "question": "How do plants use sunlight to make food?",
+    "topic": "Photosynthesis",
+    "anchor": "light",
+    "gold": {
+      "source_id": "a:3518:lead",
+      "title": "Photosynthesis",
+      "section": "",
+      "text": "Photosynthesis is a process in which green plants make their own food from sunlight, using the help of leaves to produce sugar. It is the process by which these organisms convert light energy into chemical energy, which is used to produce food.",
+      "support_span": "Photosynthesis is a process in which green plants make their own food from sunlight, using the help of leaves to produce sugar."
+    }
+  },
+  {
+    "id": "qa-070",
+    "question": "What gas do plants take in during photosynthesis?",
+    "topic": "Photosynthesis",
+    "anchor": "carbon dioxide",
+    "gold": {
+      "source_id": "a:3518:lead",
+      "title": "Photosynthesis",
+      "section": "",
+      "text": "It is the process by which these organisms convert light energy into chemical energy, which is used to produce food. Photosynthesis is the process by which plant cells containing chlorophyll produce food substances (glucose and starch) from carbon dioxide and water, and oxygen is released.",
+      "support_span": "Photosynthesis is the process by which plant cells containing chlorophyll produce food substances (glucose and starch) from carbon dioxide and water, and oxygen is released."
+    }
+  },
+  {
+    "id": "qa-071",
+    "question": "What gas is released by photosynthesis?",
+    "topic": "Photosynthesis",
+    "anchor": "oxygen",
+    "gold": {
+      "source_id": "a:3518:lead",
+      "title": "Photosynthesis",
+      "section": "",
+      "text": "It is the process by which these organisms convert light energy into chemical energy, which is used to produce food. Photosynthesis is the process by which plant cells containing chlorophyll produce food substances (glucose and starch) from carbon dioxide and water, and oxygen is released.",
+      "support_span": "Photosynthesis is the process by which plant cells containing chlorophyll produce food substances (glucose and starch) from carbon dioxide and water, and oxygen is released."
+    }
+  },
+  {
+    "id": "qa-072",
+    "question": "What pigment helps plants absorb light?",
+    "topic": "Photosynthesis",
+    "anchor": "chlorophyll",
+    "gold": {
+      "source_id": "a:3518:p:3",
+      "title": "Photosynthesis",
+      "section": "Ways it is done",
+      "text": "Photosynthesis occurs in the chloroplasts in leaves (or other green tissues). They contain chlorophyll, the green pigment that absorbs light energy. In leaves, palisade cells have chloroplasts to capture light.",
+      "support_span": "They contain chlorophyll, the green pigment that absorbs light energy."
+    }
+  },
+  {
+    "id": "qa-073",
+    "question": "Why do dropped objects fall toward Earth?",
+    "topic": "Gravity",
+    "anchor": "attract",
+    "gold": {
+      "source_id": "a:2901:lead",
+      "title": "Gravity",
+      "section": "",
+      "text": "Gravity, or gravitation is one of the fundamental forces of the universe. It is an attraction, or pull, between any two objects with mass. We discuss it here in three parts: # Everyday sense: the force which causes objects to fall to the ground # Newton's laws: how gravity keeps the Solar System and most major astronomical objects together # Einstein's theory of general relativity: the role of gravity in the universe Some physicists think gravity is caused by gravitons, but they are still unsure.",
+      "support_span": "It is an attraction, or pull, between any two objects with mass."
+    }
+  },
+  {
+    "id": "qa-074",
+    "question": "Does gravity act between objects with mass?",
+    "topic": "Gravity",
+    "anchor": "mass",
+    "gold": {
+      "source_id": "a:2901:p:6",
+      "title": "Gravity",
+      "section": "Newton",
+      "text": "According to Newton's law of universal gravitation, gravity is a force between any two objects with mass. Three numbers affect its strength: the mass of each object, and the distance between them.",
+      "support_span": "According to Newton's law of universal gravitation, gravity is a force between any two objects with mass."
+    }
+  },
+  {
+    "id": "qa-075",
+    "question": "Who described the law of universal gravitation?",
+    "topic": "Gravity",
+    "anchor": "Newton",
+    "gold": {
+      "source_id": "a:2901:p:6",
+      "title": "Gravity",
+      "section": "Newton",
+      "text": "According to Newton's law of universal gravitation, gravity is a force between any two objects with mass. Three numbers affect its strength: the mass of each object, and the distance between them.",
+      "support_span": "According to Newton's law of universal gravitation, gravity is a force between any two objects with mass."
+    }
+  },
+  {
+    "id": "qa-076",
+    "question": "Does the Moon have gravity?",
+    "topic": "Gravity",
+    "anchor": "Moon",
+    "gold": {
+      "source_id": "a:2901:p:0",
+      "title": "Gravity",
+      "section": "Weight vs mass",
+      "text": "Actually, weight changes when the pull of gravity changes. The Moon's pull of gravity is about one sixth smaller than Earth. So any object on the Moon weighs one sixth of its weight on Earth.",
+      "support_span": "The Moon's pull of gravity is about one sixth smaller than Earth."
+    }
+  },
+  {
+    "id": "qa-077",
+    "question": "What do the bones of the ear do when sound reaches them?",
+    "topic": "Sound",
+    "anchor": "bones of the ear vibrate",
+    "gold": {
+      "source_id": "a:686:lead",
+      "title": "Sound",
+      "section": "",
+      "text": "When the vibrating air molecules reach our ears, the eardrum vibrates, too. The bones of the ear vibrate in the way the object that started the sound wave vibrates. There are three different mediums.",
+      "support_span": "The bones of the ear vibrate in the way the object that started the sound wave vibrates."
+    }
+  },
+  {
+    "id": "qa-078",
+    "question": "Can sound travel through empty space?",
+    "topic": "Sound",
+    "anchor": "vacuum",
+    "gold": {
+      "source_id": "a:686:p:0",
+      "title": "Sound",
+      "section": "Vacuum",
+      "text": "Since sound is a vibration of a transmission medium, it cannot go through a vacuum. A vacuum is a place where there is no medium, for example in outer space.",
+      "support_span": "Since sound is a vibration of a transmission medium, it cannot go through a vacuum."
+    }
+  },
+  {
+    "id": "qa-079",
+    "question": "Can sound travel through water?",
+    "topic": "Sound",
+    "anchor": "liquid",
+    "gold": {
+      "source_id": "a:686:p:1",
+      "title": "Sound",
+      "section": "Speed of sound",
+      "text": "Sound waves can travel through solids, liquids, and gases. Sound can travel through water faster than through air; and even faster in solids like stone, iron, and steel.",
+      "support_span": "Sound waves can travel through solids, liquids, and gases."
+    }
+  },
+  {
+    "id": "qa-080",
+    "question": "What is the unit used to measure sound frequency?",
+    "topic": "Sound",
+    "anchor": "hertz",
+    "gold": {
+      "source_id": "a:686:p:2",
+      "title": "Sound",
+      "section": "Pitch and Intensity",
+      "text": "The highest key played on a piano, for instance, vibrates 4,000 times per second. It has a frequency of 4000 hertz (Hz), or 4 kilohertz (kHz). Lower keys have lower frequencies.",
+      "support_span": "It has a frequency of 4000 hertz (Hz), or 4 kilohertz (kHz)."
+    }
+  },
+  {
+    "id": "qa-081",
+    "question": "How fast does light travel in a vacuum?",
+    "topic": "Light",
+    "anchor": "299",
+    "gold": {
+      "source_id": "a:3987:p:0",
+      "title": "Light",
+      "section": "Physical properties of light",
+      "text": "In a vacuum, the speed of light is 299,792,458 meters per second, or about 186,282 miles per second. This means it takes about 8 minutes for light to reach Earth from the Sun.",
+      "support_span": "In a vacuum, the speed of light is 299,792,458 meters per second, or about 186,282 miles per second."
+    }
+  },
+  {
+    "id": "qa-082",
+    "question": "Why can we see objects that do not give off their own light?",
+    "topic": "Light",
+    "anchor": "light it reflects",
+    "gold": {
+      "source_id": "a:3987:p:3",
+      "title": "Light",
+      "section": "Physical properties of light",
+      "text": "Our eyes react to light. When we see something, we see the light it reflects, or the light it gives off. For example, a lamp gives off light.",
+      "support_span": "When we see something, we see the light it reflects, or the light it gives off."
+    }
+  },
+  {
+    "id": "qa-083",
+    "question": "What can light refracting in raindrops create?",
+    "topic": "Light",
+    "anchor": "rainbow",
+    "gold": {
+      "source_id": "a:3987:p:7",
+      "title": "Light",
+      "section": "Physical properties of light",
+      "text": "When light is refracted in raindrops, a rainbow is made. The raindrop acts like a prism and refracts the light until we can see the colors of the spectrum.",
+      "support_span": "When light is refracted in raindrops, a rainbow is made."
+    }
+  },
+  {
+    "id": "qa-084",
+    "question": "Is visible light part of the electromagnetic spectrum?",
+    "topic": "Light",
+    "anchor": "electromagnetic",
+    "gold": {
+      "source_id": "a:3987:lead",
+      "title": "Light",
+      "section": "",
+      "text": "They need it to find food, water, and other things. Light makes up a part of both the electromagnetic spectrum and radiation given by stars, like the sun. The light that comes from the sun reaches the Earth and makes it bright.",
+      "support_span": "Light makes up a part of both the electromagnetic spectrum and radiation given by stars, like the sun."
+    }
+  },
+  {
+    "id": "qa-085",
+    "question": "What happens to the magnetic poles of iron atoms when the iron is rubbed along a magnet?",
+    "topic": "Magnet",
+    "anchor": "line up",
+    "gold": {
+      "source_id": "a:22592:lead",
+      "title": "Magnet",
+      "section": "",
+      "text": "Opposite poles are attracted to each other, while the same poles repel each other like south and south and north and north. When you rub a piece of iron along a magnet, the north-seeking poles of the atoms in the iron line up in the same direction. The force generated by the aligned atoms creates a magnetic field.",
+      "support_span": "When you rub a piece of iron along a magnet, the north-seeking poles of the atoms in the iron line up in the same direction."
+    }
+  },
+  {
+    "id": "qa-086",
+    "question": "What happens when two north magnetic poles meet?",
+    "topic": "Magnet",
+    "anchor": "repel",
+    "gold": {
+      "source_id": "a:22592:lead",
+      "title": "Magnet",
+      "section": "",
+      "text": "A magnet is a special kind of metal which is made out of (Iron Nickel and Cobalt) When a magnet goes near a special kind of metal or another magnet, and the poles (sides) touching are opposite, it will pull, or attract the other object closer. If the two poles are the same, the magnet and the other object will push away, or repel, from each other. This attraction and repulsion is called magnetism.All magnets have north and south poles.",
+      "support_span": "If the two poles are the same, the magnet and the other object will push away, or repel, from each other."
+    }
+  },
+  {
+    "id": "qa-087",
+    "question": "What materials are mentioned as making up a magnet?",
+    "topic": "Magnet",
+    "anchor": "Iron Nickel and Cobalt",
+    "gold": {
+      "source_id": "a:22592:lead",
+      "title": "Magnet",
+      "section": "",
+      "text": "A magnet is a special kind of metal which is made out of (Iron Nickel and Cobalt) When a magnet goes near a special kind of metal or another magnet, and the poles (sides) touching are opposite, it will pull, or attract the other object closer. If the two poles are the same, the magnet and the other object will push away, or repel, from each other.",
+      "support_span": "A magnet is a special kind of metal which is made out of (Iron Nickel and Cobalt) When a magnet goes near a special kind of metal or another magnet, and the poles (sides) touching are opposite, it will pull, or attract the other object closer."
+    }
+  },
+  {
+    "id": "qa-088",
+    "question": "What happens when opposite magnetic poles meet?",
+    "topic": "Magnet",
+    "anchor": "attract",
+    "gold": {
+      "source_id": "a:22592:lead",
+      "title": "Magnet",
+      "section": "",
+      "text": "A magnet is a special kind of metal which is made out of (Iron Nickel and Cobalt) When a magnet goes near a special kind of metal or another magnet, and the poles (sides) touching are opposite, it will pull, or attract the other object closer. If the two poles are the same, the magnet and the other object will push away, or repel, from each other.",
+      "support_span": "A magnet is a special kind of metal which is made out of (Iron Nickel and Cobalt) When a magnet goes near a special kind of metal or another magnet, and the poles (sides) touching are opposite, it will pull, or attract the other object closer."
+    }
+  },
+  {
+    "id": "qa-089",
+    "question": "What is the chemical symbol for oxygen?",
+    "topic": "Oxygen",
+    "anchor": "symbol",
+    "gold": {
+      "source_id": "a:2949:lead",
+      "title": "Oxygen",
+      "section": "",
+      "text": "Oxygen is a chemical element. It has the symbol O and atomic number 8. It is a colorless, odorless, and tasteless gas at 25 degrees Celsius at Standard atmosphere (a pressure).",
+      "support_span": "It has the symbol O and atomic number 8."
+    }
+  },
+  {
+    "id": "qa-090",
+    "question": "Is oxygen used in respiration?",
+    "topic": "Oxygen",
+    "anchor": "respiration and combustion",
+    "gold": {
+      "source_id": "a:2949:p:2",
+      "title": "Oxygen",
+      "section": "Early experiments",
+      "text": "The same thing happened when a live mouse was put into the box. From this, he worked out that oxygen is used for both respiration and combustion.",
+      "support_span": "From this, he worked out that oxygen is used for both respiration and combustion."
+    }
+  },
+  {
+    "id": "qa-091",
+    "question": "What proportion of Earth's atmosphere is oxygen?",
+    "topic": "Oxygen",
+    "anchor": "21",
+    "gold": {
+      "source_id": "a:2949:lead",
+      "title": "Oxygen",
+      "section": "",
+      "text": "Oxygen is part of the air we breathe. It makes up about 21% of Earth’s atmosphere. It is the third most common element in the universe, after hydrogen and helium.",
+      "support_span": "It makes up about 21% of Earth’s atmosphere."
+    }
+  },
+  {
+    "id": "qa-092",
+    "question": "What is ozone made of?",
+    "topic": "Oxygen",
+    "anchor": "three",
+    "gold": {
+      "source_id": "a:2949:lead",
+      "title": "Oxygen",
+      "section": "",
+      "text": "In its most common form, oxygen exists as a diatomic molecule (O₂), meaning two oxygen atoms are joined together. There is also a special form called ozone (O₃), made of three oxygen atoms. Ozone is more reactive than normal oxygen and helps protect Earth by blocking harmful ultraviolet (UV) rays from the Sun.",
+      "support_span": "There is also a special form called ozone (O₃), made of three oxygen atoms."
+    }
+  },
+  {
+    "id": "qa-093",
+    "question": "What is the chemical formula for carbon dioxide?",
+    "topic": "Carbon dioxide",
+    "anchor": "CO2",
+    "gold": {
+      "source_id": "a:11599:lead",
+      "title": "Carbon dioxide",
+      "section": "",
+      "text": "Carbon dioxide (CO2) is a chemical compound and is acidic. It is a gas at room temperature.",
+      "support_span": "Carbon dioxide (CO2) is a chemical compound and is acidic."
+    }
+  },
+  {
+    "id": "qa-094",
+    "question": "Do plants use carbon dioxide in photosynthesis?",
+    "topic": "Carbon dioxide",
+    "anchor": "photosynthesis",
+    "gold": {
+      "source_id": "a:11599:p:0",
+      "title": "Carbon dioxide",
+      "section": "Biological role",
+      "text": "In higher animals, the carbon dioxide travels in the blood from the body's tissues to the lungs where it is breathed out. Plants take in carbon dioxide from the atmosphere to use in photosynthesis.",
+      "support_span": "Plants take in carbon dioxide from the atmosphere to use in photosynthesis."
+    }
+  },
+  {
+    "id": "qa-095",
+    "question": "Is carbon dioxide a greenhouse gas?",
+    "topic": "Carbon dioxide",
+    "anchor": "greenhouse",
+    "gold": {
+      "source_id": "a:11599:lead",
+      "title": "Carbon dioxide",
+      "section": "",
+      "text": "The properties of carbon dioxide were studied by the Scottish scientist Joseph Black in the 1750s. Carbon dioxide is a greenhouse gas. Greenhouse gases trap heat energy.",
+      "support_span": "Carbon dioxide is a greenhouse gas."
+    }
+  },
+  {
+    "id": "qa-096",
+    "question": "What is solid carbon dioxide called?",
+    "topic": "Carbon dioxide",
+    "anchor": "dry ice",
+    "gold": {
+      "source_id": "a:11599:p:1",
+      "title": "Carbon dioxide",
+      "section": "Dry ice",
+      "text": "Dry ice, or solid carbon dioxide, is the solid state of CO2 gas below -109.3 °F (-78.5°C). Dry ice does not occur naturally on earth but is man made.",
+      "support_span": "Dry ice, or solid carbon dioxide, is the solid state of CO2 gas below -109.3 °F (-78.5°C)."
+    }
+  },
+  {
+    "id": "qa-097",
+    "question": "What does the heart pump around the body?",
+    "topic": "Heart",
+    "anchor": "pumps",
+    "gold": {
+      "source_id": "a:13432:lead",
+      "title": "Heart",
+      "section": "",
+      "text": "The heart is a hard-working, fist-sized muscle found in people and animals. It pumps out blood through tube-like structures called blood vessels. The heart and these vessels together make up the body-wide circulatory system.",
+      "support_span": "It pumps out blood through tube-like structures called blood vessels."
+    }
+  },
+  {
+    "id": "qa-098",
+    "question": "How many chambers does a human heart have?",
+    "topic": "Heart",
+    "anchor": "four",
+    "gold": {
+      "source_id": "a:13432:p:0",
+      "title": "Heart",
+      "section": "Structure",
+      "text": "The human heart has four chambers or closed spaces. Some animals have only two or three chambers.",
+      "support_span": "The human heart has four chambers or closed spaces."
+    }
+  },
+  {
+    "id": "qa-099",
+    "question": "Where is the heart located in the human body?",
+    "topic": "Heart",
+    "anchor": "chest",
+    "gold": {
+      "source_id": "a:13432:lead",
+      "title": "Heart",
+      "section": "",
+      "text": "Blood carries in oxygen-rich air and nutrient-packed food to the body and takes away waste-filled substances like carbon dioxide to the lungs. In people, the heart is about the size of a closed-hand and sits in between the lungs, in the chest-centered cavity. In humans, the heart has four parts called chambers.",
+      "support_span": "In people, the heart is about the size of a closed-hand and sits in between the lungs, in the chest-centered cavity."
+    }
+  },
+  {
+    "id": "qa-100",
+    "question": "What do heart valves do?",
+    "topic": "Heart",
+    "anchor": "back",
+    "gold": {
+      "source_id": "a:13432:lead",
+      "title": "Heart",
+      "section": "",
+      "text": "In a well-working heart, blood goes through the heart in one direction. Special flaps called valves keep out blood from going backward. The heart sits inside a fluid-filled protective bag called the pericardium.",
+      "support_span": "Special flaps called valves keep out blood from going backward."
+    }
+  },
+  {
+    "id": "qa-101",
+    "question": "What happens to carbon dioxide in the alveoli when we breathe out?",
+    "topic": "Lung",
+    "anchor": "pushed out of the lungs",
+    "gold": {
+      "source_id": "a:18820:lead",
+      "title": "Lung",
+      "section": "",
+      "text": "Carbon dioxide passes from the blood into the alveoli. The oxygen-filled blood goes back to the heart and the carbon dioxide in the alveoli is pushed out of the lungs and into the air we breathe out.",
+      "support_span": "The oxygen-filled blood goes back to the heart and the carbon dioxide in the alveoli is pushed out of the lungs and into the air we breathe out."
+    }
+  },
+  {
+    "id": "qa-102",
+    "question": "What gas do lungs take into the body?",
+    "topic": "Lung",
+    "anchor": "oxygen",
+    "gold": {
+      "source_id": "a:18820:lead",
+      "title": "Lung",
+      "section": "",
+      "text": "In animals, the lungs are the area where gas exchange takes place. Without gas exchange, oxygen would not pass into the blood from the lungs so the body cells would not be able to receive the oxygen needed for respiration. Gas exchange happens in the alveoli.",
+      "support_span": "Without gas exchange, oxygen would not pass into the blood from the lungs so the body cells would not be able to receive the oxygen needed for respiration."
+    }
+  },
+  {
+    "id": "qa-103",
+    "question": "What gas do lungs remove from the body?",
+    "topic": "Lung",
+    "anchor": "carbon dioxide",
+    "gold": {
+      "source_id": "a:18820:lead",
+      "title": "Lung",
+      "section": "",
+      "text": "Carbon dioxide passes from the blood into the alveoli. The oxygen-filled blood goes back to the heart and the carbon dioxide in the alveoli is pushed out of the lungs and into the air we breathe out.",
+      "support_span": "The oxygen-filled blood goes back to the heart and the carbon dioxide in the alveoli is pushed out of the lungs and into the air we breathe out."
+    }
+  },
+  {
+    "id": "qa-104",
+    "question": "How many lungs do most vertebrates with lungs have?",
+    "topic": "Lung",
+    "anchor": "two",
+    "gold": {
+      "source_id": "a:18820:lead",
+      "title": "Lung",
+      "section": "",
+      "text": "It takes blood oxygen from the air, and expels carbon dioxide. Most vertebrates with lungs have two of them. In animals, the lungs are the area where gas exchange takes place.",
+      "support_span": "Most vertebrates with lungs have two of them."
+    }
+  },
+  {
+    "id": "qa-105",
+    "question": "What does the brain control?",
+    "topic": "Brain",
+    "anchor": "controls",
+    "gold": {
+      "source_id": "a:4365:p:7",
+      "title": "Brain",
+      "section": "Brain stem",
+      "text": "It joins the rest of the brain with the spinal cord. It has lots of different parts that control different jobs in the body: for instance, the brain stem controls breathing, heartbeat, sneezing, eye blinking, and swallowing. Body temperature and hunger are also controlled by parts of the brain stem.",
+      "support_span": "It has lots of different parts that control different jobs in the body: for instance, the brain stem controls breathing, heartbeat, sneezing, eye blinking, and swallowing."
+    }
+  },
+  {
+    "id": "qa-106",
+    "question": "What protects the brain inside the head?",
+    "topic": "Brain",
+    "anchor": "skull",
+    "gold": {
+      "source_id": "a:4365:lead",
+      "title": "Brain",
+      "section": "",
+      "text": "In all animals, the brain is protected in some way. In ourselves, and all vertebrates, it is protected by the bones of the skull.",
+      "support_span": "In ourselves, and all vertebrates, it is protected by the bones of the skull."
+    }
+  },
+  {
+    "id": "qa-107",
+    "question": "What are the three main parts of a mammal's brain?",
+    "topic": "Brain",
+    "anchor": "three main parts",
+    "gold": {
+      "source_id": "a:4365:p:3",
+      "title": "Brain",
+      "section": "Parts",
+      "text": "In mammals, the brain is made of three main parts: the cerebrum, the cerebellum, and the brainstem. The surface of the cerebrum is the cerebral cortex, which all vertebrates have.",
+      "support_span": "In mammals, the brain is made of three main parts: the cerebrum, the cerebellum, and the brainstem."
+    }
+  },
+  {
+    "id": "qa-108",
+    "question": "Is the cerebellum part of the brain?",
+    "topic": "Brain",
+    "anchor": "cerebellum",
+    "gold": {
+      "source_id": "a:4365:p:3",
+      "title": "Brain",
+      "section": "Parts",
+      "text": "In mammals, the brain is made of three main parts: the cerebrum, the cerebellum, and the brainstem. The surface of the cerebrum is the cerebral cortex, which all vertebrates have.",
+      "support_span": "In mammals, the brain is made of three main parts: the cerebrum, the cerebellum, and the brainstem."
+    }
+  },
+  {
+    "id": "qa-109",
+    "question": "What supports the human body?",
+    "topic": "Skeleton",
+    "anchor": "support",
+    "gold": {
+      "source_id": "a:17184:lead",
+      "title": "Skeleton",
+      "section": "",
+      "text": "The skeletal system or \"skeleton\" is under the skin, the muscle and the tissue of the body. The skeleton supports the skin, muscle and tissue, and all the organs that are inside the body. The skeleton protects important internal organs like the brain, heart and lungs.",
+      "support_span": "The skeleton supports the skin, muscle and tissue, and all the organs that are inside the body."
+    }
+  },
+  {
+    "id": "qa-110",
+    "question": "What is an exoskeleton?",
+    "topic": "Skeleton",
+    "anchor": "outside their bodies",
+    "gold": {
+      "source_id": "a:17184:lead",
+      "title": "Skeleton",
+      "section": "",
+      "text": "If humans did not have a skeleton then the body would be flat, as the skeleton gives the body its frame. * Endoskeletons: Creatures that have skeletons inside their bodies are mammals, birds, reptiles and fish. A skeleton that is on the inside is called an endoskeleton * Exoskeletons: Some creatures, called arthropods, have skeletons outside their bodies.",
+      "support_span": "A skeleton that is on the inside is called an endoskeleton * Exoskeletons: Some creatures, called arthropods, have skeletons outside their bodies."
+    }
+  },
+  {
+    "id": "qa-111",
+    "question": "What important internal organs does the skeleton protect?",
+    "topic": "Skeleton",
+    "anchor": "brain, heart and lungs",
+    "gold": {
+      "source_id": "a:17184:lead",
+      "title": "Skeleton",
+      "section": "",
+      "text": "The skeleton supports the skin, muscle and tissue, and all the organs that are inside the body. The skeleton protects important internal organs like the brain, heart and lungs. If humans did not have a skeleton then the body would be flat, as the skeleton gives the body its frame. * Endoskeletons: Creatures that have skeletons inside their bodies are mammals, birds, reptiles and fish.",
+      "support_span": "The skeleton protects important internal organs like the brain, heart and lungs."
+    }
+  },
+  {
+    "id": "qa-112",
+    "question": "What is a skeleton inside the body called?",
+    "topic": "Skeleton",
+    "anchor": "endoskeleton",
+    "gold": {
+      "source_id": "a:17184:lead",
+      "title": "Skeleton",
+      "section": "",
+      "text": "The skeleton protects important internal organs like the brain, heart and lungs. If humans did not have a skeleton then the body would be flat, as the skeleton gives the body its frame. * Endoskeletons: Creatures that have skeletons inside their bodies are mammals, birds, reptiles and fish. A skeleton that is on the inside is called an endoskeleton * Exoskeletons: Some creatures, called arthropods, have skeletons outside their bodies.",
+      "support_span": "If humans did not have a skeleton then the body would be flat, as the skeleton gives the body its frame. * Endoskeletons: Creatures that have skeletons inside their bodies are mammals, birds, reptiles and fish."
+    }
+  },
+  {
+    "id": "qa-113",
+    "question": "What do teeth help us do with food?",
+    "topic": "Tooth",
+    "anchor": "chew",
+    "gold": {
+      "source_id": "a:13638:lead",
+      "title": "Tooth",
+      "section": "",
+      "text": "A tooth is one of the hard, white things in the mouth. Teeth (plural) are used to help the mastication process by chewing food. Chew means to break up and crush food so it can be swallowed (pushed down into the stomach).",
+      "support_span": "Teeth (plural) are used to help the mastication process by chewing food."
+    }
+  },
+  {
+    "id": "qa-114",
+    "question": "What is the hard outer layer of a tooth called?",
+    "topic": "Tooth",
+    "anchor": "enamel",
+    "gold": {
+      "source_id": "a:13638:p:3",
+      "title": "Tooth",
+      "section": "Teeth structure",
+      "text": "The outside white part of teeth is called the enamel. The enamel is made of calcium phosphate and is very hard. Under the enamel is the dentine.",
+      "support_span": "The enamel is made of calcium phosphate and is very hard."
+    }
+  },
+  {
+    "id": "qa-115",
+    "question": "How many permanent teeth do adults usually have?",
+    "topic": "Tooth",
+    "anchor": "32",
+    "gold": {
+      "source_id": "a:13638:lead",
+      "title": "Tooth",
+      "section": "",
+      "text": "Some animals use teeth as a weapon. Human adults usually have 32 teeth. Human children usually have 20 teeth.",
+      "support_span": "Human adults usually have 32 teeth."
+    }
+  },
+  {
+    "id": "qa-116",
+    "question": "What are baby teeth also called?",
+    "topic": "Tooth",
+    "anchor": "deciduous",
+    "gold": {
+      "source_id": "a:13638:p:1",
+      "title": "Tooth",
+      "section": "Teeth eruption",
+      "text": "Deciduous teeth or milk teeth or temporary teeth are the first set of teeth for most mammals. Humans have 20 of them.",
+      "support_span": "Deciduous teeth or milk teeth or temporary teeth are the first set of teeth for most mammals."
+    }
+  },
+  {
+    "id": "qa-117",
+    "question": "What is the largest organ of the human body?",
+    "topic": "Skin",
+    "anchor": "largest",
+    "gold": {
+      "source_id": "a:772:lead",
+      "title": "Skin",
+      "section": "",
+      "text": "Most fish and reptiles, such as snakes and lizards, have scales. The skin is the largest organ in the human body. Without skin, people would easily get infections and diseases.",
+      "support_span": "The skin is the largest organ in the human body."
+    }
+  },
+  {
+    "id": "qa-118",
+    "question": "How does skin help protect the body?",
+    "topic": "Skin",
+    "anchor": "protect",
+    "gold": {
+      "source_id": "a:772:lead",
+      "title": "Skin",
+      "section": "",
+      "text": "It has many important jobs. First, it helps protect the body by stopping pathogens such as bacteria and parasites from getting inside. Second, it helps control the body's temperature.",
+      "support_span": "First, it helps protect the body by stopping pathogens such as bacteria and parasites from getting inside."
+    }
+  },
+  {
+    "id": "qa-119",
+    "question": "Does skin help keep bacteria out of the body?",
+    "topic": "Skin",
+    "anchor": "bacteria and parasites",
+    "gold": {
+      "source_id": "a:772:lead",
+      "title": "Skin",
+      "section": "",
+      "text": "It has many important jobs. First, it helps protect the body by stopping pathogens such as bacteria and parasites from getting inside. Second, it helps control the body's temperature.",
+      "support_span": "First, it helps protect the body by stopping pathogens such as bacteria and parasites from getting inside."
+    }
+  },
+  {
+    "id": "qa-120",
+    "question": "How does skin help control body temperature?",
+    "topic": "Skin",
+    "anchor": "evaporation",
+    "gold": {
+      "source_id": "a:772:lead",
+      "title": "Skin",
+      "section": "",
+      "text": "Second, it helps control the body's temperature. It does this by allowing evaporation from the skin and by making changes to help the body stay at the right temperature. The skin is a physical barrier.",
+      "support_span": "It does this by allowing evaporation from the skin and by making changes to help the body stay at the right temperature."
+    }
+  },
+  {
+    "id": "qa-121",
+    "question": "What is the larva of a butterfly called?",
+    "topic": "Butterfly",
+    "anchor": "caterpillar (sometimes called the larva)",
+    "gold": {
+      "source_id": "a:7747:p:14",
+      "title": "Butterfly",
+      "section": "Life cycle",
+      "text": "The first part is the egg. The second part is the caterpillar (sometimes called the larva). The third part is the chrysalis (sometimes called the pupa).",
+      "support_span": "The second part is the caterpillar (sometimes called the larva)."
+    }
+  },
+  {
+    "id": "qa-122",
+    "question": "How many stages are in a butterfly's life cycle?",
+    "topic": "Butterfly",
+    "anchor": "four parts",
+    "gold": {
+      "source_id": "a:7747:p:14",
+      "title": "Butterfly",
+      "section": "Life cycle",
+      "text": "Butterflies go through complete metamorphosis. This means that there are four parts in a butterfly's life. The first part is the egg.",
+      "support_span": "This means that there are four parts in a butterfly's life."
+    }
+  },
+  {
+    "id": "qa-123",
+    "question": "What do caterpillars feed on?",
+    "topic": "Butterfly",
+    "anchor": "caterpillars) feed on plants",
+    "gold": {
+      "source_id": "a:7747:lead",
+      "title": "Butterfly",
+      "section": "",
+      "text": "The life of butterflies is closely connected to flowering plants. Their larvae (caterpillars) feed on plants, and their adults feed on flowers. They lay their eggs on the plants their caterpillars feed on.",
+      "support_span": "Their larvae (caterpillars) feed on plants, and their adults feed on flowers."
+    }
+  },
+  {
+    "id": "qa-124",
+    "question": "What is the pupa of a butterfly called?",
+    "topic": "Butterfly",
+    "anchor": "chrysalis",
+    "gold": {
+      "source_id": "a:7747:p:14",
+      "title": "Butterfly",
+      "section": "Life cycle",
+      "text": "The second part is the caterpillar (sometimes called the larva). The third part is the chrysalis (sometimes called the pupa). The fourth part is the adult (sometimes called the imago).",
+      "support_span": "The third part is the chrysalis (sometimes called the pupa)."
+    }
+  },
+  {
+    "id": "qa-125",
+    "question": "What do bees collect from flowers?",
+    "topic": "Bee",
+    "anchor": "nectar",
+    "gold": {
+      "source_id": "a:5896:p:6",
+      "title": "Bee",
+      "section": "Social bees",
+      "text": "Worker bees are females too, and they are the bees that collect pollen from flowers and will fight to protect the colony. Workers do a waggle dance to tell the others where they have found nectar; Karl von Frisch discovered this.",
+      "support_span": "Workers do a waggle dance to tell the others where they have found nectar; Karl von Frisch discovered this."
+    }
+  },
+  {
+    "id": "qa-126",
+    "question": "How do bees help plants reproduce?",
+    "topic": "Bee",
+    "anchor": "specialized as pollination agents",
+    "gold": {
+      "source_id": "a:5896:p:0",
+      "title": "Bee",
+      "section": "Evolution",
+      "text": "Flowers were pollinated by insects such as beetles long before bees first appeared. Bees are different because they are specialized as pollination agents. Their body and behaviour make pollination easier.",
+      "support_span": "Bees are different because they are specialized as pollination agents."
+    }
+  },
+  {
+    "id": "qa-127",
+    "question": "What do honey bees make?",
+    "topic": "Bee",
+    "anchor": "honey",
+    "gold": {
+      "source_id": "a:5896:lead",
+      "title": "Bee",
+      "section": "",
+      "text": "The European honey bee (called Apis mellifera by biologists), is kept by humans for honey. Keeping bees to make honey is called beekeeping, or apiculture.",
+      "support_span": "Keeping bees to make honey is called beekeeping, or apiculture."
+    }
+  },
+  {
+    "id": "qa-128",
+    "question": "Are bees insects?",
+    "topic": "Bee",
+    "anchor": "flying insects",
+    "gold": {
+      "source_id": "a:5896:lead",
+      "title": "Bee",
+      "section": "",
+      "text": "Bees are flying insects of the Hymenoptera, which also includes ants, wasps and sawflies. There are about 20,000 species of bees.",
+      "support_span": "Bees are flying insects of the Hymenoptera, which also includes ants, wasps and sawflies."
+    }
+  },
+  {
+    "id": "qa-129",
+    "question": "Where are an ant's antennae?",
+    "topic": "Ant",
+    "anchor": "rods on their head",
+    "gold": {
+      "source_id": "a:5553:p:0",
+      "title": "Ant",
+      "section": "Overview",
+      "text": "It is believed that there are about 22,000 different species of ants, but scientists have only documented around 12,500 of them. Every species of ant has a thin middle segment, known as a thorax, as well as two long rods on their head called antennae.",
+      "support_span": "Every species of ant has a thin middle segment, known as a thorax, as well as two long rods on their head called antennae."
+    }
+  },
+  {
+    "id": "qa-130",
+    "question": "What is a group of ants living together called?",
+    "topic": "Ant",
+    "anchor": "colon",
+    "gold": {
+      "source_id": "a:5553:lead",
+      "title": "Ant",
+      "section": "",
+      "text": "Ants are a species of insect that live together in large colonies. They are in the family Formicidae. it is an authentic animal for organisation.",
+      "support_span": "Ants are a species of insect that live together in large colonies."
+    }
+  },
+  {
+    "id": "qa-131",
+    "question": "What is an ant's thin middle segment called?",
+    "topic": "Ant",
+    "anchor": "thorax",
+    "gold": {
+      "source_id": "a:5553:p:0",
+      "title": "Ant",
+      "section": "Overview",
+      "text": "It is believed that there are about 22,000 different species of ants, but scientists have only documented around 12,500 of them. Every species of ant has a thin middle segment, known as a thorax, as well as two long rods on their head called antennae.",
+      "support_span": "Every species of ant has a thin middle segment, known as a thorax, as well as two long rods on their head called antennae."
+    }
+  },
+  {
+    "id": "qa-132",
+    "question": "Are ants insects?",
+    "topic": "Ant",
+    "anchor": "species of insect",
+    "gold": {
+      "source_id": "a:5553:lead",
+      "title": "Ant",
+      "section": "",
+      "text": "Ants are a species of insect that live together in large colonies. They are in the family Formicidae. it is an authentic animal for organisation.",
+      "support_span": "Ants are a species of insect that live together in large colonies."
+    }
+  },
+  {
+    "id": "qa-133",
+    "question": "How many arms does an octopus have?",
+    "topic": "Octopus",
+    "anchor": "eight",
+    "gold": {
+      "source_id": "a:23805:lead",
+      "title": "Octopus",
+      "section": "",
+      "text": "They live rather short lives. An octopus trails its eight arms behind it as it swims. All octopods are venomous, but only the small blue-ringed octopus is known to be deadly to humans.",
+      "support_span": "An octopus trails its eight arms behind it as it swims."
+    }
+  },
+  {
+    "id": "qa-134",
+    "question": "Are octopuses invertebrates?",
+    "topic": "Octopus",
+    "anchor": "any other invertebrate",
+    "gold": {
+      "source_id": "a:23805:p:6",
+      "title": "Octopus",
+      "section": "Intelligence",
+      "text": "Octopods are highly intelligent, probably more so than any other invertebrate. The exact extent of their intelligence and learning capability is much debated among biologists.",
+      "support_span": "Octopods are highly intelligent, probably more so than any other invertebrate."
+    }
+  },
+  {
+    "id": "qa-135",
+    "question": "How many hearts does an octopus have?",
+    "topic": "Octopus",
+    "anchor": "three",
+    "gold": {
+      "source_id": "a:23805:lead",
+      "title": "Octopus",
+      "section": "",
+      "text": "They are intelligent predators with a taste for crabs. Octopuses have three hearts. Two pump blood to the gills, while the third pumps it to the rest of the body.",
+      "support_span": "Octopuses have three hearts."
+    }
+  },
+  {
+    "id": "qa-136",
+    "question": "What can an octopus release to escape danger?",
+    "topic": "Octopus",
+    "anchor": "ink",
+    "gold": {
+      "source_id": "a:23805:p:13",
+      "title": "Octopus",
+      "section": "Defences",
+      "text": "They use active camouflage and mimicry, controlled by their nervous system. Most can eject black ink clouds to help escape, and some can shed an arm in extreme danger. It wriggles, and attracts the attacker.",
+      "support_span": "Most can eject black ink clouds to help escape, and some can shed an arm in extreme danger."
+    }
+  },
+  {
+    "id": "qa-137",
+    "question": "Is a dolphin a fish or a mammal?",
+    "topic": "Dolphin",
+    "anchor": "mammal",
+    "gold": {
+      "source_id": "a:14162:lead",
+      "title": "Dolphin",
+      "section": "",
+      "text": "Most live in salt water oceans, but there are also river dolphins. They are mammals, not fish. Dolphins are usually between 1.5 metres and 4 metres long.",
+      "support_span": "They are mammals, not fish."
+    }
+  },
+  {
+    "id": "qa-138",
+    "question": "How do dolphins breathe air?",
+    "topic": "Dolphin",
+    "anchor": "nose is on top",
+    "gold": {
+      "source_id": "a:14162:p:1",
+      "title": "Dolphin",
+      "section": "Description",
+      "text": "Dolphins breathe air. A dolphin's nose is on top of its head so the dolphin can easily breathe on the surface of the water.",
+      "support_span": "A dolphin's nose is on top of its head so the dolphin can easily breathe on the surface of the water."
+    }
+  },
+  {
+    "id": "qa-139",
+    "question": "How do dolphins use echolocation?",
+    "topic": "Dolphin",
+    "anchor": "echolocation",
+    "gold": {
+      "source_id": "a:14162:p:12",
+      "title": "Dolphin",
+      "section": "Senses",
+      "text": "Dolphins can hear a sound underwater. They can know the direction of the sound very well and use echolocation to hunt.",
+      "support_span": "They can know the direction of the sound very well and use echolocation to hunt."
+    }
+  },
+  {
+    "id": "qa-140",
+    "question": "Where is a dolphin's nose located?",
+    "topic": "Dolphin",
+    "anchor": "nose is on top",
+    "gold": {
+      "source_id": "a:14162:p:1",
+      "title": "Dolphin",
+      "section": "Description",
+      "text": "Dolphins breathe air. A dolphin's nose is on top of its head so the dolphin can easily breathe on the surface of the water.",
+      "support_span": "A dolphin's nose is on top of its head so the dolphin can easily breathe on the surface of the water."
+    }
+  },
+  {
+    "id": "qa-141",
+    "question": "Are bats birds or mammals?",
+    "topic": "Bat",
+    "anchor": "mammal",
+    "gold": {
+      "source_id": "a:17099:lead",
+      "title": "Bat",
+      "section": "",
+      "text": "Bats are mammals in the order Chiroptera. Bats are nocturnal which means they are active during the night, dusk, or dawn and they sleep at day.",
+      "support_span": "Bats are mammals in the order Chiroptera."
+    }
+  },
+  {
+    "id": "qa-142",
+    "question": "How do many bats find prey in the dark?",
+    "topic": "Bat",
+    "anchor": "echolocation",
+    "gold": {
+      "source_id": "a:17099:lead",
+      "title": "Bat",
+      "section": "",
+      "text": "Bats are nocturnal which means they are active during the night, dusk, or dawn and they sleep at day. Most use echolocation to catch prey and to find their way about. As night time animals, bats avoid direct competition with birds, few of which are nocturnal.",
+      "support_span": "Most use echolocation to catch prey and to find their way about."
+    }
+  },
+  {
+    "id": "qa-143",
+    "question": "What do most bats use to find their way around?",
+    "topic": "Bat",
+    "anchor": "find their way",
+    "gold": {
+      "source_id": "a:17099:lead",
+      "title": "Bat",
+      "section": "",
+      "text": "Bats are nocturnal which means they are active during the night, dusk, or dawn and they sleep at day. Most use echolocation to catch prey and to find their way about. As night time animals, bats avoid direct competition with birds, few of which are nocturnal.",
+      "support_span": "Most use echolocation to catch prey and to find their way about."
+    }
+  },
+  {
+    "id": "qa-144",
+    "question": "What do fruit bats eat?",
+    "topic": "Bat",
+    "anchor": "fruit",
+    "gold": {
+      "source_id": "a:17099:lead",
+      "title": "Bat",
+      "section": "",
+      "text": "The common pipistrelle is a successful example. Most of the rest are fruit-eaters (fruit bats). A few species suck blood, and a few large ones are carnivorous.",
+      "support_span": "Most of the rest are fruit-eaters (fruit bats)."
+    }
+  },
+  {
+    "id": "qa-145",
+    "question": "Are crocodiles reptiles?",
+    "topic": "Crocodile",
+    "anchor": "reptile",
+    "gold": {
+      "source_id": "a:15061:lead",
+      "title": "Crocodile",
+      "section": "",
+      "text": "It lives mostly in large tropical rivers, where it is an ambush predator. The Crocodylia is an order of mostly large, predatory, semiaquatic reptiles. Their ancestors, the clade Pseudosuchia, appeared about 250 million years ago in the early Triassic period.",
+      "support_span": "The Crocodylia is an order of mostly large, predatory, semiaquatic reptiles."
+    }
+  },
+  {
+    "id": "qa-146",
+    "question": "Do crocodiles lay eggs?",
+    "topic": "Crocodile",
+    "anchor": "egg",
+    "gold": {
+      "source_id": "a:15061:p:6",
+      "title": "Crocodile",
+      "section": "Reproduction",
+      "text": "First of all, their sex at birth depends on their temperature, not upon sex chromosomes (which they do not have). Eggs are laid in mounds near the water in sand or mud. They are guarded by the female, though she does have to go into the river to eat.",
+      "support_span": "Eggs are laid in mounds near the water in sand or mud."
+    }
+  },
+  {
+    "id": "qa-147",
+    "question": "What do very young crocodiles eat?",
+    "topic": "Crocodile",
+    "anchor": "very young",
+    "gold": {
+      "source_id": "a:15061:p:5",
+      "title": "Crocodile",
+      "section": "Feeding",
+      "text": "Adult crocodiles can go long periods without eating. When crocodiles are very young, they mainly eat insects, crustaceans, snails, small fish, frogs and tadpoles.",
+      "support_span": "When crocodiles are very young, they mainly eat insects, crustaceans, snails, small fish, frogs and tadpoles."
+    }
+  },
+  {
+    "id": "qa-148",
+    "question": "Where do crocodiles lay their eggs?",
+    "topic": "Crocodile",
+    "anchor": "mounds near the water",
+    "gold": {
+      "source_id": "a:15061:p:6",
+      "title": "Crocodile",
+      "section": "Reproduction",
+      "text": "First of all, their sex at birth depends on their temperature, not upon sex chromosomes (which they do not have). Eggs are laid in mounds near the water in sand or mud. They are guarded by the female, though she does have to go into the river to eat.",
+      "support_span": "Eggs are laid in mounds near the water in sand or mud."
+    }
+  },
+  {
+    "id": "qa-149",
+    "question": "What is the upper shell of a turtle called?",
+    "topic": "Turtle",
+    "anchor": "carapace",
+    "gold": {
+      "source_id": "a:14139:p:8",
+      "title": "Turtle",
+      "section": "Shell",
+      "text": "The upper shell of the turtle is called the carapace. The lower shell that covers the belly is called the plastron.",
+      "support_span": "The upper shell of the turtle is called the carapace."
+    }
+  },
+  {
+    "id": "qa-150",
+    "question": "Do turtles lay eggs?",
+    "topic": "Turtle",
+    "anchor": "egg",
+    "gold": {
+      "source_id": "a:14139:p:3",
+      "title": "Turtle",
+      "section": "Life",
+      "text": "Like other reptiles, turtles lay eggs which are slightly soft and leathery. The eggs of the largest kinds of turtle are shaped like spheres.",
+      "support_span": "Like other reptiles, turtles lay eggs which are slightly soft and leathery."
+    }
+  },
+  {
+    "id": "qa-151",
+    "question": "Are turtles reptiles?",
+    "topic": "Turtle",
+    "anchor": "reptile",
+    "gold": {
+      "source_id": "a:14139:lead",
+      "title": "Turtle",
+      "section": "",
+      "text": "Turtles are one of the many reptiles on earth. They have a hard shell, which is useful for camouflage and protection from other animals.",
+      "support_span": "Turtles are one of the many reptiles on earth."
+    }
+  },
+  {
+    "id": "qa-152",
+    "question": "Do turtles breathe using lungs?",
+    "topic": "Turtle",
+    "anchor": "lung",
+    "gold": {
+      "source_id": "a:14139:p:1",
+      "title": "Turtle",
+      "section": "Life",
+      "text": "Although many turtles spend a lot of their lives underwater, all turtles and tortoises breathe air and must come to the surface to refill their lungs. Some spend their whole lives on dry land.",
+      "support_span": "Although many turtles spend a lot of their lives underwater, all turtles and tortoises breathe air and must come to the surface to refill their lungs."
+    }
+  },
+  {
+    "id": "qa-153",
+    "question": "What is a young frog called?",
+    "topic": "Frog",
+    "anchor": "tadpole",
+    "gold": {
+      "source_id": "a:6100:lead",
+      "title": "Frog",
+      "section": "",
+      "text": "Their development is by metamorphosis. They usually hatch as tadpoles from eggs, which are laid by a female frog. The eggs are called frogspawn.",
+      "support_span": "They usually hatch as tadpoles from eggs, which are laid by a female frog."
+    }
+  },
+  {
+    "id": "qa-154",
+    "question": "Are frogs amphibians?",
+    "topic": "Frog",
+    "anchor": "amphibian",
+    "gold": {
+      "source_id": "a:6100:lead",
+      "title": "Frog",
+      "section": "",
+      "text": "Frogs are amphibians and vertebrates of the order Anura. There is not much difference between frogs and toads, and they are not classified separately.",
+      "support_span": "Frogs are amphibians and vertebrates of the order Anura."
+    }
+  },
+  {
+    "id": "qa-155",
+    "question": "Do frogs lay eggs?",
+    "topic": "Frog",
+    "anchor": "egg",
+    "gold": {
+      "source_id": "a:6100:p:4",
+      "title": "Frog",
+      "section": "Toads",
+      "text": "Many toads also burrow, though that depends on the environment that the toad evolved in. Toads lay eggs in strings attached to rocks, unlike true frogs which lay eggs in a jelly-like mass. Also, toads generally have shorter legs and fatter bodies.",
+      "support_span": "Toads lay eggs in strings attached to rocks, unlike true frogs which lay eggs in a jelly-like mass."
+    }
+  },
+  {
+    "id": "qa-156",
+    "question": "How do tadpoles breathe underwater?",
+    "topic": "Frog",
+    "anchor": "gill",
+    "gold": {
+      "source_id": "a:6100:lead",
+      "title": "Frog",
+      "section": "",
+      "text": "The eggs are called frogspawn. Tadpoles have tails and gills. The next stage, the \"froglet,\" develops lungs to breathe air instead of gills, but still have tails.",
+      "support_span": "Tadpoles have tails and gills."
+    }
+  },
+  {
+    "id": "qa-157",
+    "question": "What is a shark's skeleton made of?",
+    "topic": "Shark",
+    "anchor": "cartilage",
+    "gold": {
+      "source_id": "a:9067:lead",
+      "title": "Shark",
+      "section": "",
+      "text": "This superorder is also known by its scientific name Selachimorpha. Like other Chondrichthyes, sharks have skeletons made of cartilage instead of bone. Cartilage is tough, rubbery material which is less rigid than bone.",
+      "support_span": "Like other Chondrichthyes, sharks have skeletons made of cartilage instead of bone."
+    }
+  },
+  {
+    "id": "qa-158",
+    "question": "What is shark cartilage like?",
+    "topic": "Shark",
+    "anchor": "rubbery material",
+    "gold": {
+      "source_id": "a:9067:lead",
+      "title": "Shark",
+      "section": "",
+      "text": "Like other Chondrichthyes, sharks have skeletons made of cartilage instead of bone. Cartilage is tough, rubbery material which is less rigid than bone. Other cartilaginous fish include skates and rays.",
+      "support_span": "Cartilage is tough, rubbery material which is less rigid than bone."
+    }
+  },
+  {
+    "id": "qa-159",
+    "question": "Are sharks fish?",
+    "topic": "Shark",
+    "anchor": "fish",
+    "gold": {
+      "source_id": "a:9067:lead",
+      "title": "Shark",
+      "section": "",
+      "text": "Sharks are a superorder of fish. This superorder is also known by its scientific name Selachimorpha.",
+      "support_span": "Sharks are a superorder of fish."
+    }
+  },
+  {
+    "id": "qa-160",
+    "question": "Do sharks replace lost teeth?",
+    "topic": "Shark",
+    "anchor": "constantly replaced",
+    "gold": {
+      "source_id": "a:9067:p:2",
+      "title": "Shark",
+      "section": "Teeth",
+      "text": "Sharks' teeth are constantly replaced throughout their lives. Sharks eat so violently they often break a few teeth, so new teeth grow continuously in a groove just inside the mouth and move forward from inside the mouth on \"conveyor belts\" formed by the skin which they are attached to.",
+      "support_span": "Sharks' teeth are constantly replaced throughout their lives."
+    }
+  },
+  {
+    "id": "qa-161",
+    "question": "Is a whale a mammal?",
+    "topic": "Whale",
+    "anchor": "mammal",
+    "gold": {
+      "source_id": "a:7597:lead",
+      "title": "Whale",
+      "section": "",
+      "text": "Whales are a group of cetacean mammals that live in the ocean. Like other mammals, they breathe oxygen from the air, have a small amount of hair, and are warm blooded.",
+      "support_span": "Whales are a group of cetacean mammals that live in the ocean."
+    }
+  },
+  {
+    "id": "qa-162",
+    "question": "How do whales breathe air?",
+    "topic": "Whale",
+    "anchor": "blowhole",
+    "gold": {
+      "source_id": "a:7597:p:5",
+      "title": "Whale",
+      "section": "Physiology",
+      "text": "Because of where they live (and unlike many animals), whales are conscious breathers: they decide when to breathe. Whales breathe through blowholes. Baleen whales have two and toothed whales have one.",
+      "support_span": "Whales breathe through blowholes."
+    }
+  },
+  {
+    "id": "qa-163",
+    "question": "Are whales warm-blooded?",
+    "topic": "Whale",
+    "anchor": "warm blooded",
+    "gold": {
+      "source_id": "a:7597:lead",
+      "title": "Whale",
+      "section": "",
+      "text": "Whales are a group of cetacean mammals that live in the ocean. Like other mammals, they breathe oxygen from the air, have a small amount of hair, and are warm blooded. There are two basic kinds of whales, and about 100 species.",
+      "support_span": "Like other mammals, they breathe oxygen from the air, have a small amount of hair, and are warm blooded."
+    }
+  },
+  {
+    "id": "qa-164",
+    "question": "What do baleen whales use to filter food?",
+    "topic": "Whale",
+    "anchor": "baleen",
+    "gold": {
+      "source_id": "a:7597:p:0",
+      "title": "Whale",
+      "section": "Diet",
+      "text": "Then they close their mouth and squeeze out the seawater. The food does not escape because, instead of teeth, these whales have filters called baleen. Baleen is long, hard strips that act like a strainer.",
+      "support_span": "The food does not escape because, instead of teeth, these whales have filters called baleen."
+    }
+  },
+  {
+    "id": "qa-165",
+    "question": "Can penguins fly through the air?",
+    "topic": "Penguin",
+    "anchor": "cannot fly",
+    "gold": {
+      "source_id": "a:7451:p:5",
+      "title": "Penguin",
+      "section": "Physical description",
+      "text": "They cannot walk well, so they waddle. Penguins cannot fly, but they can swim very well. Their wings have become stiff and small swimming flippers.",
+      "support_span": "Penguins cannot fly, but they can swim very well."
+    }
+  },
+  {
+    "id": "qa-166",
+    "question": "What do penguins use their flippers for?",
+    "topic": "Penguin",
+    "anchor": "swim",
+    "gold": {
+      "source_id": "a:7451:lead",
+      "title": "Penguin",
+      "section": "",
+      "text": "Penguins are seabirds in the family Spheniscidae. They use their flippers to swim underwater, but they cannot fly in the air. They eat fish and other seafood.",
+      "support_span": "They use their flippers to swim underwater, but they cannot fly in the air."
+    }
+  },
+  {
+    "id": "qa-167",
+    "question": "What do penguins eat?",
+    "topic": "Penguin",
+    "anchor": "fish",
+    "gold": {
+      "source_id": "a:7451:p:7",
+      "title": "Penguin",
+      "section": "Diet",
+      "text": "Penguins eat krill, fish, squid and other small animals from the ocean. They are at home in the ocean.",
+      "support_span": "Penguins eat krill, fish, squid and other small animals from the ocean."
+    }
+  },
+  {
+    "id": "qa-168",
+    "question": "Are penguins birds?",
+    "topic": "Penguin",
+    "anchor": "Penguins are seabirds",
+    "gold": {
+      "source_id": "a:7451:lead",
+      "title": "Penguin",
+      "section": "",
+      "text": "Penguins are seabirds in the family Spheniscidae. They use their flippers to swim underwater, but they cannot fly in the air.",
+      "support_span": "Penguins are seabirds in the family Spheniscidae."
+    }
+  },
+  {
+    "id": "qa-169",
+    "question": "Where do giraffes live in the wild?",
+    "topic": "Giraffe",
+    "anchor": "Africa",
+    "gold": {
+      "source_id": "a:33236:p:2",
+      "title": "Giraffe",
+      "section": "Habitat",
+      "text": "They do not live in thick forests where it is difficult to see predators (such as lions) approaching.The temperature is normally around 70 degrees. Most giraffes live either in East Africa or in Angola and Zambia in southwestern Africa.",
+      "support_span": "Most giraffes live either in East Africa or in Angola and Zambia in southwestern Africa."
+    }
+  },
+  {
+    "id": "qa-170",
+    "question": "What do giraffes eat?",
+    "topic": "Giraffe",
+    "anchor": "leaves",
+    "gold": {
+      "source_id": "a:33236:p:3",
+      "title": "Giraffe",
+      "section": "Life",
+      "text": "Giraffes eat mostly leaves from tall trees, which they can reach because of their long legs and long necks, as well as fruit. Their rough tongue allows them to eat the acacia leaves protected by thorns.",
+      "support_span": "Giraffes eat mostly leaves from tall trees, which they can reach because of their long legs and long necks, as well as fruit."
+    }
+  },
+  {
+    "id": "qa-171",
+    "question": "How many neck vertebrae do giraffes have?",
+    "topic": "Giraffe",
+    "anchor": "seven",
+    "gold": {
+      "source_id": "a:33236:p:3",
+      "title": "Giraffe",
+      "section": "Life",
+      "text": "They can go without water for weeks. Like all mammals, giraffes have only seven bones in their necks.",
+      "support_span": "Like all mammals, giraffes have only seven bones in their necks."
+    }
+  },
+  {
+    "id": "qa-172",
+    "question": "Why can giraffes reach leaves in tall trees?",
+    "topic": "Giraffe",
+    "anchor": "neck",
+    "gold": {
+      "source_id": "a:33236:p:3",
+      "title": "Giraffe",
+      "section": "Life",
+      "text": "Giraffes eat mostly leaves from tall trees, which they can reach because of their long legs and long necks, as well as fruit. Their rough tongue allows them to eat the acacia leaves protected by thorns.",
+      "support_span": "Giraffes eat mostly leaves from tall trees, which they can reach because of their long legs and long necks, as well as fruit."
+    }
+  },
+  {
+    "id": "qa-173",
+    "question": "What is an elephant's trunk?",
+    "topic": "Elephant",
+    "anchor": "nose",
+    "gold": {
+      "source_id": "a:3495:p:1",
+      "title": "Elephant",
+      "section": "Trunk",
+      "text": "The trunk is a very long nose, made from the upper lip. An elephant uses its trunk to grab objects such as food.",
+      "support_span": "The trunk is a very long nose, made from the upper lip."
+    }
+  },
+  {
+    "id": "qa-174",
+    "question": "What are elephant tusks made from?",
+    "topic": "Elephant",
+    "anchor": "Tusks are large teeth",
+    "gold": {
+      "source_id": "a:3495:p:3",
+      "title": "Elephant",
+      "section": "Teeth",
+      "text": "Elephants have teeth and tusks. Tusks are large teeth coming out of their upper jaws.",
+      "support_span": "Tusks are large teeth coming out of their upper jaws."
+    }
+  },
+  {
+    "id": "qa-175",
+    "question": "Why do elephants have strong, leathery skin?",
+    "topic": "Elephant",
+    "anchor": "protect themselves",
+    "gold": {
+      "source_id": "a:3495:lead",
+      "title": "Elephant",
+      "section": "",
+      "text": "But elephants can hear these sounds from very far away. Elephants have strong, leathery skin to protect themselves.",
+      "support_span": "Elephants have strong, leathery skin to protect themselves."
+    }
+  },
+  {
+    "id": "qa-176",
+    "question": "Are elephants mammals?",
+    "topic": "Elephant",
+    "anchor": "mammal",
+    "gold": {
+      "source_id": "a:3495:lead",
+      "title": "Elephant",
+      "section": "",
+      "text": "Elephants are the biggest living land mammals. They have long noses called trunks and large flapping ears.",
+      "support_span": "Elephants are the biggest living land mammals."
+    }
+  },
+  {
+    "id": "qa-177",
+    "question": "What do koalas eat?",
+    "topic": "Koala",
+    "anchor": "eucalyptus",
+    "gold": {
+      "source_id": "a:28439:p:2",
+      "title": "Koala",
+      "section": "Life",
+      "text": "They eat leaves of eucalyptus trees. Koalas do not drink often, they get most of their water from the eucalyptus leaves they eat. Eucalyptus leaves are poisonous, but koalas do not get poisoned.",
+      "support_span": "Koalas do not drink often, they get most of their water from the eucalyptus leaves they eat."
+    }
+  },
+  {
+    "id": "qa-178",
+    "question": "Where do koalas live in the wild?",
+    "topic": "Koala",
+    "anchor": "Australia",
+    "gold": {
+      "source_id": "a:28439:lead",
+      "title": "Koala",
+      "section": "",
+      "text": "Koala (Phascolarctos cinereus) is a plant-eating marsupial. They live in the eucalyptus forests of eastern Australia. They are the only living species in the family Phascolarctidae.",
+      "support_span": "They live in the eucalyptus forests of eastern Australia."
+    }
+  },
+  {
+    "id": "qa-179",
+    "question": "Is a koala a bear?",
+    "topic": "Koala",
+    "anchor": "marsupial",
+    "gold": {
+      "source_id": "a:28439:lead",
+      "title": "Koala",
+      "section": "",
+      "text": "Koala (Phascolarctos cinereus) is a plant-eating marsupial. They live in the eucalyptus forests of eastern Australia.",
+      "support_span": "Koala (Phascolarctos cinereus) is a plant-eating marsupial."
+    }
+  },
+  {
+    "id": "qa-180",
+    "question": "Where does a mother koala carry her baby?",
+    "topic": "Koala",
+    "anchor": "crawls into its mothers pouch",
+    "gold": {
+      "source_id": "a:28439:p:5",
+      "title": "Koala",
+      "section": "Life",
+      "text": "After a pregnancy of 35 days, the newly born koala is about a quarter of an inch long, and is born with no ears, eyes, or hair. It crawls into its mothers pouch on its own. After 12 months the young koala is old enough that it does not go into its mother's pouch or need milk anymore.",
+      "support_span": "It crawls into its mothers pouch on its own."
+    }
+  },
+  {
+    "id": "qa-181",
+    "question": "How many legs does a spider have?",
+    "topic": "Spider",
+    "anchor": "eight",
+    "gold": {
+      "source_id": "a:19903:lead",
+      "title": "Spider",
+      "section": "",
+      "text": "Spiders (class Arachnida, order Araneae) are air-breathing arthropods. They have eight legs, and mouthparts (chelicerae) with fangs that inject venom. Most make silk.",
+      "support_span": "They have eight legs, and mouthparts (chelicerae) with fangs that inject venom."
+    }
+  },
+  {
+    "id": "qa-182",
+    "question": "Are spiders insects?",
+    "topic": "Spider",
+    "anchor": "Unlike insects",
+    "gold": {
+      "source_id": "a:19903:p:0",
+      "title": "Spider",
+      "section": "Anatomy",
+      "text": "Spiders have a two-part body, the front part (cephalothorax) and the abdomen. Unlike insects, spiders do not have antennae. The more advanced spiders have a centralized nervous system, with their ganglia fused into one mass in the cephalothorax.",
+      "support_span": "Unlike insects, spiders do not have antennae."
+    }
+  },
+  {
+    "id": "qa-183",
+    "question": "What do spiders use to make webs?",
+    "topic": "Spider",
+    "anchor": "silk",
+    "gold": {
+      "source_id": "a:19903:lead",
+      "title": "Spider",
+      "section": "",
+      "text": "They have eight legs, and mouthparts (chelicerae) with fangs that inject venom. Most make silk. The spiders are seventh in number of species of all animal orders.",
+      "support_span": "Most make silk."
+    }
+  },
+  {
+    "id": "qa-184",
+    "question": "How many main body parts does a spider have?",
+    "topic": "Spider",
+    "anchor": "two",
+    "gold": {
+      "source_id": "a:19903:p:0",
+      "title": "Spider",
+      "section": "Anatomy",
+      "text": "Spiders have a two-part body, the front part (cephalothorax) and the abdomen. Unlike insects, spiders do not have antennae.",
+      "support_span": "Spiders have a two-part body, the front part (cephalothorax) and the abdomen."
+    }
+  },
+  {
+    "id": "qa-185",
+    "question": "What are book lungs used for?",
+    "topic": "Arachnid",
+    "anchor": "gas exchange",
+    "gold": {
+      "source_id": "a:22923:p:4",
+      "title": "Arachnid",
+      "section": "Physiology",
+      "text": "These may be trachea (tubes), or a modification of gills into a 'book lung'. This is an internal series of lamellae used for gas exchange with the air.",
+      "support_span": "This is an internal series of lamellae used for gas exchange with the air."
+    }
+  },
+  {
+    "id": "qa-186",
+    "question": "How many pairs of legs do arachnids have?",
+    "topic": "Arachnid",
+    "anchor": "four",
+    "gold": {
+      "source_id": "a:22923:p:1",
+      "title": "Arachnid",
+      "section": "Anatomy",
+      "text": "All adult arachnids have four pairs of legs, and arachnids may be easily distinguished from insects by this fact, since insects have three pairs of legs. However, arachnids also have two further pairs of appendages that have become adapted for feeding, defense, and sensory perception.",
+      "support_span": "All adult arachnids have four pairs of legs, and arachnids may be easily distinguished from insects by this fact, since insects have three pairs of legs."
+    }
+  },
+  {
+    "id": "qa-187",
+    "question": "Are spiders arachnids?",
+    "topic": "Arachnid",
+    "anchor": "spider",
+    "gold": {
+      "source_id": "a:22923:lead",
+      "title": "Arachnid",
+      "section": "",
+      "text": "The arachnids are a class of eight-legged arthropods. They are a highly successful group of mainly terrestrial invertebrates: spiders, scorpions, harvestmen, ticks, and mites, and a number of smaller groups. In 2019, a molecular phylogeny study put horseshoe crabs in the Arachnida.",
+      "support_span": "They are a highly successful group of mainly terrestrial invertebrates: spiders, scorpions, harvestmen, ticks, and mites, and a number of smaller groups."
+    }
+  },
+  {
+    "id": "qa-188",
+    "question": "Do arachnids have antennae?",
+    "topic": "Arachnid",
+    "anchor": "antennae",
+    "gold": {
+      "source_id": "a:22923:p:3",
+      "title": "Arachnid",
+      "section": "Anatomy",
+      "text": "Arachnids have no antennae or wings. Their body is organized into two parts: the cephalothorax, and the abdomen.",
+      "support_span": "Arachnids have no antennae or wings."
+    }
+  },
+  {
+    "id": "qa-189",
+    "question": "What is stored in a camel's hump?",
+    "topic": "Camel",
+    "anchor": "fat",
+    "gold": {
+      "source_id": "a:15585:p:0",
+      "title": "Camel",
+      "section": "Habitat and adaptation",
+      "text": "Their large feet spread out their weight on the sand when they are walking, so they do not sink into the sand. When there is food and water, a camel can eat and drink large amounts of it and store it as fat in the hump. Then, when there is no food or water, the camel uses the fat for energy, and the hump becomes small and soft.",
+      "support_span": "When there is food and water, a camel can eat and drink large amounts of it and store it as fat in the hump."
+    }
+  },
+  {
+    "id": "qa-190",
+    "question": "How many humps does a dromedary have?",
+    "topic": "Camel",
+    "anchor": "one",
+    "gold": {
+      "source_id": "a:15585:lead",
+      "title": "Camel",
+      "section": "",
+      "text": "There are three living species of camels. Best-known are the dromedary (one hump) and Bactrian (two humps) camels. The camelids, as a family, include the \"New World\" camelids: the llama, the alpaca, the guanaco, and the vicuña.",
+      "support_span": "Best-known are the dromedary (one hump) and Bactrian (two humps) camels."
+    }
+  },
+  {
+    "id": "qa-191",
+    "question": "How many humps does a Bactrian camel have?",
+    "topic": "Camel",
+    "anchor": "two",
+    "gold": {
+      "source_id": "a:15585:lead",
+      "title": "Camel",
+      "section": "",
+      "text": "There are three living species of camels. Best-known are the dromedary (one hump) and Bactrian (two humps) camels. The camelids, as a family, include the \"New World\" camelids: the llama, the alpaca, the guanaco, and the vicuña.",
+      "support_span": "Best-known are the dromedary (one hump) and Bactrian (two humps) camels."
+    }
+  },
+  {
+    "id": "qa-192",
+    "question": "What kind of animal is a camel?",
+    "topic": "Camel",
+    "anchor": "mammal",
+    "gold": {
+      "source_id": "a:15585:lead",
+      "title": "Camel",
+      "section": "",
+      "text": "Camels are mammals of the Camelidae family. Camels form the genus Camelus.",
+      "support_span": "Camels are mammals of the Camelidae family."
+    }
+  },
+  {
+    "id": "qa-193",
+    "question": "Where do polar bears live?",
+    "topic": "Polar bear",
+    "anchor": "Arctic",
+    "gold": {
+      "source_id": "a:15321:lead",
+      "title": "Polar bear",
+      "section": "",
+      "text": "The polar bear (Ursus maritimus) is a large bear which lives in the Arctic. It has black skin under the white fur.",
+      "support_span": "The polar bear (Ursus maritimus) is a large bear which lives in the Arctic."
+    }
+  },
+  {
+    "id": "qa-194",
+    "question": "What do polar bears mainly eat?",
+    "topic": "Polar bear",
+    "anchor": "mostly seals",
+    "gold": {
+      "source_id": "a:15321:p:1",
+      "title": "Polar bear",
+      "section": "Life",
+      "text": "Polar bears are apex predators. They eat mostly seals and fish. They also eat sea lions, walruses, reindeer, arctic hares, seabirds, small whales, lemmings, crabs, and carrion.",
+      "support_span": "They eat mostly seals and fish."
+    }
+  },
+  {
+    "id": "qa-195",
+    "question": "What color is a polar bear's skin?",
+    "topic": "Polar bear",
+    "anchor": "black",
+    "gold": {
+      "source_id": "a:15321:lead",
+      "title": "Polar bear",
+      "section": "",
+      "text": "The polar bear (Ursus maritimus) is a large bear which lives in the Arctic. It has black skin under the white fur. They are strong and fast, and can run as fast as 25 miles (40 km) an hour for a short distance.",
+      "support_span": "It has black skin under the white fur."
+    }
+  },
+  {
+    "id": "qa-196",
+    "question": "How does a polar bear stay warm?",
+    "topic": "Polar bear",
+    "anchor": "fur keeps them very warm",
+    "gold": {
+      "source_id": "a:15321:p:0",
+      "title": "Polar bear",
+      "section": "Appearance",
+      "text": "Polar bear fur is made up of a layer of dense underfur and an outer layer of \"guard hairs\", which appear white to tan but are actually translucent. The fur keeps them very warm. The skin is not white; it is black.",
+      "support_span": "The fur keeps them very warm."
+    }
+  },
+  {
+    "id": "qa-197",
+    "question": "What do owls eat?",
+    "topic": "Owl",
+    "anchor": "mammal",
+    "gold": {
+      "source_id": "a:9700:lead",
+      "title": "Owl",
+      "section": "",
+      "text": "Owls are specialists night-time hunters. They feed on small mammals such as rodents, insects, and other birds, and a few species like to eat fish as well. As a group, owls are very successful.",
+      "support_span": "They feed on small mammals such as rodents, insects, and other birds, and a few species like to eat fish as well."
+    }
+  },
+  {
+    "id": "qa-198",
+    "question": "Are most owls active at night?",
+    "topic": "Owl",
+    "anchor": "nocturnal",
+    "gold": {
+      "source_id": "a:9700:lead",
+      "title": "Owl",
+      "section": "",
+      "text": "There are 200 species, and they are all animals of prey. Most of them are solitary and nocturnal; in fact, they are the only large group of birds which hunt at night. Owls are specialists night-time hunters.",
+      "support_span": "Most of them are solitary and nocturnal; in fact, they are the only large group of birds which hunt at night."
+    }
+  },
+  {
+    "id": "qa-199",
+    "question": "Why can owls fly quietly?",
+    "topic": "Owl",
+    "anchor": "feathers are soft",
+    "gold": {
+      "source_id": "a:9700:p:4",
+      "title": "Owl",
+      "section": "Hunting",
+      "text": "Their most important adaptation is their almost silent flight. The feathers are soft, with fringes on the back edge, and the base of each is downy. This all muffles noise, and makes for silence.",
+      "support_span": "The feathers are soft, with fringes on the back edge, and the base of each is downy."
+    }
+  },
+  {
+    "id": "qa-200",
+    "question": "Can owls turn their heads all the way around?",
+    "topic": "Owl",
+    "anchor": "270",
+    "gold": {
+      "source_id": "a:9700:p:1",
+      "title": "Owl",
+      "section": "Adaptations",
+      "text": "Their eyes are also fixed inside their sockets, so they have to turn their whole head to look at other things. Owls can rotate their heads and necks up to 270 degrees in both directions.",
+      "support_span": "Owls can rotate their heads and necks up to 270 degrees in both directions."
+    }
+  }
+]

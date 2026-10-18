@@ -1,0 +1,10 @@
+{
+  "schema_version": "1",
+  "source_sha256": "eac2e3c74d7214eb8b0f2cc9d095bb9114f2bc1c5f9de5640d36b1f625d5cff8",
+  "builder": "passage-fts-v1",
+  "passages": "529379",
+  "source_bytes": 252276736,
+  "output_bytes": 332623872,
+  "added_bytes": 80347136,
+  "elapsed_seconds": 12.67
+}

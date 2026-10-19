@@ -1,0 +1,11 @@
+{
+  "cases": 40,
+  "differences": [],
+  "compared_fields": [
+    "passage",
+    "title",
+    "decision",
+    "rejection_reason"
+  ],
+  "previous_binary": "/tmp/wonderbug-eval-v2/evaluate"
+}

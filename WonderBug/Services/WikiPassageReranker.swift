@@ -4,7 +4,10 @@ import CoreML
 /// Scores question/passage pairs. Higher is more relevant; scores are NOT probabilities.
 nonisolated protocol WikiPassageReranking: AnyObject {
     func scores(question: String, passages: [String]) throws -> [Double]
+    var modelIdentity: String? { get }
 }
+
+nonisolated extension WikiPassageReranking { var modelIdentity: String? { nil } }
 
 nonisolated enum WikiRerankerError: Error {
     case invalidVocabulary, missingScore, unavailable
@@ -91,6 +94,7 @@ nonisolated final class WikiMiniLMReranker: WikiPassageReranking {
     private let modelURL: URL
     private let tokenizer: WikiWordPieceTokenizer
     private var model: MLModel?
+    private(set) var modelIdentity: String?
 
     init(modelURL: URL, vocabularyURL: URL) throws {
         self.modelURL = modelURL
@@ -108,6 +112,10 @@ nonisolated final class WikiMiniLMReranker: WikiPassageReranking {
             let configuration = MLModelConfiguration()
             configuration.computeUnits = .all
             model = try MLModel(contentsOf: modelURL, configuration: configuration)
+            if let metadata = model?.modelDescription.metadata[.creatorDefinedKey] as? [String: String],
+               let source = metadata["source"], let revision = metadata["revision"] {
+                modelIdentity = source + "@" + revision + (metadata["adapted_weights_sha256"].map { ":" + $0 } ?? "")
+            }
         }
         guard let model else { throw WikiRerankerError.unavailable }
         return try passages.map { passage in

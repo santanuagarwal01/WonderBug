@@ -6,6 +6,7 @@ final class RecordingReranker: WikiPassageReranking {
     var question = ""
     var score: (String) -> Double = { _ in -10 }
     var malformed = false
+    var modelIdentity: String? = "fixture-reranker"
     func scores(question: String, passages: [String]) throws -> [Double] {
         self.question = question
         self.passages = passages
@@ -131,6 +132,36 @@ final class RecordingReranker: WikiPassageReranking {
             _ = await direct.lookUp("What is 'lung' OR DROP TABLE articles?")
             reranker.score = { $0.contains("gas exchange") ? 8 : -10 }
             require(found(await direct.lookUp("What are book lungs?"), containing: "gas exchange"), "query punctuation cannot mutate the database")
+            let hybrid = try WikiSearchService(databaseURL: directURL, retrievalMode: .hybridPassages, reranker: reranker)
+            require(found(await hybrid.lookUp("What are book lungs?"), containing: "gas exchange"), "hybrid must retain body-only evidence")
+            reranker.score = { $0.contains("eucalyptus") ? 3.9 : -10 }
+            if case .notFound(.lowRelevance) = await hybrid.lookUp("What do koalas eat?") {} else { fatalError("baseline hybrid keeps its original cutoff") }
+            let gate = WikiRelevanceGate(version: "support-cutoff-v1", retrievalVersion: "hybrid-passages-v3",
+                                        rerankerIdentity: "fixture-reranker", threshold: 3.8)
+            let calibrated = try WikiSearchService(databaseURL: directURL, retrievalMode: .calibratedPassages,
+                                                   reranker: reranker, calibratedGate: gate)
+            require(found(await calibrated.lookUp("What do koalas eat?"), containing: "eucalyptus"), "calibrated operating point must be applied")
+            let calibratedTrace = await calibrated.retrievalTrace()
+            require(calibratedTrace?.gateThreshold == 3.8 && calibratedTrace?.rerankerIdentity == "fixture-reranker", "log the applied gate and model")
+            require((calibratedTrace?.candidates.count ?? 100) <= 20, "combined search cannot exceed twenty model calls")
+            require(Set(reranker.passages).count == reranker.passages.count, "no identical reranker inputs")
+            reranker.score = { $0.contains("eucalyptus") ? 3.8 : -10 }
+            require(found(await calibrated.lookUp("What do koalas eat?"), containing: "eucalyptus"), "inclusive cutoff boundary")
+            reranker.modelIdentity = "different-model"
+            if case .notFound(.calibrationUnavailable) = await calibrated.lookUp("What do koalas eat?") {} else { fatalError("model-specific calibration must reject a different model") }
+            reranker.modelIdentity = "fixture-reranker"
+            let uncalibrated = try WikiSearchService(databaseURL: directURL, retrievalMode: .calibratedPassages, reranker: reranker)
+            if case .notFound(.calibrationUnavailable) = await uncalibrated.lookUp("What do koalas eat?") {} else { fatalError("missing calibration must be explicit") }
+            reranker.malformed = true
+            if case .notFound(.rerankerUnavailable) = await hybrid.lookUp("What do koalas eat?") {} else { fatalError("hybrid fails closed on malformed scores") }
+            reranker.malformed = false
+            reranker.score = { $0.contains("eucalyptus") ? 8 : -10 }
+            let hybridSession = WikiSearchSession(service: hybrid)
+            _ = await hybridSession.lookUp("What do koalas eat?")
+            _ = await hybridSession.lookUp("Why do they eat leaves?")
+            require(reranker.passages.allSatisfy { $0.hasPrefix("Koala:") }, "hybrid follow-up retains source scope")
+            require(reranker.question.contains("Previous question:"), "hybrid follow-up keeps reranker context")
+            print("PASS: hybrid body access, deduplication, budget, calibration boundaries, model mismatch and follow-up scope")
             print("PASS: direct body FTS, complete context, stable provenance, diagnostics, missing index and bounded inference")
         }
 

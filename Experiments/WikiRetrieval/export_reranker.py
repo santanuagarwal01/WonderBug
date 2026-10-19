@@ -20,9 +20,11 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--cache', type=Path, required=True)
     parser.add_argument('--revision', default=REVISION)
+    parser.add_argument('--source', type=Path, help='Locally trained checkpoint; same architecture/tokenizer')
+    parser.add_argument('--parity-output', type=Path, help='Separate parity report for adapted checkpoints')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
-    source = snapshot_download(MODEL, revision=args.revision, cache_dir=str(args.cache),
+    source = str(args.source) if args.source else snapshot_download(MODEL, revision=args.revision, cache_dir=str(args.cache),
         allow_patterns=['config.json', 'model.safetensors', 'tokenizer.json', 'tokenizer_config.json',
                         'special_tokens_map.json', 'vocab.txt', 'README.md'])
     tokenizer = AutoTokenizer.from_pretrained(source, local_files_only=True)
@@ -58,8 +60,15 @@ def main():
     model.license = 'Apache-2.0'
     model.short_description = 'MiniLM passage reranker; raw relevance logit, not answer confidence.'
     model.user_defined_metadata.update({'source':MODEL, 'revision':args.revision, 'sequence_length':str(LENGTH)})
+    if args.source:
+        import hashlib
+        model.user_defined_metadata['adapted_weights_sha256'] = hashlib.sha256((args.source/'model.safetensors').read_bytes()).hexdigest()
     model.save(str(args.output/'WikiMiniLM.mlpackage'))
-    shutil.copyfile(Path(source)/'vocab.txt', args.output/'wiki-minilm-vocab.txt')
+    if (Path(source)/'vocab.txt').exists():
+        shutil.copyfile(Path(source)/'vocab.txt', args.output/'wiki-minilm-vocab.txt')
+    else:
+        vocabulary = tokenizer.get_vocab()
+        (args.output/'wiki-minilm-vocab.txt').write_text(''.join(token+'\n' for token, index in sorted(vocabulary.items(), key=lambda x:x[1])))
     samples = [
         ('What do koalas eat?', 'Koalas eat eucalyptus leaves.'),
         ('What do koalas eat?', 'Koalas have grey fur and live in Australia.'),
@@ -80,7 +89,7 @@ def main():
         print(f'{question[:65]} | PyTorch={reference:.4f} CoreML={actual:.4f}', flush=True)
         if abs(reference-actual) > 0.75:
             raise RuntimeError('Quantized conversion differs too much from the source model')
-    (Path(__file__).parent/'tokenizer-parity.json').write_text(json.dumps(fixtures, indent=2)+'\n')
+    (args.parity_output or Path(__file__).parent/'tokenizer-parity.json').write_text(json.dumps(fixtures, indent=2)+'\n')
     print('Wrote', args.output, flush=True)
 
 if __name__ == '__main__':

@@ -1,0 +1,66 @@
+{
+  "passages": {
+    "supported_cases": 32,
+    "displayed": 27,
+    "displayed_assessments": {
+      "correct": 19,
+      "incorrect": 4,
+      "partial": 0,
+      "unsupported": 3,
+      "nonanswer": 1
+    },
+    "unknown_cases": 8,
+    "unknown_displayed": 0,
+    "retrieval": {
+      "span_in_shortlist": 28,
+      "span_in_accepted": 23,
+      "median_ms": 186.56301498413086,
+      "p95_ms": 902.3269414901733,
+      "eligible": 32
+    }
+  },
+  "calibrated-passages": {
+    "supported_cases": 32,
+    "displayed": 27,
+    "displayed_assessments": {
+      "correct": 21,
+      "incorrect": 4,
+      "partial": 0,
+      "unsupported": 1,
+      "nonanswer": 1
+    },
+    "unknown_cases": 8,
+    "unknown_displayed": 0,
+    "retrieval": {
+      "span_in_shortlist": 29,
+      "span_in_accepted": 25,
+      "median_ms": 245.1709508895874,
+      "p95_ms": 1058.0699443817139,
+      "eligible": 32
+    }
+  },
+  "direct-passages": {
+    "retrieval": {
+      "span_in_shortlist": 27,
+      "span_in_accepted": 21,
+      "median_ms": 172.36196994781494,
+      "p95_ms": 754.2300224304199,
+      "eligible": 32
+    }
+  },
+  "hybrid-passages": {
+    "retrieval": {
+      "span_in_shortlist": 29,
+      "span_in_accepted": 25,
+      "median_ms": 239.97509479522705,
+      "p95_ms": 1150.6999731063843,
+      "eligible": 32
+    }
+  },
+  "limitations": [
+    "Small single-reviewer animal-heavy fresh set; not representative app accuracy.",
+    "Two identical-prompt/evidence pairs produced different answers despite greedy settings in local Mac runtime (fresh-15 and fresh-20); do not attribute all answer differences to retrieval.",
+    "Gold spans diagnose literal coverage, not all valid alternative evidence.",
+    "Qwen weights and prompt unchanged; no iPhone latency/memory/battery measurement."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "seed": 20261018,
+  "source": "/private/tmp/wonderbug-ranking-source",
+  "source_weights_sha256": "821d1aa69520101d6e0737f78a042ae25b19e5cb9160701909d10434f4aeb0ae",
+  "training_sha256": "122729b770e833e3ef190152f22b4856878b15ec7e1a72c914e7ce83fcc29bda",
+  "splits_sha256": "3e8d80aa8c0b465b27456b959e32dd33f981e3dac9262de8730e5ddb3cab5e3e",
+  "fit_pairs": 166,
+  "model_selection_pairs": 30,
+  "device": "cpu",
+  "lr": 1e-05,
+  "epochs": 3,
+  "batch_size": 8,
+  "sequence_length": 256,
+  "query_tokens": 48,
+  "objective": "class-balanced binary cross entropy on reviewed support labels",
+  "architecture": "unchanged MiniLM-L6; no Qwen work"
+}

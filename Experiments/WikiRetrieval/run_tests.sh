@@ -15,3 +15,5 @@ swiftc -O -default-isolation MainActor -module-cache-path "$scratch/modules" \
 
 python3 "$repo/Experiments/WikiRetrieval/test_passage_index.py"
 python3 "$repo/Experiments/WikiRetrieval/test_evaluation.py"
+
+python3 "$repo/Experiments/WikiRetrieval/test_ranking.py"

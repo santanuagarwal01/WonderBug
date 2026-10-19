@@ -1,0 +1,4 @@
+{
+  "epoch": 0,
+  "selection": "maximum model-selection pair AUC, then balanced loss; no calibration/validation labels used"
+}

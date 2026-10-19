@@ -18,9 +18,10 @@ import CoreML
         let reranker = try WikiMiniLMReranker(modelURL: compiled,
             vocabularyURL: URL(fileURLWithPath: args[3]).appendingPathComponent("wiki-minilm-vocab.txt"))
         var sessions: [String: WikiSearchSession] = [:]
-        for mode in [WikiSearchService.RetrievalMode.legacy, .passages, .directPassages] {
+        for mode in [WikiSearchService.RetrievalMode.legacy, .passages, .directPassages, .hybridPassages, .calibratedPassages] {
             sessions[mode.rawValue] = WikiSearchSession(service: try WikiSearchService(
-                databaseURL: URL(fileURLWithPath: args[1]), retrievalMode: mode, reranker: reranker))
+                databaseURL: URL(fileURLWithPath: args[1]), retrievalMode: mode, reranker: reranker,
+                calibratedGate: WikiRelevanceGate.load(URL(fileURLWithPath: args[3]).appendingPathComponent("wiki-relevance-gate.json"))))
         }
         let safety = SafetyService()
         while let line = readLine() {

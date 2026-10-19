@@ -1,0 +1,430 @@
+{
+  "selected": {
+    "threshold": 3.798828125,
+    "accepted": 29,
+    "supported_accepted": 27,
+    "unsupported_accepted": 2,
+    "supported_rejected": 4,
+    "precision": 0.9310344827586207,
+    "recall": 0.8709677419354839,
+    "cases": 40
+  },
+  "baseline": {
+    "threshold": 4.0,
+    "accepted": 27,
+    "supported_accepted": 25,
+    "unsupported_accepted": 2,
+    "supported_rejected": 6,
+    "precision": 0.9259259259259259,
+    "recall": 0.8064516129032258,
+    "cases": 40
+  },
+  "curve": [
+    {
+      "threshold": -2.009765625,
+      "accepted": 37,
+      "supported_accepted": 31,
+      "unsupported_accepted": 6,
+      "supported_rejected": 0,
+      "precision": 0.8378378378378378,
+      "recall": 1.0,
+      "cases": 40
+    },
+    {
+      "threshold": 0.340087890625,
+      "accepted": 36,
+      "supported_accepted": 31,
+      "unsupported_accepted": 5,
+      "supported_rejected": 0,
+      "precision": 0.8611111111111112,
+      "recall": 1.0,
+      "cases": 40
+    },
+    {
+      "threshold": 1.453125,
+      "accepted": 35,
+      "supported_accepted": 30,
+      "unsupported_accepted": 5,
+      "supported_rejected": 1,
+      "precision": 0.8571428571428571,
+      "recall": 0.967741935483871,
+      "cases": 40
+    },
+    {
+      "threshold": 1.6142578125,
+      "accepted": 34,
+      "supported_accepted": 29,
+      "unsupported_accepted": 5,
+      "supported_rejected": 2,
+      "precision": 0.8529411764705882,
+      "recall": 0.9354838709677419,
+      "cases": 40
+    },
+    {
+      "threshold": 1.623046875,
+      "accepted": 33,
+      "supported_accepted": 29,
+      "unsupported_accepted": 4,
+      "supported_rejected": 2,
+      "precision": 0.8787878787878788,
+      "recall": 0.9354838709677419,
+      "cases": 40
+    },
+    {
+      "threshold": 2.626953125,
+      "accepted": 32,
+      "supported_accepted": 29,
+      "unsupported_accepted": 3,
+      "supported_rejected": 2,
+      "precision": 0.90625,
+      "recall": 0.9354838709677419,
+      "cases": 40
+    },
+    {
+      "threshold": 3.04296875,
+      "accepted": 31,
+      "supported_accepted": 28,
+      "unsupported_accepted": 3,
+      "supported_rejected": 3,
+      "precision": 0.9032258064516129,
+      "recall": 0.9032258064516129,
+      "cases": 40
+    },
+    {
+      "threshold": 3.373046875,
+      "accepted": 30,
+      "supported_accepted": 27,
+      "unsupported_accepted": 3,
+      "supported_rejected": 4,
+      "precision": 0.9,
+      "recall": 0.8709677419354839,
+      "cases": 40
+    },
+    {
+      "threshold": 3.798828125,
+      "accepted": 29,
+      "supported_accepted": 27,
+      "unsupported_accepted": 2,
+      "supported_rejected": 4,
+      "precision": 0.9310344827586207,
+      "recall": 0.8709677419354839,
+      "cases": 40
+    },
+    {
+      "threshold": 3.837890625,
+      "accepted": 28,
+      "supported_accepted": 26,
+      "unsupported_accepted": 2,
+      "supported_rejected": 5,
+      "precision": 0.9285714285714286,
+      "recall": 0.8387096774193549,
+      "cases": 40
+    },
+    {
+      "threshold": 4.0,
+      "accepted": 27,
+      "supported_accepted": 25,
+      "unsupported_accepted": 2,
+      "supported_rejected": 6,
+      "precision": 0.9259259259259259,
+      "recall": 0.8064516129032258,
+      "cases": 40
+    },
+    {
+      "threshold": 5.18359375,
+      "accepted": 27,
+      "supported_accepted": 25,
+      "unsupported_accepted": 2,
+      "supported_rejected": 6,
+      "precision": 0.9259259259259259,
+      "recall": 0.8064516129032258,
+      "cases": 40
+    },
+    {
+      "threshold": 5.86328125,
+      "accepted": 26,
+      "supported_accepted": 25,
+      "unsupported_accepted": 1,
+      "supported_rejected": 6,
+      "precision": 0.9615384615384616,
+      "recall": 0.8064516129032258,
+      "cases": 40
+    },
+    {
+      "threshold": 5.89453125,
+      "accepted": 25,
+      "supported_accepted": 25,
+      "unsupported_accepted": 0,
+      "supported_rejected": 6,
+      "precision": 1.0,
+      "recall": 0.8064516129032258,
+      "cases": 40
+    },
+    {
+      "threshold": 5.9453125,
+      "accepted": 24,
+      "supported_accepted": 24,
+      "unsupported_accepted": 0,
+      "supported_rejected": 7,
+      "precision": 1.0,
+      "recall": 0.7741935483870968,
+      "cases": 40
+    },
+    {
+      "threshold": 6.453125,
+      "accepted": 23,
+      "supported_accepted": 23,
+      "unsupported_accepted": 0,
+      "supported_rejected": 8,
+      "precision": 1.0,
+      "recall": 0.7419354838709677,
+      "cases": 40
+    },
+    {
+      "threshold": 6.4609375,
+      "accepted": 22,
+      "supported_accepted": 22,
+      "unsupported_accepted": 0,
+      "supported_rejected": 9,
+      "precision": 1.0,
+      "recall": 0.7096774193548387,
+      "cases": 40
+    },
+    {
+      "threshold": 6.93359375,
+      "accepted": 21,
+      "supported_accepted": 21,
+      "unsupported_accepted": 0,
+      "supported_rejected": 10,
+      "precision": 1.0,
+      "recall": 0.6774193548387096,
+      "cases": 40
+    },
+    {
+      "threshold": 7,
+      "accepted": 20,
+      "supported_accepted": 20,
+      "unsupported_accepted": 0,
+      "supported_rejected": 11,
+      "precision": 1.0,
+      "recall": 0.6451612903225806,
+      "cases": 40
+    },
+    {
+      "threshold": 7.09375,
+      "accepted": 19,
+      "supported_accepted": 19,
+      "unsupported_accepted": 0,
+      "supported_rejected": 12,
+      "precision": 1.0,
+      "recall": 0.6129032258064516,
+      "cases": 40
+    },
+    {
+      "threshold": 7.1328125,
+      "accepted": 18,
+      "supported_accepted": 18,
+      "unsupported_accepted": 0,
+      "supported_rejected": 13,
+      "precision": 1.0,
+      "recall": 0.5806451612903226,
+      "cases": 40
+    },
+    {
+      "threshold": 7.26171875,
+      "accepted": 17,
+      "supported_accepted": 17,
+      "unsupported_accepted": 0,
+      "supported_rejected": 14,
+      "precision": 1.0,
+      "recall": 0.5483870967741935,
+      "cases": 40
+    },
+    {
+      "threshold": 7.35546875,
+      "accepted": 16,
+      "supported_accepted": 16,
+      "unsupported_accepted": 0,
+      "supported_rejected": 15,
+      "precision": 1.0,
+      "recall": 0.5161290322580645,
+      "cases": 40
+    },
+    {
+      "threshold": 7.375,
+      "accepted": 15,
+      "supported_accepted": 15,
+      "unsupported_accepted": 0,
+      "supported_rejected": 16,
+      "precision": 1.0,
+      "recall": 0.4838709677419355,
+      "cases": 40
+    },
+    {
+      "threshold": 7.45703125,
+      "accepted": 14,
+      "supported_accepted": 14,
+      "unsupported_accepted": 0,
+      "supported_rejected": 17,
+      "precision": 1.0,
+      "recall": 0.45161290322580644,
+      "cases": 40
+    },
+    {
+      "threshold": 7.51953125,
+      "accepted": 13,
+      "supported_accepted": 13,
+      "unsupported_accepted": 0,
+      "supported_rejected": 18,
+      "precision": 1.0,
+      "recall": 0.41935483870967744,
+      "cases": 40
+    },
+    {
+      "threshold": 7.58984375,
+      "accepted": 12,
+      "supported_accepted": 12,
+      "unsupported_accepted": 0,
+      "supported_rejected": 19,
+      "precision": 1.0,
+      "recall": 0.3870967741935484,
+      "cases": 40
+    },
+    {
+      "threshold": 7.8046875,
+      "accepted": 11,
+      "supported_accepted": 11,
+      "unsupported_accepted": 0,
+      "supported_rejected": 20,
+      "precision": 1.0,
+      "recall": 0.3548387096774194,
+      "cases": 40
+    },
+    {
+      "threshold": 7.89453125,
+      "accepted": 10,
+      "supported_accepted": 10,
+      "unsupported_accepted": 0,
+      "supported_rejected": 21,
+      "precision": 1.0,
+      "recall": 0.3225806451612903,
+      "cases": 40
+    },
+    {
+      "threshold": 7.95703125,
+      "accepted": 9,
+      "supported_accepted": 9,
+      "unsupported_accepted": 0,
+      "supported_rejected": 22,
+      "precision": 1.0,
+      "recall": 0.2903225806451613,
+      "cases": 40
+    },
+    {
+      "threshold": 8.1328125,
+      "accepted": 8,
+      "supported_accepted": 8,
+      "unsupported_accepted": 0,
+      "supported_rejected": 23,
+      "precision": 1.0,
+      "recall": 0.25806451612903225,
+      "cases": 40
+    },
+    {
+      "threshold": 8.3125,
+      "accepted": 7,
+      "supported_accepted": 7,
+      "unsupported_accepted": 0,
+      "supported_rejected": 24,
+      "precision": 1.0,
+      "recall": 0.22580645161290322,
+      "cases": 40
+    },
+    {
+      "threshold": 8.5078125,
+      "accepted": 6,
+      "supported_accepted": 6,
+      "unsupported_accepted": 0,
+      "supported_rejected": 25,
+      "precision": 1.0,
+      "recall": 0.1935483870967742,
+      "cases": 40
+    },
+    {
+      "threshold": 8.6171875,
+      "accepted": 5,
+      "supported_accepted": 5,
+      "unsupported_accepted": 0,
+      "supported_rejected": 26,
+      "precision": 1.0,
+      "recall": 0.16129032258064516,
+      "cases": 40
+    },
+    {
+      "threshold": 8.859375,
+      "accepted": 4,
+      "supported_accepted": 4,
+      "unsupported_accepted": 0,
+      "supported_rejected": 27,
+      "precision": 1.0,
+      "recall": 0.12903225806451613,
+      "cases": 40
+    },
+    {
+      "threshold": 9.34375,
+      "accepted": 3,
+      "supported_accepted": 3,
+      "unsupported_accepted": 0,
+      "supported_rejected": 28,
+      "precision": 1.0,
+      "recall": 0.0967741935483871,
+      "cases": 40
+    },
+    {
+      "threshold": 9.4609375,
+      "accepted": 2,
+      "supported_accepted": 2,
+      "unsupported_accepted": 0,
+      "supported_rejected": 29,
+      "precision": 1.0,
+      "recall": 0.06451612903225806,
+      "cases": 40
+    },
+    {
+      "threshold": 10.0625,
+      "accepted": 1,
+      "supported_accepted": 1,
+      "unsupported_accepted": 0,
+      "supported_rejected": 30,
+      "precision": 1.0,
+      "recall": 0.03225806451612903,
+      "cases": 40
+    }
+  ],
+  "minimum_precision": 0.9,
+  "objective": "Maximize supported acceptance at >=90% observed precision without increasing baseline unsupported acceptance; highest cutoff breaks exact ties.",
+  "warning": "Small development calibration, not a probability, correctness guarantee, or answer-level accuracy.",
+  "validation": {
+    "baseline": {
+      "threshold": 4.0,
+      "accepted": 32,
+      "supported_accepted": 25,
+      "unsupported_accepted": 7,
+      "supported_rejected": 0,
+      "precision": 0.78125,
+      "recall": 1.0,
+      "cases": 40
+    },
+    "selected": {
+      "threshold": 3.798828125,
+      "accepted": 32,
+      "supported_accepted": 25,
+      "unsupported_accepted": 7,
+      "supported_rejected": 0,
+      "precision": 0.78125,
+      "recall": 1.0,
+      "cases": 40
+    }
+  },
+  "labels_sha256": "49e65dde79c9fa9d78fdd8a37ec3adf2cfc637ffd68ed3cb8380ba8c17cb5b75"
+}

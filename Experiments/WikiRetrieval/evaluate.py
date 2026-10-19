@@ -39,7 +39,7 @@ def main(a):
  if a.limit:cases=cases[:a.limit]
  if a.ids:cases=[r for r in cases if r['id']in a.ids.split(',')]
  modes=a.modes.split(',')
- if any(m not in ['legacy','passages','direct-passages','gold']for m in modes):raise ValueError('Invalid mode')
+ if any(m not in ['legacy','passages','direct-passages','hybrid-passages','calibrated-passages','gold']for m in modes):raise ValueError('Invalid mode')
  if 'gold'in modes and not a.answers:raise ValueError('Gold evidence is an answer-generation control; pass --answers')
  output=Path(a.output);output.parent.mkdir(parents=True,exist_ok=True)
  manifest={'suite_sha256':sha(a.suite),'database_sha256':sha(a.database),'binary_sha256':sha(a.binary),
@@ -48,6 +48,8 @@ def main(a):
   'generation':{'max_tokens':100,'temperature':0,'top_p':1,'repeat_penalty':1.0},
   'accuracy_warning':'Retrieval source/span coverage is not semantic answer accuracy. See independent review labels.',
   'started_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}
+ gate_path=Path(a.resources)/'wiki-relevance-gate.json'
+ if gate_path.exists():manifest['gate_policy_sha256']=sha(gate_path)
  template=None
  if a.answers:
   from jinja2.sandbox import ImmutableSandboxedEnvironment
@@ -88,7 +90,7 @@ def main(a):
       gold=case.get('gold')
       if gold and mode!='gold':
        trace=result.get('trace')or{}
-       r['gold_source_in_fts48']=any(c.get('sourceID')==gold['source_id']for c in trace.get('retrievedSources',[]))if mode=='direct-passages'else None
+       r['gold_source_in_fts48']=any(c.get('sourceID')==gold['source_id']for c in trace.get('retrievedSources',[]))if mode in ['direct-passages','hybrid-passages','calibrated-passages']else None
        # Exact span coverage is conservative: legitimate paraphrases/alternate evidence need review.
        norm=lambda s:' '.join(s.lower().split())
        span=norm(gold['support_span'])

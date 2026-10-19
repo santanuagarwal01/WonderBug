@@ -1,0 +1,7 @@
+{
+  "fresh-retrieval.jsonl": "6eb1bbb8af2ec65c558b51fa7f75d5b61793fdf676f649ff29e6548adb7bf598",
+  "fresh-answers.jsonl": "c9793e286df7897098517ed39f498ab0229f530da56068c2473fa3c2304122b2",
+  "hybrid-development.jsonl": "46ca138a457b168a613cb41407c5d8d318f5aaf49311704dd5bd0b09bad11acc",
+  "hybrid-merged-development.jsonl": "2b0e8ed5d04a4585ee773b8b25468df10ff4dd985f133f2d0495618d64126b29",
+  "baseline-parity.jsonl": "fd2bd3393a25aeb1adee8aaf1a54a4f24f8074499d2f92c938ec67d481f305a3"
+}

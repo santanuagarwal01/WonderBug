@@ -1,3 +1,16 @@
+# Combined retrieval and calibrated-gate experiment (October 19, 2026)
+
+Use **HybridPassageExperiment** for the revised candidate selection with the original cutoff.
+**CalibratedPassageExperiment** uses the same search/model with a development-fitted cutoff.
+Both are opt-in. Legacy, WikiRetrievalExperiment and DirectPassageExperiment remain available.
+No new model or vector database is bundled; Qwen and the existing MiniLM weights are unchanged.
+
+See [the plain-language results](RANKING_RESULTS.md) and [reproduction details](evaluation/ranking/README.md).
+The model adaptation pilot did not beat the base model, and the calibrated cutoff did not
+improve the separate validation or fresh test. Neither is represented as a fix for hallucinations.
+
+---
+
 # Direct passage search and evaluation (steps 1–2)
 
 The new opt-in scheme is **DirectPassageExperiment**, using

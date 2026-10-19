@@ -21,4 +21,23 @@ nonisolated struct WikiRetrievalTrace: Codable, Sendable {
     var selectedText: String?
     var rejectionReason: String?
     var elapsedMS: Double = 0
+    var gateVersion: String?
+    var gateThreshold: Double?
+    var rerankerIdentity: String?
+}
+
+/// A development-calibrated operating point, NOT a probability of factual correctness.
+nonisolated struct WikiRelevanceGate: Codable, Sendable {
+    var version: String
+    var retrievalVersion: String
+    var rerankerIdentity: String
+    var threshold: Double
+
+    static func load(_ url: URL?) -> WikiRelevanceGate? {
+        guard let url, let data = try? Data(contentsOf: url),
+              let gate = try? JSONDecoder().decode(Self.self, from: data),
+              gate.threshold.isFinite, gate.version == "support-cutoff-v1",
+              gate.retrievalVersion == "hybrid-passages-v3" else { return nil }
+        return gate
+    }
 }

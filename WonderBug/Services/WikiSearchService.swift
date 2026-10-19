@@ -31,6 +31,7 @@ enum WikiMiss {
     /// The experimental model could not be loaded or produced invalid scores.
     case passageIndexUnavailable
     case rerankerUnavailable
+    case calibrationUnavailable
     /// A raw model relevance score below the experiment cutoff.
     case lowRelevance(Double, title: String)
     /// The question is nothing but stop words.
@@ -50,6 +51,7 @@ enum WikiMiss {
         switch self {
         case .passageIndexUnavailable: return "direct passage index unavailable or incompatible"
         case .rerankerUnavailable: return "reranker model unavailable"
+        case .calibrationUnavailable: return "gate calibration missing or incompatible with retrieval/model"
         case .lowRelevance(let score, let title): return String(format: "low relevance %.2f on \"%@\"", score, title)
         case .noContentWords: return "no content words"
         case .unknownWord(let word): return "unknown word \"\(word)\""
@@ -232,7 +234,9 @@ actor WikiSearchService {
         let senses: Set<String>
     }
 
+    private let calibratedGate: WikiRelevanceGate?
     private let retrievalMode: RetrievalMode
+    private var usesHybridRetrieval: Bool { retrievalMode == .hybridPassages || retrievalMode == .calibratedPassages }
     private let reranker: WikiPassageReranking?
     private let database: OpaquePointer
     private let articleCount: Double
@@ -243,7 +247,8 @@ actor WikiSearchService {
     private var documentFrequencies: [String: Int] = [:]
     private static let transientText = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
-    init(databaseURL: URL, retrievalMode: RetrievalMode = .legacy, reranker: WikiPassageReranking? = nil) throws {
+    init(databaseURL: URL, retrievalMode: RetrievalMode = .legacy, reranker: WikiPassageReranking? = nil, calibratedGate: WikiRelevanceGate? = nil) throws {
+        self.calibratedGate = calibratedGate
         self.retrievalMode = retrievalMode
         self.reranker = reranker
         var handle: OpaquePointer?
@@ -275,7 +280,8 @@ actor WikiSearchService {
         let name = "simplewiki"
         guard let url = Bundle.main.url(forResource: name, withExtension: "db") else { return nil }
         return try? WikiSearchService(databaseURL: url, retrievalMode: mode,
-                                     reranker: mode == .legacy ? nil : WikiMiniLMReranker.bundled())
+                                     reranker: mode == .legacy ? nil : WikiMiniLMReranker.bundled(),
+                                     calibratedGate: WikiRelevanceGate.load(Bundle.main.url(forResource: "wiki-relevance-gate", withExtension: "json")))
     }
 
     private static func step(_ database: OpaquePointer, _ sql: String, _ bindings: [String],
@@ -320,10 +326,10 @@ actor WikiSearchService {
 
     /// The article's body paragraphs in document order. Not in the full-text index: they are read
     /// for the shortlisted articles (or the single chosen article in legacy mode).
-    private func paragraphs(of id: Int64) -> [(section: String, text: String)] {
-        var found: [(section: String, text: String)] = []
-        step("SELECT section, text FROM paragraphs WHERE article = \(id) ORDER BY ord") { statement in
-            found.append((WikiSearchService.text(statement, 0), WikiSearchService.text(statement, 1)))
+    private func paragraphs(of id: Int64) -> [(section: String, text: String, ordinal: Int)] {
+        var found: [(section: String, text: String, ordinal: Int)] = []
+        step("SELECT section, text, ord FROM paragraphs WHERE article = \(id) ORDER BY ord") { statement in
+            found.append((WikiSearchService.text(statement, 0), WikiSearchService.text(statement, 1), Int(sqlite3_column_int64(statement, 2))))
         }
         return found
     }
@@ -543,7 +549,7 @@ actor WikiSearchService {
 
     // MARK: - Passage retrieval experiment
 
-    enum RetrievalMode: String, Codable { case legacy, passages, directPassages = "direct-passages" }
+    enum RetrievalMode: String, Codable { case legacy, passages, directPassages = "direct-passages", hybridPassages = "hybrid-passages", calibratedPassages = "calibrated-passages" }
 
     private struct PassageCandidate {
         let article: Article
@@ -551,6 +557,8 @@ actor WikiSearchService {
         let text: String
         let coverage: Double
         let lexicalScore: Double
+        var sourceID: String? = nil
+        var sourceText: String? = nil
     }
 
     /// Deliberately bounded: at most eight articles, twenty model evaluations, 256 tokens per pair.
@@ -583,7 +591,7 @@ actor WikiSearchService {
             let root = Self.stem(word)
             guard seen.insert(root).inserted else { return nil }
             return QueryTerm(stem: root, weight: max(1, min(8, inverseDocumentFrequency(word))),
-                             senses: Set(Self.retrievalSenses(word).map(Self.stem)))
+                             senses: usesHybridRetrieval ? [root] : Set(Self.retrievalSenses(word).map(Self.stem)))
         }
     }
 
@@ -615,12 +623,14 @@ actor WikiSearchService {
 
     func lookUp(_ question: String) -> WikiLookup {
         trace = WikiRetrievalTrace(mode: retrievalMode.rawValue, question: question)
+        if usesHybridRetrieval { trace?.retrievalVersion = "hybrid-passages-v3" }
         let start = Date()
         let result: WikiLookup
         switch retrievalMode {
         case .legacy: result = legacyLookUp(question)
         case .passages: result = passageLookUp(question)
         case .directPassages: result = directPassageLookUp(question)
+        case .hybridPassages, .calibratedPassages: result = hybridPassageLookUp(question)
         }
         finishTrace(result, start: start)
         return result
@@ -644,6 +654,15 @@ actor WikiSearchService {
         let content = raw.filter { !Self.stopWords.contains($0) }.map { indexForm($0) }
         guard !content.isEmpty else { return .notFound(.noContentWords) }
         let terms = retrievalTerms(content)
+        let ranked = articleCandidates(question: question, raw: raw, content: content, terms: terms)
+        guard !ranked.isEmpty else {
+            if let unknown = content.first(where: { documentFrequency($0) == 0 }) { return .notFound(.unknownWord(unknown)) }
+            return .notFound(.noMatchingArticle)
+        }
+        return rankPassages(question: question, content: content, terms: terms, articles: ranked)
+    }
+
+    private func articleCandidates(question: String, raw: [String], content: [String], terms: [QueryTerm]) -> [Article] {
         var candidates: [Int64: (article: Article, score: Double)] = [:]
         var order: [Int64] = []
         func add(_ article: Article, _ score: Double) {
@@ -680,7 +699,8 @@ actor WikiSearchService {
         }
         let recognized = content.filter { documentFrequency($0) > 0 }
         let expanded = Array(Set(recognized.flatMap { Self.retrievalSenses($0) }).sorted().prefix(32))
-        for (queryIndex, queryWords) in [recognized, expanded].enumerated() where !queryWords.isEmpty {
+        let queryLists: [[String]] = usesHybridRetrieval ? [recognized] : [recognized, expanded]
+        for (queryIndex, queryWords) in queryLists.enumerated() where !queryWords.isEmpty {
             let query = queryWords.map { "\"\($0)\"" }.joined(separator: " OR ")
             var ids: [Int64] = []
             step("SELECT rowid FROM fts WHERE fts MATCH ? ORDER BY bm25(fts, 10.0, 1.0), rowid LIMIT \(Self.candidateLimit)", [query]) {
@@ -700,69 +720,13 @@ actor WikiSearchService {
             let a = score(l), b = score(r)
             return a == b ? left.offset < right.offset : a > b
         }.prefix(Self.articleLimit).map { candidates[$0.element]!.article }
-        guard !ranked.isEmpty else {
-            if let unknown = content.first(where: { documentFrequency($0) == 0 }) { return .notFound(.unknownWord(unknown)) }
-            return .notFound(.noMatchingArticle)
-        }
-        return rankPassages(question: question, content: content, terms: terms, articles: ranked)
+        return ranked
     }
 
     private func rankPassages(question: String, content: [String], terms: [QueryTerm],
                               articles: [Article]) -> WikiLookup {
+        let shortlist = articlePassageCandidates(content: content, terms: terms, articles: articles)
         let unknown = content.filter { $0.count >= 3 && !$0.allSatisfy(\.isNumber) && documentFrequency($0) == 0 }
-        var perArticle: [[PassageCandidate]] = []
-        let safety = SafetyService()
-        for article in articles {
-            var titleWords = Self.stems(of: article.title)
-            let joinedTitle = Self.words(in: article.title).joined()
-            if content.contains(where: { Self.stem($0) == Self.stem(joinedTitle) }) {
-                titleWords.insert(Self.stem(joinedTitle))
-            }
-            // Carry a short identity sentence with body excerpts, preserving species/sense and
-            // the classification needed to correct false premises (e.g. a whale is a mammal).
-            let identity = Self.sentences(in: article.lead).first.flatMap {
-                $0.split(whereSeparator: \.isWhitespace).count <= 45 ? $0 : nil
-            }
-            let propertyTerms = terms.filter { !titleWords.contains($0.stem) }
-            let sources: [(String?, String)] = [(nil, article.lead)]
-                + paragraphs(of: article.id).map { (Optional($0.section), $0.text) }
-            var seen = Set<String>()
-            var passages: [PassageCandidate] = []
-            for (section, source) in sources {
-                for text in Self.passageWindows(source) where seen.insert(text).inserted {
-                    let evidence = titleWords.union(Self.stems(of: (section ?? "") + " " + text))
-                    // Unknown terms can occur in the body even when absent from the lead index.
-                    // They remain constraints so a fictional subject is not silently dropped.
-                    guard unknown.allSatisfy({ evidence.contains(Self.stem($0)) }) else { continue }
-                    let bodyWords = Self.stems(of: text)
-                    let coverage = passageCoverage(terms, evidence)
-                    let propertyCoverage = passageCoverage(propertyTerms, bodyWords)
-                    guard terms.isEmpty || coverage >= 0.25 else { continue }
-                    // Screen complete, independently retrieved windows; never remove blocked
-                    // words from an otherwise unsafe window and pass the fragments onward.
-                    let context = identity.map { text.hasPrefix($0) ? "" : $0 + " " } ?? ""
-                    let presented = article.title + ": " + context + text
-                    guard safety.safePassage(presented) != nil else { continue }
-                    let score = coverage + 2 * propertyCoverage
-                    passages.append(PassageCandidate(article: article, section: section, text: presented,
-                                                     coverage: coverage, lexicalScore: score))
-                }
-            }
-            passages = passages.enumerated().sorted {
-                $0.element.lexicalScore == $1.element.lexicalScore ? $0.offset < $1.offset
-                    : $0.element.lexicalScore > $1.element.lexicalScore
-            }.map(\.element)
-            perArticle.append(passages)
-        }
-        // Reserve two passages per article before filling spare slots. One long article must
-        // not monopolize the model's entire budget. Stable order keeps evaluation reproducible.
-        var shortlist = perArticle.flatMap { Array($0.prefix(2)) }
-        let remaining = perArticle.flatMap { Array($0.dropFirst(2)) }.enumerated().sorted {
-            $0.element.lexicalScore == $1.element.lexicalScore ? $0.offset < $1.offset
-                : $0.element.lexicalScore > $1.element.lexicalScore
-        }.map(\.element)
-        shortlist += remaining.prefix(max(0, Self.passageLimit - shortlist.count))
-        shortlist = Array(shortlist.prefix(Self.passageLimit))
         guard !shortlist.isEmpty else {
             if let unknown = unknown.first { return .notFound(.unknownWord(unknown)) }
             return .notFound(.noMatchingArticle)
@@ -796,14 +760,97 @@ actor WikiSearchService {
                                  runnersUp: ranked.dropFirst().prefix(2).map { (shortlist[$0].article.title, scores[$0]) }))
     }
 
+    private func articlePassageCandidates(content: [String], terms: [QueryTerm], articles: [Article]) -> [PassageCandidate] {
+        let unknown = content.filter { $0.count >= 3 && !$0.allSatisfy(\.isNumber) && documentFrequency($0) == 0 }
+        var perArticle: [[PassageCandidate]] = []
+        let safety = SafetyService()
+        for article in articles {
+            var titleWords = Self.stems(of: article.title)
+            let joinedTitle = Self.words(in: article.title).joined()
+            if content.contains(where: { Self.stem($0) == Self.stem(joinedTitle) }) {
+                titleWords.insert(Self.stem(joinedTitle))
+            }
+            // Carry a short identity sentence with body excerpts, preserving species/sense and
+            // the classification needed to correct false premises (e.g. a whale is a mammal).
+            let identity = Self.sentences(in: article.lead).first.flatMap {
+                $0.split(whereSeparator: \.isWhitespace).count <= 45 ? $0 : nil
+            }
+            let propertyTerms = terms.filter { !titleWords.contains($0.stem) }
+            let sources: [(String?, String, String)] = [(nil, article.lead, "a:\(article.id):lead")]
+                + paragraphs(of: article.id).map { (Optional($0.section), $0.text, "a:\(article.id):p:\($0.ordinal)") }
+            var seen = Set<String>()
+            var passages: [PassageCandidate] = []
+            for (section, source, sourceID) in sources {
+                for text in Self.passageWindows(source) where seen.insert(text).inserted {
+                    let evidence = titleWords.union(Self.stems(of: (section ?? "") + " " + text))
+                    // Unknown terms can occur in the body even when absent from the lead index.
+                    // They remain constraints so a fictional subject is not silently dropped.
+                    guard unknown.allSatisfy({ evidence.contains(Self.stem($0)) }) else { continue }
+                    let bodyWords = Self.stems(of: text)
+                    let coverage = passageCoverage(terms, evidence)
+                    let propertyCoverage = passageCoverage(propertyTerms, bodyWords)
+                    guard terms.isEmpty || coverage >= 0.25 else { continue }
+                    // Screen complete, independently retrieved windows; never remove blocked
+                    // words from an otherwise unsafe window and pass the fragments onward.
+                    let context = identity.map { text.hasPrefix($0) ? "" : $0 + " " } ?? ""
+                    let presented = article.title + ": " + context + text
+                    guard safety.safePassage(presented) != nil else { continue }
+                    let score = coverage + 2 * propertyCoverage
+                    passages.append(PassageCandidate(article: article, section: section, text: presented,
+                                                     coverage: coverage, lexicalScore: score, sourceID: sourceID, sourceText: source))
+                }
+            }
+            passages = passages.enumerated().sorted {
+                $0.element.lexicalScore == $1.element.lexicalScore ? $0.offset < $1.offset
+                    : $0.element.lexicalScore > $1.element.lexicalScore
+            }.map(\.element)
+            perArticle.append(passages)
+        }
+        // Reserve two passages per article before filling spare slots. One long article must
+        // not monopolize the model's entire budget. Stable order keeps evaluation reproducible.
+        var shortlist = perArticle.flatMap { Array($0.prefix(2)) }
+        let remaining = perArticle.flatMap { Array($0.dropFirst(2)) }.enumerated().sorted {
+            $0.element.lexicalScore == $1.element.lexicalScore ? $0.offset < $1.offset
+                : $0.element.lexicalScore > $1.element.lexicalScore
+        }.map(\.element)
+        shortlist += remaining.prefix(max(0, Self.passageLimit - shortlist.count))
+        shortlist = Array(shortlist.prefix(Self.passageLimit))
+        return shortlist
+    }
+
     // MARK: - Direct paragraph FTS5 experiment
 
     private func directPassageLookUp(_ query: String, rerankQuestion: String? = nil,
                                      articleID: Int64? = nil) -> WikiLookup {
         guard hasPassageIndex else { return .notFound(.passageIndexUnavailable) }
         // FTS5's porter tokenizer handles morphology. No synonym tables or lead-only word veto.
+        var candidates = directCandidates(query, articleID: articleID, limit: Self.passageLimit)
+        guard !candidates.isEmpty else { return .notFound(.noMatchingArticle) }
+        trace?.candidates = candidates.map(\.record)
+        guard let reranker else { return .notFound(.rerankerUnavailable) }
+        let scores: [Double]
+        do {
+            scores = try reranker.scores(question: rerankQuestion ?? query, passages: candidates.map { $0.record.text })
+            guard scores.count == candidates.count, scores.allSatisfy(\.isFinite) else { throw WikiRerankerError.missingScore }
+        } catch { return .notFound(.rerankerUnavailable) }
+        for i in candidates.indices { candidates[i].record.relevance = scores[i] }
+        trace?.candidates = candidates.map(\.record)
+        let order = candidates.indices.sorted { scores[$0] == scores[$1] ? $0 < $1 : scores[$0] > scores[$1] }
+        let best = candidates[order[0]]
+        // Retained for controlled A/B comparison, NOT an answerability decision. Record below-
+        // cutoff candidates too, so evaluation can measure evidence lost through this gate.
+        guard scores[order[0]] >= Self.minimumRelevance else {
+            return .notFound(.lowRelevance(scores[order[0]], title: best.article.title))
+        }
+        return .found(WikiPassage(id: best.article.id, title: best.article.title, lead: best.article.lead,
+            text: best.record.text, coverage: nil, section: best.record.section,
+            runnersUp: order.dropFirst().prefix(2).map { (candidates[$0].article.title, scores[$0]) },
+            sourceIDs: best.record.sourceID.map { [$0] } ?? []))
+    }
+
+    private func directCandidates(_ query: String, articleID: Int64? = nil, limit: Int) -> [(record: WikiEvidenceRecord, article: Article)] {
         let terms = Array(Set(Self.words(in: query).filter { !Self.stopWords.contains($0) }).sorted().prefix(32))
-        guard !terms.isEmpty else { return .notFound(.noContentWords) }
+        guard !terms.isEmpty else { return [] }
         let match = terms.map { "\"\($0)\"" }.joined(separator: " OR ")
         let scope = articleID.map { "AND d.article = \($0)" } ?? ""
         var documents: [(id: String, article: Article, ordinal: Int, section: String, text: String)] = []
@@ -822,7 +869,7 @@ actor WikiSearchService {
             WikiEvidenceRecord(sourceID: $0.id, title: $0.article.title, section: $0.section,
                                text: $0.text, relevance: nil)
         }
-        guard !documents.isEmpty else { return .notFound(.noMatchingArticle) }
+        guard !documents.isEmpty else { return [] }
         let safety = SafetyService()
         let queryStems = Set(terms.map(Self.stem))
         var candidates: [(record: WikiEvidenceRecord, article: Article)] = []
@@ -869,30 +916,120 @@ actor WikiSearchService {
             for group in windows where group.count > slot {
                 let candidate = group[slot]
                 if seen.insert(candidate.record.text).inserted { candidates.append(candidate) }
-                if candidates.count == Self.passageLimit { break }
+                if candidates.count == limit { break }
             }
-            if candidates.count == Self.passageLimit { break }
+            if candidates.count == limit { break }
         }
-        guard !candidates.isEmpty else { return .notFound(.noMatchingArticle) }
-        trace?.candidates = candidates.map(\.record)
+        return candidates
+    }
+
+    private static func mergeWindows(_ a: PassageCandidate, _ b: PassageCandidate) -> String? {
+        guard a.sourceID != nil, a.sourceID == b.sourceID else { return nil }
+        let title = a.article.title + ": "
+        let identity = sentences(in: a.article.lead).first ?? ""
+        func body(_ text: String) -> [String] {
+            var text = String(text.dropFirst(title.count))
+            if !identity.isEmpty, text.hasPrefix(identity) { text = String(text.dropFirst(identity.count)).trimmingCharacters(in: .whitespaces) }
+            return text.split(whereSeparator: \.isWhitespace).map(String.init)
+        }
+        let x = body(a.text), y = body(b.text)
+        var joined: [String]?
+        if a.text.contains(b.text) { return a.text }
+        if b.text.contains(a.text) { return b.text }
+        for (left, right) in [(x, y), (y, x)] where joined == nil {
+            let maximum = min(left.count, right.count)
+            if maximum > 0 {
+                for overlap in stride(from: maximum, through: 1, by: -1) {
+                    if left.suffix(overlap).elementsEqual(right.prefix(overlap)) {
+                        joined = left + right.dropFirst(overlap); break
+                    }
+                }
+            }
+        }
+        guard let joined, let original = a.sourceText,
+              original.split(whereSeparator: \.isWhitespace).joined(separator: " ").contains(joined.joined(separator: " ")) else { return nil }
+        let carried = a.text.hasPrefix(title + identity) && !identity.isEmpty ? identity + " " : ""
+        let result = title + carried + joined.joined(separator: " ")
+        guard result.split(whereSeparator: \.isWhitespace).count <= 125 else { return nil }
+        return result
+    }
+
+    /// Merge two independently retrieved pools before the single bounded reranker call.
+    /// No new topic rules or synonym lists: direct body search supplies lexical alternatives.
+    private func hybridPassageLookUp(_ question: String, rerankQuestion: String? = nil,
+                                     scopedArticle: Article? = nil) -> WikiLookup {
+        guard hasPassageIndex else { return .notFound(.passageIndexUnavailable) }
+        let raw = Array(Self.words(in: question).prefix(64))
+        let content = raw.filter { !Self.stopWords.contains($0) }.map { indexForm($0) }
+        guard !content.isEmpty else { return .notFound(.noContentWords) }
+        let terms = retrievalTerms(content)
+        let articles = scopedArticle.map { [$0] }
+            ?? articleCandidates(question: question, raw: raw, content: content, terms: terms)
+        let articlePool = articlePassageCandidates(content: content, terms: terms, articles: articles)
+        let bodyPool = directCandidates(question, articleID: scopedArticle?.id, limit: 48)
+        var merged: [(record: WikiEvidenceRecord, article: Article)] = []
+        var seen = Set<String>()
+        func append(_ candidate: (record: WikiEvidenceRecord, article: Article)) {
+            let key = Self.words(in: candidate.record.text).joined(separator: " ")
+            if seen.insert(key).inserted { merged.append(candidate) }
+        }
+        // Merge overlapping windows of the SAME source before allocating slots. This retains
+        // their supporting sentences while avoiding two model calls for nearly identical text.
+        var compact: [PassageCandidate] = []
+        for candidate in articlePool {
+            if let index = compact.indices.first(where: {
+                compact[$0].sourceID == candidate.sourceID && Self.mergeWindows(compact[$0], candidate) != nil
+            }), let combined = Self.mergeWindows(compact[index], candidate) {
+                let old = compact[index]
+                compact[index] = PassageCandidate(article: old.article, section: old.section,
+                    text: combined, coverage: max(old.coverage, candidate.coverage),
+                    lexicalScore: max(old.lexicalScore, candidate.lexicalScore), sourceID: old.sourceID, sourceText: old.sourceText)
+            } else { compact.append(candidate) }
+        }
+        var groups = articles.map { article in compact.filter { $0.article.id == article.id } }
+        while groups.contains(where: { !$0.isEmpty }) && merged.count < Self.passageLimit {
+            for i in groups.indices where !groups[i].isEmpty && merged.count < Self.passageLimit {
+                let p = groups[i].removeFirst()
+                append((WikiEvidenceRecord(sourceID: p.sourceID, title: p.article.title,
+                                           section: p.section, text: p.text, relevance: nil), p.article))
+            }
+        }
+        // Fill the freed slots from direct body search, prioritizing different articles.
+        var bodyArticles = Set<Int64>()
+        let bodyDiverse = bodyPool.filter { bodyArticles.insert($0.article.id).inserted }
+        for p in bodyDiverse + bodyPool where merged.count < Self.passageLimit {
+            // A complete source already represented in the pool needs no duplicate model call.
+            if !merged.contains(where: { $0.record.sourceID == p.record.sourceID && $0.record.text.contains(p.record.text) }) { append(p) }
+        }
+        guard !merged.isEmpty else { return .notFound(.noMatchingArticle) }
+        trace?.candidates = merged.map(\.record)
         guard let reranker else { return .notFound(.rerankerUnavailable) }
         let scores: [Double]
         do {
-            scores = try reranker.scores(question: rerankQuestion ?? query, passages: candidates.map { $0.record.text })
-            guard scores.count == candidates.count, scores.allSatisfy(\.isFinite) else { throw WikiRerankerError.missingScore }
+            scores = try reranker.scores(question: rerankQuestion ?? question, passages: merged.map { $0.record.text })
+            guard scores.count == merged.count, scores.allSatisfy(\.isFinite) else { throw WikiRerankerError.missingScore }
         } catch { return .notFound(.rerankerUnavailable) }
-        for i in candidates.indices { candidates[i].record.relevance = scores[i] }
-        trace?.candidates = candidates.map(\.record)
-        let order = candidates.indices.sorted { scores[$0] == scores[$1] ? $0 < $1 : scores[$0] > scores[$1] }
-        let best = candidates[order[0]]
-        // Retained for controlled A/B comparison, NOT an answerability decision. Record below-
-        // cutoff candidates too, so evaluation can measure evidence lost through this gate.
-        guard scores[order[0]] >= Self.minimumRelevance else {
+        for i in merged.indices { merged[i].record.relevance = scores[i] }
+        trace?.candidates = merged.map(\.record)
+        let order = merged.indices.sorted { scores[$0] == scores[$1] ? $0 < $1 : scores[$0] > scores[$1] }
+        let best = merged[order[0]]
+        var threshold = Self.minimumRelevance
+        trace?.rerankerIdentity = reranker.modelIdentity
+        trace?.gateVersion = "baseline-4"
+        if retrievalMode == .calibratedPassages {
+            guard let gate = calibratedGate, gate.threshold.isFinite,
+                  gate.version == "support-cutoff-v1", gate.retrievalVersion == "hybrid-passages-v3",
+                  gate.rerankerIdentity == reranker.modelIdentity else { return .notFound(.calibrationUnavailable) }
+            threshold = gate.threshold
+            trace?.gateVersion = gate.version
+        }
+        trace?.gateThreshold = threshold
+        guard scores[order[0]] >= threshold else {
             return .notFound(.lowRelevance(scores[order[0]], title: best.article.title))
         }
         return .found(WikiPassage(id: best.article.id, title: best.article.title, lead: best.article.lead,
             text: best.record.text, coverage: nil, section: best.record.section,
-            runnersUp: order.dropFirst().prefix(2).map { (candidates[$0].article.title, scores[$0]) },
+            runnersUp: order.dropFirst().prefix(2).map { (merged[$0].article.title, scores[$0]) },
             sourceIDs: best.record.sourceID.map { [$0] } ?? []))
     }
 
@@ -1028,6 +1165,7 @@ actor WikiSearchService {
     /// match the new question ("What about the smallest?" → the Mercury sentence of Planet).
     func reuse(_ question: String, id: Int64, title: String, lead: String, previousQuestion: String? = nil) -> WikiLookup {
         trace = WikiRetrievalTrace(mode: retrievalMode.rawValue, question: question)
+        if usesHybridRetrieval { trace?.retrievalVersion = "hybrid-passages-v3" }
         let started = Date()
         let result = reuseLookup(question, id: id, title: title, lead: lead, previousQuestion: previousQuestion)
         finishTrace(result, start: started)
@@ -1035,6 +1173,11 @@ actor WikiSearchService {
     }
 
     private func reuseLookup(_ question: String, id: Int64, title: String, lead: String, previousQuestion: String?) -> WikiLookup {
+        if usesHybridRetrieval {
+            let resolved = "Current question: \(question). Topic: \(title). " + (previousQuestion.map { "Previous question: \($0)" } ?? "")
+            return hybridPassageLookUp(question + " " + title, rerankQuestion: resolved,
+                                      scopedArticle: Article(id: id, title: title, lead: lead))
+        }
         if retrievalMode == .directPassages {
             // Preserve the existing topic policy for this retrieval-only experiment. Entity
             // resolution from the previous answer is a separate, measured training task.

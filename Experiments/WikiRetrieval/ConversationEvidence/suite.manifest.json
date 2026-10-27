@@ -1,0 +1,9 @@
+{
+  "cases": 75,
+  "device_regression": 41,
+  "new_conversations": 9,
+  "new_cases": 34,
+  "sha256": "7f2dbf8cafe7eb7e725d8714443293449447b373f21769792676089c29b616c6",
+  "source_audit_sha256": "2b2a745343d02bc2073eb5fd0974d824afe866f64dae7becad8c4f2488514e90",
+  "note": "Frozen before new-case retrieval inspection. Oracle uses intended history, including expected prior answers where necessary. It does not measure a learned resolver or Qwen accuracy. No labels are loaded by the app."
+}

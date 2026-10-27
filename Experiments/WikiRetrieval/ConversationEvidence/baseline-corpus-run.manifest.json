@@ -1,0 +1,25 @@
+{
+  "suite_sha256": "7f2dbf8cafe7eb7e725d8714443293449447b373f21769792676089c29b616c6",
+  "database_sha256": "e4426e7ed09592ddf0a0d0d0d071ea4109c3cb0f0bb95f5c884ee78b64cc0f35",
+  "binary_sha256": "60401a9d080b331aad0e768d9d3907daf80b06bb317a38aa1c543c9150a914fe",
+  "reranker_sha256": "b437a9d19cd4a016f6272095e50591adcd238f19d0291ba01bb06f4c6cfa23a7",
+  "vocabulary_sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+  "cases": 75,
+  "arms": [
+    "baseline",
+    "unscoped-original",
+    "unscoped-resolved"
+  ],
+  "retrieval_mode": "hybrid-passages",
+  "gate": 4.0,
+  "corpus_label": "baseline",
+  "started_utc": "2026-10-27T04:08:16Z",
+  "generation_enabled": false,
+  "resolver": "reviewed oracle, not a learned implementation",
+  "runtime": "macOS Core ML; timings are not iPhone latency",
+  "warning": "Retrieval admissions are not correctness. Baseline session routing replays actual Swift code, but generation/safety of generated answers are not run.",
+  "complete": true,
+  "output_sha256": "10b039bc02afea2d22e82060c95d90ed8c67c7475bcb304ec039ba2619733971",
+  "seconds": 59.54,
+  "child_peak_rss_bytes": 190431232
+}

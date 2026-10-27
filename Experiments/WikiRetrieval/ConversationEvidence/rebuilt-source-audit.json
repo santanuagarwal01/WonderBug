@@ -1,0 +1,103 @@
+{
+  "baseline_sha256": "e4426e7ed09592ddf0a0d0d0d071ea4109c3cb0f0bb95f5c884ee78b64cc0f35",
+  "dump_sha256": "2575aba62792ac2c1a907ac5196c0e3681b4d6cd5d1ba58c1c1a06df13629c64",
+  "rebuilt_sha256": "72ddfd72d19e0a8ec5f64f78056cdf6794b93ea4effd7e16abf3d897640e0282",
+  "articles": [
+    {
+      "title": "Phases of the Moon",
+      "article_id": 3540,
+      "revision": "10904962",
+      "raw_sha256": "9dbc62758f431415e44a80f17756cab5145b88d51219e87408b734fc1bb24c5d",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 1,
+      "fact_probe": "waning crescent",
+      "source_structure": "bulleted phase definitions",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": false,
+      "rebuilt_paragraphs": 7,
+      "rebuilt_body_characters": 1822,
+      "rebuilt_contains_fact": true,
+      "matching_rebuilt_passages": [
+        {
+          "section": "Phases",
+          "text": "List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon."
+        },
+        {
+          "section": "Phases",
+          "text": "A waning crescent Moon is when the Moon looks like a crescent and the crescent shrinks (or \"wanes\") in size from one day to the next."
+        }
+      ]
+    },
+    {
+      "title": "List of planets",
+      "article_id": 4413,
+      "revision": "10491610",
+      "raw_sha256": "cc5bc6bab80f4335d3d9ff07600b8681ef7dacfbe3200ea0be51863b42c51142",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 2,
+      "fact_probe": "Jupiter",
+      "source_structure": "nested planet list",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": false,
+      "rebuilt_paragraphs": 12,
+      "rebuilt_body_characters": 3915,
+      "rebuilt_contains_fact": true,
+      "matching_rebuilt_passages": [
+        {
+          "section": "Planets in the Solar System",
+          "text": "List entries under Planets in the Solar System: Terrestrial planet; Mercury; Venus; Earth; Mars; Giant planet; Jupiter; Saturn; Uranus; Neptune."
+        },
+        {
+          "section": "Planets in the Solar System",
+          "text": "Giant planets: Jupiter \u2013 The largest planet in the Solar System. Giant planets: Saturn \u2013 Sixth planet from the Sun. It has giant rings around it. Giant planets: Uranus - Seventh planet from the Sun. It has 11 rings around it. Giant planets: Neptune \u2013 The farthest planet that we know from the Sun."
+        },
+        {
+          "section": "Hypothetical planets",
+          "text": "Vulcan \u2013 A hypothetical planet thought to be between the Sun and Mercury Theia \u2013 A planet which some think crashed into Earth and created the Moon. Planet V \u2013 A hypothetical planet beyond Mars. Phaeton \u2013 A planet which exploded and created Ceres. Antichthon \u2013 A hypothetical planet which has a opposite aspect of the Earth. Krypton \u2013 A hypothetical planet between Jupiter and Saturn Planet X \u2013 A planet beyond Neptune"
+        }
+      ]
+    },
+    {
+      "title": "Rosa Parks",
+      "article_id": 35750,
+      "revision": "10942050",
+      "raw_sha256": "8bdffeb1dfcc3416beb0a69286f78fa3b410aee3b2a831b4d4be895a5a796b57",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 15,
+      "fact_probe": "Raymond Parks",
+      "source_structure": "infobox spouse field",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": false,
+      "rebuilt_paragraphs": 16,
+      "rebuilt_body_characters": 3962,
+      "rebuilt_contains_fact": true,
+      "matching_rebuilt_passages": [
+        {
+          "section": "Infobox",
+          "text": "Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977)."
+        }
+      ]
+    },
+    {
+      "title": "James Earl Ray",
+      "article_id": 279480,
+      "revision": "10683199",
+      "raw_sha256": "7b04f131b98fedb4c74f42d4b94f12421685bd79293d73ca25980122b4043e84",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 3,
+      "fact_probe": "murdering",
+      "source_structure": "lead; separate safety exclusion, not extraction loss",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": true,
+      "rebuilt_paragraphs": 6,
+      "rebuilt_body_characters": 966,
+      "rebuilt_contains_fact": true,
+      "matching_rebuilt_passages": []
+    }
+  ],
+  "conclusion": "All four articles reproduce exactly under the archived extractor. Missing spouse/list facts exist in the pinned source, so omissions are extraction losses; James Earl Ray is a safety-policy interaction."
+}

@@ -1,0 +1,2 @@
+# Build-time only; no new app dependency.
+mwparserfromhell==0.7.2

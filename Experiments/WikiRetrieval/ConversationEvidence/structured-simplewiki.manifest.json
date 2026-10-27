@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "builder": "structured-evidence-v1",
+  "source_sha256": "e4426e7ed09592ddf0a0d0d0d071ea4109c3cb0f0bb95f5c884ee78b64cc0f35",
+  "dump_sha256": "2575aba62792ac2c1a907ac5196c0e3681b4d6cd5d1ba58c1c1a06df13629c64",
+  "body_budget": "4000",
+  "passages": "1008333",
+  "counts": {
+    "prose": 418045,
+    "list": 76341,
+    "body_characters": 194485214,
+    "articles": 276399,
+    "list_overview": 52729,
+    "infobox": 156579,
+    "table": 28240
+  },
+  "source_bytes": 332623872,
+  "output_bytes": 601112576,
+  "output_sha256": "72ddfd72d19e0a8ec5f64f78056cdf6794b93ea4effd7e16abf3d897640e0282",
+  "seconds": 1622.64,
+  "note": "Same article set and leads; paragraph ordinals identify this corpus version only. No runtime model or gate changes."
+}

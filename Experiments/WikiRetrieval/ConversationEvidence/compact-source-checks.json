@@ -1,0 +1,79 @@
+[
+  {
+    "corpus": "structured",
+    "title": "Rosa Parks",
+    "fact_probe": "Raymond Parks",
+    "present": true,
+    "matching_passages": [
+      {
+        "ordinal": 0,
+        "section": "Infobox",
+        "text": "Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977)."
+      }
+    ]
+  },
+  {
+    "corpus": "structured",
+    "title": "Phases of the Moon",
+    "fact_probe": "waning crescent",
+    "present": true,
+    "matching_passages": [
+      {
+        "ordinal": 0,
+        "section": "Phases",
+        "text": "List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon."
+      },
+      {
+        "ordinal": 6,
+        "section": "Phases",
+        "text": "A waning crescent Moon is when the Moon looks like a crescent and the crescent shrinks (or \"wanes\") in size from one day to the next."
+      }
+    ]
+  },
+  {
+    "corpus": "structured",
+    "title": "List of planets",
+    "fact_probe": "Jupiter \u2013 The largest",
+    "present": true,
+    "matching_passages": [
+      {
+        "ordinal": 7,
+        "section": "Planets in the Solar System",
+        "text": "Giant planets: Jupiter \u2013 The largest planet in the Solar System. Giant planets: Saturn \u2013 Sixth planet from the Sun. It has giant rings around it. Giant planets: Uranus - Seventh planet from the Sun. It has 11 rings around it. Giant planets: Neptune \u2013 The farthest planet that we know from the Sun."
+      }
+    ]
+  },
+  {
+    "corpus": "compact",
+    "title": "Rosa Parks",
+    "fact_probe": "Raymond Parks",
+    "present": true,
+    "matching_passages": [
+      {
+        "ordinal": 0,
+        "section": "Infobox",
+        "text": "Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977)."
+      }
+    ]
+  },
+  {
+    "corpus": "compact",
+    "title": "Phases of the Moon",
+    "fact_probe": "waning crescent",
+    "present": true,
+    "matching_passages": [
+      {
+        "ordinal": 0,
+        "section": "Phases",
+        "text": "List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon."
+      }
+    ]
+  },
+  {
+    "corpus": "compact",
+    "title": "List of planets",
+    "fact_probe": "Jupiter \u2013 The largest",
+    "present": false,
+    "matching_passages": []
+  }
+]

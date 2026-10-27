@@ -1,0 +1,118 @@
+{
+  "target_body_characters": 73888368,
+  "fraction": 0.9,
+  "selected": {
+    "scale": 0.6,
+    "body_characters": 68424556,
+    "paragraphs": 332215
+  },
+  "profiles": [
+    {
+      "scale": 0.05,
+      "body_characters": 1997269,
+      "paragraphs": 29287
+    },
+    {
+      "scale": 0.1,
+      "body_characters": 6098236,
+      "paragraphs": 66235
+    },
+    {
+      "scale": 0.15,
+      "body_characters": 10989866,
+      "paragraphs": 97193
+    },
+    {
+      "scale": 0.2,
+      "body_characters": 16325841,
+      "paragraphs": 126638
+    },
+    {
+      "scale": 0.25,
+      "body_characters": 22088242,
+      "paragraphs": 155233
+    },
+    {
+      "scale": 0.3,
+      "body_characters": 28269687,
+      "paragraphs": 182894
+    },
+    {
+      "scale": 0.35,
+      "body_characters": 34832906,
+      "paragraphs": 211056
+    },
+    {
+      "scale": 0.4,
+      "body_characters": 41422959,
+      "paragraphs": 236846
+    },
+    {
+      "scale": 0.45,
+      "body_characters": 48191084,
+      "paragraphs": 262212
+    },
+    {
+      "scale": 0.5,
+      "body_characters": 55007195,
+      "paragraphs": 286762
+    },
+    {
+      "scale": 0.55,
+      "body_characters": 61658109,
+      "paragraphs": 309619
+    },
+    {
+      "scale": 0.6,
+      "body_characters": 68424556,
+      "paragraphs": 332215
+    },
+    {
+      "scale": 0.65,
+      "body_characters": 75242436,
+      "paragraphs": 354106
+    },
+    {
+      "scale": 0.7,
+      "body_characters": 81997425,
+      "paragraphs": 375487
+    },
+    {
+      "scale": 0.75,
+      "body_characters": 88717014,
+      "paragraphs": 395646
+    },
+    {
+      "scale": 0.8,
+      "body_characters": 95379375,
+      "paragraphs": 415142
+    },
+    {
+      "scale": 0.85,
+      "body_characters": 101918360,
+      "paragraphs": 433307
+    },
+    {
+      "scale": 0.9,
+      "body_characters": 108643723,
+      "paragraphs": 451546
+    },
+    {
+      "scale": 0.95,
+      "body_characters": 115071166,
+      "paragraphs": 467203
+    },
+    {
+      "scale": 1.0,
+      "body_characters": 123665953,
+      "paragraphs": 493229
+    }
+  ],
+  "source_sha256": "93a69e3e942c763d82c605c878b0a8a7d8b4204e94d3eeff7ff3431ad2384975",
+  "baseline_sha256": "e4426e7ed09592ddf0a0d0d0d071ea4109c3cb0f0bb95f5c884ee78b64cc0f35",
+  "output_sha256": "a85b30cae221092752f64caa1f19e06ee00102b48bd22e2ff4ad8b18098d600b",
+  "baseline_bytes": 332623872,
+  "output_bytes": 315969536,
+  "selection_basis": "Storage only; no evaluation questions, answers, labels, or scores are read.",
+  "warning": "Per-article pruning can remove supporting facts. Do not promote from size alone."
+}

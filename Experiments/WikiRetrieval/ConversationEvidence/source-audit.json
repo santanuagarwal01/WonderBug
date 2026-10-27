@@ -1,0 +1,60 @@
+{
+  "baseline_sha256": "e4426e7ed09592ddf0a0d0d0d071ea4109c3cb0f0bb95f5c884ee78b64cc0f35",
+  "dump_sha256": "2575aba62792ac2c1a907ac5196c0e3681b4d6cd5d1ba58c1c1a06df13629c64",
+  "rebuilt_sha256": null,
+  "articles": [
+    {
+      "title": "Phases of the Moon",
+      "article_id": 3540,
+      "revision": "10904962",
+      "raw_sha256": "9dbc62758f431415e44a80f17756cab5145b88d51219e87408b734fc1bb24c5d",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 1,
+      "fact_probe": "waning crescent",
+      "source_structure": "bulleted phase definitions",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": false
+    },
+    {
+      "title": "List of planets",
+      "article_id": 4413,
+      "revision": "10491610",
+      "raw_sha256": "cc5bc6bab80f4335d3d9ff07600b8681ef7dacfbe3200ea0be51863b42c51142",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 2,
+      "fact_probe": "Jupiter",
+      "source_structure": "nested planet list",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": false
+    },
+    {
+      "title": "Rosa Parks",
+      "article_id": 35750,
+      "revision": "10942050",
+      "raw_sha256": "8bdffeb1dfcc3416beb0a69286f78fa3b410aee3b2a831b4d4be895a5a796b57",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 15,
+      "fact_probe": "Raymond Parks",
+      "source_structure": "infobox spouse field",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": false
+    },
+    {
+      "title": "James Earl Ray",
+      "article_id": 279480,
+      "revision": "10683199",
+      "raw_sha256": "7b04f131b98fedb4c74f42d4b94f12421685bd79293d73ca25980122b4043e84",
+      "legacy_lead_exact_match": true,
+      "legacy_body_exact_match": true,
+      "legacy_paragraphs": 3,
+      "fact_probe": "murdering",
+      "source_structure": "lead; separate safety exclusion, not extraction loss",
+      "raw_contains_fact": true,
+      "baseline_contains_fact": true
+    }
+  ],
+  "conclusion": "All four articles reproduce exactly under the archived extractor. Missing spouse/list facts exist in the pinned source, so omissions are extraction losses; James Earl Ray is a safety-policy interaction."
+}

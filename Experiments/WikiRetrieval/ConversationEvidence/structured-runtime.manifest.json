@@ -1,0 +1,9 @@
+{
+  "audit_database": "/Users/santa/iOS Projects/WonderBug/output/conversation-evidence-2026-10-27/structured-simplewiki.db",
+  "audit_sha256": "72ddfd72d19e0a8ec5f64f78056cdf6794b93ea4effd7e16abf3d897640e0282",
+  "runtime_sha256": "93a69e3e942c763d82c605c878b0a8a7d8b4204e94d3eeff7ff3431ad2384975",
+  "audit_bytes": 601112576,
+  "runtime_bytes": 521220096,
+  "passages_verified_identical": 1008333,
+  "removed": "evidence_provenance (build-only audit metadata)"
+}

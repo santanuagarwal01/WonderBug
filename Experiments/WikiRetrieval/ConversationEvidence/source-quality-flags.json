@@ -1,0 +1,149 @@
+{
+  "scope": "Examples noticed during evidence review; not an exhaustive factual/source-quality audit. Separate from sufficient/partial/absent labels.",
+  "selected_passages": [
+    {
+      "corpus": "baseline",
+      "id": "device-32",
+      "arm": "unscoped-resolved",
+      "passage_sha256": "40fd3eedc92d913c237f7e46b067bc579f0b72065101c76a1f843aeeee1292b7",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "baseline",
+      "id": "device-33",
+      "arm": "unscoped-resolved",
+      "passage_sha256": "40fd3eedc92d913c237f7e46b067bc579f0b72065101c76a1f843aeeee1292b7",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "baseline",
+      "id": "device-34",
+      "arm": "baseline",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "baseline",
+      "id": "device-34",
+      "arm": "unscoped-original",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "baseline",
+      "id": "device-34",
+      "arm": "unscoped-resolved",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "structured",
+      "id": "device-34",
+      "arm": "baseline",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "structured",
+      "id": "device-34",
+      "arm": "unscoped-original",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "structured",
+      "id": "device-34",
+      "arm": "unscoped-resolved",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-01",
+      "arm": "baseline",
+      "passage_sha256": "cb4277c28ec16af8ca6f7e43d5a4d03776fd2441323f13db5dd77c423ae4836a",
+      "flags": [
+        "Corrupt hippo-intelligence claim appears in selected text. It was already in the unchanged original lead; not created by the extractor."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-01",
+      "arm": "unscoped-original",
+      "passage_sha256": "cb4277c28ec16af8ca6f7e43d5a4d03776fd2441323f13db5dd77c423ae4836a",
+      "flags": [
+        "Corrupt hippo-intelligence claim appears in selected text. It was already in the unchanged original lead; not created by the extractor."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-01",
+      "arm": "unscoped-resolved",
+      "passage_sha256": "cb4277c28ec16af8ca6f7e43d5a4d03776fd2441323f13db5dd77c423ae4836a",
+      "flags": [
+        "Corrupt hippo-intelligence claim appears in selected text. It was already in the unchanged original lead; not created by the extractor."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-32",
+      "arm": "baseline",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-32",
+      "arm": "unscoped-original",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-34",
+      "arm": "baseline",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-34",
+      "arm": "unscoped-original",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    },
+    {
+      "corpus": "compact",
+      "id": "device-34",
+      "arm": "unscoped-resolved",
+      "passage_sha256": "b2ae05dfc3fbe7a36e4b9cc18d9177b6b3706964c41ddada41843a70a6e40a84",
+      "flags": [
+        "False claim that Galileo discovered Jupiter. The core location may be supported but this ancillary claim must not be repeated."
+      ]
+    }
+  ]
+}

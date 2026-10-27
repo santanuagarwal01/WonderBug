@@ -1,0 +1,53 @@
+{
+  "protocol_sha256": "2df541fbba35cc4d2dbe4fda53007fb96319f821b3f42c94d14855049f9dd459",
+  "suite_sha256": "7f2dbf8cafe7eb7e725d8714443293449447b373f21769792676089c29b616c6",
+  "corpus_sha256": "a85b30cae221092752f64caa1f19e06ee00102b48bd22e2ff4ad8b18098d600b",
+  "float_index_sha256": "7c442ae710c4e5fbc0f833da72bb8247f6cff5f7929ddc9a2f446107f7d0f50c",
+  "binary_index_sha256": "c420da4b103da8f6914d4518cc37f123d53c941c4189ffb27f6bb3361485761c",
+  "embedder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "tokenizer_sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "dimensions": 384,
+    "max_tokens": 256,
+    "pooling": "attention-masked mean followed by L2 normalization"
+  },
+  "reranker_sha256": "b437a9d19cd4a016f6272095e50591adcd238f19d0291ba01bb06f4c6cfa23a7",
+  "bridge_sha256": "9690647d9b8fe0408166e9166668f153cabe7a02aa809f6ad8664c94d9cbe4f5",
+  "vocabulary_sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+  "query_encoder": "Swift Core ML, int8-compressed weights, float16 compute",
+  "coreml_embedder_sha256": "df7aaa35ac9763341d7ac526c447897693475383a867d2a5c80f7be9dbe335d9",
+  "embedding_vocabulary_sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+  "cases": 75,
+  "arms": [
+    "bm25-fusion",
+    "vec-float-fusion",
+    "vec-binary-fusion"
+  ],
+  "question_modes": [
+    "original",
+    "reviewed-complete"
+  ],
+  "gate": 4.0,
+  "reranker_limit": 20,
+  "generation": false,
+  "performance_note": "Mac only. Embedding shared between retrieval arms of one query; component times are explicit. Corpus/index/model loading excluded from query timings.",
+  "started_utc": "2026-10-27T05:42:54Z",
+  "coreml_encoder_identity": {
+    "com.github.apple.coremltools.source": "torch==2.7.0",
+    "com.github.apple.coremltools.source_dialect": "TorchScript",
+    "com.github.apple.coremltools.version": "8.3.0",
+    "dimensions": "384",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "sequence_length": "256",
+    "source": "sentence-transformers/all-MiniLM-L6-v2",
+    "source_weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+  },
+  "complete": true,
+  "records": 450,
+  "output_sha256": "6100cb1aa92c1851d6ae378455dd8178d6e09c4e934b956670f45360312f3e2c",
+  "seconds": 142.67,
+  "python_peak_rss_bytes": 168984576,
+  "swift_peak_rss_bytes": 197033984
+}

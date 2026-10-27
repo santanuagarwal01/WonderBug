@@ -1,0 +1,21 @@
+{
+  "files": {
+    "VectorMain.swift": "0e87c27478a3a935cd948c6722c483d9d74a953d08dfe85a7348eceb403b6c92",
+    "WikiSentenceEmbedder.swift": "90e2beeaaee935ef8bced17b410e0f50b20321e38e1334dfa8bffd42af15cb98",
+    "build_index.py": "e04bdcbde9ce3b18077e8e10604fc411c881353f57f31527dda416014b0230a1",
+    "build_probe.py": "d390548efc01c232199b9c652d661bdd70dce9fa62b3bc7321eb28fe71a70dd0",
+    "check_prepare_isolation.py": "e643167ce0567dbceb5570598b4834d96a2bfef5cd7ae1831b878db34a03befe",
+    "download_model.py": "575dc912100e7a4bb7b071d062c03b1b60e1a1b478f02b7fdd714f9243ee9e05",
+    "embedding.py": "579b5476b50342df128e7aa98d04d1aac4e6810392de3810cfb912210f90f887",
+    "export_embedder.py": "bae25940f34e9947403776e9de5fb0fbd7ac044d0f33ba8f3814a56324ed8d8c",
+    "export_index.py": "af129f73301c3dda2ee0ce80127fb95ece9e2a008ad6edc58d77b855d3d725a5",
+    "fusion.py": "b96eb74ad7502ae247e0d29a3d29d478639b1b817360c31ca8da8b9c50c5375a",
+    "inspect_failures.py": "7e4b5438cfaacdff688307e79bc624f351249208f6ad895094e1b9c71d97c09f",
+    "review_results.py": "baed5d0305125a977c6c8547b0527c9bced4c7ea08ec509aa53921fecac8bd25",
+    "run_comparison.py": "3678461e6ad0a013c462124c951a953c93f969ae303f8099bd9152b287c41c4d",
+    "smoke_bridge.py": "255480de2ac0c01385ca08b5528858e89c73ceef697d4bb6a8828366bfa66959",
+    "test_review_results.py": "aa8c15364745233c906073ced6df2968f157e371cdc615441586d88ec41bd738",
+    "test_vector_retrieval.py": "84abb79a017f96b84f8c0672d295e305ebc1c81d0db4e81b9f98678fa4f9a2b7"
+  },
+  "note": "Implementation frozen before inspecting the comparison outputs; no model training or case-specific retrieval rules."
+}

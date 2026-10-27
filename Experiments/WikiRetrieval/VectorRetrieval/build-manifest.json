@@ -1,0 +1,6 @@
+{
+  "original_service_sha256": "7837c0d2550a4dd06e975f1ff53e38ff1948b702e2f3732b4264541cfb554301",
+  "instrumented_service_sha256": "5a9046b3c729cd5136aedbed740b2258542e1a4823e5a9dc2a5c328d95d034b8",
+  "binary_sha256": "9690647d9b8fe0408166e9166668f153cabe7a02aa809f6ad8664c94d9cbe4f5",
+  "app_modified": false
+}

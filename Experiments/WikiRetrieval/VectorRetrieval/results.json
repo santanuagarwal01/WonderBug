@@ -1,0 +1,4886 @@
+{
+  "manifest": {
+    "protocol_sha256": "2df541fbba35cc4d2dbe4fda53007fb96319f821b3f42c94d14855049f9dd459",
+    "suite_sha256": "7f2dbf8cafe7eb7e725d8714443293449447b373f21769792676089c29b616c6",
+    "corpus_sha256": "a85b30cae221092752f64caa1f19e06ee00102b48bd22e2ff4ad8b18098d600b",
+    "float_index_sha256": "7c442ae710c4e5fbc0f833da72bb8247f6cff5f7929ddc9a2f446107f7d0f50c",
+    "binary_index_sha256": "c420da4b103da8f6914d4518cc37f123d53c941c4189ffb27f6bb3361485761c",
+    "embedder": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "tokenizer_sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+      "dimensions": 384,
+      "max_tokens": 256,
+      "pooling": "attention-masked mean followed by L2 normalization"
+    },
+    "reranker_sha256": "b437a9d19cd4a016f6272095e50591adcd238f19d0291ba01bb06f4c6cfa23a7",
+    "bridge_sha256": "9690647d9b8fe0408166e9166668f153cabe7a02aa809f6ad8664c94d9cbe4f5",
+    "vocabulary_sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "query_encoder": "Swift Core ML, int8-compressed weights, float16 compute",
+    "coreml_embedder_sha256": "df7aaa35ac9763341d7ac526c447897693475383a867d2a5c80f7be9dbe335d9",
+    "embedding_vocabulary_sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "cases": 75,
+    "arms": [
+      "bm25-fusion",
+      "vec-float-fusion",
+      "vec-binary-fusion"
+    ],
+    "question_modes": [
+      "original",
+      "reviewed-complete"
+    ],
+    "gate": 4.0,
+    "reranker_limit": 20,
+    "generation": false,
+    "performance_note": "Mac only. Embedding shared between retrieval arms of one query; component times are explicit. Corpus/index/model loading excluded from query timings.",
+    "started_utc": "2026-10-27T05:42:54Z",
+    "coreml_encoder_identity": {
+      "com.github.apple.coremltools.source": "torch==2.7.0",
+      "com.github.apple.coremltools.source_dialect": "TorchScript",
+      "com.github.apple.coremltools.version": "8.3.0",
+      "dimensions": "384",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "sequence_length": "256",
+      "source": "sentence-transformers/all-MiniLM-L6-v2",
+      "source_weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+    },
+    "complete": true,
+    "records": 450,
+    "output_sha256": "6100cb1aa92c1851d6ae378455dd8178d6e09c4e934b956670f45360312f3e2c",
+    "seconds": 142.67,
+    "python_peak_rss_bytes": 168984576,
+    "swift_peak_rss_bytes": 197033984
+  },
+  "excluded_cases": {
+    "new-astronomy-1": "Standalone Saturn does not specify mythology versus planet."
+  },
+  "metrics": [
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "group": "answerable",
+      "cases": 66,
+      "support": {
+        "sufficient": 30,
+        "absent": 13,
+        "not_admitted": 18,
+        "partial": 5
+      },
+      "decisions": {
+        "retrieved": 48,
+        "retrieval_rejected": 18
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "group": "regression_answerable",
+      "cases": 39,
+      "support": {
+        "sufficient": 19,
+        "absent": 8,
+        "not_admitted": 8,
+        "partial": 4
+      },
+      "decisions": {
+        "retrieved": 31,
+        "retrieval_rejected": 8
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "group": "answerable",
+      "cases": 66,
+      "support": {
+        "sufficient": 32,
+        "absent": 10,
+        "not_admitted": 18,
+        "partial": 6
+      },
+      "decisions": {
+        "retrieved": 48,
+        "retrieval_rejected": 18
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "group": "regression_answerable",
+      "cases": 39,
+      "support": {
+        "sufficient": 20,
+        "absent": 6,
+        "not_admitted": 8,
+        "partial": 5
+      },
+      "decisions": {
+        "retrieved": 31,
+        "retrieval_rejected": 8
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "group": "answerable",
+      "cases": 66,
+      "support": {
+        "sufficient": 30,
+        "absent": 14,
+        "not_admitted": 16,
+        "partial": 6
+      },
+      "decisions": {
+        "retrieved": 50,
+        "retrieval_rejected": 16
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "group": "regression_answerable",
+      "cases": 39,
+      "support": {
+        "sufficient": 18,
+        "absent": 8,
+        "not_admitted": 8,
+        "partial": 5
+      },
+      "decisions": {
+        "retrieved": 31,
+        "retrieval_rejected": 8
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "group": "answerable",
+      "cases": 66,
+      "support": {
+        "sufficient": 50,
+        "absent": 7,
+        "not_admitted": 3,
+        "partial": 6
+      },
+      "decisions": {
+        "retrieved": 63,
+        "retrieval_rejected": 3
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "group": "regression_answerable",
+      "cases": 39,
+      "support": {
+        "sufficient": 29,
+        "absent": 5,
+        "not_admitted": 1,
+        "partial": 4
+      },
+      "decisions": {
+        "retrieved": 38,
+        "retrieval_rejected": 1
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "group": "answerable",
+      "cases": 66,
+      "support": {
+        "sufficient": 52,
+        "absent": 4,
+        "not_admitted": 3,
+        "partial": 7
+      },
+      "decisions": {
+        "retrieved": 63,
+        "retrieval_rejected": 3
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "group": "regression_answerable",
+      "cases": 39,
+      "support": {
+        "sufficient": 30,
+        "absent": 3,
+        "not_admitted": 1,
+        "partial": 5
+      },
+      "decisions": {
+        "retrieved": 38,
+        "retrieval_rejected": 1
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "group": "answerable",
+      "cases": 66,
+      "support": {
+        "sufficient": 49,
+        "absent": 6,
+        "not_admitted": 4,
+        "partial": 7
+      },
+      "decisions": {
+        "retrieved": 62,
+        "retrieval_rejected": 4
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "group": "regression_answerable",
+      "cases": 39,
+      "support": {
+        "sufficient": 27,
+        "absent": 5,
+        "not_admitted": 2,
+        "partial": 5
+      },
+      "decisions": {
+        "retrieved": 37,
+        "retrieval_rejected": 2
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "group": "controls",
+      "cases": 9,
+      "support": {
+        "absent": 4,
+        "ambiguous": 1,
+        "not_admitted": 4
+      },
+      "decisions": {
+        "retrieved": 5,
+        "retrieval_rejected": 3,
+        "question_blocked": 1
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "group": "controls",
+      "cases": 9,
+      "support": {
+        "absent": 4,
+        "ambiguous": 1,
+        "not_admitted": 4
+      },
+      "decisions": {
+        "retrieved": 5,
+        "retrieval_rejected": 3,
+        "question_blocked": 1
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "group": "controls",
+      "cases": 9,
+      "support": {
+        "absent": 3,
+        "ambiguous": 1,
+        "not_admitted": 5
+      },
+      "decisions": {
+        "retrieved": 4,
+        "retrieval_rejected": 4,
+        "question_blocked": 1
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "group": "controls",
+      "cases": 9,
+      "support": {
+        "absent": 2,
+        "ambiguous": 1,
+        "not_admitted": 6
+      },
+      "decisions": {
+        "retrieved": 3,
+        "retrieval_rejected": 2,
+        "question_blocked": 2,
+        "oracle_unresolved": 2
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "group": "controls",
+      "cases": 9,
+      "support": {
+        "absent": 2,
+        "ambiguous": 1,
+        "not_admitted": 6
+      },
+      "decisions": {
+        "retrieved": 3,
+        "retrieval_rejected": 2,
+        "question_blocked": 2,
+        "oracle_unresolved": 2
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "group": "controls",
+      "cases": 9,
+      "support": {
+        "absent": 2,
+        "ambiguous": 1,
+        "not_admitted": 6
+      },
+      "decisions": {
+        "retrieved": 3,
+        "retrieval_rejected": 2,
+        "question_blocked": 2,
+        "oracle_unresolved": 2
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "group": "device_followups",
+      "cases": 10,
+      "support": {
+        "not_admitted": 6,
+        "absent": 3,
+        "sufficient": 1
+      },
+      "decisions": {
+        "retrieval_rejected": 6,
+        "retrieved": 4
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "group": "device_followups",
+      "cases": 10,
+      "support": {
+        "not_admitted": 6,
+        "absent": 3,
+        "sufficient": 1
+      },
+      "decisions": {
+        "retrieval_rejected": 6,
+        "retrieved": 4
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "group": "device_followups",
+      "cases": 10,
+      "support": {
+        "not_admitted": 6,
+        "absent": 3,
+        "sufficient": 1
+      },
+      "decisions": {
+        "retrieval_rejected": 6,
+        "retrieved": 4
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "group": "device_followups",
+      "cases": 10,
+      "support": {
+        "sufficient": 9,
+        "absent": 1
+      },
+      "decisions": {
+        "retrieved": 10
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "group": "device_followups",
+      "cases": 10,
+      "support": {
+        "sufficient": 9,
+        "absent": 1
+      },
+      "decisions": {
+        "retrieved": 10
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "group": "device_followups",
+      "cases": 10,
+      "support": {
+        "sufficient": 8,
+        "absent": 1,
+        "not_admitted": 1
+      },
+      "decisions": {
+        "retrieved": 9,
+        "retrieval_rejected": 1
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "group": "unseen_answerable",
+      "cases": 27,
+      "support": {
+        "sufficient": 11,
+        "not_admitted": 10,
+        "absent": 5,
+        "partial": 1
+      },
+      "decisions": {
+        "retrieved": 17,
+        "retrieval_rejected": 10
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "group": "unseen_answerable",
+      "cases": 27,
+      "support": {
+        "sufficient": 12,
+        "not_admitted": 10,
+        "absent": 4,
+        "partial": 1
+      },
+      "decisions": {
+        "retrieved": 17,
+        "retrieval_rejected": 10
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "group": "unseen_answerable",
+      "cases": 27,
+      "support": {
+        "sufficient": 12,
+        "not_admitted": 8,
+        "absent": 6,
+        "partial": 1
+      },
+      "decisions": {
+        "retrieved": 19,
+        "retrieval_rejected": 8
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "group": "unseen_answerable",
+      "cases": 27,
+      "support": {
+        "sufficient": 21,
+        "absent": 2,
+        "partial": 2,
+        "not_admitted": 2
+      },
+      "decisions": {
+        "retrieved": 25,
+        "retrieval_rejected": 2
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "group": "unseen_answerable",
+      "cases": 27,
+      "support": {
+        "sufficient": 22,
+        "absent": 1,
+        "partial": 2,
+        "not_admitted": 2
+      },
+      "decisions": {
+        "retrieved": 25,
+        "retrieval_rejected": 2
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "group": "unseen_answerable",
+      "cases": 27,
+      "support": {
+        "sufficient": 22,
+        "absent": 1,
+        "partial": 2,
+        "not_admitted": 2
+      },
+      "decisions": {
+        "retrieved": 25,
+        "retrieval_rejected": 2
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "group": "new_followups",
+      "cases": 16,
+      "support": {
+        "not_admitted": 10,
+        "sufficient": 2,
+        "absent": 4
+      },
+      "decisions": {
+        "retrieval_rejected": 10,
+        "retrieved": 6
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "group": "new_followups",
+      "cases": 16,
+      "support": {
+        "not_admitted": 10,
+        "sufficient": 2,
+        "absent": 4
+      },
+      "decisions": {
+        "retrieval_rejected": 10,
+        "retrieved": 6
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "group": "new_followups",
+      "cases": 16,
+      "support": {
+        "not_admitted": 8,
+        "absent": 6,
+        "sufficient": 2
+      },
+      "decisions": {
+        "retrieval_rejected": 8,
+        "retrieved": 8
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "group": "new_followups",
+      "cases": 16,
+      "support": {
+        "sufficient": 12,
+        "absent": 1,
+        "partial": 1,
+        "not_admitted": 2
+      },
+      "decisions": {
+        "retrieved": 14,
+        "retrieval_rejected": 2
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "group": "new_followups",
+      "cases": 16,
+      "support": {
+        "sufficient": 12,
+        "absent": 1,
+        "partial": 1,
+        "not_admitted": 2
+      },
+      "decisions": {
+        "retrieved": 14,
+        "retrieval_rejected": 2
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "group": "new_followups",
+      "cases": 16,
+      "support": {
+        "sufficient": 12,
+        "absent": 1,
+        "partial": 1,
+        "not_admitted": 2
+      },
+      "decisions": {
+        "retrieved": 14,
+        "retrieval_rejected": 2
+      }
+    }
+  ],
+  "performance": [
+    {
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "median_components_ms": {
+        "lexical_ms": 124.2,
+        "embedding_ms": 0,
+        "vector_search_ms": 0,
+        "prepare_union_ms": 57.57,
+        "rerank_ms": 88.29
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "median_components_ms": {
+        "lexical_ms": 124.2,
+        "embedding_ms": 4.95,
+        "vector_search_ms": 401.6,
+        "prepare_union_ms": 57.57,
+        "rerank_ms": 84.89
+      }
+    },
+    {
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "median_components_ms": {
+        "lexical_ms": 124.2,
+        "embedding_ms": 4.95,
+        "vector_search_ms": 29.15,
+        "prepare_union_ms": 57.57,
+        "rerank_ms": 84.73
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "median_components_ms": {
+        "lexical_ms": 155.93,
+        "embedding_ms": 0,
+        "vector_search_ms": 0,
+        "prepare_union_ms": 58.44,
+        "rerank_ms": 87.9
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "median_components_ms": {
+        "lexical_ms": 155.93,
+        "embedding_ms": 8.29,
+        "vector_search_ms": 401.74,
+        "prepare_union_ms": 58.44,
+        "rerank_ms": 84.79
+      }
+    },
+    {
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "median_components_ms": {
+        "lexical_ms": 155.93,
+        "embedding_ms": 8.29,
+        "vector_search_ms": 29.38,
+        "prepare_union_ms": 58.44,
+        "rerank_ms": 84.19
+      }
+    }
+  ],
+  "changes_from_bm25": [
+    {
+      "id": "device-15",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Jupiter"
+    },
+    {
+      "id": "device-15",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Jupiter"
+    },
+    {
+      "id": "device-17",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "from": "sufficient",
+      "to": "partial",
+      "selected_title": "Scaphopoda"
+    },
+    {
+      "id": "device-17",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "from": "sufficient",
+      "to": "partial",
+      "selected_title": "Scaphopoda"
+    },
+    {
+      "id": "device-17",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "from": "sufficient",
+      "to": "partial",
+      "selected_title": "Scaphopoda"
+    },
+    {
+      "id": "device-17",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "from": "sufficient",
+      "to": "partial",
+      "selected_title": "Scaphopoda"
+    },
+    {
+      "id": "device-21",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Space observatory"
+    },
+    {
+      "id": "device-21",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Space observatory"
+    },
+    {
+      "id": "device-41",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "from": "sufficient",
+      "to": "not_admitted",
+      "selected_title": null
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "from": "not_admitted",
+      "to": "absent",
+      "selected_title": "Steel"
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Mount Kilimanjaro"
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Mount Kilimanjaro"
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Mount Kilimanjaro"
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "from": "absent",
+      "to": "sufficient",
+      "selected_title": "Mount Kilimanjaro"
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "from": "not_admitted",
+      "to": "absent",
+      "selected_title": "The Founder"
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "from": "absent",
+      "to": "not_admitted",
+      "selected_title": null
+    }
+  ],
+  "review_method": "Single-assistant manual support review. Exact case/text matches reuse prior reviews. Every admitted output requires a text-bound label. Not an independent or blinded factuality evaluation.",
+  "limitations": [
+    "Reviewed-complete questions are an oracle, not a learned resolver.",
+    "Original questions search without conversation topic reuse.",
+    "No Qwen answers generated.",
+    "Core support does not certify every source claim.",
+    "Previously used 75-case suite; not a new held-out benchmark.",
+    "Mac timings, no iPhone latency or battery measurement.",
+    "Union preparation is shared; component medians must not be summed as per-arm end-to-end latency."
+  ],
+  "reviewed_outputs": [
+    {
+      "id": "device-01",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "sufficient",
+      "review_note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    },
+    {
+      "id": "device-01",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "sufficient",
+      "review_note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    },
+    {
+      "id": "device-01",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "sufficient",
+      "review_note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    },
+    {
+      "id": "device-01",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "sufficient",
+      "review_note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    },
+    {
+      "id": "device-01",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "sufficient",
+      "review_note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    },
+    {
+      "id": "device-01",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "sufficient",
+      "review_note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    },
+    {
+      "id": "device-02",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "absent",
+      "review_note": "Discusses birth and habitat but never gives the name calf."
+    },
+    {
+      "id": "device-02",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "absent",
+      "review_note": "Discusses birth and habitat but never gives the name calf."
+    },
+    {
+      "id": "device-02",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "absent",
+      "review_note": "Discusses birth and habitat but never gives the name calf."
+    },
+    {
+      "id": "device-02",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "absent",
+      "review_note": "Discusses birth and habitat but never gives the name calf."
+    },
+    {
+      "id": "device-02",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "absent",
+      "review_note": "Discusses birth and habitat but never gives the name calf."
+    },
+    {
+      "id": "device-02",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Hippopotamus",
+      "support": "absent",
+      "review_note": "Discusses birth and habitat but never gives the name calf."
+    },
+    {
+      "id": "device-03",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rhinoceros",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-03",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rhinoceros",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-03",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rhinoceros",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-03",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rhinoceros",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-03",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rhinoceros",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-03",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rhinoceros",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-04",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Sky",
+      "support": "sufficient",
+      "review_note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    },
+    {
+      "id": "device-04",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Sky",
+      "support": "sufficient",
+      "review_note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    },
+    {
+      "id": "device-04",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Sky",
+      "support": "sufficient",
+      "review_note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    },
+    {
+      "id": "device-04",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Sky",
+      "support": "sufficient",
+      "review_note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    },
+    {
+      "id": "device-04",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Sky",
+      "support": "sufficient",
+      "review_note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    },
+    {
+      "id": "device-04",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Sky",
+      "support": "sufficient",
+      "review_note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    },
+    {
+      "id": "device-05",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Earl Ray Tomblin",
+      "support": "absent",
+      "review_note": "Different person; safety-filter fallback."
+    },
+    {
+      "id": "device-05",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Earl Ray Tomblin",
+      "support": "absent",
+      "review_note": "Different person; safety-filter fallback."
+    },
+    {
+      "id": "device-05",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Earl Ray Tomblin",
+      "support": "absent",
+      "review_note": "Different person; safety-filter fallback."
+    },
+    {
+      "id": "device-05",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Earl Ray Tomblin",
+      "support": "absent",
+      "review_note": "Different person; safety-filter fallback."
+    },
+    {
+      "id": "device-05",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Earl Ray Tomblin",
+      "support": "absent",
+      "review_note": "Different person; safety-filter fallback."
+    },
+    {
+      "id": "device-05",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Earl Ray Tomblin",
+      "support": "absent",
+      "review_note": "Different person; safety-filter fallback."
+    },
+    {
+      "id": "device-06",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Giant panda",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies bamboo as the main panda diet."
+    },
+    {
+      "id": "device-06",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Giant panda",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies bamboo as the main panda diet."
+    },
+    {
+      "id": "device-06",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Giant panda",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies bamboo as the main panda diet."
+    },
+    {
+      "id": "device-06",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Giant panda",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies bamboo as the main panda diet."
+    },
+    {
+      "id": "device-06",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Giant panda",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies bamboo as the main panda diet."
+    },
+    {
+      "id": "device-06",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Giant panda",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies bamboo as the main panda diet."
+    },
+    {
+      "id": "device-07",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Snake",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-07",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Snake",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-07",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Snake",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-07",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Snake",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-07",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Snake",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-07",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Snake",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-08",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-08",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-08",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-08",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Colubrid",
+      "support": "sufficient",
+      "review_note": "Names several snake species, including boomslang, brown tree snake and dice snake; some other labels denote groups."
+    },
+    {
+      "id": "device-08",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Colubrid",
+      "support": "sufficient",
+      "review_note": "Names several snake species, including boomslang, brown tree snake and dice snake; some other labels denote groups."
+    },
+    {
+      "id": "device-08",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Colubrid",
+      "support": "sufficient",
+      "review_note": "Names several snake species, including boomslang, brown tree snake and dice snake; some other labels denote groups."
+    },
+    {
+      "id": "device-09",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Pedipalp",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-09",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Pedipalp",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-09",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Pedipalp",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-09",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Pedipalp",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-09",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Pedipalp",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-09",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Pedipalp",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-10",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Earthworm",
+      "support": "sufficient",
+      "review_note": "Explicitly says earthworms have no legs."
+    },
+    {
+      "id": "device-10",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Earthworm",
+      "support": "sufficient",
+      "review_note": "Explicitly says earthworms have no legs."
+    },
+    {
+      "id": "device-10",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Earthworm",
+      "support": "sufficient",
+      "review_note": "Explicitly says earthworms have no legs."
+    },
+    {
+      "id": "device-10",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Earthworm",
+      "support": "sufficient",
+      "review_note": "Explicitly says earthworms have no legs."
+    },
+    {
+      "id": "device-10",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Earthworm",
+      "support": "sufficient",
+      "review_note": "Explicitly says earthworms have no legs."
+    },
+    {
+      "id": "device-10",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Earthworm",
+      "support": "sufficient",
+      "review_note": "Explicitly says earthworms have no legs."
+    },
+    {
+      "id": "device-11",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-11",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-11",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-11",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-11",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-11",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-12",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Breakfast",
+      "support": "absent",
+      "review_note": "General breakfast customs cannot establish what this particular user ate today."
+    },
+    {
+      "id": "device-12",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Breakfast",
+      "support": "absent",
+      "review_note": "General breakfast customs cannot establish what this particular user ate today."
+    },
+    {
+      "id": "device-12",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Breakfast",
+      "support": "absent",
+      "review_note": "General breakfast customs cannot establish what this particular user ate today."
+    },
+    {
+      "id": "device-12",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Breakfast",
+      "support": "absent",
+      "review_note": "General breakfast customs cannot establish what this particular user ate today."
+    },
+    {
+      "id": "device-12",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Breakfast",
+      "support": "absent",
+      "review_note": "General breakfast customs cannot establish what this particular user ate today."
+    },
+    {
+      "id": "device-12",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Breakfast",
+      "support": "absent",
+      "review_note": "General breakfast customs cannot establish what this particular user ate today."
+    },
+    {
+      "id": "device-13",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Solar System",
+      "support": "sufficient",
+      "review_note": "Explicitly labels and lists the eight planets."
+    },
+    {
+      "id": "device-13",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Solar System",
+      "support": "sufficient",
+      "review_note": "Explicitly states eight planets and names them."
+    },
+    {
+      "id": "device-13",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Solar System",
+      "support": "sufficient",
+      "review_note": "Explicitly states eight planets and names them."
+    },
+    {
+      "id": "device-13",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Solar System",
+      "support": "sufficient",
+      "review_note": "Explicitly labels and lists the eight planets."
+    },
+    {
+      "id": "device-13",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Solar System",
+      "support": "sufficient",
+      "review_note": "Explicitly states eight planets and names them."
+    },
+    {
+      "id": "device-13",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Solar System",
+      "support": "sufficient",
+      "review_note": "Explicitly states eight planets and names them."
+    },
+    {
+      "id": "device-14",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-14",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-14",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-14",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Planet",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jupiter as the biggest Solar System planet."
+    },
+    {
+      "id": "device-14",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Planet",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jupiter as the biggest Solar System planet."
+    },
+    {
+      "id": "device-14",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Planet",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jupiter as the biggest Solar System planet."
+    },
+    {
+      "id": "device-15",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Giant planet",
+      "support": "absent",
+      "review_note": "Defines giant planets but never identifies the largest planet."
+    },
+    {
+      "id": "device-15",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jupiter as largest in the Solar System, the intended context."
+    },
+    {
+      "id": "device-15",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Giant planet",
+      "support": "absent",
+      "review_note": "Defines giant planets but never identifies the largest planet."
+    },
+    {
+      "id": "device-15",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Giant planet",
+      "support": "absent",
+      "review_note": "Defines giant planets but never identifies the largest planet."
+    },
+    {
+      "id": "device-15",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jupiter as largest in the Solar System, the intended context."
+    },
+    {
+      "id": "device-15",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Giant planet",
+      "support": "absent",
+      "review_note": "Defines giant planets but never identifies the largest planet."
+    },
+    {
+      "id": "device-16",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Explicitly states elephants have teeth."
+    },
+    {
+      "id": "device-16",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Explicitly states elephants have teeth."
+    },
+    {
+      "id": "device-16",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Explicitly states elephants have teeth."
+    },
+    {
+      "id": "device-16",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Explicitly states elephants have teeth."
+    },
+    {
+      "id": "device-16",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Explicitly states elephants have teeth."
+    },
+    {
+      "id": "device-16",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Explicitly states elephants have teeth."
+    },
+    {
+      "id": "device-17",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Defines tusks as large teeth emerging from the upper jaw."
+    },
+    {
+      "id": "device-17",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Scaphopoda",
+      "support": "partial",
+      "review_note": "The opening note links tusks to elephant teeth, but does not explain the enlarged projecting teeth; most text describes molluscs. Different article title alone is not grounds for rejection."
+    },
+    {
+      "id": "device-17",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Scaphopoda",
+      "support": "partial",
+      "review_note": "The opening note links tusks to elephant teeth, but does not explain the enlarged projecting teeth; most text describes molluscs. Different article title alone is not grounds for rejection."
+    },
+    {
+      "id": "device-17",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Defines tusks as large teeth emerging from the upper jaw."
+    },
+    {
+      "id": "device-17",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Scaphopoda",
+      "support": "partial",
+      "review_note": "The opening note links tusks to elephant teeth, but does not explain the enlarged projecting teeth; most text describes molluscs. Different article title alone is not grounds for rejection."
+    },
+    {
+      "id": "device-17",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Scaphopoda",
+      "support": "partial",
+      "review_note": "The opening note links tusks to elephant teeth, but does not explain the enlarged projecting teeth; most text describes molluscs. Different article title alone is not grounds for rejection."
+    },
+    {
+      "id": "device-18",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Trunk (automobile)",
+      "support": "absent",
+      "review_note": "Automobile luggage storage does not explain the intended elephant trunk."
+    },
+    {
+      "id": "device-18",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Trunk (automobile)",
+      "support": "absent",
+      "review_note": "Automobile luggage storage does not explain the intended elephant trunk."
+    },
+    {
+      "id": "device-18",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Trunk (automobile)",
+      "support": "absent",
+      "review_note": "Automobile luggage storage does not explain the intended elephant trunk."
+    },
+    {
+      "id": "device-18",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-18",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-18",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-19",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-19",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-19",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-19",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-19",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-19",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Complete question retrieves the intended subject and core requested information."
+    },
+    {
+      "id": "device-20",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-20",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-20",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-20",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-20",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-20",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Elephant",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-21",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Twinkle, Twinkle, Little Star",
+      "support": "absent",
+      "review_note": "Nursery rhyme, no physical explanation."
+    },
+    {
+      "id": "device-21",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Space observatory",
+      "support": "sufficient",
+      "review_note": "Explicitly attributes star twinkling to turbulence in Earth atmosphere."
+    },
+    {
+      "id": "device-21",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Twinkle, Twinkle, Little Star",
+      "support": "absent",
+      "review_note": "Nursery rhyme, no physical explanation."
+    },
+    {
+      "id": "device-21",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Twinkle, Twinkle, Little Star",
+      "support": "absent",
+      "review_note": "Nursery rhyme, no physical explanation."
+    },
+    {
+      "id": "device-21",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Space observatory",
+      "support": "sufficient",
+      "review_note": "Explicitly attributes star twinkling to turbulence in Earth atmosphere."
+    },
+    {
+      "id": "device-21",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Twinkle, Twinkle, Little Star",
+      "support": "absent",
+      "review_note": "Nursery rhyme, no physical explanation."
+    },
+    {
+      "id": "device-22",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Aquatic",
+      "support": "partial",
+      "review_note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    },
+    {
+      "id": "device-22",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Aquatic",
+      "support": "partial",
+      "review_note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    },
+    {
+      "id": "device-22",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Aquatic",
+      "support": "partial",
+      "review_note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    },
+    {
+      "id": "device-22",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Aquatic",
+      "support": "partial",
+      "review_note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    },
+    {
+      "id": "device-22",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Aquatic",
+      "support": "partial",
+      "review_note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    },
+    {
+      "id": "device-22",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Aquatic",
+      "support": "partial",
+      "review_note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    },
+    {
+      "id": "device-23",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Arachnid",
+      "support": "partial",
+      "review_note": "Terrestrial examples, but no backbone-based definition."
+    },
+    {
+      "id": "device-23",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Arachnid",
+      "support": "partial",
+      "review_note": "Terrestrial examples, but no backbone-based definition."
+    },
+    {
+      "id": "device-23",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Arachnid",
+      "support": "partial",
+      "review_note": "Terrestrial examples, but no backbone-based definition."
+    },
+    {
+      "id": "device-23",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Arachnid",
+      "support": "partial",
+      "review_note": "Terrestrial examples, but no backbone-based definition."
+    },
+    {
+      "id": "device-23",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Arachnid",
+      "support": "partial",
+      "review_note": "Terrestrial examples, but no backbone-based definition."
+    },
+    {
+      "id": "device-23",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Arachnid",
+      "support": "partial",
+      "review_note": "Terrestrial examples, but no backbone-based definition."
+    },
+    {
+      "id": "device-24",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Colobinae",
+      "support": "partial",
+      "review_note": "One monkey subfamily; cannot answer classification of monkeys generally."
+    },
+    {
+      "id": "device-24",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Cercopithecinae",
+      "support": "partial",
+      "review_note": "Describes one subfamily and its many species, not the classification of monkeys generally."
+    },
+    {
+      "id": "device-24",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Cercopithecinae",
+      "support": "partial",
+      "review_note": "Describes one subfamily and its many species, not the classification of monkeys generally."
+    },
+    {
+      "id": "device-24",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Colobinae",
+      "support": "partial",
+      "review_note": "One monkey subfamily; cannot answer classification of monkeys generally."
+    },
+    {
+      "id": "device-24",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Cercopithecinae",
+      "support": "partial",
+      "review_note": "Describes one subfamily and its many species, not the classification of monkeys generally."
+    },
+    {
+      "id": "device-24",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Cercopithecinae",
+      "support": "partial",
+      "review_note": "Describes one subfamily and its many species, not the classification of monkeys generally."
+    },
+    {
+      "id": "device-25",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-25",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-25",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-25",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-25",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-25",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-26",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-26",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-26",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-26",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-26",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-26",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Goblin shark",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-27",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-27",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-27",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-27",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-27",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-27",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-28",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Explicitly gives eight main phases."
+    },
+    {
+      "id": "device-28",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Explicitly gives eight main phases."
+    },
+    {
+      "id": "device-28",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Explicitly gives eight main phases."
+    },
+    {
+      "id": "device-28",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Explicitly gives eight main phases."
+    },
+    {
+      "id": "device-28",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Explicitly gives eight main phases."
+    },
+    {
+      "id": "device-28",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Explicitly gives eight main phases."
+    },
+    {
+      "id": "device-29",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-29",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-29",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-29",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Names all eight main Moon phases."
+    },
+    {
+      "id": "device-29",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Names all eight main Moon phases."
+    },
+    {
+      "id": "device-29",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Phases of the Moon",
+      "support": "sufficient",
+      "review_note": "Names all eight main Moon phases."
+    },
+    {
+      "id": "device-30",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "New World monkey",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-30",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "New World monkey",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-30",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "New World monkey",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-30",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "New World monkey",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-30",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "New World monkey",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-30",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "New World monkey",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "device-31",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    },
+    {
+      "id": "device-31",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    },
+    {
+      "id": "device-31",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    },
+    {
+      "id": "device-31",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    },
+    {
+      "id": "device-31",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    },
+    {
+      "id": "device-31",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    },
+    {
+      "id": "device-32",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter Farms, Florida",
+      "support": "absent",
+      "review_note": "A place in Florida does not locate the planet intended by the conversation."
+    },
+    {
+      "id": "device-32",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter, Florida",
+      "support": "absent",
+      "review_note": "Florida town rather than planet."
+    },
+    {
+      "id": "device-32",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter, Florida",
+      "support": "absent",
+      "review_note": "Florida town rather than planet."
+    },
+    {
+      "id": "device-32",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly places Jupiter fifth from the Sun."
+    },
+    {
+      "id": "device-32",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly places Jupiter fifth from the Sun."
+    },
+    {
+      "id": "device-32",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly places Jupiter fifth from the Sun."
+    },
+    {
+      "id": "device-33",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Planet",
+      "support": "absent",
+      "review_note": "Names planets but does not locate Jupiter in the requested correction."
+    },
+    {
+      "id": "device-33",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Planet",
+      "support": "absent",
+      "review_note": "Names planets but does not locate Jupiter in the requested correction."
+    },
+    {
+      "id": "device-33",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Planet",
+      "support": "absent",
+      "review_note": "Names planets but does not locate Jupiter in the requested correction."
+    },
+    {
+      "id": "device-33",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly places Jupiter fifth from the Sun, answering the intended correction."
+    },
+    {
+      "id": "device-33",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly places Jupiter fifth from the Sun, answering the intended correction."
+    },
+    {
+      "id": "device-33",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Explicitly places Jupiter fifth from the Sun, answering the intended correction."
+    },
+    {
+      "id": "device-34",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter (disambiguation)",
+      "support": "sufficient",
+      "review_note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    },
+    {
+      "id": "device-34",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter (disambiguation)",
+      "support": "sufficient",
+      "review_note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    },
+    {
+      "id": "device-34",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter (disambiguation)",
+      "support": "sufficient",
+      "review_note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    },
+    {
+      "id": "device-34",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter (disambiguation)",
+      "support": "sufficient",
+      "review_note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    },
+    {
+      "id": "device-34",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter (disambiguation)",
+      "support": "sufficient",
+      "review_note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    },
+    {
+      "id": "device-34",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter (disambiguation)",
+      "support": "sufficient",
+      "review_note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    },
+    {
+      "id": "device-35",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-35",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-35",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-35",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Explicitly establishes that Jupiter has moons. The count is dated and need not be repeated to answer yes."
+    },
+    {
+      "id": "device-35",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Explicitly establishes that Jupiter has moons. The count is dated and need not be repeated to answer yes."
+    },
+    {
+      "id": "device-35",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "List of Jupiter's moons",
+      "support": "sufficient",
+      "review_note": "Explicitly establishes that Jupiter has moons. The count is dated and need not be repeated to answer yes."
+    },
+    {
+      "id": "device-36",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Ananke (moon)",
+      "support": "partial",
+      "review_note": "Gives Ananke and Adrastea as Jupiter moons but does not provide the requested set of names."
+    },
+    {
+      "id": "device-36",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Callirrhoe (moon)",
+      "support": "partial",
+      "review_note": "Names only Callirrhoe, not a useful list of the requested Jupiter moons or the four Galilean moons."
+    },
+    {
+      "id": "device-36",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Callirrhoe (moon)",
+      "support": "partial",
+      "review_note": "Names only Callirrhoe, not a useful list of the requested Jupiter moons or the four Galilean moons."
+    },
+    {
+      "id": "device-36",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Ananke (moon)",
+      "support": "partial",
+      "review_note": "Gives Ananke and Adrastea as Jupiter moons but does not provide the requested set of names."
+    },
+    {
+      "id": "device-36",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Callirrhoe (moon)",
+      "support": "partial",
+      "review_note": "Names only Callirrhoe, not a useful list of the requested Jupiter moons or the four Galilean moons."
+    },
+    {
+      "id": "device-36",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Callirrhoe (moon)",
+      "support": "partial",
+      "review_note": "Names only Callirrhoe, not a useful list of the requested Jupiter moons or the four Galilean moons."
+    },
+    {
+      "id": "device-37",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-37",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-37",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-37",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Provides supported general facts about Jupiter, its position and gas composition."
+    },
+    {
+      "id": "device-37",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Provides supported general facts about Jupiter, its position and gas composition."
+    },
+    {
+      "id": "device-37",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jupiter",
+      "support": "sufficient",
+      "review_note": "Provides supported general facts about Jupiter, its position and gas composition."
+    },
+    {
+      "id": "device-38",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Temperature",
+      "support": "absent",
+      "review_note": "Defines temperature without giving any temperature of the intended planet."
+    },
+    {
+      "id": "device-38",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Temperature",
+      "support": "absent",
+      "review_note": "Defines temperature without giving any temperature of the intended planet."
+    },
+    {
+      "id": "device-38",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Temperature",
+      "support": "absent",
+      "review_note": "Defines temperature without giving any temperature of the intended planet."
+    },
+    {
+      "id": "device-38",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "TrES-4b",
+      "support": "absent",
+      "review_note": "Temperature definition, not Jupiter temperature."
+    },
+    {
+      "id": "device-38",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "TrES-4b",
+      "support": "absent",
+      "review_note": "Temperature definition, not Jupiter temperature."
+    },
+    {
+      "id": "device-38",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "TrES-4b",
+      "support": "absent",
+      "review_note": "Temperature definition, not Jupiter temperature."
+    },
+    {
+      "id": "device-39",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Hot Jupiter",
+      "support": "absent",
+      "review_note": "Hot-Jupiter exoplanets are not the planet Jupiter."
+    },
+    {
+      "id": "device-39",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Hot Jupiter",
+      "support": "absent",
+      "review_note": "Hot-Jupiter exoplanets are not the planet Jupiter."
+    },
+    {
+      "id": "device-39",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Hot Jupiter",
+      "support": "absent",
+      "review_note": "Hot-Jupiter exoplanets are not the planet Jupiter."
+    },
+    {
+      "id": "device-39",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Hot Jupiter",
+      "support": "absent",
+      "review_note": "Hot Jupiter exoplanet class, not our Jupiter."
+    },
+    {
+      "id": "device-39",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Hot Jupiter",
+      "support": "absent",
+      "review_note": "Hot Jupiter exoplanet class, not our Jupiter."
+    },
+    {
+      "id": "device-39",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Hot Jupiter",
+      "support": "absent",
+      "review_note": "Hot Jupiter exoplanet class, not our Jupiter."
+    },
+    {
+      "id": "device-40",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Identifies Rosa Parks as an African-American civil rights activist."
+    },
+    {
+      "id": "device-40",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Identifies Rosa Parks as an African-American civil rights activist."
+    },
+    {
+      "id": "device-40",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Identifies Rosa Parks as an African-American civil rights activist."
+    },
+    {
+      "id": "device-40",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Identifies Rosa Parks as an African-American civil rights activist."
+    },
+    {
+      "id": "device-40",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Identifies Rosa Parks as an African-American civil rights activist."
+    },
+    {
+      "id": "device-40",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Identifies Rosa Parks as an African-American civil rights activist."
+    },
+    {
+      "id": "device-41",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-41",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-41",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "device-41",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Raymond Parks as Rosa Parks spouse."
+    },
+    {
+      "id": "device-41",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rosa Parks",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Raymond Parks as Rosa Parks spouse."
+    },
+    {
+      "id": "device-41",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-tower-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    },
+    {
+      "id": "new-tower-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    },
+    {
+      "id": "new-tower-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    },
+    {
+      "id": "new-tower-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    },
+    {
+      "id": "new-tower-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    },
+    {
+      "id": "new-tower-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    },
+    {
+      "id": "new-tower-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-tower-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-tower-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-tower-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Explicitly locates the Eiffel Tower in Paris, France."
+    },
+    {
+      "id": "new-tower-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Explicitly locates the Eiffel Tower in Paris, France."
+    },
+    {
+      "id": "new-tower-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Explicitly locates the Eiffel Tower in Paris, France."
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Steel",
+      "support": "absent",
+      "review_note": "Generic steel text neither identifies the Eiffel Tower material nor supports the intended wrought-iron answer."
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Explicitly describes the Eiffel Tower as wrought iron."
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Explicitly describes the Eiffel Tower as wrought iron."
+    },
+    {
+      "id": "new-tower-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Eiffel Tower",
+      "support": "sufficient",
+      "review_note": "Explicitly describes the Eiffel Tower as wrought iron."
+    },
+    {
+      "id": "new-tower-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Paris",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Seine as the river through Paris."
+    },
+    {
+      "id": "new-tower-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Paris",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Seine as the river through Paris."
+    },
+    {
+      "id": "new-tower-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Paris",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Seine as the river through Paris."
+    },
+    {
+      "id": "new-tower-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Paris",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Seine as the river through Paris."
+    },
+    {
+      "id": "new-tower-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Paris",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Seine as the river through Paris."
+    },
+    {
+      "id": "new-tower-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Paris",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Seine as the river through Paris."
+    },
+    {
+      "id": "new-mercury-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Mercury as closest to the Sun."
+    },
+    {
+      "id": "new-mercury-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Mercury as closest to the Sun."
+    },
+    {
+      "id": "new-mercury-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Mercury as closest to the Sun."
+    },
+    {
+      "id": "new-mercury-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Mercury as closest to the Sun."
+    },
+    {
+      "id": "new-mercury-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Mercury as closest to the Sun."
+    },
+    {
+      "id": "new-mercury-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Mercury as closest to the Sun."
+    },
+    {
+      "id": "new-mercury-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mercury-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mercury-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mercury-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly says Mercury has no moons."
+    },
+    {
+      "id": "new-mercury-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly says Mercury has no moons."
+    },
+    {
+      "id": "new-mercury-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (planet)",
+      "support": "sufficient",
+      "review_note": "Explicitly says Mercury has no moons."
+    },
+    {
+      "id": "new-mercury-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (element)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    },
+    {
+      "id": "new-mercury-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (element)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    },
+    {
+      "id": "new-mercury-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (element)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    },
+    {
+      "id": "new-mercury-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (element)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    },
+    {
+      "id": "new-mercury-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (element)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    },
+    {
+      "id": "new-mercury-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mercury (element)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    },
+    {
+      "id": "new-mercury-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Ionic liquid",
+      "support": "absent",
+      "review_note": "Ionic liquids rather than mercury."
+    },
+    {
+      "id": "new-mercury-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Ionic liquid",
+      "support": "absent",
+      "review_note": "Ionic liquids rather than mercury."
+    },
+    {
+      "id": "new-mercury-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Ionic liquid",
+      "support": "absent",
+      "review_note": "Ionic liquids rather than mercury."
+    },
+    {
+      "id": "new-mercury-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Bromine",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "new-mercury-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Bromine",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "new-mercury-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Metal",
+      "support": "sufficient",
+      "review_note": "The room-temperature contrast explicitly identifies mercury as liquid."
+    },
+    {
+      "id": "new-mountains-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    },
+    {
+      "id": "new-mountains-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    },
+    {
+      "id": "new-mountains-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    },
+    {
+      "id": "new-mountains-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    },
+    {
+      "id": "new-mountains-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    },
+    {
+      "id": "new-mountains-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    },
+    {
+      "id": "new-mountains-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mountains-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mountains-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mountains-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Gives an approximate height of 8848 metres. Source-support only, not verification against the latest official measurement."
+    },
+    {
+      "id": "new-mountains-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Gives an approximate height of 8848 metres. Source-support only, not verification against the latest official measurement."
+    },
+    {
+      "id": "new-mountains-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mount Everest",
+      "support": "sufficient",
+      "review_note": "Gives an approximate height of 8848 metres. Source-support only, not verification against the latest official measurement."
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Drakensberg",
+      "support": "absent",
+      "review_note": "Highest range in Southern Africa is not the highest mountain in Africa."
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Kilimanjaro as the highest peak in Africa."
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Kilimanjaro as the highest peak in Africa."
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Drakensberg",
+      "support": "absent",
+      "review_note": "Highest range in Southern Africa is not the highest mountain in Africa."
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Kilimanjaro as the highest peak in Africa."
+    },
+    {
+      "id": "new-mountains-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Kilimanjaro as the highest peak in Africa."
+    },
+    {
+      "id": "new-mountains-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mountains-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mountains-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-mountains-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly locates Kilimanjaro in Tanzania. The rewrite assumes the intended correct previous answer."
+    },
+    {
+      "id": "new-mountains-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly locates Kilimanjaro in Tanzania. The rewrite assumes the intended correct previous answer."
+    },
+    {
+      "id": "new-mountains-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Mount Kilimanjaro",
+      "support": "sufficient",
+      "review_note": "Explicitly locates Kilimanjaro in Tanzania. The rewrite assumes the intended correct previous answer."
+    },
+    {
+      "id": "new-curie-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Marie Curie",
+      "support": "sufficient",
+      "review_note": "Identifies Marie Curie and her work on radioactivity."
+    },
+    {
+      "id": "new-curie-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Marie Curie",
+      "support": "sufficient",
+      "review_note": "Identifies Marie Curie and her work on radioactivity."
+    },
+    {
+      "id": "new-curie-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Marie Curie",
+      "support": "sufficient",
+      "review_note": "Identifies Marie Curie and her work on radioactivity."
+    },
+    {
+      "id": "new-curie-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Marie Curie",
+      "support": "sufficient",
+      "review_note": "Identifies Marie Curie and her work on radioactivity."
+    },
+    {
+      "id": "new-curie-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Marie Curie",
+      "support": "sufficient",
+      "review_note": "Identifies Marie Curie and her work on radioactivity."
+    },
+    {
+      "id": "new-curie-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Marie Curie",
+      "support": "sufficient",
+      "review_note": "Identifies Marie Curie and her work on radioactivity."
+    },
+    {
+      "id": "new-curie-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-curie-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-curie-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-curie-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Irène Joliot-Curie",
+      "support": "absent",
+      "review_note": "Identifies the husband of Irene, not Marie Curie."
+    },
+    {
+      "id": "new-curie-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Irène Joliot-Curie",
+      "support": "absent",
+      "review_note": "Identifies the husband of Irene, not Marie Curie."
+    },
+    {
+      "id": "new-curie-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Irène Joliot-Curie",
+      "support": "absent",
+      "review_note": "Identifies the husband of Irene, not Marie Curie."
+    },
+    {
+      "id": "new-curie-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    },
+    {
+      "id": "new-curie-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    },
+    {
+      "id": "new-curie-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    },
+    {
+      "id": "new-curie-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    },
+    {
+      "id": "new-curie-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    },
+    {
+      "id": "new-curie-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    },
+    {
+      "id": "new-curie-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Chemical symbol",
+      "support": "absent",
+      "review_note": "Defines chemical symbols and gives oxygen O, not radium Ra."
+    },
+    {
+      "id": "new-curie-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Chemical symbol",
+      "support": "absent",
+      "review_note": "Defines chemical symbols and gives oxygen O, not radium Ra."
+    },
+    {
+      "id": "new-curie-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Chemical symbol",
+      "support": "absent",
+      "review_note": "Defines chemical symbols and gives oxygen O, not radium Ra."
+    },
+    {
+      "id": "new-curie-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Explicitly gives Ra as the symbol for radium."
+    },
+    {
+      "id": "new-curie-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Explicitly gives Ra as the symbol for radium."
+    },
+    {
+      "id": "new-curie-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Radium",
+      "support": "sufficient",
+      "review_note": "Explicitly gives Ra as the symbol for radium."
+    },
+    {
+      "id": "new-amazon-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    },
+    {
+      "id": "new-amazon-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    },
+    {
+      "id": "new-amazon-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    },
+    {
+      "id": "new-amazon-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    },
+    {
+      "id": "new-amazon-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    },
+    {
+      "id": "new-amazon-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    },
+    {
+      "id": "new-amazon-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-amazon-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-amazon-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-amazon-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Atlantic Ocean as the Amazon destination."
+    },
+    {
+      "id": "new-amazon-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Atlantic Ocean as the Amazon destination."
+    },
+    {
+      "id": "new-amazon-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Amazon River",
+      "support": "sufficient",
+      "review_note": "Explicitly names the Atlantic Ocean as the Amazon destination."
+    },
+    {
+      "id": "new-amazon-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Describes Amazon company business activities."
+    },
+    {
+      "id": "new-amazon-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Describes Amazon company business activities."
+    },
+    {
+      "id": "new-amazon-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Describes Amazon company business activities."
+    },
+    {
+      "id": "new-amazon-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Describes Amazon company business activities."
+    },
+    {
+      "id": "new-amazon-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Describes Amazon company business activities."
+    },
+    {
+      "id": "new-amazon-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Describes Amazon company business activities."
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "The Founder",
+      "support": "absent",
+      "review_note": "Movie about Ray Kroc and McDonalds does not identify the founder of Amazon."
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Amazon (company)",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jeff Bezos as Amazon founder."
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Jeff Bezos",
+      "support": "sufficient",
+      "review_note": "Explicitly identifies Jeff Bezos as the person who founded Amazon."
+    },
+    {
+      "id": "new-amazon-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Jeff Bezos",
+      "support": "sufficient",
+      "review_note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    },
+    {
+      "id": "new-astronomy-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Saturn (mythology)",
+      "support": "ambiguous",
+      "review_note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    },
+    {
+      "id": "new-astronomy-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Saturn (mythology)",
+      "support": "ambiguous",
+      "review_note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    },
+    {
+      "id": "new-astronomy-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Saturn (mythology)",
+      "support": "ambiguous",
+      "review_note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    },
+    {
+      "id": "new-astronomy-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Saturn (mythology)",
+      "support": "ambiguous",
+      "review_note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    },
+    {
+      "id": "new-astronomy-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Saturn (mythology)",
+      "support": "ambiguous",
+      "review_note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    },
+    {
+      "id": "new-astronomy-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Saturn (mythology)",
+      "support": "ambiguous",
+      "review_note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    },
+    {
+      "id": "new-astronomy-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Ring",
+      "support": "absent",
+      "review_note": "Finger jewellery does not describe Saturn rings."
+    },
+    {
+      "id": "new-astronomy-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Ring",
+      "support": "absent",
+      "review_note": "Finger jewellery does not describe Saturn rings."
+    },
+    {
+      "id": "new-astronomy-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Ring",
+      "support": "absent",
+      "review_note": "Finger jewellery does not describe Saturn rings."
+    },
+    {
+      "id": "new-astronomy-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rings of Saturn",
+      "support": "sufficient",
+      "review_note": "Explicitly states Saturn rings are almost entirely water ice with some dust and other material."
+    },
+    {
+      "id": "new-astronomy-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rings of Saturn",
+      "support": "sufficient",
+      "review_note": "Explicitly states Saturn rings are almost entirely water ice with some dust and other material."
+    },
+    {
+      "id": "new-astronomy-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rings of Saturn",
+      "support": "sufficient",
+      "review_note": "Explicitly states Saturn rings are almost entirely water ice with some dust and other material."
+    },
+    {
+      "id": "new-astronomy-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "sufficient",
+      "review_note": "Provides the core simple description of a comet as an icy body moving in space."
+    },
+    {
+      "id": "new-astronomy-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "sufficient",
+      "review_note": "Provides the core simple description of a comet as an icy body moving in space."
+    },
+    {
+      "id": "new-astronomy-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "sufficient",
+      "review_note": "Provides the core simple description of a comet as an icy body moving in space."
+    },
+    {
+      "id": "new-astronomy-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "sufficient",
+      "review_note": "Provides the core simple description of a comet as an icy body moving in space."
+    },
+    {
+      "id": "new-astronomy-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "sufficient",
+      "review_note": "Provides the core simple description of a comet as an icy body moving in space."
+    },
+    {
+      "id": "new-astronomy-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "sufficient",
+      "review_note": "Provides the core simple description of a comet as an icy body moving in space."
+    },
+    {
+      "id": "new-astronomy-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Tail",
+      "support": "absent",
+      "review_note": "Animal tail definition does not explain a comet tail."
+    },
+    {
+      "id": "new-astronomy-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Tail",
+      "support": "absent",
+      "review_note": "Discusses human and ape lack of tails, not why a comet has a tail."
+    },
+    {
+      "id": "new-astronomy-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Tail",
+      "support": "absent",
+      "review_note": "Discusses human and ape lack of tails, not why a comet has a tail."
+    },
+    {
+      "id": "new-astronomy-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "partial",
+      "review_note": "Mentions solar heating of comet ice but omits gas/dust release and sunlight/solar-wind effects. Melting is misleading wording; the ancillary long-period-comet origin claim is also unreliable."
+    },
+    {
+      "id": "new-astronomy-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "partial",
+      "review_note": "Mentions solar heating of comet ice but omits gas/dust release and sunlight/solar-wind effects. Melting is misleading wording; the ancillary long-period-comet origin claim is also unreliable."
+    },
+    {
+      "id": "new-astronomy-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Comet",
+      "support": "partial",
+      "review_note": "Mentions solar heating of comet ice but omits gas/dust release and sunlight/solar-wind effects. Melting is misleading wording; the ancillary long-period-comet origin claim is also unreliable."
+    },
+    {
+      "id": "new-unknowns-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Color",
+      "support": "absent",
+      "review_note": "A generic colour entry cannot establish the colour of the user backpack."
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Color",
+      "support": "absent",
+      "review_note": "A list of colours cannot establish the colour of the user backpack."
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rainbow",
+      "support": "sufficient",
+      "review_note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    },
+    {
+      "id": "new-unknowns-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rainbow",
+      "support": "sufficient",
+      "review_note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    },
+    {
+      "id": "new-unknowns-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rainbow",
+      "support": "sufficient",
+      "review_note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    },
+    {
+      "id": "new-unknowns-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Rainbow",
+      "support": "sufficient",
+      "review_note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    },
+    {
+      "id": "new-unknowns-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Rainbow",
+      "support": "sufficient",
+      "review_note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    },
+    {
+      "id": "new-unknowns-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Rainbow",
+      "support": "sufficient",
+      "review_note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    },
+    {
+      "id": "new-unknowns-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-unknowns-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "question_blocked",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-3",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Venus (disambiguation)",
+      "support": "partial",
+      "review_note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    },
+    {
+      "id": "new-policy-3",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Venus (disambiguation)",
+      "support": "partial",
+      "review_note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    },
+    {
+      "id": "new-policy-3",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Venus (disambiguation)",
+      "support": "partial",
+      "review_note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    },
+    {
+      "id": "new-policy-3",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Venus (disambiguation)",
+      "support": "partial",
+      "review_note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    },
+    {
+      "id": "new-policy-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Venus (disambiguation)",
+      "support": "partial",
+      "review_note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    },
+    {
+      "id": "new-policy-3",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Venus (disambiguation)",
+      "support": "partial",
+      "review_note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    },
+    {
+      "id": "new-policy-4",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-4",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-4",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-4",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-policy-4",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-1",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-1",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-1",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieval_rejected",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-1",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "oracle_unresolved",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "oracle_unresolved",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-1",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "oracle_unresolved",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-2",
+      "question_mode": "original",
+      "arm": "bm25-fusion",
+      "decision": "retrieved",
+      "title": "Husband",
+      "support": "absent",
+      "review_note": "Generic husband definition does not resolve an unidentified person."
+    },
+    {
+      "id": "new-orphan-2",
+      "question_mode": "original",
+      "arm": "vec-float-fusion",
+      "decision": "retrieved",
+      "title": "Husband",
+      "support": "absent",
+      "review_note": "Generic husband definition does not resolve an unidentified person."
+    },
+    {
+      "id": "new-orphan-2",
+      "question_mode": "original",
+      "arm": "vec-binary-fusion",
+      "decision": "retrieved",
+      "title": "Husband",
+      "support": "absent",
+      "review_note": "Generic husband definition does not resolve an unidentified person."
+    },
+    {
+      "id": "new-orphan-2",
+      "question_mode": "reviewed-complete",
+      "arm": "bm25-fusion",
+      "decision": "oracle_unresolved",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-float-fusion",
+      "decision": "oracle_unresolved",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    },
+    {
+      "id": "new-orphan-2",
+      "question_mode": "reviewed-complete",
+      "arm": "vec-binary-fusion",
+      "decision": "oracle_unresolved",
+      "title": null,
+      "support": "not_admitted",
+      "review_note": ""
+    }
+  ]
+}

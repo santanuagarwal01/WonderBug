@@ -1,0 +1,2639 @@
+[
+  {
+    "id": "device-01",
+    "question": "What do hippos usually eat",
+    "intended_question": "What do hippos usually eat",
+    "passage_sha256": "d127efda3bb39e5021c6e6f47b5e1758c9fec004836b8e6c02bde2b925ce593e",
+    "passage": "Hippopotamus: The hippopotamus (Hippopotamus amphibius), or hippo, ancient Greek for \"river horse\" (Ιπποπόταμος), also known as the Nile hippopotamus, Common hippopotamus, or River hippopotamus, is a large mammal from Africa that usually eats plants. Male hippos seem to keep on growing for their whole lives. Females hippos, though, become the heaviest when they are about 25 years old.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly states hippos usually eat plants; supports the core diet answer."
+    }
+  },
+  {
+    "id": "device-02",
+    "question": "What is a baby hippo called",
+    "intended_question": "What is a baby hippo called",
+    "passage_sha256": "ee4aa0351c568be518abbb1ec5e246d1c978bea0280be55e51c05fcfc9e59590",
+    "passage": "Hippopotamus: The hippopotamus (Hippopotamus amphibius), or hippo, ancient Greek for \"river horse\" (Ιπποπόταμος), also known as the Nile hippopotamus, Common hippopotamus, or River hippopotamus, is a large mammal from Africa that usually eats plants. The hippopotamus is semi-aquatic. This means that even though it usually lives on the land, it spends a great amount of time in rivers and lakes where males lead groups of 5 to 30 females and young. In the daytime, they keep cool by staying in the water or mud. They give birth to baby hippos in the water, too. At dusk, they come out to graze on grass. Hippopotamuses rest together in the water, but they like to graze by themselves.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Discusses birth and habitat but never gives the name calf."
+    }
+  },
+  {
+    "id": "device-03",
+    "question": "How many living species of rhinoceros are there",
+    "intended_question": "How many living species of rhinoceros are there",
+    "passage_sha256": "77f698520edb82990701f84c1170d24c0d094342750ee5a0ef8c73cc2e096918",
+    "passage": "Rhinoceros: A rhinoceros (rhino for short) is any animal in the family Rhinocerotidae. They are in the order Perissodactyla, or odd-toed ungulates. There are five living species. Two of these species are native to Africa. Three of these species are also native to Southern parts of Asia.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-04",
+    "question": "Why is the sky blue",
+    "intended_question": "Why is the sky blue",
+    "passage_sha256": "1e03590e790b1c9cd1b3b8a11f73894c24b863c7b0af7adab3059c828999cd69",
+    "passage": "Sky: The sky is the appearance of the atmosphere around the surface of the planet from our point of view. At night, it appears from very dark blue to black. The deepness of the blue increases as we look toward the horizon, and up to the point above us. The sky, which is made up of gas molecules, is blue because of the random scattering of sunlight by the molecules.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Gives atmospheric scattering of sunlight as the core mechanism, but omits the wavelength explanation."
+    }
+  },
+  {
+    "id": "device-05",
+    "question": "Who was james earl ray",
+    "intended_question": "Who was james earl ray",
+    "passage_sha256": "483041233287c28e31fb62590fd7dfb2e7f97188ff8db5ac913a44ca3df74f56",
+    "passage": "Earl Ray Tomblin: Earl Ray Tomblin (born March 15, 1952) is an American politician. In 2010, he became Acting Governor of West Virginia after Joe Manchin was elected to the U.S. Senate. He was Acting governor from November 15, 2010 until 2011. From 2011 to 2017 he was the Governor of West Virginia. On October 2011, he won a special election to fill the term expiring in January 2013. On November 2012, he won election to his first full term. Before becoming governor, he was President of the West Virginia senate.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Different person; safety-filter fallback."
+    }
+  },
+  {
+    "id": "device-06",
+    "question": "What is the diet of a panda",
+    "intended_question": "What is the diet of a panda",
+    "passage_sha256": "760e3a40b93fc90b62cf498390076ce2ed3824b661df23c94e5ee9775e42ad25",
+    "passage": "Giant panda: The giant panda, Ailuropoda melanoleuca, is a bear. Bamboo is the main diet of pandas. Ninety-nine percent of the food they eat is bamboo. They eat as much as 120 pounds of bamboo every day. They spend 10 to 16 hours every day looking for food and eating it.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies bamboo as the main panda diet."
+    }
+  },
+  {
+    "id": "device-07",
+    "question": "How many species of snakes are there",
+    "intended_question": "How many species of snakes are there",
+    "passage_sha256": "6b61b075e20ef3469f86cfd5c49fb1220a556cf697a253a9cb190532044bed1b",
+    "passage": "Snake: Snakes, otherwise known as serpentes, are reptiles. They are part of the order Squamata. They are carnivores, with long narrow bodies and no legs. There are at least 20 families, about 500 genera and 3,400 species of snake.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-08",
+    "question": "Name a few",
+    "intended_question": "Name a few species of snakes.",
+    "passage_sha256": "10856ce01c697f9b5dbb048938b5f48679636f1785d9f3bbdc1f70138b373159",
+    "passage": "Colubrid: A colubrid (from Latin coluber, snake) is a snake that is a member of the Colubridae family. List entries under Selected species: Boomslang; Brown tree snake; Dice snake; Garter snake; Kingsnake; Rat snake; Smooth snake; Water snake; Mussurana. Brown tree snake Dice snake Garter snake Kingsnake Rat snake Smooth snake Water snake Mussurana",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Names several snake species, including boomslang, brown tree snake and dice snake; some other labels denote groups."
+    }
+  },
+  {
+    "id": "device-09",
+    "question": "Do spiders have legs",
+    "intended_question": "Do spiders have legs",
+    "passage_sha256": "861d63eb5dbe5dbd55df87347ebc590974833bce9280987532d6a8ecde6adf48",
+    "passage": "Pedipalp: Pedipalps are the two appendages on the front of a spider's head. Other arachnids, and chelicerates that are not arachnids also have pedipalps. Some spiders seem to have ten legs and not eight, because these pedipalps look like an extra pair of legs.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-10",
+    "question": "Do earthworms have legs",
+    "intended_question": "Do earthworms have legs",
+    "passage_sha256": "6cda692d31339ba6238474768f17985a9b4d583dc734f5b43d89a76b6fed14bb",
+    "passage": "Earthworm: An earthworm is an invertebrate animal with a long, stretchy body and no legs. Earthworms have no lungs, and absorb oxygen directly through their skin. In order to do this, they must stay moist, and do so by lubricating their skin with glands along their bodies.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly says earthworms have no legs."
+    }
+  },
+  {
+    "id": "device-12",
+    "question": "What did i eat for breakfast today",
+    "intended_question": "What did i eat for breakfast today",
+    "passage_sha256": "ce893c951436e394267946a438924f1da255e49ab2fda5b38849a705cda18e15",
+    "passage": "Breakfast: Definition: [1463] from break (v.) + fast (n.). Cf. Fr. déjeuner \"to breakfast,\" from L. dis-jejunare \"to break the fast.\" People around the world eat different things for breakfast: * In the United States, people usually eat pancakes, waffles, toast, eggs or bagels for breakfast. * In Canada, people usually eat maple cured bacon, fried potatoes, maple-infused beans, eggs, toast, pancakes and maple syrup or hot oatmeal for breakfast. * In the United Kingdom a large breakfast was often, and still is sometimes, served.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "General breakfast customs cannot establish what this particular user ate today."
+    }
+  },
+  {
+    "id": "device-13",
+    "question": "How many planets in our solar system",
+    "intended_question": "How many planets in our solar system",
+    "passage_sha256": "38dba5d74786e21de23b66a96fd552a0e408ce9baf4fff053c97cced6650fc84",
+    "passage": "Solar System: The Solar System is a group of space objects that are held together by gravity, with the Sun in the center. List entries under The eight planets: Mercury; Venus; Earth; Mars; Jupiter; Saturn; Uranus; Neptune.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly labels and lists the eight planets."
+    }
+  },
+  {
+    "id": "device-13",
+    "question": "How many planets in our solar system",
+    "intended_question": "How many planets in our solar system",
+    "passage_sha256": "5ffdb0d545dc0875842cbf5dcb2585906ae5f8d6110ee133bb07ffdb49976534",
+    "passage": "Solar System: The Solar System is a group of space objects that are held together by gravity, with the Sun in the center. It lies in a part of the galaxy called the Orion Arm, about 27,000 light-years from the center of the Milky Way. There are eight planets in our Solar System. Starting from the closest to the Sun, they are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly states eight planets and names them."
+    }
+  },
+  {
+    "id": "device-14",
+    "question": "Which is the biggest",
+    "intended_question": "Which planet in our Solar System is the biggest?",
+    "passage_sha256": "6800c0a9644afd792205f125f7e49df7d8d9849ca5ee22d600d13c5fe407bfc1",
+    "passage": "Planet: Planets do not make light but can reflect light. Planets are spherical (that is, ball-shaped), because their gravity compresses them into a sphere. Jupiter is the biggest planet in the Solar System, while the smallest planet in the Solar System is Mercury.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Jupiter as the biggest Solar System planet."
+    }
+  },
+  {
+    "id": "device-15",
+    "question": "Largest planet",
+    "intended_question": "Largest planet",
+    "passage_sha256": "448cdc519a9d5510943f53057c5a5720def58d6593a726708bb560bc7a7bd0f2",
+    "passage": "Giant planet: A giant planet is any planet much larger than Earth. Massive solid planets can also exist.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Defines giant planets but never identifies the largest planet."
+    }
+  },
+  {
+    "id": "device-15",
+    "question": "Largest planet",
+    "intended_question": "Largest planet",
+    "passage_sha256": "5744d8fd687f8d2276796be453008ee8ea1b2bf1e463c7f6b27b08d1162eab81",
+    "passage": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Jupiter as largest in the Solar System, the intended context."
+    }
+  },
+  {
+    "id": "device-15",
+    "question": "Largest planet",
+    "intended_question": "Largest planet",
+    "passage_sha256": "dab3ce59253da8cc3765dd60a2472828a55ca1c556f66faf51b3b7337061929e",
+    "passage": "Giant planet: A giant planet is any planet much larger than Earth. They are usually mostly composed of low-boiling-point materials (gases or ices), rather than rock or other solid matter. Massive solid planets also exist.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Defines giant planets but never identifies the largest planet."
+    }
+  },
+  {
+    "id": "device-16",
+    "question": "Do elephants have teeth",
+    "intended_question": "Do elephants have teeth",
+    "passage_sha256": "96bc975daef2462d7f41459729bc76dd6838a0c7d90310b062150005202837da",
+    "passage": "Elephant: Elephants are the biggest living land mammals. Elephants have teeth and tusks. Tusks are large teeth coming out of their upper jaws.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly states elephants have teeth."
+    }
+  },
+  {
+    "id": "device-17",
+    "question": "What is the tusk of an elephant",
+    "intended_question": "What is the tusk of an elephant",
+    "passage_sha256": "96bc975daef2462d7f41459729bc76dd6838a0c7d90310b062150005202837da",
+    "passage": "Elephant: Elephants are the biggest living land mammals. Elephants have teeth and tusks. Tusks are large teeth coming out of their upper jaws.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Defines tusks as large teeth emerging from the upper jaw."
+    }
+  },
+  {
+    "id": "device-17",
+    "question": "What is the tusk of an elephant",
+    "intended_question": "What is the tusk of an elephant",
+    "passage_sha256": "544dee6198f0f89290946d92e6a7a147d83f92082daefa9b2cbe332ca0b382b6",
+    "passage": "Scaphopoda: :Tusks is the name for the teeth of elephants Scaphopoda, which are called tusk shells in English is a class of marine molluscs. The name of the class can be translated as shovel-footed. These animals vary in size, most are small though.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "The opening note links tusks to elephant teeth, but does not explain the enlarged projecting teeth; most text describes molluscs. Different article title alone is not grounds for rejection."
+    }
+  },
+  {
+    "id": "device-18",
+    "question": "And the trunk ?",
+    "intended_question": "What is the trunk of an elephant?",
+    "passage_sha256": "f4199782771b9fb4f7e1447b522efa3b424cbe29e73bf48aefc1889a22f9497b",
+    "passage": "Trunk (automobile): The trunk is a place to store luggage. The trunk is subjectively spacious in luxury sedans, SUVs, station wagons, and minivans.In Coupés, the trunk goes down.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Automobile luggage storage does not explain the intended elephant trunk."
+    }
+  },
+  {
+    "id": "device-18",
+    "question": "And the trunk ?",
+    "intended_question": "What is the trunk of an elephant?",
+    "passage_sha256": "23d7aa4ead1e610998e312662fdc0809a60a40b5ca997702c2bd5f49fec4b84b",
+    "passage": "Elephant: Elephants are the biggest living land mammals. The trunk is a very long nose, made from the upper lip. An elephant uses its trunk to grab objects such as food. Though the rest of an elephant's skin is strong and thick, its trunk is very soft and sensitive. Elephants avoid Acacia trees with ants because they can bite the inside of an elephant's trunk.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Complete question retrieves the intended subject and core requested information."
+    }
+  },
+  {
+    "id": "device-19",
+    "question": "Trunk of an elephant",
+    "intended_question": "What is the trunk of an elephant?",
+    "passage_sha256": "23d7aa4ead1e610998e312662fdc0809a60a40b5ca997702c2bd5f49fec4b84b",
+    "passage": "Elephant: Elephants are the biggest living land mammals. The trunk is a very long nose, made from the upper lip. An elephant uses its trunk to grab objects such as food. Though the rest of an elephant's skin is strong and thick, its trunk is very soft and sensitive. Elephants avoid Acacia trees with ants because they can bite the inside of an elephant's trunk.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Complete question retrieves the intended subject and core requested information."
+    }
+  },
+  {
+    "id": "device-20",
+    "question": "Why do elephants have a trunk",
+    "intended_question": "Why do elephants have a trunk",
+    "passage_sha256": "23d7aa4ead1e610998e312662fdc0809a60a40b5ca997702c2bd5f49fec4b84b",
+    "passage": "Elephant: Elephants are the biggest living land mammals. The trunk is a very long nose, made from the upper lip. An elephant uses its trunk to grab objects such as food. Though the rest of an elephant's skin is strong and thick, its trunk is very soft and sensitive. Elephants avoid Acacia trees with ants because they can bite the inside of an elephant's trunk.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-21",
+    "question": "Why do stars twinkle",
+    "intended_question": "Why do stars twinkle",
+    "passage_sha256": "ee8f9a50d68aabeda0778ed41b5249cafc7d9c4761cc603a676250668336cb09",
+    "passage": "Twinkle, Twinkle, Little Star: Twinkle, Twinkle, Little Star is a nursery rhyme for babies, toddlers and children. It is about how special a star is. The Wiggles covered it, and Greg Page did it in concert, besides Barney and the gang.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Nursery rhyme, no physical explanation."
+    }
+  },
+  {
+    "id": "device-21",
+    "question": "Why do stars twinkle",
+    "intended_question": "Why do stars twinkle",
+    "passage_sha256": "add082bfcbf43c689fbf7221f4c3b1e48a922d82d98679742641837dd722042c",
+    "passage": "Space observatory: Satellite-based telescopes opened up the Universe to human eyes. Turbulence in the Earth's atmosphere blurs images taken by ground-based telescopes, an effect known as seeing. It is this effect that makes stars \"twinkle\" in the sky.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly attributes star twinkling to turbulence in Earth atmosphere."
+    }
+  },
+  {
+    "id": "device-22",
+    "question": "What are aquatic invertebrates",
+    "intended_question": "What are aquatic invertebrates",
+    "passage_sha256": "e59e5d9269c1abc1bb9a64e3a39a39aa0a660bcbf5e337ae522bc00307e236e8",
+    "passage": "Aquatic: Aquatic is a term often used in biology and ecology. Literally, it means watery, and refers to both fresh and salt-water. So aquatic plants or animals are those that live in water: ponds, rivers, oceans. Aquatic mammals include whales, dolphins, seals, walrus, and also otters, beavers, and other river forms. Aquatic birds are even more numerous: ducks, herons, waders, kingfishers, penguins.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Explains aquatic means living in water but not invertebrate; its examples are vertebrates and cannot be used as aquatic-invertebrate examples."
+    }
+  },
+  {
+    "id": "device-23",
+    "question": "What are terrestrial invertebrates",
+    "intended_question": "What are terrestrial invertebrates",
+    "passage_sha256": "33150471c547313fa5cbc508f4d8a62b5b0377289e6a8a34dce2c7e2007e8fd9",
+    "passage": "Arachnid: The arachnids are a class of eight-legged arthropods. They are a highly successful group of mainly terrestrial invertebrates: spiders, scorpions, harvestmen, ticks, and mites, and a number of smaller groups. In 2019, a molecular phylogeny study put horseshoe crabs in the Arachnida.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Terrestrial examples, but no backbone-based definition."
+    }
+  },
+  {
+    "id": "device-24",
+    "question": "What species do monkeys belong to",
+    "intended_question": "What species do monkeys belong to",
+    "passage_sha256": "d41f61300e8a88fdeed793ed934de10eea5971b59715fe16c10aa7e25e0fa59f",
+    "passage": "Colobinae: The Colobinae are a subfamily of Old World monkeys. The family includes 61 species in 11 genera, including the Colobus monkeys, the large-nosed proboscis monkey, and the grey langurs. Some classifications split the colobine monkeys into two tribes, while others split them into three groups.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "One monkey subfamily; cannot answer classification of monkeys generally."
+    }
+  },
+  {
+    "id": "device-24",
+    "question": "What species do monkeys belong to",
+    "intended_question": "What species do monkeys belong to",
+    "passage_sha256": "d7002e5024db886cc481866b6386e63880af642cd96136a9d9f72234a652357e",
+    "passage": "Cercopithecinae: The Cercopithecinae are an important subfamily of Old World monkeys. There are 12 genera and about 71 species. the baboons, the macaques and the vervet monkeys. Most of then live in sub-Saharan Africa, but the macaques range from the far eastern parts of Asia through northern Africa, and Gibraltar.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Describes one subfamily and its many species, not the classification of monkeys generally."
+    }
+  },
+  {
+    "id": "device-25",
+    "question": "What is the family of goblin sharks",
+    "intended_question": "What is the family of goblin sharks",
+    "passage_sha256": "32c7e96ee0638460fc63bae428d5805f7df4d27bd73b2ad792f51e85dd0d3d9b",
+    "passage": "Goblin shark: The goblin shark (Mitsukurina owstoni) is a rare, poorly-known species of deep-sea shark. Sometimes called a \"living fossil\", it is the only living species in the family Mitsukurinidae. Males can reach lengths of up to 12.6 feet (3.8 meters), while females can reach up to 12.2 feet (3.7 meters). The heaviest specimen found weighed 210 kg (460 pounds). Being a bottom-dwelling shark, it inhabits waters as deep as 4,265 feet (1,300 meters) and has been recorded in the Atlantic, Indian, and Pacific Oceans.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-26",
+    "question": "Tell me more about it",
+    "intended_question": "Tell me more about the goblin shark.",
+    "passage_sha256": "1ad41c8356d621688c5ed838354ab28d2a416878f0ca8ef9b047c70d5167000d",
+    "passage": "Goblin shark: The goblin shark (Mitsukurina owstoni) is a rare, poorly-known species of deep-sea shark. The goblin shark can be easily identified by its long, flattened snout. Notable physical features include a noticeably long head, tiny eyes, large upper jaw and five short gill openings. It possesses a large, parabolic mouth, while the body is soft, flabby, and adapted for life in deep waters. The species has a long caudal fin without a ventral lobe. Its pectoral fins are short and wide, and the two dorsal fins are small, rounded, and equal in size.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-27",
+    "question": "What are the different shapes of moon?",
+    "intended_question": "What are the different shapes of moon?",
+    "passage_sha256": "c4aca7108e3908fc123e8505412605212355b882c94b38aefec63075b401c349",
+    "passage": "Phases of the Moon: The phases of the Moon are the different ways the Moon looks from Earth. As the Moon orbits around the Earth, the half of the Moon that faces the Sun will be lit up. The different shapes of the lit portion of the Moon that can be seen from Earth are known as phases of the Moon.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-28",
+    "question": "How many phases are there ?",
+    "intended_question": "How many main phases of the Moon are there?",
+    "passage_sha256": "321906e5502a76edb30529d6ace7b19649889eb98c5ba73878af4b033611966c",
+    "passage": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly gives eight main phases."
+    }
+  },
+  {
+    "id": "device-29",
+    "question": "What are they?",
+    "intended_question": "What are the names of the eight main phases of the Moon?",
+    "passage_sha256": "321906e5502a76edb30529d6ace7b19649889eb98c5ba73878af4b033611966c",
+    "passage": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Names all eight main Moon phases."
+    }
+  },
+  {
+    "id": "device-30",
+    "question": "What family do monkeys belong to",
+    "intended_question": "What family do monkeys belong to",
+    "passage_sha256": "9f0cc04e83dee4d162be8ac3cb32a5e08b4f910e6b95e6d6220d77fda67a8bfa",
+    "passage": "New World monkey: New World monkeys are the families of primates which are found in Central and South America. The families are ranked together as the Ceboidea superfamily, the only living platyrrhine superfamily. They differ from the Old World monkeys and apes, which are Catarrhini. * Platyrrhini: the New World monkeys.Superfamily Ceboidea ** Family Cebidae: capuchins and squirrel monkeys. Subfamily Callitrichinae: marmosets and tamarins. Subfamily Aotinae: night or owl monkeys ** Family Pitheciidae: titis, sakis and uakaris ** Family Atelidae: howler, spider, muriqui (woolly spider) and woolly monkeys",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "device-31",
+    "question": "How many moons does jupiter have ?",
+    "intended_question": "How many moons does jupiter have ?",
+    "passage_sha256": "5052d99872ec57d198facf6342053821be943811efaf27aff735cfa22eccd7b2",
+    "passage": "List of Jupiter's moons: There are 97 known moons of Jupiter, as of 30 April 2025. Jupiter has the second largest number of moons of any planet in the Solar System. The most massive of the moons are the four Galilean moons, which were independently discovered in 1610 by Galileo Galilei and Simon Marius.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Supplies an explicitly dated source count of 97 as of April 2025. Source-support only: not verification of the current moon count."
+    }
+  },
+  {
+    "id": "device-32",
+    "question": "Where is jupiter?",
+    "intended_question": "Where is the planet Jupiter?",
+    "passage_sha256": "a98058552d498f05d767a7a24dd4d51f530d0218d8d9bfbfb9f9afb7c6fa1c81",
+    "passage": "Jupiter Farms, Florida: Jupiter Farms or better know \"The Farm\" is a census-designated place (CDP) of Florida in the United States. According to the 2020 census, Jupiter Farms has 12,572 people. It is located west of the Town of Jupiter.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "A place in Florida does not locate the planet intended by the conversation."
+    }
+  },
+  {
+    "id": "device-32",
+    "question": "Where is jupiter?",
+    "intended_question": "Where is the planet Jupiter?",
+    "passage_sha256": "c3ee6e4ff195d810d61a90014db767175b39a087c7285fceee4725dde1d237de",
+    "passage": "Jupiter, Florida: Jupiter is a town in Palm Beach County, Florida, USA. It is named after the Roman god Jupiter. The town is a suburb of Miami. According to the United States census, there were 61,047 people living in Jupiter in 2020. Some famous people who were born in or lived in Jupiter are: Tori Amos, Celine Dion, and Burt Reynolds.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Florida town rather than planet."
+    }
+  },
+  {
+    "id": "device-32",
+    "question": "Where is jupiter?",
+    "intended_question": "Where is the planet Jupiter?",
+    "passage_sha256": "5744d8fd687f8d2276796be453008ee8ea1b2bf1e463c7f6b27b08d1162eab81",
+    "passage": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly places Jupiter fifth from the Sun."
+    }
+  },
+  {
+    "id": "device-33",
+    "question": "I meant the planet",
+    "intended_question": "Where is the planet Jupiter?",
+    "passage_sha256": "fc121e4150371b78f09a55c82572a8fd0f70dde002e538ff3234236383266c16",
+    "passage": "Planet: A planet is a large object such as Venus or Earth that orbits a star. Planet: Mercury. Planet: Venus. Planet: Earth. Planet: Mars. Planet: Jupiter. Planet: Saturn. Planet: Uranus. Planet: Neptune.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Names planets but does not locate Jupiter in the requested correction."
+    }
+  },
+  {
+    "id": "device-33",
+    "question": "I meant the planet",
+    "intended_question": "Where is the planet Jupiter?",
+    "passage_sha256": "5744d8fd687f8d2276796be453008ee8ea1b2bf1e463c7f6b27b08d1162eab81",
+    "passage": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly places Jupiter fifth from the Sun, answering the intended correction."
+    }
+  },
+  {
+    "id": "device-34",
+    "question": "Where is jupiter planet",
+    "intended_question": "Where is jupiter planet",
+    "passage_sha256": "1308c804ec75e1680efb10b759fd87b238c36745415a39d2edee2f986590327c",
+    "passage": "Jupiter (disambiguation): Jupiter is the fifth planet from the sun. Jupiter may also mean: * Jupiter (mythology), supreme Roman deity * Jupiter, Florida, United States * PGM-19 Jupiter missile, a kind of medium-range ballistic missile removed from Turkey after the Cuban Missile Crisis * \"Jupiter, the Bringer of Jollity\", the fourth movement in Gustav Holst's The Planets suite * Jupiter, disc 1 of Stadium Arcadium by the Red Hot Chili Peppers * Jupiter (company), a Japanese games company that made games such as Pokémon Pinball",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "First sentence explicitly places Jupiter fifth from the Sun; disambiguation alternatives are irrelevant to the answer."
+    }
+  },
+  {
+    "id": "device-35",
+    "question": "Does it have any moons?",
+    "intended_question": "Does the planet Jupiter have any moons?",
+    "passage_sha256": "5052d99872ec57d198facf6342053821be943811efaf27aff735cfa22eccd7b2",
+    "passage": "List of Jupiter's moons: There are 97 known moons of Jupiter, as of 30 April 2025. Jupiter has the second largest number of moons of any planet in the Solar System. The most massive of the moons are the four Galilean moons, which were independently discovered in 1610 by Galileo Galilei and Simon Marius.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly establishes that Jupiter has moons. The count is dated and need not be repeated to answer yes."
+    }
+  },
+  {
+    "id": "device-36",
+    "question": "What are the names of the moons of jupiter ?",
+    "intended_question": "What are the names of the moons of jupiter ?",
+    "passage_sha256": "72a7303bd9162a9910d915447869831a4deaeb4bcf0b28f86fc825e4f6feeae6",
+    "passage": "Ananke (moon): Ananke is a retrograde non-spherical moon of Jupiter. Ananke did not get its old name until 1975; before then, it was simply known as Jupiter XII. It was sometimes called \"Adrastea\" between 1955 and 1975. Note that Adrastea is now the name of another moon of Jupiter.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Gives Ananke and Adrastea as Jupiter moons but does not provide the requested set of names."
+    }
+  },
+  {
+    "id": "device-36",
+    "question": "What are the names of the moons of jupiter ?",
+    "intended_question": "What are the names of the moons of jupiter ?",
+    "passage_sha256": "5adaf426453b94cd31201948370ea9435854fc8def4b587c2ac9072367d7e043",
+    "passage": "Callirrhoe (moon): Callirrhoe or, is one of Jupiter's farthest named moons. Callirrhoe or Jupiter XVII, is one of Jupiter's farthest named moons. It was found by Spacewatch on October 6, 1999 and originally designated as an asteroid . It was found to be in orbit around Jupiter by Tim Spahr on July 18, 2000, and then given the designation S/1999 J 1.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Names only Callirrhoe, not a useful list of the requested Jupiter moons or the four Galilean moons."
+    }
+  },
+  {
+    "id": "device-37",
+    "question": "Tell me more about jupiter",
+    "intended_question": "Tell me more about the planet Jupiter.",
+    "passage_sha256": "5744d8fd687f8d2276796be453008ee8ea1b2bf1e463c7f6b27b08d1162eab81",
+    "passage": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Provides supported general facts about Jupiter, its position and gas composition."
+    }
+  },
+  {
+    "id": "device-38",
+    "question": "What is the temperature there",
+    "intended_question": "What is the temperature on the planet Jupiter?",
+    "passage_sha256": "5c2c3829da347eb8a3a4c98fbed5dc17881c30610f57375abd2e2ef14d651ffe",
+    "passage": "Temperature: Temperature is how hot or cold something is. There are certain things always around the same temperature:",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Defines temperature without giving any temperature of the intended planet."
+    }
+  },
+  {
+    "id": "device-38",
+    "question": "What is the temperature there",
+    "intended_question": "What is the temperature on the planet Jupiter?",
+    "passage_sha256": "cc9282c30084b8d679ef1d3146e88ddc6bead3e2aab27e04704c883a0b8d5953",
+    "passage": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Temperature definition, not Jupiter temperature."
+    }
+  },
+  {
+    "id": "device-39",
+    "question": "Is jupiter cold or hot",
+    "intended_question": "Is the planet Jupiter cold or hot?",
+    "passage_sha256": "4fb46be4e182297a7ef253145f1ea953060c10714f02270e86e6c37b191a1b4c",
+    "passage": "Hot Jupiter: Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods. They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Hot-Jupiter exoplanets are not the planet Jupiter."
+    }
+  },
+  {
+    "id": "device-39",
+    "question": "Is jupiter cold or hot",
+    "intended_question": "Is the planet Jupiter cold or hot?",
+    "passage_sha256": "e11a221b90d4b41b0f0b5de4ff534c2fa5342dc8d22a1348fe1776de16f356f3",
+    "passage": "Hot Jupiter: They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked. Hot Jupiters are the easiest extrasolar planets to detect by the radial-velocity method.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Hot Jupiter exoplanet class, not our Jupiter."
+    }
+  },
+  {
+    "id": "device-40",
+    "question": "Who is rosa parks",
+    "intended_question": "Who is rosa parks",
+    "passage_sha256": "ebc89ddb9ab63a75e0257d457429b98c16e6ff1959c1b735ce7aca00ea9d77f6",
+    "passage": "Rosa Parks: Rosa Louise McCauley Parks (February 4, 1913 – October 24, 2005) was an African-American civil rights activist. She was called \"the mother of the Modern-Day American civil rights movement\" and \"the mother of the freedom movement\". On December 1, 1955 in Montgomery, Alabama, Parks was told to give up her seat on the bus for a white man.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Identifies Rosa Parks as an African-American civil rights activist."
+    }
+  },
+  {
+    "id": "device-41",
+    "question": "Who was her husband ?",
+    "intended_question": "Who was Rosa Parks’s husband?",
+    "passage_sha256": "0b0aa00f2db89b7d89a03e780e42b680b7d28d61af12378044f65c76979df119",
+    "passage": "Rosa Parks: Rosa Louise McCauley Parks (February 4, 1913 – October 24, 2005) was an African-American civil rights activist. Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977).",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Raymond Parks as Rosa Parks spouse."
+    }
+  },
+  {
+    "id": "new-tower-1",
+    "question": "What is the Eiffel Tower?",
+    "intended_question": "What is the Eiffel Tower?",
+    "passage_sha256": "0e511f55495158a0d0db08a4b014f08409c9b3e379ce0f1f1c759802f613d392",
+    "passage": "Eiffel Tower: The Eiffel Tower (French: La Tour Eiffel, [tuʁ ɛfɛl], IPA pronunciation: \"EYE-full\" English; \"Eiffel\" French) is a wrought-iron landmark in Paris. It was built between 1887 and 1889 for the Exposition Universelle (World Fair). It was supposed to be a temporary installation for the 1889 World Fair, held at Paris to show respect to 100 years of the French Revolution.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Defines the Eiffel Tower as a wrought-iron landmark in Paris and gives its purpose."
+    }
+  },
+  {
+    "id": "new-tower-2",
+    "question": "Where is it?",
+    "intended_question": "Where is the Eiffel Tower?",
+    "passage_sha256": "76beb26885c2d38c4d62cfa970ca7f38e3a709125602c9a537bd20c55471dcb5",
+    "passage": "Eiffel Tower: The Eiffel Tower (French: La Tour Eiffel, [tuʁ ɛfɛl], IPA pronunciation: \"EYE-full\" English; \"Eiffel\" French) is a wrought-iron landmark in Paris. Eiffel Tower: owner: City of Paris, France. Eiffel Tower: management: Société d'Exploitation de la Tour Eiffel (SETE). Eiffel Tower: references: I.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly locates the Eiffel Tower in Paris, France."
+    }
+  },
+  {
+    "id": "new-tower-3",
+    "question": "What is it made of?",
+    "intended_question": "What is the Eiffel Tower made of?",
+    "passage_sha256": "751540c30af71129621e04e42480b0d141c4c40113d005bd3cbbdc7f55b5d131",
+    "passage": "Steel: Steel is iron mixed with carbon and sometimes other metals. Some special steels are made in electric arc furnaces. Steel is most often made by machines in huge buildings called steel mills. It is a very cheap metal and is used to make many things. Steel is used in making buildings and bridges, and all kinds of machines. Almost all ships and cars are today made from steel. When a steel object is old, or it is broken beyond repair, it is called scrap. It can be melted down and re-shaped into a new object.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Generic steel text neither identifies the Eiffel Tower material nor supports the intended wrought-iron answer."
+    }
+  },
+  {
+    "id": "new-tower-3",
+    "question": "What is it made of?",
+    "intended_question": "What is the Eiffel Tower made of?",
+    "passage_sha256": "2169b584e2c575baff7699e73ba6d3d913698e705a23254ced769d4153a4b03e",
+    "passage": "Eiffel Tower: The Eiffel Tower (French: La Tour Eiffel, [tuʁ ɛfɛl], IPA pronunciation: \"EYE-full\" English; \"Eiffel\" French) is a wrought-iron landmark in Paris. The Eiffel Tower was built by Alexandre Gustave Eiffel for the 100th anniversary of the French Revolution. Even though Gustave Eiffel is credited for the Eiffel Tower it was actually two lesser known people who came up with the original drawing of it. These people were Maurice Koechlin and Emile Nouguier. These two men were the chief engineers of Eiffel’s engineering firm. The main architect was Stephen Sauvestre.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly describes the Eiffel Tower as wrought iron."
+    }
+  },
+  {
+    "id": "new-tower-4",
+    "question": "What river runs through Paris?",
+    "intended_question": "What river runs through Paris?",
+    "passage_sha256": "67af5953b556cce3dd4f536bfe2ce51403e055a26a67375b3374323267b7cc9c",
+    "passage": "Paris: If suburbs are counted, the population of the Paris area rises to 10.7 million people. It is the most densely populated city in the European Union, with 20.653 people per square kilometer. The Seine river runs through the oldest part of Paris, and divides it into two parts, known as the Left Bank and the Right Bank.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly names the Seine as the river through Paris."
+    }
+  },
+  {
+    "id": "new-mercury-1",
+    "question": "Where is Mercury the planet?",
+    "intended_question": "Where is Mercury the planet?",
+    "passage_sha256": "27b3b99942f70d6f9474993e042be3856f8ea8084227e9a4319aab79bf1da4dd",
+    "passage": "Mercury (planet): Mercury is the first planet from the Sun. It is the second hottest planet, and the smallest in the Solar System. It is also the closest planet to the Sun.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Mercury as closest to the Sun."
+    }
+  },
+  {
+    "id": "new-mercury-2",
+    "question": "Does it have any moons?",
+    "intended_question": "Does Mercury the planet have any moons?",
+    "passage_sha256": "4d0c38f6f3534703be9b4381392288d905a55535f531a268a60d4be1686e97e6",
+    "passage": "Mercury (planet): Mercury is the first planet from the Sun. Mercury looks like Earth's Moon. It has many craters and smooth plains. It has no moons and little atmosphere as we know it. However, Mercury does have an extremely thin atmosphere, known as an exosphere. Mercury has a large iron core. Because of this Mercury has a magnetic field about 1% as strong as that of the Earth. It is a very dense planet because its core is large.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly says Mercury has no moons."
+    }
+  },
+  {
+    "id": "new-mercury-3",
+    "question": "I mean Mercury the element. Is it a metal?",
+    "intended_question": "Is the chemical element mercury a metal?",
+    "passage_sha256": "0cf01b450c6a5d2ab335c1ac24607fad73e2a9aed355635f932ba303c66ab5e6",
+    "passage": "Mercury (element): Mercury, also known as quicksilver or hydrargyrum (pronounced hai-DRAR-jər-əm), is a chemical element. Mercury is a silvery-white liquid post-transition metal. The reason for mercury being a liquid is complex. It is heavy; a chunk of iron can float on mercury. Compared to other metals, it does not conduct heat well. However, it conducts electricity fairly well. Mercury is the only metal with a known melting point (−38.83 °C) lower than caesium. Mercury is one of the two elements that are liquids at standard temperature and pressure. Bromine is the other one.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies mercury as a metal; ancillary classification and other claims are not certified."
+    }
+  },
+  {
+    "id": "new-mercury-4",
+    "question": "Is it liquid at room temperature?",
+    "intended_question": "Is the element mercury liquid at room temperature?",
+    "passage_sha256": "3e53c025c694eac0c07f9daded5c89a7e73b2bb0932053e76077472fd202c93a",
+    "passage": "Ionic liquid: An ionic liquid is a liquid made mostly of ions. The term is sometimes used to just mean room-temperature ionic liquids, which are liquid at below 100 degrees Celsius. Molten salts are another type of ionic liquid. Ionic liquids are sometimes called \"designer solvents\", as an ionic liquid be prepared with specific different cations and anions to produce liquids with specific chemical and physical properties. The first room-temperature ionic liquid was ethylammonium nitrate.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Ionic liquids rather than mercury."
+    }
+  },
+  {
+    "id": "new-mercury-4",
+    "question": "Is it liquid at room temperature?",
+    "intended_question": "Is the element mercury liquid at room temperature?",
+    "passage_sha256": "ebdfe2bdef16780fd003e54866954bae6a46d56547c5f62db13463f26314ef77",
+    "passage": "Bromine: Bromine (Br) is a chemical element. Bromine is a red-brown liquid. Liquid elements are rare; only bromine and mercury are liquid at room temperature. It easily evaporates to make suffocating brown fumes. It has a bad smell. Its name means \"stench of he-goats\". It can become a metal at very high pressures.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "new-mercury-4",
+    "question": "Is it liquid at room temperature?",
+    "intended_question": "Is the element mercury liquid at room temperature?",
+    "passage_sha256": "451662b3707eff90a14c2390d998bca9920407658062447f87faf117ec8522d7",
+    "passage": "Metal: These elements usually have the following traits: # They can conduct electricity and heat. # They can be shaped easily. # They have a shiny appearance. # They have a high melting point. Most metals are solid at room temperature, but this does not have to be the case. Mercury is liquid.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "The room-temperature contrast explicitly identifies mercury as liquid."
+    }
+  },
+  {
+    "id": "new-mountains-1",
+    "question": "Where is Mount Everest?",
+    "intended_question": "Where is Mount Everest?",
+    "passage_sha256": "1feeed7d03b6ff89a42dd6aabef16780cac8787ab2f821ff24e147508d259a69",
+    "passage": "Mount Everest: Mount Everest is the highest mountain on Earth. Mount Everest is in the Himalayas, a tall mountain range in Asia. It is about 8848 metres high and one of the Seven Summits.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Locates Everest in the Himalayas in Asia; a valid broad location, though it omits the national border."
+    }
+  },
+  {
+    "id": "new-mountains-2",
+    "question": "How high is it?",
+    "intended_question": "How high is Mount Everest?",
+    "passage_sha256": "1feeed7d03b6ff89a42dd6aabef16780cac8787ab2f821ff24e147508d259a69",
+    "passage": "Mount Everest: Mount Everest is the highest mountain on Earth. Mount Everest is in the Himalayas, a tall mountain range in Asia. It is about 8848 metres high and one of the Seven Summits.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Gives an approximate height of 8848 metres. Source-support only, not verification against the latest official measurement."
+    }
+  },
+  {
+    "id": "new-mountains-3",
+    "question": "What is the highest mountain in Africa?",
+    "intended_question": "What is the highest mountain in Africa?",
+    "passage_sha256": "a2343ab6525d0e6ec2a344a75ed884b3810023d8cb090d7b2b48306d66eb9624",
+    "passage": "Drakensberg: Drakensberg (derived from Afrikaans Drakensberge, literally: Dragon mountains) is the highest mountain range in Southern Africa. The highest peak is in Lesotho, where they are called Maloti. The drakensberg are also known for their many waterfalls, and cave paintings done by the San people.UKhahlamba-Drakensberg Park, which was created in 2000, is an UNESCO World Heritage Site which covers part of the range.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Highest range in Southern Africa is not the highest mountain in Africa."
+    }
+  },
+  {
+    "id": "new-mountains-3",
+    "question": "What is the highest mountain in Africa?",
+    "intended_question": "What is the highest mountain in Africa?",
+    "passage_sha256": "af15d50e894678e8f111499e7e4361193a2168bcc7f98645d2948189c390a138",
+    "passage": "Mount Kilimanjaro: Kilimanjaro (or Kilimanjaro, which means \"shining mountain\" in Swahili), formerly Kaiser-Wilhelm-Spitze, is a mountain in northeastern Tanzania. Kilimanjaro is the tallest free-standing mountain rise in the world, rising 4600 meters (15,000 ft) from the base, and is the highest peak in Africa at 5,895 meters (19,340 ft) and one of Seven Summits. It gives a dramatic view from the surrounding plains.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Kilimanjaro as the highest peak in Africa."
+    }
+  },
+  {
+    "id": "new-mountains-4",
+    "question": "What country is it in?",
+    "intended_question": "What country is Mount Kilimanjaro in?",
+    "passage_sha256": "4008e0a8d70d3bee30e1eaa1f50e1ba6665698f2979d6e6febbfb5c065ab6e0c",
+    "passage": "Mount Kilimanjaro: Kilimanjaro (or Kilimanjaro, which means \"shining mountain\" in Swahili), formerly Kaiser-Wilhelm-Spitze, is a mountain in northeastern Tanzania. Mount Kilimanjaro: photo: Kilimanjaro, Tanzania, 2024-05-22, DD 109.jpg. Mount Kilimanjaro: location: Kilimanjaro Region, north east Tanzania. Mount Kilimanjaro: prominence ref: Ranked 4th. Mount Kilimanjaro: listing: Seven Summits; Highest mountains of Africa; Volcanic Seven Summits; Country highest point; Ultra; Seven Third Summits (Mawenzi). Mount Kilimanjaro: range: The Eastern Rift mountains. Mount Kilimanjaro: topo: Kilimanjaro map and guide by Wielochowski. Mount Kilimanjaro: type: Stratovolcano. Mount Kilimanjaro: age: 3 million years. Mount Kilimanjaro: last eruption: Between 150,000 and 200,000 years ago.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly locates Kilimanjaro in Tanzania. The rewrite assumes the intended correct previous answer."
+    }
+  },
+  {
+    "id": "new-curie-1",
+    "question": "Who was Marie Curie?",
+    "intended_question": "Who was Marie Curie?",
+    "passage_sha256": "a484e3ea8736c476fd72c9e3dc2a21238221bc6e08b10bd39ef1c0868e7e262f",
+    "passage": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Salomée Skłodowska, Madame Pierre Curie (born Maria Salomea Skłodowska; 7 November 1867 – 4 July 1934) was a Polish-born French physicist and chemist. She did research on radioactivity. She was also the first woman to win a Nobel Prize.,which she went on to win twice. She was the first female professor at the University of Paris. She was the first person to win two Nobel Prizes.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Identifies Marie Curie and her work on radioactivity."
+    }
+  },
+  {
+    "id": "new-curie-2",
+    "question": "Who was her husband?",
+    "intended_question": "Who was Marie Curie’s husband?",
+    "passage_sha256": "dd0f9574097df0afd0cdc68bcc16bf51e619ae11afd4aa85bd5d66fc1097f05e",
+    "passage": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Identifies the husband of Irene, not Marie Curie."
+    }
+  },
+  {
+    "id": "new-curie-3",
+    "question": "What is radium?",
+    "intended_question": "What is radium?",
+    "passage_sha256": "1fcf7af4f2c950d22d8ad27f71a6049b5b21e84ef27a4216fa6b1d4f96f780de",
+    "passage": "Radium: Radium is a chemical element. Radium is the heaviest alkaline earth metal and the only radioactive element in the group. It has a silvery-white color, but turns black when it is exposed to air. It is more similar to barium than it is to any other element. It is also similar to barium in the ways it reacts with other things.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Identifies radium as a chemical element and metal. Ancillary claims about the whole group are not certified."
+    }
+  },
+  {
+    "id": "new-curie-4",
+    "question": "What is its chemical symbol?",
+    "intended_question": "What is the chemical symbol of radium?",
+    "passage_sha256": "15d42b6b9c2540e665185d1ce2f06e6e5e816bb4920c249f9f4f295f73d18140",
+    "passage": "Chemical symbol: A chemical symbol is the shortform of the name of an element. Usually, it is made up of one or two letters, but sometimes it is made up of three letters. For example, the chemical symbol for oxygen is O.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Defines chemical symbols and gives oxygen O, not radium Ra."
+    }
+  },
+  {
+    "id": "new-curie-4",
+    "question": "What is its chemical symbol?",
+    "intended_question": "What is the chemical symbol of radium?",
+    "passage_sha256": "1a7f2a05f9d618ef172b4489b0b3363feead4a4e607fce5903a1aef94e9701c1",
+    "passage": "Radium: Radium is a chemical element. The symbol for radium is Ra, and its atomic number is 88. It was discovered by Marie Curie and Pierre Curie in the form of radium chloride in 1898.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly gives Ra as the symbol for radium."
+    }
+  },
+  {
+    "id": "new-amazon-1",
+    "question": "Where is the Amazon River?",
+    "intended_question": "Where is the Amazon River?",
+    "passage_sha256": "41625997c4c3934bd6f34ddd4e2c503bf553ee899d0e0cf0ceb37b7a06d8fffa",
+    "passage": "Amazon River: The Amazon River (also called Rio Amazonas in Portuguese and Spanish) is the largest river in the world by the amount or volume of water it carries. It flows through the tropical forests of South America, mainly in Brazil. Its headwaters are in the Andes Mountains in Peru, on the western edge of South America and flows eastward into the Atlantic Ocean near the equator.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Locates the Amazon in South America, mainly Brazil, with headwaters in Peru."
+    }
+  },
+  {
+    "id": "new-amazon-2",
+    "question": "What ocean does it flow into?",
+    "intended_question": "What ocean does the Amazon River flow into?",
+    "passage_sha256": "41625997c4c3934bd6f34ddd4e2c503bf553ee899d0e0cf0ceb37b7a06d8fffa",
+    "passage": "Amazon River: The Amazon River (also called Rio Amazonas in Portuguese and Spanish) is the largest river in the world by the amount or volume of water it carries. It flows through the tropical forests of South America, mainly in Brazil. Its headwaters are in the Andes Mountains in Peru, on the western edge of South America and flows eastward into the Atlantic Ocean near the equator.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly names the Atlantic Ocean as the Amazon destination."
+    }
+  },
+  {
+    "id": "new-amazon-3",
+    "question": "I mean Amazon the company. What does it do?",
+    "intended_question": "What does Amazon the company do?",
+    "passage_sha256": "07d292fcd0d57aaf444d5081c73c43c5c7a085cf1f7ffc5a651dad933caa92a4",
+    "passage": "Amazon (company): Amazon.com, Inc., known as Amazon, is an American multinational technology company focusing on selling things online, cloud computing, online advertising, digital streaming, and artificial intelligence. It is considered to be one of the Big Five American technology companies, alongside Alphabet (parent company of Google), Apple, Meta and Microsoft. Amazon was founded by Jeff Bezos from his garage in Bellevue, Washington, on July 5, 1994.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Describes Amazon company business activities."
+    }
+  },
+  {
+    "id": "new-amazon-4",
+    "question": "Who founded it?",
+    "intended_question": "Who founded Amazon the company?",
+    "passage_sha256": "b2f811a13dada4dc59325e3b8291cfcba2dfa4b07f11f26114acb4e228625c01",
+    "passage": "The Founder: The Founder is a 2016 American biographical drama movie directed by John Lee Hancock and written by Robert Siegel. The movie stars Michael Keaton as businessman Ray Kroc. It is about the story of his creation of the McDonald's fast food chain.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Movie about Ray Kroc and McDonalds does not identify the founder of Amazon."
+    }
+  },
+  {
+    "id": "new-amazon-4",
+    "question": "Who founded it?",
+    "intended_question": "Who founded Amazon the company?",
+    "passage_sha256": "07d292fcd0d57aaf444d5081c73c43c5c7a085cf1f7ffc5a651dad933caa92a4",
+    "passage": "Amazon (company): Amazon.com, Inc., known as Amazon, is an American multinational technology company focusing on selling things online, cloud computing, online advertising, digital streaming, and artificial intelligence. It is considered to be one of the Big Five American technology companies, alongside Alphabet (parent company of Google), Apple, Meta and Microsoft. Amazon was founded by Jeff Bezos from his garage in Bellevue, Washington, on July 5, 1994.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Jeff Bezos as Amazon founder."
+    }
+  },
+  {
+    "id": "new-amazon-4",
+    "question": "Who founded it?",
+    "intended_question": "Who founded Amazon the company?",
+    "passage_sha256": "1bb384f75f1a89b1d6dafeb304fb08f26664b084965bd5d397e509a8c958dc04",
+    "passage": "Jeff Bezos: Jeffrey Preston Bezos (;; born January 12, 1964) is an American businessman who founded Amazon. Before founding Amazon in 1994, he worked on Wall Street and later started an online bookstore, laying the foundation for his remarkable entrepreneurial journey. On February 2, 2021, Bezos announced that he would step down as the CEO of Amazon, to be replaced by Andy Jassy. Bezos became executive chairman on July 5, 2021.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly identifies Jeff Bezos as the person who founded Amazon."
+    }
+  },
+  {
+    "id": "new-amazon-4",
+    "question": "Who founded it?",
+    "intended_question": "Who founded Amazon the company?",
+    "passage_sha256": "d28aeea88b0db6ca1191b3b6e730b5e65ccfa61b34bfa0515118c4998952890b",
+    "passage": "Jeff Bezos: Jeffrey Preston Bezos (;; born January 12, 1964) is an American businessman who founded Amazon. He also was Amazon's chairman, president, and chief executive officer (CEO). However, Bezos said in a blog post he would soon step down from this position and become Executive Chair of the Amazon Board.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Contains enough evidence for the core requested answer; not a certification of every ancillary source claim."
+    }
+  },
+  {
+    "id": "new-astronomy-1",
+    "question": "What is Saturn?",
+    "intended_question": "What is Saturn?",
+    "passage_sha256": "3ce802f72e3d30834a9c20e571d44954f51c916a14730bfd5078b5deea5d69d7",
+    "passage": "Saturn (mythology): Saturn (Latin: Sāturnus) is a Roman god of agriculture. In Roman mythology, Saturn is the father of Ceres, Jupiter, Veritas, and others. He is associated with time, wealth, and liberation. He is also identified with the Greek titan Kronos, whose rule, often called the Golden Age, is seen as a time of peace and abundance.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "ambiguous",
+      "note": "Standalone Saturn does not specify mythology versus planet; excluded for all arms."
+    }
+  },
+  {
+    "id": "new-astronomy-2",
+    "question": "What are its rings made of?",
+    "intended_question": "What are Saturn’s rings made of?",
+    "passage_sha256": "0b2e2a3f07a3bbb044c9390bdbbd60d22ade5d10b3d79a3ac87bbd0c81e89937",
+    "passage": "Ring: :For the article about a mathematical concept, see Ring (mathematics) A ring is a piece of jewelry that is usually worn on the finger. It is usually made of metal such as gold, silver, platinum, but can be made of other things, for example, bone or glass. Many rings have gemstones on them, for beauty and decoration on your finger.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Finger jewellery does not describe Saturn rings."
+    }
+  },
+  {
+    "id": "new-astronomy-2",
+    "question": "What are its rings made of?",
+    "intended_question": "What are Saturn’s rings made of?",
+    "passage_sha256": "79a6f72f9ae35bc5d07c589d291cd72c2f991219a0f025ba67e741c204309d56",
+    "passage": "Rings of Saturn: The rings of Saturn are the planetary rings around the planet Saturn, which can be seen with a small telescope. They consist of many small particles, ranging in size from microscopic to the size of a bus (or bigger) that form clumps that move around Saturn. The particles in the rings are made almost entirely of water ice, with just a small amount of dust and other chemicals.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Explicitly states Saturn rings are almost entirely water ice with some dust and other material."
+    }
+  },
+  {
+    "id": "new-astronomy-3",
+    "question": "What is a comet?",
+    "intended_question": "What is a comet?",
+    "passage_sha256": "d0f609a41f65374fbee3565c95214788b7aee09a732610aa473d0a247cbf4ca5",
+    "passage": "Comet: A comet is a ball of mostly ice that moves around in outer space. Comets are often described as \"dirty snowballs\". They are very different from asteroids.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Provides the core simple description of a comet as an icy body moving in space."
+    }
+  },
+  {
+    "id": "new-astronomy-4",
+    "question": "Why does it have a tail?",
+    "intended_question": "Why does a comet have a tail?",
+    "passage_sha256": "ce1c196ccd19b7e5df03dfa571aae8feb631fcca3625429a9ac4b805698eb166",
+    "passage": "Tail: A tail is the section at the rear end of an animal's body. Most animals have tails, like cats, dogs, whales, fish, cheetahs, and monkeys. The official name, almost never used, is \"caudal appendage\".",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Animal tail definition does not explain a comet tail."
+    }
+  },
+  {
+    "id": "new-astronomy-4",
+    "question": "Why does it have a tail?",
+    "intended_question": "Why does a comet have a tail?",
+    "passage_sha256": "12b63ed8729c224d2dc1c29decf6b69167d8ce88c0ca3d78cfb75c14e4b45775",
+    "passage": "Tail: A tail is the section at the rear end of an animal's body. Humans don't have a tail. That puts us in a minority of simians which are tailless. It's not obvious why, though it perhaps has something to do with our upright stance. Unlike monkeys, apes have no tail. It's certainly seems easier to sit down with no tail, but monkeys manage with tails pretty well.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Discusses human and ape lack of tails, not why a comet has a tail."
+    }
+  },
+  {
+    "id": "new-astronomy-4",
+    "question": "Why does it have a tail?",
+    "intended_question": "Why does a comet have a tail?",
+    "passage_sha256": "119f672c76c13c66bbf19fe91788771507e1edca438cf981634635c24ea3dd4f",
+    "passage": "Comet: Most of them are long-period comets and come from the Kuiper belt. That is very far away from the Sun, but some of them also come near enough to Earth for us to see at night. They have long \"tails\", because the Sun melts the ice.",
+    "occurrences": [
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Mentions solar heating of comet ice but omits gas/dust release and sunlight/solar-wind effects. Melting is misleading wording; the ancillary long-period-comet origin claim is also unreliable."
+    }
+  },
+  {
+    "id": "new-unknowns-2",
+    "question": "What color is it?",
+    "intended_question": "What color is my backpack?",
+    "passage_sha256": "0ec103e1c1299e55576260f9385b99f666ebc3ea31b3d04a69014a04a967b8fd",
+    "passage": "Color: Color (or colour in Commonwealth English; see spelling differences) is a property of light. Grey/Gray",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "A generic colour entry cannot establish the colour of the user backpack."
+    }
+  },
+  {
+    "id": "new-unknowns-2",
+    "question": "What color is it?",
+    "intended_question": "What color is my backpack?",
+    "passage_sha256": "7db8c8bc8e6470bdda36fefa7fd3e7722b5af3a805550997f6aba00a6675cc3a",
+    "passage": "Color: Color (or colour in Commonwealth English; see spelling differences) is a property of light. List entries under Basic colors: Red; Orange; Yellow; Green; Blue; Purple; Pink; Brown; Black; Grey; White.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "A list of colours cannot establish the colour of the user backpack."
+    }
+  },
+  {
+    "id": "new-unknowns-3",
+    "question": "What is a rainbow?",
+    "intended_question": "What is a rainbow?",
+    "passage_sha256": "58cab9b402d63646c0f9ee85f3efff470c7305053647dfd892b491768c80de48",
+    "passage": "Rainbow: A rainbow is an arc of colour in the sky that can be seen when the sun shines through falling rain. The pattern of colours, called a spectrum, starts with red on the outside and changes through orange, yellow, green, blue, indigo, and violet on the inside. Sometimes a second, larger, dimmer rainbow is seen.",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "sufficient",
+      "note": "Describes a rainbow as an arc of colour produced when sunlight shines through falling rain."
+    }
+  },
+  {
+    "id": "new-policy-3",
+    "question": "Where is Venus in the Solar System?",
+    "intended_question": "Where is Venus in the Solar System?",
+    "passage_sha256": "83e9b59947bd6e289cf6a33de60654290c02dbc81f3f8c04c0a50416024e3b58",
+    "passage": "Venus (disambiguation): Venus is a planet in the Solar System. It may also mean: * Venus (mythology), the Roman goddess * Venus, Florida, United States, a town * Venus, Texas, United States, a town * Venus, Romania, a resort",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "reviewed-complete",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "partial",
+      "note": "Disambiguation lead only says Venus is in the Solar System; no orbital position."
+    }
+  },
+  {
+    "id": "new-orphan-2",
+    "question": "Who is her husband?",
+    "intended_question": null,
+    "passage_sha256": "1ac61a1c9b7c64f1a8e8836d7b3d29ad0431d3b1e8b55d0abe9aa4a6b3cf79ac",
+    "passage": "Husband: A husband is a married man. \"Married\" means that the law says two people are legally \"joined\". During the wedding ceremony, the husband is called the groom (or bridegroom). In Christianity and Judaism a husband can have one wife (monogamy). In Islam a husband can have up to four wives (polygamy).",
+    "occurrences": [
+      {
+        "question_mode": "original",
+        "arm": "bm25-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-float-fusion"
+      },
+      {
+        "question_mode": "original",
+        "arm": "vec-binary-fusion"
+      }
+    ],
+    "review": {
+      "support": "absent",
+      "note": "Generic husband definition does not resolve an unidentified person."
+    }
+  }
+]

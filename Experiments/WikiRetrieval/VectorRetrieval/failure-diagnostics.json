@@ -1,0 +1,969 @@
+[
+  {
+    "id": "device-29",
+    "question_mode": "original",
+    "arm": "bm25-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-29",
+    "question_mode": "original",
+    "arm": "vec-float-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-29",
+    "question_mode": "original",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-29",
+    "question_mode": "reviewed-complete",
+    "arm": "bm25-fusion",
+    "decision": "retrieved",
+    "selected_title": "Phases of the Moon",
+    "selected_passage": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+    "matching_candidates": [
+      {
+        "relevance": 9.4609375,
+        "section": "Phases",
+        "sourceID": "a:3540:p:1",
+        "text": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+        "title": "Phases of the Moon"
+      },
+      {
+        "relevance": 8.828125,
+        "section": "Phases",
+        "sourceID": "a:3540:p:0",
+        "text": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon.",
+        "title": "Phases of the Moon"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-29",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-float-fusion",
+    "decision": "retrieved",
+    "selected_title": "Phases of the Moon",
+    "selected_passage": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+    "matching_candidates": [
+      {
+        "relevance": 9.4609375,
+        "section": "Phases",
+        "sourceID": "a:3540:p:1",
+        "text": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+        "title": "Phases of the Moon"
+      },
+      {
+        "relevance": 8.828125,
+        "section": "Phases",
+        "sourceID": "a:3540:p:0",
+        "text": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon.",
+        "title": "Phases of the Moon"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-29",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieved",
+    "selected_title": "Phases of the Moon",
+    "selected_passage": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+    "matching_candidates": [
+      {
+        "relevance": 9.4609375,
+        "section": "Phases",
+        "sourceID": "a:3540:p:1",
+        "text": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon. A phase is an angle of the Moon to the Earth so it appears differently every day. The Moon goes through eight main phases.",
+        "title": "Phases of the Moon"
+      },
+      {
+        "relevance": 8.828125,
+        "section": "Phases",
+        "sourceID": "a:3540:p:0",
+        "text": "Phases of the Moon: There are 8 phases of the Moon. List entries under Phases: new Moon; waxing crescent Moon; first quarter Moon; waxing gibbous Moon; full Moon; waning gibbous Moon; last quarter Moon; waning crescent Moon.",
+        "title": "Phases of the Moon"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-38",
+    "question_mode": "original",
+    "arm": "bm25-fusion",
+    "decision": "retrieved",
+    "selected_title": "Temperature",
+    "selected_passage": "Temperature: Temperature is how hot or cold something is. There are certain things always around the same temperature:",
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-38",
+    "question_mode": "original",
+    "arm": "vec-float-fusion",
+    "decision": "retrieved",
+    "selected_title": "Temperature",
+    "selected_passage": "Temperature: Temperature is how hot or cold something is. There are certain things always around the same temperature:",
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-38",
+    "question_mode": "original",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieved",
+    "selected_title": "Temperature",
+    "selected_passage": "Temperature: Temperature is how hot or cold something is. There are certain things always around the same temperature:",
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-38",
+    "question_mode": "reviewed-complete",
+    "arm": "bm25-fusion",
+    "decision": "retrieved",
+    "selected_title": "TrES-4b",
+    "selected_passage": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+    "matching_candidates": [
+      {
+        "relevance": 3.75390625,
+        "sourceID": "a:805152:lead",
+        "text": "Hot Jupiter: They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked. Hot Jupiters are the easiest extrasolar planets to detect by the radial-velocity method.",
+        "title": "Hot Jupiter"
+      },
+      {
+        "relevance": -4.12109375,
+        "sourceID": "a:2973:lead",
+        "text": "Jupiter (disambiguation): Jupiter is the fifth planet from the sun. Jupiter may also mean: * Jupiter (mythology), supreme Roman deity * Jupiter, Florida, United States * PGM-19 Jupiter missile, a kind of medium-range ballistic missile removed from Turkey after the Cuban Missile Crisis * \"Jupiter, the Bringer of Jollity\", the fourth movement in Gustav Holst's The Planets suite * Jupiter, disc 1 of Stadium Arcadium by the Red Hot Chili Peppers * Jupiter (company), a Japanese games company that made games such as Pokémon Pinball",
+        "title": "Jupiter (disambiguation)"
+      },
+      {
+        "relevance": -3.15625,
+        "sourceID": "a:408:lead",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": 5.625,
+        "sourceID": "a:281514:lead",
+        "text": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+        "title": "TrES-4b"
+      },
+      {
+        "relevance": -1.15625,
+        "sourceID": "a:361270:lead",
+        "text": "WASP-12b: It is said by NASA one of the hottest planet known, much hotter than Venus. It is extremely close to its star, about 2 million miles away from it. It is a gas giant and is bigger than Jupiter.",
+        "title": "WASP-12b"
+      },
+      {
+        "relevance": -4.68359375,
+        "sourceID": "a:1015565:lead",
+        "text": "Ross 128: This star is also 185% the size of Jupiter. It is 10.92 light years away from the Sun. Its planet is Ross 128 b which orbits 0.043 AU from Ross 128.",
+        "title": "Ross 128"
+      },
+      {
+        "relevance": -5.6796875,
+        "sourceID": "a:639:lead",
+        "text": "Planet: Planets do not make light but can reflect light. Planets are spherical (that is, ball-shaped), because their gravity compresses them into a sphere. Jupiter is the biggest planet in the Solar System, while the smallest planet in the Solar System is Mercury.",
+        "title": "Planet"
+      },
+      {
+        "relevance": -6.390625,
+        "section": "Terminology",
+        "sourceID": "a:805142:p:6",
+        "text": "Giant planet: A giant planet is any planet much larger than Earth. With this terminology in mind, some astronomers have started referring to Uranus and Neptune as ice giants to indicate the predominance of the ices (in fluid form) in their interior composition. The alternative term jovian planet refers to the Roman god Jupiter, and meant all these planets were similar to Jupiter.",
+        "title": "Giant planet"
+      },
+      {
+        "relevance": -8.0546875,
+        "section": "Historical names / Planets",
+        "sourceID": "a:639:p:1",
+        "text": "Planet: A planet is a large object such as Venus or Earth that orbits a star. Planet: Mercury. Planet: Venus. Planet: Earth. Planet: Mars. Planet: Jupiter. Planet: Saturn. Planet: Uranus. Planet: Neptune.",
+        "title": "Planet"
+      },
+      {
+        "relevance": -0.650390625,
+        "sourceID": "a:408:p:3",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. The interior of Jupiter contains denser materials—by mass it is roughly 71% hydrogen, 24% helium, and 5% other elements. Jupiter was the first planet to form. It moved towards the center during the early times of the Solar System. This affected how other planets were formed. Hydrogen makes up most of Jupiter (90% by volume). Helium is the second and makes up a quarter of the mass and a tenth of the volume. Jupiter's interior is getting smaller. This process makes more heat than the planet receives from the Sun.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -8.7578125,
+        "section": "Planets in the Solar System",
+        "sourceID": "a:4413:p:0",
+        "text": "List of planets: This is a list of two types of planets: standard planets and dwarf planets, in the Solar System. List entries under Planets in the Solar System: Terrestrial planet; Mercury; Venus; Earth; Mars; Giant planet; Jupiter; Saturn; Uranus; Neptune.",
+        "title": "List of planets"
+      },
+      {
+        "relevance": -5.51953125,
+        "sourceID": "a:39054:p:1",
+        "text": "Extrasolar planet: An extrasolar planet (or exoplanet) is a natural planet in a planetary system outside our own solar system. It is unclear whether either type should be called a \"planet\". Analogies with planets in the Solar System apply to few of the extrasolar planets known. Most are quite unlike any of our planets, for example the so-called \"hot Jupiters\".",
+        "title": "Extrasolar planet"
+      },
+      {
+        "relevance": 1.6669921875,
+        "sourceID": "a:805152:p:0",
+        "text": "Hot Jupiter: Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods. Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods (P < 10 days). They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked.",
+        "title": "Hot Jupiter"
+      },
+      {
+        "relevance": -8.65625,
+        "section": "The eight planets",
+        "sourceID": "a:800:p:0",
+        "text": "Solar System: The Solar System is a group of space objects that are held together by gravity, with the Sun in the center. List entries under The eight planets: Mercury; Venus; Earth; Mars; Jupiter; Saturn; Uranus; Neptune.",
+        "title": "Solar System"
+      },
+      {
+        "relevance": -10.421875,
+        "section": "Planets that have moons",
+        "sourceID": "a:2900:p:0",
+        "text": "Natural satellite: A natural satellite, also called a moon, in astronomy is a smaller body which moves around a larger body. List entries under Planets that have moons: Earth; Mars; Jupiter; Saturn; Uranus; Neptune.",
+        "title": "Natural satellite"
+      },
+      {
+        "relevance": -8.0078125,
+        "sourceID": "a:877784:lead",
+        "text": "Jupiter trojan: The Jupiter trojans, commonly known as trojan asteroids or simply trojans, are a large group of asteroids that share the planet Jupiter's orbit around the Sun. The first Jupiter trojan discovered, 588 Achilles, was spotted in 1906 by German astronomer Max Wolf. More than 9,800 Jupiter trojans have been found.",
+        "title": "Jupiter trojan"
+      },
+      {
+        "relevance": -7.99609375,
+        "sourceID": "a:972127:lead",
+        "text": "2022 alignment of five planets and the Moon: The alignment of five planets, happened on June 24, 2022 from 3:34 am until 4:43 am. The five planets are Mercury, Venus, Mars, Jupiter, and Saturn. The Moon was also in the alignment. All non-Earth planets were there except for Uranus and Neptune. Three of these planets are the rocky planets: Mercury, Venus, Mars. Two of them are the gas planets: Jupiter and Saturn. In Early 2025, there was an \"alignment\" or \"parade\" of seven planets.",
+        "title": "2022 alignment of five planets and the Moon"
+      },
+      {
+        "relevance": -7.3125,
+        "section": "Astrology",
+        "sourceID": "a:72098:p:2",
+        "text": "Sagittarius (astrology): Sagittarius is the astrological Zodiac sign that represents the constellation Sagittarius. In astrology Sagittarius is ruled by the planet Jupiter.",
+        "title": "Sagittarius (astrology)"
+      },
+      {
+        "relevance": -5.84375,
+        "sourceID": "a:805142:lead",
+        "text": "Giant planet: They are usually mostly composed of low-boiling-point materials (gases or ices), rather than rock or other solid matter. Massive solid planets also exist. There are four giant planets in the Solar System: Jupiter, Saturn, Uranus and Neptune.",
+        "title": "Giant planet"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-38",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-float-fusion",
+    "decision": "retrieved",
+    "selected_title": "TrES-4b",
+    "selected_passage": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+    "matching_candidates": [
+      {
+        "relevance": 3.75390625,
+        "sourceID": "a:805152:lead",
+        "text": "Hot Jupiter: They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked. Hot Jupiters are the easiest extrasolar planets to detect by the radial-velocity method.",
+        "title": "Hot Jupiter"
+      },
+      {
+        "relevance": -3.15625,
+        "sourceID": "a:408:lead",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -1.15625,
+        "sourceID": "a:361270:lead",
+        "text": "WASP-12b: It is said by NASA one of the hottest planet known, much hotter than Venus. It is extremely close to its star, about 2 million miles away from it. It is a gas giant and is bigger than Jupiter.",
+        "title": "WASP-12b"
+      },
+      {
+        "relevance": 5.625,
+        "sourceID": "a:281514:lead",
+        "text": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+        "title": "TrES-4b"
+      },
+      {
+        "relevance": 1.6669921875,
+        "sourceID": "a:805152:p:0",
+        "text": "Hot Jupiter: Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods. Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods (P < 10 days). They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked.",
+        "title": "Hot Jupiter"
+      },
+      {
+        "relevance": -0.650390625,
+        "sourceID": "a:408:p:3",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. The interior of Jupiter contains denser materials—by mass it is roughly 71% hydrogen, 24% helium, and 5% other elements. Jupiter was the first planet to form. It moved towards the center during the early times of the Solar System. This affected how other planets were formed. Hydrogen makes up most of Jupiter (90% by volume). Helium is the second and makes up a quarter of the mass and a tenth of the volume. Jupiter's interior is getting smaller. This process makes more heat than the planet receives from the Sun.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -2.197265625,
+        "sourceID": "a:934518:lead",
+        "text": "TrES-2b: TrES-2b is a large gas planet 750 light-years from our solar system. TrES-2b is the planet with the lowest albedo known, absorbing 99% of the light that hits it. TrES-2b is a hot Jupiter.",
+        "title": "TrES-2b"
+      },
+      {
+        "relevance": -1.7451171875,
+        "section": "Infobox",
+        "sourceID": "a:408:p:1",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. Jupiter: rotation: (9 h 55 m 33 s). Jupiter: sidereal day: 9.925 hours (9 h 55 m 30 s). Jupiter: rot velocity: 12.6 km/s.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -4.12109375,
+        "sourceID": "a:2973:lead",
+        "text": "Jupiter (disambiguation): Jupiter is the fifth planet from the sun. Jupiter may also mean: * Jupiter (mythology), supreme Roman deity * Jupiter, Florida, United States * PGM-19 Jupiter missile, a kind of medium-range ballistic missile removed from Turkey after the Cuban Missile Crisis * \"Jupiter, the Bringer of Jollity\", the fourth movement in Gustav Holst's The Planets suite * Jupiter, disc 1 of Stadium Arcadium by the Red Hot Chili Peppers * Jupiter (company), a Japanese games company that made games such as Pokémon Pinball",
+        "title": "Jupiter (disambiguation)"
+      },
+      {
+        "relevance": -0.410400390625,
+        "section": "Infobox",
+        "sourceID": "a:408:p:0",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. Jupiter: epoch: J2000. Jupiter: aphelion: 816.62 Gm. Jupiter: perihelion: 740.52 Gm. Jupiter: time periastron: January 21, 2023. Jupiter: semimajor: 778.57 Gm. Jupiter: inclination: 1.303° to ecliptic 6.09° to Sun's equator 0.32° to invariable plane. Jupiter: avg speed: 13.07 km/s. Jupiter: equatorial radius: 71492 kilometres. Jupiter: polar radius: 66854 kilometres. Jupiter: mean radius: 69911 kilometres. Jupiter: mass: 1/1047 Sun. Jupiter: density: 1326 kg/m3. Jupiter: surface grav: 24.79 m/s2 2.528 g. Jupiter: escape velocity: 59.5 km/s. Jupiter: rotation: (9 h 55 m 33 s).",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -4.68359375,
+        "sourceID": "a:1015565:lead",
+        "text": "Ross 128: This star is also 185% the size of Jupiter. It is 10.92 light years away from the Sun. Its planet is Ross 128 b which orbits 0.043 AU from Ross 128.",
+        "title": "Ross 128"
+      },
+      {
+        "relevance": -5.6796875,
+        "sourceID": "a:639:lead",
+        "text": "Planet: Planets do not make light but can reflect light. Planets are spherical (that is, ball-shaped), because their gravity compresses them into a sphere. Jupiter is the biggest planet in the Solar System, while the smallest planet in the Solar System is Mercury.",
+        "title": "Planet"
+      },
+      {
+        "relevance": -6.390625,
+        "section": "Terminology",
+        "sourceID": "a:805142:p:6",
+        "text": "Giant planet: A giant planet is any planet much larger than Earth. With this terminology in mind, some astronomers have started referring to Uranus and Neptune as ice giants to indicate the predominance of the ices (in fluid form) in their interior composition. The alternative term jovian planet refers to the Roman god Jupiter, and meant all these planets were similar to Jupiter.",
+        "title": "Giant planet"
+      },
+      {
+        "relevance": -5.76953125,
+        "sourceID": "a:81132:lead",
+        "text": "Jupiter LXI: Jupiter LXI, also known as, is a moon of Jupiter. It was found by a team of astronomers led by Brett J. Gladman, et al. in 2003.",
+        "title": "Jupiter LXI"
+      },
+      {
+        "relevance": -8.0546875,
+        "section": "Historical names / Planets",
+        "sourceID": "a:639:p:1",
+        "text": "Planet: A planet is a large object such as Venus or Earth that orbits a star. Planet: Mercury. Planet: Venus. Planet: Earth. Planet: Mars. Planet: Jupiter. Planet: Saturn. Planet: Uranus. Planet: Neptune.",
+        "title": "Planet"
+      },
+      {
+        "relevance": -3.61328125,
+        "sourceID": "a:81161:lead",
+        "text": "Jupiter LV: Jupiter LV, also called, is a moon of Jupiter. It was found by a team of astronomers led by Brett J. Gladman in 2003. Jupiter LV is about 2 kilometres in diameter, and orbits Jupiter at an average distance of 19,813,000 km in 569.728 days, at an inclination of 147° to the ecliptic (149° to Jupiter's equator), with an orbital eccentricity of 0.1570. It belongs to the Ananke group, retrograde non-spherical moons which orbit Jupiter between 19,300,000 and 22,700,000 km, at inclinations of about 150°.",
+        "title": "Jupiter LV"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-38",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieved",
+    "selected_title": "TrES-4b",
+    "selected_passage": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+    "matching_candidates": [
+      {
+        "relevance": 3.75390625,
+        "sourceID": "a:805152:lead",
+        "text": "Hot Jupiter: They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked. Hot Jupiters are the easiest extrasolar planets to detect by the radial-velocity method.",
+        "title": "Hot Jupiter"
+      },
+      {
+        "relevance": -1.15625,
+        "sourceID": "a:361270:lead",
+        "text": "WASP-12b: It is said by NASA one of the hottest planet known, much hotter than Venus. It is extremely close to its star, about 2 million miles away from it. It is a gas giant and is bigger than Jupiter.",
+        "title": "WASP-12b"
+      },
+      {
+        "relevance": 1.6669921875,
+        "sourceID": "a:805152:p:0",
+        "text": "Hot Jupiter: Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods. Hot Jupiters are a class of gas giant exoplanets that are physically similar to Jupiter but have very short orbital periods (P < 10 days). They are close to their stars, with high surface-atmosphere temperatures. Hot Jupiters are usually tidally locked.",
+        "title": "Hot Jupiter"
+      },
+      {
+        "relevance": -3.15625,
+        "sourceID": "a:408:lead",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. It is the fifth planet from the Sun. Jupiter is a gas giant because it is large and made mostly of gas.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -0.650390625,
+        "sourceID": "a:408:p:3",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. The interior of Jupiter contains denser materials—by mass it is roughly 71% hydrogen, 24% helium, and 5% other elements. Jupiter was the first planet to form. It moved towards the center during the early times of the Solar System. This affected how other planets were formed. Hydrogen makes up most of Jupiter (90% by volume). Helium is the second and makes up a quarter of the mass and a tenth of the volume. Jupiter's interior is getting smaller. This process makes more heat than the planet receives from the Sun.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": 5.625,
+        "sourceID": "a:281514:lead",
+        "text": "TrES-4b: This makes the temperature on the planet very hot. In fact, the temperature on TrES-4 is about 2,300 degrees Fahrenheit (1,260 degrees Celsius). TrES-4 is a gas giant that is 70 percent bigger than Jupiter.",
+        "title": "TrES-4b"
+      },
+      {
+        "relevance": -1.7451171875,
+        "section": "Infobox",
+        "sourceID": "a:408:p:1",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. Jupiter: rotation: (9 h 55 m 33 s). Jupiter: sidereal day: 9.925 hours (9 h 55 m 30 s). Jupiter: rot velocity: 12.6 km/s.",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -4.12109375,
+        "sourceID": "a:2973:lead",
+        "text": "Jupiter (disambiguation): Jupiter is the fifth planet from the sun. Jupiter may also mean: * Jupiter (mythology), supreme Roman deity * Jupiter, Florida, United States * PGM-19 Jupiter missile, a kind of medium-range ballistic missile removed from Turkey after the Cuban Missile Crisis * \"Jupiter, the Bringer of Jollity\", the fourth movement in Gustav Holst's The Planets suite * Jupiter, disc 1 of Stadium Arcadium by the Red Hot Chili Peppers * Jupiter (company), a Japanese games company that made games such as Pokémon Pinball",
+        "title": "Jupiter (disambiguation)"
+      },
+      {
+        "relevance": -0.410400390625,
+        "section": "Infobox",
+        "sourceID": "a:408:p:0",
+        "text": "Jupiter: Jupiter is the largest planet in the Solar System. Jupiter: epoch: J2000. Jupiter: aphelion: 816.62 Gm. Jupiter: perihelion: 740.52 Gm. Jupiter: time periastron: January 21, 2023. Jupiter: semimajor: 778.57 Gm. Jupiter: inclination: 1.303° to ecliptic 6.09° to Sun's equator 0.32° to invariable plane. Jupiter: avg speed: 13.07 km/s. Jupiter: equatorial radius: 71492 kilometres. Jupiter: polar radius: 66854 kilometres. Jupiter: mean radius: 69911 kilometres. Jupiter: mass: 1/1047 Sun. Jupiter: density: 1326 kg/m3. Jupiter: surface grav: 24.79 m/s2 2.528 g. Jupiter: escape velocity: 59.5 km/s. Jupiter: rotation: (9 h 55 m 33 s).",
+        "title": "Jupiter"
+      },
+      {
+        "relevance": -4.68359375,
+        "sourceID": "a:1015565:lead",
+        "text": "Ross 128: This star is also 185% the size of Jupiter. It is 10.92 light years away from the Sun. Its planet is Ross 128 b which orbits 0.043 AU from Ross 128.",
+        "title": "Ross 128"
+      },
+      {
+        "relevance": -5.65234375,
+        "section": "Characteristics",
+        "sourceID": "a:193341:p:0",
+        "text": "70 Virginis b: 70 Virginis b is an extrasolar planet that is around 60 light-years away from the Earth in the constellation of Virgo. 70 Virginis b is a Jupiter-type extrasolar planet that orbits around 70 Virginis every 116 days. It has 7.5 times the mass of Jupiter. Its surface gravity is thought to be about two to three times that of Jupiter's. At the time that it was found in January 1996, it was thought that the star was only 29 light years away from the Earth. This could explain why the star was less bright based on its apparent magnitude (measure of brightness).",
+        "title": "70 Virginis b"
+      },
+      {
+        "relevance": -5.6796875,
+        "sourceID": "a:639:lead",
+        "text": "Planet: Planets do not make light but can reflect light. Planets are spherical (that is, ball-shaped), because their gravity compresses them into a sphere. Jupiter is the biggest planet in the Solar System, while the smallest planet in the Solar System is Mercury.",
+        "title": "Planet"
+      },
+      {
+        "relevance": -6.390625,
+        "section": "Terminology",
+        "sourceID": "a:805142:p:6",
+        "text": "Giant planet: A giant planet is any planet much larger than Earth. With this terminology in mind, some astronomers have started referring to Uranus and Neptune as ice giants to indicate the predominance of the ices (in fluid form) in their interior composition. The alternative term jovian planet refers to the Roman god Jupiter, and meant all these planets were similar to Jupiter.",
+        "title": "Giant planet"
+      },
+      {
+        "relevance": -7.4375,
+        "sourceID": "a:81155:lead",
+        "text": "Philophrosyne (moon): Philophrosyne is a moon of Jupiter. It was found by a team of astronomers from the University of Hawaii led by Scott S. Sheppard, et al. in 2003.",
+        "title": "Philophrosyne (moon)"
+      },
+      {
+        "relevance": -8.0546875,
+        "section": "Historical names / Planets",
+        "sourceID": "a:639:p:1",
+        "text": "Planet: A planet is a large object such as Venus or Earth that orbits a star. Planet: Mercury. Planet: Venus. Planet: Earth. Planet: Mars. Planet: Jupiter. Planet: Saturn. Planet: Uranus. Planet: Neptune.",
+        "title": "Planet"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "device-41",
+    "question_mode": "original",
+    "arm": "bm25-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support.",
+    "spouse_source_rank": {
+      "article": null,
+      "body": null,
+      "float": null,
+      "binary": null
+    },
+    "spouse_source_prepared": false,
+    "spouse_source_reranked": false
+  },
+  {
+    "id": "device-41",
+    "question_mode": "original",
+    "arm": "vec-float-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support.",
+    "spouse_source_rank": {
+      "article": null,
+      "body": null,
+      "float": null,
+      "binary": null
+    },
+    "spouse_source_prepared": false,
+    "spouse_source_reranked": false
+  },
+  {
+    "id": "device-41",
+    "question_mode": "original",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support.",
+    "spouse_source_rank": {
+      "article": null,
+      "body": null,
+      "float": null,
+      "binary": null
+    },
+    "spouse_source_prepared": false,
+    "spouse_source_reranked": false
+  },
+  {
+    "id": "device-41",
+    "question_mode": "reviewed-complete",
+    "arm": "bm25-fusion",
+    "decision": "retrieved",
+    "selected_title": "Rosa Parks",
+    "selected_passage": "Rosa Parks: Rosa Louise McCauley Parks (February 4, 1913 – October 24, 2005) was an African-American civil rights activist. Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977).",
+    "matching_candidates": [
+      {
+        "relevance": 6.4375,
+        "section": "Infobox",
+        "sourceID": "a:35750:p:0",
+        "text": "Rosa Parks: Rosa Louise McCauley Parks (February 4, 1913 – October 24, 2005) was an African-American civil rights activist. Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977).",
+        "title": "Rosa Parks"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support.",
+    "spouse_source_rank": {
+      "article": null,
+      "body": 14,
+      "float": 15,
+      "binary": null
+    },
+    "spouse_source_prepared": true,
+    "spouse_source_reranked": true
+  },
+  {
+    "id": "device-41",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-float-fusion",
+    "decision": "retrieved",
+    "selected_title": "Rosa Parks",
+    "selected_passage": "Rosa Parks: Rosa Louise McCauley Parks (February 4, 1913 – October 24, 2005) was an African-American civil rights activist. Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977).",
+    "matching_candidates": [
+      {
+        "relevance": 6.4375,
+        "section": "Infobox",
+        "sourceID": "a:35750:p:0",
+        "text": "Rosa Parks: Rosa Louise McCauley Parks (February 4, 1913 – October 24, 2005) was an African-American civil rights activist. Rosa Parks: birth place: Tuskegee, Alabama, U.S. Rosa Parks: death place: Detroit, Michigan, U.S. Rosa Parks: resting place: Woodlawn Cemetery, Detroit. Rosa Parks: occupation: Civil rights activist. Rosa Parks: known for: Montgomery bus boycott. Rosa Parks: movement: Civil Rights Movement. Rosa Parks: spouse: Raymond Parks (m. 1932; died 1977).",
+        "title": "Rosa Parks"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support.",
+    "spouse_source_rank": {
+      "article": null,
+      "body": 14,
+      "float": 15,
+      "binary": null
+    },
+    "spouse_source_prepared": true,
+    "spouse_source_reranked": true
+  },
+  {
+    "id": "device-41",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support.",
+    "spouse_source_rank": {
+      "article": null,
+      "body": 14,
+      "float": 15,
+      "binary": null
+    },
+    "spouse_source_prepared": true,
+    "spouse_source_reranked": false
+  },
+  {
+    "id": "new-curie-2",
+    "question_mode": "original",
+    "arm": "bm25-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "new-curie-2",
+    "question_mode": "original",
+    "arm": "vec-float-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "new-curie-2",
+    "question_mode": "original",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieval_rejected",
+    "selected_title": null,
+    "selected_passage": null,
+    "matching_candidates": [],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "new-curie-2",
+    "question_mode": "reviewed-complete",
+    "arm": "bm25-fusion",
+    "decision": "retrieved",
+    "selected_title": "Irène Joliot-Curie",
+    "selected_passage": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+    "matching_candidates": [
+      {
+        "relevance": 7.49609375,
+        "sourceID": "a:372697:lead",
+        "text": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+        "title": "Irène Joliot-Curie"
+      },
+      {
+        "relevance": -3.548828125,
+        "sourceID": "a:954409:lead",
+        "text": "Pierre and Marie Curie University: The Université Pierre-et-Marie-Curie was a French university created on January 1, 1971. It disappeared on January 1, 2018 in favor of Sorbonne Université following the publication in the Official Journal of the decree creating the new university on April 21, 2017.",
+        "title": "Pierre and Marie Curie University"
+      },
+      {
+        "relevance": 2.798828125,
+        "sourceID": "a:47196:lead",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She did research on radioactivity. She was also the first woman to win a Nobel Prize.,which she went on to win twice.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 3.654296875,
+        "section": "Infobox",
+        "sourceID": "a:47196:p:0",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Curie: birth place: Warsaw, Congress Poland, Russian Empire. Marie Curie: death place: Passy, Haute-Savoie, France. Marie Curie: death cause: Aplastic anemia from exposure to radiation. Marie Curie: citizenship: Russian subject (by birth, till 1895); French citizen (by marriage, from 1895). Marie Curie: alma mater: University of Paris ESPCI. Marie Curie: doctoral advisor: Gabriel Lippmann. Marie Curie: doctoral students: André-Louis Debierne; Óscar Moreno; Marguerite Perey; Émile Henriot. Marie Curie: known for: Radioactivity Polonium Radium.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 6.578125,
+        "section": "Infobox",
+        "sourceID": "a:47196:p:1",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Curie: known for: Radioactivity Polonium Radium. Marie Curie: awards: Nobel Prize in Physics (1903) Davy Medal (1903) Matteucci Medal (1904) Elliott Cresson Medal (1909) Albert Medal (1910) Nobel Prize in Chemistry (1911) Willard Gibbs Award (1921). Marie Curie: spouse: Pierre Curie (18591905; m. 1895). Marie Curie: field: Physics, chemistry. Marie Curie: work institutions: * University of Paris Institut du Radium École Normale Supérieure French Academy of Medicine International Committee on Intellectual Cooperation.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": -1.6708984375,
+        "section": "Nobel laureates",
+        "sourceID": "a:166750:p:0",
+        "text": "Curie Institute (Paris): The Curie Institute or Institut Curie is one of the leading medical research centres in the world. List entries under Nobel laureates: Marie Curie, Physics, 1903; Marie Curie. Chemistry, 1911; Pierre Curie; Irène and Frédéric Joliot-Curie, Chemistry, 1935; Pierre-Gilles de Gennes.",
+        "title": "Curie Institute (Paris)"
+      },
+      {
+        "relevance": 0.3291015625,
+        "sourceID": "a:43002:lead",
+        "text": "Curium: Curium is a synthetic chemical element in the periodic table that has the atomic number 96. It has the chemical symbol Cm and it is a radioactive metal. In chemistry it is placed in a group of metal elements named the actinides. Curium is a transuranic element. It is a radioactive element that does not exist in nature. Curium has a silver color and it is made by bombarding a plutonium target with alpha particles (helium ions). Curium was named after Marie Curie and her husband Pierre.",
+        "title": "Curium"
+      },
+      {
+        "relevance": -2.32421875,
+        "section": "Famous former students",
+        "sourceID": "a:954409:p:0",
+        "text": "Pierre and Marie Curie University: The Université Pierre-et-Marie-Curie was a French university created on January 1, 1971. List entries under Famous former students: Gérard Férey; Philippe Jamet; Taraneh Javanbakht; Wendelin Werner.",
+        "title": "Pierre and Marie Curie University"
+      },
+      {
+        "relevance": 3.57421875,
+        "sourceID": "a:18204:lead",
+        "text": "List of Nobel Prize winners in Chemistry: It is just one of many Nobel Prizes. A famous winner of this prize was Marie Curie. She won the prize in 1911 after she discovered radium with her husband Pierre.",
+        "title": "List of Nobel Prize winners in Chemistry"
+      },
+      {
+        "relevance": 2.541015625,
+        "section": "Early life",
+        "sourceID": "a:47196:p:4",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She graduated at 15. Maria became a teacher so she could earn money to go to school in Paris, France. She also went to an unaccredited college in Poland.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 2.837890625,
+        "section": "Scientific career",
+        "sourceID": "a:47196:p:7",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. These treatments use the radioactive isotopes. She was the first woman to win the Nobel Prize and the first person to win two Nobel Prizes.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 2.654296875,
+        "section": "Early life",
+        "sourceID": "a:47196:p:5",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She also went to an unaccredited college in Poland. Eventually, she left Poland and went to France under the name “Marie\" after one of her big sisters gave her the chance. In Paris, she earned higher degrees and did her important scientific work. She founded the Curie Institutes in Paris and Warsaw.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 1.416015625,
+        "section": "Infobox",
+        "sourceID": "a:372697:p:0",
+        "text": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. Irène Joliot-Curie: birth place: Paris, France. Irène Joliot-Curie: death place: Paris, France. Irène Joliot-Curie: nationality: French. Irène Joliot-Curie: alma mater: University of Paris. Irène Joliot-Curie: death cause: Leukaemia. Irène Joliot-Curie: relatives: Marie Curie (mother); Pierre Curie (father); Ève Curie (sister).",
+        "title": "Irène Joliot-Curie"
+      },
+      {
+        "relevance": -2.21875,
+        "section": "Famous former students",
+        "sourceID": "a:954409:p:1",
+        "text": "Pierre and Marie Curie University: The Université Pierre-et-Marie-Curie was a French university created on January 1, 1971. List entries under Famous former students: Gérard Férey; Philippe Jamet; Taraneh Javanbakht; Wendelin Werner. Gérard Férey, a French chemist Philippe Jamet, French manager and President of universities Taraneh Javanbakht, an Iranian-Canadian scientist, philosopher, writer, artist, translator and activist Wendelin Werner, a German-born French mathematician",
+        "title": "Pierre and Marie Curie University"
+      },
+      {
+        "relevance": 5.9140625,
+        "section": "History",
+        "sourceID": "a:18437:p:0",
+        "text": "Radium: Radium is a chemical element. Radium was discovered by Marie Curie and her husband Pierre Curie on 21 December 1898. They found that some radioactive minerals had unknown compounds left over after removing uranium and barium. The unknown compounds were polonium and radium; the discovery was announced to the French Academy of Sciences on 26 December 1898.",
+        "title": "Radium"
+      },
+      {
+        "relevance": 4.73046875,
+        "section": "Work",
+        "sourceID": "a:70876:p:1",
+        "text": "Pierre Curie: Pierre Curie (15 May 1859 in Paris – 19 April 1906 in Paris) was a French physicist. Pierre Curie is not as well known as Marie Curie, although Pierre and his brother had done a lot of work before Pierre's marriage and work with Marie. They were the first to use the term 'radioactivity', and were pioneers in its study. Pierre and his brother, Jacques Curie, built a special meter for measuring small amounts of electricity, piezoelectricity and ferromagnetism which Pierre and Marie used in their other discoveries.",
+        "title": "Pierre Curie"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "new-curie-2",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-float-fusion",
+    "decision": "retrieved",
+    "selected_title": "Irène Joliot-Curie",
+    "selected_passage": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+    "matching_candidates": [
+      {
+        "relevance": 7.49609375,
+        "sourceID": "a:372697:lead",
+        "text": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+        "title": "Irène Joliot-Curie"
+      },
+      {
+        "relevance": 2.798828125,
+        "sourceID": "a:47196:lead",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She did research on radioactivity. She was also the first woman to win a Nobel Prize.,which she went on to win twice.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 2.654296875,
+        "section": "Early life",
+        "sourceID": "a:47196:p:5",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She also went to an unaccredited college in Poland. Eventually, she left Poland and went to France under the name “Marie\" after one of her big sisters gave her the chance. In Paris, she earned higher degrees and did her important scientific work. She founded the Curie Institutes in Paris and Warsaw.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 2.541015625,
+        "section": "Early life",
+        "sourceID": "a:47196:p:4",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She graduated at 15. Maria became a teacher so she could earn money to go to school in Paris, France. She also went to an unaccredited college in Poland.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 6.578125,
+        "section": "Infobox",
+        "sourceID": "a:47196:p:1",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Curie: known for: Radioactivity Polonium Radium. Marie Curie: awards: Nobel Prize in Physics (1903) Davy Medal (1903) Matteucci Medal (1904) Elliott Cresson Medal (1909) Albert Medal (1910) Nobel Prize in Chemistry (1911) Willard Gibbs Award (1921). Marie Curie: spouse: Pierre Curie (18591905; m. 1895). Marie Curie: field: Physics, chemistry. Marie Curie: work institutions: * University of Paris Institut du Radium École Normale Supérieure French Academy of Medicine International Committee on Intellectual Cooperation.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 4.73046875,
+        "section": "Work",
+        "sourceID": "a:70876:p:1",
+        "text": "Pierre Curie: Pierre Curie (15 May 1859 in Paris – 19 April 1906 in Paris) was a French physicist. Pierre Curie is not as well known as Marie Curie, although Pierre and his brother had done a lot of work before Pierre's marriage and work with Marie. They were the first to use the term 'radioactivity', and were pioneers in its study. Pierre and his brother, Jacques Curie, built a special meter for measuring small amounts of electricity, piezoelectricity and ferromagnetism which Pierre and Marie used in their other discoveries.",
+        "title": "Pierre Curie"
+      },
+      {
+        "relevance": 2.8515625,
+        "sourceID": "a:720184:lead",
+        "text": "Ève Curie: Ève Denise Curie Labouisse (; December 6, 1904 – October 22, 2007) was a French and American writer, journalist and pianist. She was the younger daughter of Marie Curie and Pierre Curie. Her sister was Irène Joliot-Curie and her brother-in-law Frédéric Joliot-Curie. Ève was the only member of her family who did not choose a career as a scientist and did not win a Nobel Prize. She worked as a journalist, and wrote her mother's biography Madame Curie and a book of war reportage, Journey Among Warriors.",
+        "title": "Ève Curie"
+      },
+      {
+        "relevance": -3.548828125,
+        "sourceID": "a:954409:lead",
+        "text": "Pierre and Marie Curie University: The Université Pierre-et-Marie-Curie was a French university created on January 1, 1971. It disappeared on January 1, 2018 in favor of Sorbonne Université following the publication in the Official Journal of the decree creating the new university on April 21, 2017.",
+        "title": "Pierre and Marie Curie University"
+      },
+      {
+        "relevance": 3.123046875,
+        "sourceID": "a:47196:p:2",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Salomée Skłodowska, Madame Pierre Curie (born Maria Salomea Skłodowska; 7 November 1867 – 4 July 1934) was a Polish-born French physicist and chemist. She did research on radioactivity. She was also the first woman to win a Nobel Prize.,which she went on to win twice. She was the first female professor at the University of Paris. She was the first person to win two Nobel Prizes.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 5.9140625,
+        "section": "History",
+        "sourceID": "a:18437:p:0",
+        "text": "Radium: Radium is a chemical element. Radium was discovered by Marie Curie and her husband Pierre Curie on 21 December 1898. They found that some radioactive minerals had unknown compounds left over after removing uranium and barium. The unknown compounds were polonium and radium; the discovery was announced to the French Academy of Sciences on 26 December 1898.",
+        "title": "Radium"
+      },
+      {
+        "relevance": 2.837890625,
+        "section": "Scientific career",
+        "sourceID": "a:47196:p:7",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. These treatments use the radioactive isotopes. She was the first woman to win the Nobel Prize and the first person to win two Nobel Prizes.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 3.654296875,
+        "section": "Infobox",
+        "sourceID": "a:47196:p:0",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Curie: birth place: Warsaw, Congress Poland, Russian Empire. Marie Curie: death place: Passy, Haute-Savoie, France. Marie Curie: death cause: Aplastic anemia from exposure to radiation. Marie Curie: citizenship: Russian subject (by birth, till 1895); French citizen (by marriage, from 1895). Marie Curie: alma mater: University of Paris ESPCI. Marie Curie: doctoral advisor: Gabriel Lippmann. Marie Curie: doctoral students: André-Louis Debierne; Óscar Moreno; Marguerite Perey; Émile Henriot. Marie Curie: known for: Radioactivity Polonium Radium.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 6.81640625,
+        "sourceID": "a:70876:lead",
+        "text": "Pierre Curie: Pierre Curie (15 May 1859 in Paris – 19 April 1906 in Paris) was a French physicist. He shared the 1903 Nobel Prize in Physics with his wife, Marie Curie and Henri Becquerel, for the work on 'spontaneous radioactivity' which Becquerel discovered.",
+        "title": "Pierre Curie"
+      },
+      {
+        "relevance": 1.6689453125,
+        "section": "Early life",
+        "sourceID": "a:47196:p:3",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Maria Salomea Skłodowska was born on 7 November 1867 in Warsaw, Congress Poland, Russian Empire. She lived there until she was 22. Her original name was Maria. She was the fifth child in her family. At the age of 10, her sister Zofia died. Her mother died one year later. Her father was a math teacher. As a young girl, she was interested in physics. She was top of her high school class. She graduated at 15.",
+        "title": "Marie Curie"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  },
+  {
+    "id": "new-curie-2",
+    "question_mode": "reviewed-complete",
+    "arm": "vec-binary-fusion",
+    "decision": "retrieved",
+    "selected_title": "Irène Joliot-Curie",
+    "selected_passage": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+    "matching_candidates": [
+      {
+        "relevance": 7.49609375,
+        "sourceID": "a:372697:lead",
+        "text": "Irène Joliot-Curie: Irène Joliot-Curie (12 September 1897 17 March 1956) was a French scientist. She won the Nobel Prize for Chemistry in 1935 with her husband, Frédéric Joliot. Curie was the daughter of Pierre and Marie Curie.",
+        "title": "Irène Joliot-Curie"
+      },
+      {
+        "relevance": 2.541015625,
+        "section": "Early life",
+        "sourceID": "a:47196:p:4",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She graduated at 15. Maria became a teacher so she could earn money to go to school in Paris, France. She also went to an unaccredited college in Poland.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 2.654296875,
+        "section": "Early life",
+        "sourceID": "a:47196:p:5",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She also went to an unaccredited college in Poland. Eventually, she left Poland and went to France under the name “Marie\" after one of her big sisters gave her the chance. In Paris, she earned higher degrees and did her important scientific work. She founded the Curie Institutes in Paris and Warsaw.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 4.73046875,
+        "section": "Work",
+        "sourceID": "a:70876:p:1",
+        "text": "Pierre Curie: Pierre Curie (15 May 1859 in Paris – 19 April 1906 in Paris) was a French physicist. Pierre Curie is not as well known as Marie Curie, although Pierre and his brother had done a lot of work before Pierre's marriage and work with Marie. They were the first to use the term 'radioactivity', and were pioneers in its study. Pierre and his brother, Jacques Curie, built a special meter for measuring small amounts of electricity, piezoelectricity and ferromagnetism which Pierre and Marie used in their other discoveries.",
+        "title": "Pierre Curie"
+      },
+      {
+        "relevance": 2.837890625,
+        "section": "Scientific career",
+        "sourceID": "a:47196:p:7",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. These treatments use the radioactive isotopes. She was the first woman to win the Nobel Prize and the first person to win two Nobel Prizes.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 2.8515625,
+        "sourceID": "a:720184:lead",
+        "text": "Ève Curie: Ève Denise Curie Labouisse (; December 6, 1904 – October 22, 2007) was a French and American writer, journalist and pianist. She was the younger daughter of Marie Curie and Pierre Curie. Her sister was Irène Joliot-Curie and her brother-in-law Frédéric Joliot-Curie. Ève was the only member of her family who did not choose a career as a scientist and did not win a Nobel Prize. She worked as a journalist, and wrote her mother's biography Madame Curie and a book of war reportage, Journey Among Warriors.",
+        "title": "Ève Curie"
+      },
+      {
+        "relevance": 6.578125,
+        "section": "Infobox",
+        "sourceID": "a:47196:p:1",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Curie: known for: Radioactivity Polonium Radium. Marie Curie: awards: Nobel Prize in Physics (1903) Davy Medal (1903) Matteucci Medal (1904) Elliott Cresson Medal (1909) Albert Medal (1910) Nobel Prize in Chemistry (1911) Willard Gibbs Award (1921). Marie Curie: spouse: Pierre Curie (18591905; m. 1895). Marie Curie: field: Physics, chemistry. Marie Curie: work institutions: * University of Paris Institut du Radium École Normale Supérieure French Academy of Medicine International Committee on Intellectual Cooperation.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 3.123046875,
+        "sourceID": "a:47196:p:2",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Salomée Skłodowska, Madame Pierre Curie (born Maria Salomea Skłodowska; 7 November 1867 – 4 July 1934) was a Polish-born French physicist and chemist. She did research on radioactivity. She was also the first woman to win a Nobel Prize.,which she went on to win twice. She was the first female professor at the University of Paris. She was the first person to win two Nobel Prizes.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 5.9140625,
+        "section": "History",
+        "sourceID": "a:18437:p:0",
+        "text": "Radium: Radium is a chemical element. Radium was discovered by Marie Curie and her husband Pierre Curie on 21 December 1898. They found that some radioactive minerals had unknown compounds left over after removing uranium and barium. The unknown compounds were polonium and radium; the discovery was announced to the French Academy of Sciences on 26 December 1898.",
+        "title": "Radium"
+      },
+      {
+        "relevance": 6.81640625,
+        "sourceID": "a:70876:lead",
+        "text": "Pierre Curie: Pierre Curie (15 May 1859 in Paris – 19 April 1906 in Paris) was a French physicist. He shared the 1903 Nobel Prize in Physics with his wife, Marie Curie and Henri Becquerel, for the work on 'spontaneous radioactivity' which Becquerel discovered.",
+        "title": "Pierre Curie"
+      },
+      {
+        "relevance": -3.548828125,
+        "sourceID": "a:954409:lead",
+        "text": "Pierre and Marie Curie University: The Université Pierre-et-Marie-Curie was a French university created on January 1, 1971. It disappeared on January 1, 2018 in favor of Sorbonne Université following the publication in the Official Journal of the decree creating the new university on April 21, 2017.",
+        "title": "Pierre and Marie Curie University"
+      },
+      {
+        "relevance": 2.798828125,
+        "sourceID": "a:47196:lead",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. She did research on radioactivity. She was also the first woman to win a Nobel Prize.,which she went on to win twice.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": 3.654296875,
+        "section": "Infobox",
+        "sourceID": "a:47196:p:0",
+        "text": "Marie Curie: Marie Salomée Skłodowska, Madame Pierre Curie was a Polish-born French physicist and chemist. Marie Curie: birth place: Warsaw, Congress Poland, Russian Empire. Marie Curie: death place: Passy, Haute-Savoie, France. Marie Curie: death cause: Aplastic anemia from exposure to radiation. Marie Curie: citizenship: Russian subject (by birth, till 1895); French citizen (by marriage, from 1895). Marie Curie: alma mater: University of Paris ESPCI. Marie Curie: doctoral advisor: Gabriel Lippmann. Marie Curie: doctoral students: André-Louis Debierne; Óscar Moreno; Marguerite Perey; Émile Henriot. Marie Curie: known for: Radioactivity Polonium Radium.",
+        "title": "Marie Curie"
+      },
+      {
+        "relevance": -6.40625,
+        "sourceID": "a:474265:lead",
+        "text": "Pierre Marie: Pierre Marie (9 September 1853 – 13 April 1940) was a French neurologist. He was born in Paris. He was one of the scientists to discover Charcot-Marie-Tooth disease.",
+        "title": "Pierre Marie"
+      },
+      {
+        "relevance": -1.6708984375,
+        "section": "Nobel laureates",
+        "sourceID": "a:166750:p:0",
+        "text": "Curie Institute (Paris): The Curie Institute or Institut Curie is one of the leading medical research centres in the world. List entries under Nobel laureates: Marie Curie, Physics, 1903; Marie Curie. Chemistry, 1911; Pierre Curie; Irène and Frédéric Joliot-Curie, Chemistry, 1935; Pierre-Gilles de Gennes.",
+        "title": "Curie Institute (Paris)"
+      }
+    ],
+    "note": "String presence is a diagnostic locator, not proof of answer support."
+  }
+]

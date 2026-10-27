@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "check": "Identical text on distinct source IDs survives either request ordering; candidate preparation cannot leak one arm into another.",
+  "binary_sha256": "9690647d9b8fe0408166e9166668f153cabe7a02aa809f6ad8664c94d9cbe4f5"
+}

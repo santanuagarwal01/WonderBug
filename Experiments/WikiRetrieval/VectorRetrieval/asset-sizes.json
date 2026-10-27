@@ -1,0 +1,12 @@
+{
+  "compact_corpus_bytes": 315969536,
+  "current_corpus_bytes": 332623872,
+  "binary_index_bytes": 43745280,
+  "coreml_package_bytes": 22726067,
+  "embedding_vocabulary_bytes": 231508,
+  "reference_index_includes_both_formats_bytes": 994996224,
+  "additional_vector_assets_bytes": 66702855,
+  "compact_plus_vector_assets_bytes": 382672391,
+  "delta_against_current_corpus_bytes": 50048519,
+  "note": "Raw prepared asset sizes, not measured installed iPhone app size; native extension and compilation overhead excluded. Float reference is not a proposed shipping asset."
+}

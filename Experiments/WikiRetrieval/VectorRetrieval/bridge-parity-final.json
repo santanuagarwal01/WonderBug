@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "test": "embedding parity",
+      "text": "A sample question about a waterfall.",
+      "cosine": 0.9985812959074242,
+      "embedding_ms": 18.203020095825195
+    },
+    {
+      "test": "embedding parity",
+      "text": "Which material is the bridge made from?",
+      "cosine": 0.9992577834851302,
+      "embedding_ms": 5.45501708984375
+    },
+    {
+      "test": "embedding parity",
+      "text": "Caf\u00e9 cats\u2014why? \u6c34",
+      "cosine": 0.9979090904733998,
+      "embedding_ms": 6.515979766845703
+    },
+    {
+      "test": "embedding parity",
+      "text": "An unknown word: qwertyuiopasdfghjkl.",
+      "cosine": 0.9982849287311879,
+      "embedding_ms": 6.222009658813477
+    },
+    {
+      "test": "embedding parity",
+      "text": "This is very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long.",
+      "cosine": 0.9990461413844927,
+      "embedding_ms": 5.7250261306762695
+    },
+    {
+      "test": "question safety, passage safety and 20-pair budget",
+      "passed": true
+    },
+    {
+      "test": "stored spouse paragraph survives shared canonical preparation",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,21 @@
+{
+  "corpus_sha256": "a85b30cae221092752f64caa1f19e06ee00102b48bd22e2ff4ad8b18098d600b",
+  "embedder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "tokenizer_sha256": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "dimensions": 384,
+    "max_tokens": 256,
+    "pooling": "attention-masked mean followed by L2 normalization"
+  },
+  "document_format": "title + optional section + newline + whole paragraph (tokenizer truncates to 256)",
+  "sqlite_vec": "v0.1.6",
+  "complete": true,
+  "passages": 608614,
+  "batch_size": 128,
+  "device": "mps",
+  "seconds_this_run": 1984.92,
+  "output_bytes": 994996224,
+  "output_sha256": "7c442ae710c4e5fbc0f833da72bb8247f6cff5f7929ddc9a2f446107f7d0f50c"
+}

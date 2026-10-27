@@ -55,7 +55,10 @@
             value = "hybrid-passages"
             isEnabled = "YES">
          </EnvironmentVariable>
-         <EnvironmentVariable key = "WONDERBUG_EVALUATION_LOG" value = "1" isEnabled = "YES">
+         <EnvironmentVariable
+            key = "WONDERBUG_EVALUATION_LOG"
+            value = "1"
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

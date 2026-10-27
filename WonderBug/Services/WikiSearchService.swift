@@ -29,6 +29,7 @@ struct WikiPassage {
 /// debug log and the evaluation reports.
 enum WikiMiss {
     /// The experimental model could not be loaded or produced invalid scores.
+    case vectorUnavailable
     case passageIndexUnavailable
     case rerankerUnavailable
     case calibrationUnavailable
@@ -49,6 +50,7 @@ enum WikiMiss {
 
     nonisolated var reason: String {
         switch self {
+        case .vectorUnavailable: return "SQLite-vec assets unavailable, incompatible, or query failed"
         case .passageIndexUnavailable: return "direct passage index unavailable or incompatible"
         case .rerankerUnavailable: return "reranker model unavailable"
         case .calibrationUnavailable: return "gate calibration missing or incompatible with retrieval/model"
@@ -236,8 +238,12 @@ actor WikiSearchService {
 
     private let calibratedGate: WikiRelevanceGate?
     private let retrievalMode: RetrievalMode
-    private var usesHybridRetrieval: Bool { retrievalMode == .hybridPassages || retrievalMode == .calibratedPassages }
+    private var usesHybridRetrieval: Bool { retrievalMode == .hybridPassages || retrievalMode == .calibratedPassages || retrievalMode == .sqliteVec }
     private let reranker: WikiPassageReranking?
+    #if canImport(CSQLiteVec)
+    private var vectorIndex: WikiVectorIndex?
+    private var vectorAssets: WikiVectorIndex.Assets?
+    #endif
     private let database: OpaquePointer
     private let articleCount: Double
     private let hasPassageIndex: Bool
@@ -267,6 +273,9 @@ actor WikiSearchService {
             indexVersion = WikiSearchService.text($0, 0)
         }
         hasPassageIndex = indexVersion == "1"
+        #if canImport(CSQLiteVec)
+        if retrievalMode == .sqliteVec { vectorAssets = WikiVectorIndex.Assets.bundled(corpus: databaseURL) }
+        #endif
     }
 
     deinit {
@@ -276,12 +285,23 @@ actor WikiSearchService {
     /// The index shipped inside the app. Xcode's synchronized groups flatten resource folders, so
     /// the file sits at the top level of the bundle rather than under Resources/.
     static func bundled() -> WikiSearchService? {
-        let mode = RetrievalMode(rawValue: ProcessInfo.processInfo.environment["WONDERBUG_WIKI_RETRIEVAL"] ?? "") ?? .legacy
-        let name = "simplewiki"
+        let mode = configuredMode
+        let name = mode == .sqliteVec ? "simplewiki-vector" : "simplewiki"
         guard let url = Bundle.main.url(forResource: name, withExtension: "db") else { return nil }
         return try? WikiSearchService(databaseURL: url, retrievalMode: mode,
                                      reranker: mode == .legacy ? nil : WikiMiniLMReranker.bundled(),
                                      calibratedGate: WikiRelevanceGate.load(Bundle.main.url(forResource: "wiki-relevance-gate", withExtension: "json")))
+    }
+
+    nonisolated static var configuredMode: RetrievalMode {
+        #if SQLITE_VEC_EXPERIMENT
+        // A home-screen launch must retain the experiment even without Xcode's environment.
+        return .sqliteVec
+        #else
+        let configured = ProcessInfo.processInfo.environment["WONDERBUG_WIKI_RETRIEVAL"]
+            ?? Bundle.main.object(forInfoDictionaryKey: "WonderBugRetrievalMode") as? String ?? "legacy"
+        return RetrievalMode(rawValue: configured) ?? .legacy
+        #endif
     }
 
     private static func step(_ database: OpaquePointer, _ sql: String, _ bindings: [String],
@@ -549,7 +569,7 @@ actor WikiSearchService {
 
     // MARK: - Passage retrieval experiment
 
-    enum RetrievalMode: String, Codable { case legacy, passages, directPassages = "direct-passages", hybridPassages = "hybrid-passages", calibratedPassages = "calibrated-passages" }
+    enum RetrievalMode: String, Codable { case sqliteVec = "sqlite-vec", legacy, passages, directPassages = "direct-passages", hybridPassages = "hybrid-passages", calibratedPassages = "calibrated-passages" }
 
     private struct PassageCandidate {
         let article: Article
@@ -627,6 +647,12 @@ actor WikiSearchService {
         let start = Date()
         let result: WikiLookup
         switch retrievalMode {
+        case .sqliteVec:
+            #if canImport(CSQLiteVec)
+            result = vectorPassageLookUp(question)
+            #else
+            result = .notFound(.vectorUnavailable)
+            #endif
         case .legacy: result = legacyLookUp(question)
         case .passages: result = passageLookUp(question)
         case .directPassages: result = directPassageLookUp(question)
@@ -848,12 +874,19 @@ actor WikiSearchService {
             sourceIDs: best.record.sourceID.map { [$0] } ?? []))
     }
 
-    private func directCandidates(_ query: String, articleID: Int64? = nil, limit: Int) -> [(record: WikiEvidenceRecord, article: Article)] {
+    private func directCandidates(_ query: String, articleID: Int64? = nil, limit: Int, sourceIDs: [String]? = nil) -> [(record: WikiEvidenceRecord, article: Article)] {
         let terms = Array(Set(Self.words(in: query).filter { !Self.stopWords.contains($0) }).sorted().prefix(32))
         guard !terms.isEmpty else { return [] }
         let match = terms.map { "\"\($0)\"" }.joined(separator: " OR ")
         let scope = articleID.map { "AND d.article = \($0)" } ?? ""
         var documents: [(id: String, article: Article, ordinal: Int, section: String, text: String)] = []
+        if let sourceIDs {
+            for id in sourceIDs.prefix(256) {
+                step("SELECT d.source_id,d.article,d.ordinal,d.title,a.lead,d.section,d.text FROM passage_documents d JOIN articles a ON a.id=d.article WHERE d.source_id=?", [id]) {
+                    documents.append((Self.text($0, 0), Article(id: sqlite3_column_int64($0, 1), title: Self.text($0, 3), lead: Self.text($0, 4)), Int(sqlite3_column_int64($0, 2)), Self.text($0, 5), Self.text($0, 6)))
+                }
+            }
+        } else {
         step("""
             SELECT d.source_id, d.article, d.ordinal, d.title, a.lead, d.section, d.text
             FROM passage_fts JOIN passage_documents d ON d.id=passage_fts.rowid
@@ -864,6 +897,7 @@ actor WikiSearchService {
             documents.append((Self.text($0, 0), Article(id: sqlite3_column_int64($0, 1),
                 title: Self.text($0, 3), lead: Self.text($0, 4)), Int(sqlite3_column_int64($0, 2)),
                 Self.text($0, 5), Self.text($0, 6)))
+        }
         }
         trace?.retrievedSources = documents.map {
             WikiEvidenceRecord(sourceID: $0.id, title: $0.article.title, section: $0.section,
@@ -915,7 +949,7 @@ actor WikiSearchService {
         for slot in 0..<2 {
             for group in windows where group.count > slot {
                 let candidate = group[slot]
-                if seen.insert(candidate.record.text).inserted { candidates.append(candidate) }
+                if seen.insert(sourceIDs == nil ? candidate.record.text : (candidate.record.sourceID ?? "") + "|" + candidate.record.text).inserted { candidates.append(candidate) }
                 if candidates.count == limit { break }
             }
             if candidates.count == limit { break }
@@ -1032,6 +1066,84 @@ actor WikiSearchService {
             runnersUp: order.dropFirst().prefix(2).map { (merged[$0].article.title, scores[$0]) },
             sourceIDs: best.record.sourceID.map { [$0] } ?? []))
     }
+
+    #if canImport(CSQLiteVec)
+    /// Native equivalent of the frozen binary-vector experiment. No question-specific rules,
+    /// no gate change, and no silent keyword fallback when vector assets fail validation.
+    private func vectorPassageLookUp(_ question: String, rerankQuestion: String? = nil) -> WikiLookup {
+        trace?.retrievalVersion = "sqlite-vec-binary-rrf-v1"
+        trace?.retrievalQuestion = question
+        trace?.gateVersion = "baseline-4"
+        trace?.gateThreshold = Self.minimumRelevance
+        guard hasPassageIndex else { return .notFound(.passageIndexUnavailable) }
+        let raw = Array(Self.words(in: question).prefix(64))
+        let content = raw.filter { !Self.stopWords.contains($0) }.map { indexForm($0) }
+        guard !content.isEmpty else { return .notFound(.noContentWords) }
+        let neighbors: (hits: [(id: Int64, distance: Double)], embeddingMS: Double, searchMS: Double)
+        do {
+            let started = Date()
+            if vectorIndex == nil {
+                guard let vectorAssets else { throw WikiVectorError.incompatibleAssets("missing bundled assets") }
+                vectorIndex = try WikiVectorIndex(assets: vectorAssets)
+            }
+            trace?.vectorInitializationMS = Date().timeIntervalSince(started) * 1000
+            guard let vectorIndex else { throw WikiVectorError.incompatibleAssets("missing index") }
+            trace?.vectorCorpusSHA256 = vectorIndex.manifest.corpusSHA256
+            trace?.vectorIndexSHA256 = vectorIndex.manifest.indexSHA256
+            neighbors = try vectorIndex.neighbors(question)
+        } catch {
+            trace?.vectorError = String(describing: error)
+            DebugLog.section("VECTOR", "Cannot run SQLite-vec experiment: \(error)")
+            return .notFound(.vectorUnavailable)
+        }
+        trace?.vectorEmbeddingMS = neighbors.embeddingMS
+        trace?.vectorSearchMS = neighbors.searchMS
+        var dense: [String] = []
+        for hit in neighbors.hits {
+            step("SELECT source_id FROM passage_documents WHERE id=\(hit.id)") { dense.append(Self.text($0, 0)) }
+        }
+        guard dense.count == neighbors.hits.count else {
+            trace?.vectorError = "vector IDs missing from matching corpus"
+            return .notFound(.vectorUnavailable)
+        }
+        trace?.vectorSourceIDs = dense
+        trace?.vectorDistances = neighbors.hits.map(\.distance)
+        let terms = retrievalTerms(content)
+        let articles = articleCandidates(question: question, raw: raw, content: content, terms: terms)
+        let articleIDs = articlePassageCandidates(content: content, terms: terms, articles: articles).compactMap(\.sourceID)
+        let bodyIDs = directCandidates(question, limit: 48).compactMap { $0.record.sourceID }
+        let sourceIDs = WikiRankFusion.unique(articleIDs + bodyIDs + dense)
+        let prepared = directCandidates(question, limit: 512, sourceIDs: sourceIDs)
+        var available: [String: (record: WikiEvidenceRecord, article: Article)] = [:]
+        for candidate in prepared {
+            if let id = candidate.record.sourceID, available[id] == nil { available[id] = candidate }
+        }
+        let ids = WikiRankFusion.shortlist(article: articleIDs, body: bodyIDs, dense: dense,
+                                          prepared: available.mapValues(\.record))
+        var shortlist = ids.compactMap { available[$0] }
+        guard !shortlist.isEmpty else { return .notFound(.noMatchingArticle) }
+        trace?.candidates = shortlist.map(\.record)
+        guard let reranker else { return .notFound(.rerankerUnavailable) }
+        let scores: [Double]
+        do {
+            scores = try reranker.scores(question: rerankQuestion ?? question, passages: shortlist.map { $0.record.text })
+            guard scores.count == shortlist.count, scores.allSatisfy(\.isFinite) else { throw WikiRerankerError.missingScore }
+        } catch { return .notFound(.rerankerUnavailable) }
+        for i in shortlist.indices { shortlist[i].record.relevance = scores[i] }
+        trace?.candidates = shortlist.map(\.record)
+        trace?.rerankerIdentity = reranker.modelIdentity
+        let order = shortlist.indices.sorted { scores[$0] == scores[$1] ? $0 < $1 : scores[$0] > scores[$1] }
+        let best = shortlist[order[0]]
+        DebugLog.section("VECTOR", "SQLite-vec binary: \(dense.count) neighbours, \(shortlist.count) reranked; search \(Int(neighbors.searchMS)) ms; selected \(best.article.title), score \(scores[order[0]])")
+        guard scores[order[0]] >= Self.minimumRelevance else {
+            return .notFound(.lowRelevance(scores[order[0]], title: best.article.title))
+        }
+        return .found(WikiPassage(id: best.article.id, title: best.article.title, lead: best.article.lead,
+            text: best.record.text, coverage: nil, section: best.record.section,
+            runnersUp: order.dropFirst().prefix(2).map { (shortlist[$0].article.title, scores[$0]) },
+            sourceIDs: best.record.sourceID.map { [$0] } ?? []))
+    }
+    #endif
 
     // MARK: - Legacy lookup
 
@@ -1173,6 +1285,14 @@ actor WikiSearchService {
     }
 
     private func reuseLookup(_ question: String, id: Int64, title: String, lead: String, previousQuestion: String?) -> WikiLookup {
+        #if canImport(CSQLiteVec)
+        if retrievalMode == .sqliteVec {
+            let resolved = "Current question: \(question). Topic: \(title). " + (previousQuestion.map { "Previous question: \($0)" } ?? "")
+            // Reuse the existing session's topic; this is not a learned resolver. Vector search
+            // remains corpus-wide, and sees the same topic-appended query as keyword search.
+            return vectorPassageLookUp(question + " " + title, rerankQuestion: resolved)
+        }
+        #endif
         if usesHybridRetrieval {
             let resolved = "Current question: \(question). Topic: \(title). " + (previousQuestion.map { "Previous question: \($0)" } ?? "")
             return hybridPassageLookUp(question + " " + title, rerankQuestion: resolved,

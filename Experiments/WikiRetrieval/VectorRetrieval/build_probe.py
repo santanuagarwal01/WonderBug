@@ -27,6 +27,9 @@ extension WikiSearchService {
 '''
 
 def instrument(source):
+ # Device integration now includes the canonical source-ID path in the app itself.
+ if 'limit: Int, sourceIDs: [String]? = nil)' in source:
+  return source+HOOKS
  signature='private func directCandidates(_ query: String, articleID: Int64? = nil, limit: Int)'
  assert source.count(signature)==1
  source=source.replace(signature,'private func directCandidates(_ query: String, articleID: Int64? = nil, limit: Int, sourceIDs: [String]? = nil)')
@@ -53,7 +56,8 @@ def build(repo,output):
  repo=Path(repo);here=Path(__file__).resolve().parent;output=Path(output);output.mkdir(parents=True,exist_ok=True)
  original=repo/'WonderBug/Services/WikiSearchService.swift';copy=output/'WikiSearchService.swift';copy.write_text(instrument(original.read_text()))
  tokenizer=output/'WikiPassageReranker.swift'
- tokenizer.write_text((repo/'WonderBug/Services/WikiPassageReranker.swift').read_text()+"""
+ original_tokenizer=(repo/'WonderBug/Services/WikiPassageReranker.swift').read_text()
+ adapter="""
 // Offline adapter: single-sentence BERT input differs from question/passage input.
 extension WikiWordPieceTokenizer {
     func encodeSentence(_ text: String) -> (ids: [Int], mask: [Int], types: [Int]) {
@@ -62,7 +66,8 @@ extension WikiWordPieceTokenizer {
         return (ids + padding, Array(repeating: 1, count: ids.count) + padding, Array(repeating: 0, count: 256))
     }
 }
-""")
+"""
+ tokenizer.write_text(original_tokenizer + ("" if "func encodeSentence(" in original_tokenizer else adapter))
  files=[here/'VectorMain.swift',here/'WikiSentenceEmbedder.swift',copy,tokenizer]+[repo/'WonderBug/Services'/name for name in ['WikiRetrievalTrace.swift','SafetyService.swift','DebugLog.swift']]
  binary=output/'vector-eval'
  subprocess.run(['swiftc','-O','-module-cache-path',str(output/'modules'),*[str(f)for f in files],'-o',str(binary)],check=True)

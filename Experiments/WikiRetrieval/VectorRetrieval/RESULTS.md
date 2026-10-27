@@ -1,5 +1,7 @@
 # SQLite-vec experiment: results
 
+Historical offline report. A later change adds the separate iPhone experiment described in [DEVICE_TESTING.md](DEVICE_TESTING.md); the results below are unchanged.
+
 The hybrid retrieval experiment is implemented and tested. Full-precision vectors give a small gain; the lightweight binary version does not beat the corrected keyword baseline. Neither is ready to become the app default on this evidence.
 
 This work lives on `codex/wiki-passage-reranking`. It is an offline experiment using the real Swift passage preparation, safety checks and MiniLM reranker. It does **not** add a vector Xcode scheme or change the running iPhone app. Qwen generation and training are not included.

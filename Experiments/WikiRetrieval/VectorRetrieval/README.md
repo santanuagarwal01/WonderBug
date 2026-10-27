@@ -2,11 +2,11 @@
 
 Completed results: see [RESULTS.md](RESULTS.md). Full precision improves sufficient
 evidence from 50/66 to 52/66 with completed questions; binary vectors fall to 49/66.
-The experiment has not been promoted to the app.
+The experiment is now available in a separate iPhone scheme; see [device instructions](DEVICE_TESTING.md). It has not been promoted to the default app.
 
 This is a functioning offline comparison using the app's Swift passage preparation,
 safety checks and existing MiniLM cross-encoder, plus a small Core ML sentence encoder.
-It does not yet add a vector scheme to the iPhone app or change its default behaviour.
+The later device integration adds an opt-in vector scheme while retaining the earlier Hybrid comparison.
 Qwen generation and learned conversation resolution are not part of this comparison.
 
 ## Fixed comparison
@@ -54,7 +54,7 @@ float16 computation. Compression describes weight storage, not an all-integer co
 pipeline. The benchmark embeds queries using Swift/Core ML, while corpus embeddings use
 the pinned original encoder. Conversion and Swift tokenizer parity are tested explicitly.
 The raw PyTorch weights and float reference index are research artifacts, not proposed
-shipping assets. On-device integration still needs native SQLite-vec linkage and device tests.
+shipping assets. Native SQLite-vec linkage is now included. Actual phone performance and answer-quality tests remain to be run.
 
 ## Reproduce
 
@@ -100,3 +100,8 @@ Model and library references:
 - https://alexgarcia.xyz/sqlite-vec/python.html
 - https://alexgarcia.xyz/sqlite-vec/guides/binary-quant.html
 - https://www.sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html
+
+The frozen `implementation-manifest.json` describes the offline run at commit `a28d824`.
+The later device integration adds native files and updates the build adapter to reuse the
+shared single-sentence tokenizer and source-ID preparation path. It does not change the
+recorded benchmark results.

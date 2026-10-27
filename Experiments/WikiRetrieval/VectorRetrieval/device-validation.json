@@ -1,0 +1,46 @@
+{
+  "unsigned_generic_iphone_builds": {
+    "HybridPassageExperiment": {
+      "build": "passed",
+      "configuration": "Debug",
+      "bundle_id": "com.santanu.wonderbug",
+      "display_name": "Wonder Bug",
+      "home_screen_mode": "hybrid-passages",
+      "home_screen_logging": true,
+      "bundled_assets": {
+        "simplewiki.db": true,
+        "simplewiki-vector.db": false,
+        "wiki-vectors-binary.db": false,
+        "WikiEmbedder.mlmodelc": false,
+        "WikiMiniLM.mlmodelc": true,
+        "wiki-vector-manifest.json": false,
+        "wiki-vector-LICENSE.txt": false
+      }
+    },
+    "SQLiteVecExperiment": {
+      "build": "passed",
+      "configuration": "SQLiteVecDebug",
+      "bundle_id": "com.santanu.wonderbug.vec",
+      "display_name": "Wonder Bug Vec",
+      "home_screen_mode": "sqlite-vec",
+      "home_screen_logging": true,
+      "bundled_assets": {
+        "simplewiki.db": false,
+        "simplewiki-vector.db": true,
+        "wiki-vectors-binary.db": true,
+        "WikiEmbedder.mlmodelc": true,
+        "WikiMiniLM.mlmodelc": true,
+        "wiki-vector-manifest.json": true,
+        "wiki-vector-LICENSE.txt": true
+      }
+    }
+  },
+  "native_parity": "device-parity.json",
+  "physical_iphone_tested": false,
+  "existing_retrieval_regressions": "passed",
+  "offline_probe_after_integration": "compiled",
+  "explicit_app_schemes": [
+    "HybridPassageExperiment",
+    "SQLiteVecExperiment"
+  ]
+}

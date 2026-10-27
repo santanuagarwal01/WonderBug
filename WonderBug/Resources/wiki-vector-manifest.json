@@ -1,0 +1,10 @@
+{
+  "corpusSHA256": "a85b30cae221092752f64caa1f19e06ee00102b48bd22e2ff4ad8b18098d600b",
+  "indexSHA256": "c420da4b103da8f6914d4518cc37f123d53c941c4189ffb27f6bb3361485761c",
+  "vocabularySHA256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+  "encoderWeightsSHA256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+  "encoderRevision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "encoderSource": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimensions": 384,
+  "passageCount": 608614
+}

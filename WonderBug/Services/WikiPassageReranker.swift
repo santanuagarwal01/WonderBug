@@ -38,6 +38,12 @@ nonisolated struct WikiWordPieceTokenizer {
                 Array(repeating: 0, count: query.count + 2) + Array(repeating: 1, count: body.count + 1) + padding)
     }
 
+    func encodeSentence(_ text: String) -> (ids: [Int], mask: [Int], types: [Int]) {
+        let ids = [101] + Array(tokens(text).prefix(254)) + [102]
+        let padding = Array(repeating: 0, count: 256 - ids.count)
+        return (ids + padding, Array(repeating: 1, count: ids.count) + padding, Array(repeating: 0, count: 256))
+    }
+
     private func tokens(_ text: String) -> [Int] {
         var clean = ""
         for scalar in text.unicodeScalars {

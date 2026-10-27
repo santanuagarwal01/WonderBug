@@ -23,14 +23,14 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "SQLiteVecDebug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "SQLiteVecDebug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -52,25 +52,28 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "WONDERBUG_WIKI_RETRIEVAL"
-            value = "calibrated-passages"
+            value = "sqlite-vec"
             isEnabled = "YES">
          </EnvironmentVariable>
-         <EnvironmentVariable key = "WONDERBUG_EVALUATION_LOG" value = "1" isEnabled = "YES">
+         <EnvironmentVariable
+            key = "WONDERBUG_EVALUATION_LOG"
+            value = "1"
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release"
+      buildConfiguration = "SQLiteVecDebug"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "SQLiteVecDebug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "SQLiteVecDebug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

@@ -21,6 +21,15 @@ nonisolated struct WikiRetrievalTrace: Codable, Sendable {
     var selectedText: String?
     var rejectionReason: String?
     var elapsedMS: Double = 0
+    var vectorEmbeddingMS: Double?
+    var vectorSearchMS: Double?
+    var vectorInitializationMS: Double?
+    var vectorSourceIDs: [String]?
+    var vectorDistances: [Double]?
+    var vectorCorpusSHA256: String?
+    var vectorIndexSHA256: String?
+    var vectorError: String?
+    var retrievalQuestion: String?
     var gateVersion: String?
     var gateThreshold: Double?
     var rerankerIdentity: String?

@@ -10,7 +10,7 @@ import Foundation
         var answerModel = "bundled-Qwen3-1.7B-4bit"
         var appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
         var appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
-        var retrievalMode = ProcessInfo.processInfo.environment["WONDERBUG_WIKI_RETRIEVAL"] ?? "legacy"
+        var retrievalMode = WikiSearchService.configuredMode.rawValue
         var trace: WikiRetrievalTrace?
         var reusedTopic: String?
         var generatedAnswer: String?
@@ -24,7 +24,8 @@ import Foundation
     }
     static func append(_ record: Record) {
         #if DEBUG
-        guard ProcessInfo.processInfo.environment["WONDERBUG_EVALUATION_LOG"] == "1" else { return }
+        guard ProcessInfo.processInfo.environment["WONDERBUG_EVALUATION_LOG"] == "1"
+            || Bundle.main.object(forInfoDictionaryKey: "WonderBugEvaluationLog") as? String == "1" else { return }
         do {
             let documents = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
                                                          appropriateFor: nil, create: true)

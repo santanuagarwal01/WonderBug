@@ -1,0 +1,6 @@
+{
+  "Sources/CSQLiteVec/sqlite-vec.c": "aea2ff1524ab80ccd1d51c698b09a74403c2d6ef00949d2a083661b4660881fe",
+  "Sources/CSQLiteVec/include/sqlite-vec.h": "ee9f4ad2fd66e285f8c1c60d9174b6b21ae960704c0ec6a93e8bea01ae240420",
+  "LICENSE": "6ce72bbe12d975bd5286e5ab0a064c069693300c47bccbc57bec18485f1621ea",
+  "release_archive_sha256": "99b6ec36e9d259d91bd6cb2c053c3a7660f8791eaa66126c882a6a4557e57d6a"
+}
